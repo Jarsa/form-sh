@@ -15,5 +15,6 @@
         'purchase',
         'sale',
         'mrp_plm',
+        'bo_import_direct_drive_sheet',
     ],
 }
