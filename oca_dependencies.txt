@@ -1,2 +1,4 @@
 enterprise git@github.com:Vauxoo/enterprise.git 12.0
 odoo-utilities git@git.vauxoo.com:jarsa/odoo-utilities 12.0
+mail-addons git@github.com:jarsa/mail-addons 12.0
+social git@github.com:jarsa/social 12.0
