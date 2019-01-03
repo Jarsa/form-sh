@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="mrp_to_so_form">
+        <field name="name">mrp.eco.so.form</field>
+        <field name="model">mrp.eco</field>
+        <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='toggle_active']" position="before">                
+                <field name="order_id" invisible="1"/>
+            </xpath>
+            <xpath expr="//button[@name='toggle_active']" position="before">
+                <button class="oe_stat_button" icon="fa-shopping-cart" name="show_sale_order" string="Sale Order" type="object"  attrs="{'invisible':[('order_id','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

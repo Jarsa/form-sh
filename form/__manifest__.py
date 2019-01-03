@@ -31,5 +31,6 @@
         'account_xunnel',
         'mrp_production_request',
         'sale_stock_sample',
+        'sale_to_plm_eco',
     ],
 }
