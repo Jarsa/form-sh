@@ -29,5 +29,7 @@
         'bo_import_direct_drive_sheet',
         'mailgun',
         'mail_tracking_mailgun',
+        'account_xunnel',
+        'mrp_production_request',
     ],
 }
