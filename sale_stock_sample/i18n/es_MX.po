@@ -1,0 +1,160 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_stock_sample
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-08 18:17+0000\n"
+"PO-Revision-Date: 2019-01-08 18:17+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_stock_sample
+#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
+msgid "<strong>Please Select the Stock Route and the Quantities to Procure</strong>"
+msgstr "<strong>Seleccione la Ruta de Almacén y las Cantidades a Abastecer</strong>"
+
+#. module: sale_stock_sample
+#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sale_stock_sample
+#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: sale_stock_sample
+#: model:ir.model,name:sale_stock_sample.model_sale_stock_sample_procurement_wizard
+msgid "Create Procurement for Sample Products"
+msgstr "Crear Abastecimientos para Productos Muestra"
+
+#. module: sale_stock_sample
+#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_order_inherit_form_sale_stock_sample
+msgid "Create Procurements"
+msgstr "Crear Abastecimientos"
+
+#. module: sale_stock_sample
+#: model:ir.actions.act_window,name:sale_stock_sample.action_sale_stock_sample_procurement_wizard
+msgid "Create Procurements For Sample Products"
+msgstr "Crear Abastecimientos para Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard__route_id
+#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__route_id
+msgid "Define the route to generate the procurement for each product."
+msgstr "Defina la ruta para generar el abastecimiento para cada producto."
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__date_planned
+msgid "Date Planned"
+msgstr "Fecha Estimada"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__date_planned
+msgid "Define the estimated date to deliver the sample product."
+msgstr "Defina la fecha estimada para entregar el producto muestra."
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,help:sale_stock_sample.field_stock_location_route__sample_selectable
+msgid "If you select this checkbox this route will appear on the stock sample wizard of sale orders."
+msgstr "Si selecciona esta casilla esta ruta aparecerá en el asistente para crear muestras en los pedidos de venta."
+
+#. module: sale_stock_sample
+#: model:ir.model,name:sale_stock_sample.model_stock_location_route
+msgid "Inventory Routes"
+msgstr "Rutas de inventario"
+
+#. module: sale_stock_sample
+#: model:ir.model,name:sale_stock_sample.model_sale_stock_sample_procurement_wizard_line
+msgid "Lines to Create Procurement for Sample Products"
+msgstr "Lineas para Crear Abastecimiento para Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard__line_ids
+#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
+msgid "Lines to Procure"
+msgstr "Lineas a Abastecer"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_uom_qty
+msgid "Ordered Quantity"
+msgstr "Cantidad Pedida"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_stock_sample
+#: model:stock.picking.type,name:sale_stock_sample.stock_sample_op
+msgid "Product Sample Delivery"
+msgstr "Entregas de Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:stock.picking.type,name:sale_stock_sample.stock_sample_dev_op
+msgid "Product Sample Delivery Devolutions"
+msgstr "Devoluciones de Entregas de Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:stock.location.route,name:sale_stock_sample.stock_sample_route
+msgid "Product Sample Route"
+msgstr "Ruta Producto Muestra"
+
+#. module: sale_stock_sample
+#: model_terms:ir.ui.view,arch_db:sale_stock_sample.stock_location_route_product_sample_form_view
+msgid "Product Sample Wizard"
+msgstr "Asistente Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__qty_to_procure
+msgid "Qty To Procure"
+msgstr "Cantidad a Abastecer"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard__route_id
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__route_id
+msgid "Route"
+msgstr "Ruta"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__order_id
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__sale_line_id
+msgid "Sale Order Line"
+msgstr "Linea de Pedido de Venta"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_stock_location_route__sample_selectable
+msgid "Sample Selectable"
+msgstr "Seleccionable como Muestra"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__qty_to_procure
+msgid "Set the product quantity to procure."
+msgstr "Seleccione la cantidad a abastecer"
+
+
+#. module: sale_stock_sample
+#: model:stock.rule,name:sale_stock_sample.stock_sample_route_cutomers_stock_rule
+msgid "WH: Stock -> Product Samples Location"
+msgstr "WH: Existencias -> Ubicación Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__wizard_id
+msgid "Wizard"
+msgstr "Asistente"

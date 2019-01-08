@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_inherit_form_sale_stock_sample" model="ir.ui.view">
+        <field name="name">sale.order.inherit.form.sale.stock.sample</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_confirm']" position="before">
+                <button class="oe_highlight" name="%(action_sale_stock_sample_procurement_wizard)d" string=" Create Procurements" type="action" icon="fa-truck" states='draft,sent'/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

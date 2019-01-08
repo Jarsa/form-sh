@@ -14,7 +14,6 @@
         'l10n_mx',
         'purchase',
         'crm',
-        'sale_management',
         'timesheet_grid',
         'board',
         'repair',
@@ -31,5 +30,6 @@
         'mail_tracking_mailgun',
         'account_xunnel',
         'mrp_production_request',
+        'sale_stock_sample',
     ],
 }
