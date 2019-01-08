@@ -17,7 +17,7 @@
         'timesheet_grid',
         'board',
         'repair',
-        'mrp_plm',
+        'mrp_plm_survey',
         'quality_control',
         'hr_attendance',
         'hr_appraisal',

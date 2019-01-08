@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_eco_inherit_form_form" model="ir.ui.view">
+        <field name="name">eco.inherit.form.form</field>
+        <field name="model">mrp.eco</field>
+        <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_new_revision']" position="after">
+                <field name="has_survey" invisible="1"/>
+                <button string="Answer Survey" name="action_answer_survey" type="object" attrs="{'invisible': [('has_survey', '!=', True)]}"/>
+                <button string="View Results" name="action_show_result_survey" type="object" attrs="{'invisible': [('has_survey', '!=', True)]}" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//field[@name='product_tmpl_id']" position="after">
+                <field name="survey_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
