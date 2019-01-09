@@ -1,8 +1,6 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
-from datetime import timedelta
-
 from odoo import api, fields, models
 from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError
