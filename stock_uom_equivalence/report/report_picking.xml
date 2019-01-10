@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_picking_stock_equivalence" inherit_id="stock.report_picking">
+        <xpath expr="//table[2]/thead/tr/th[2]" position="after">
+            <th><strong>Equivalent Quantity</strong></th>
+        </xpath>
+        <xpath expr="//table[2]/tbody/t[1]/t[1]/tr[1]/td[2]" position="after">
+            <td>
+                <span t-if="o.state != 'done'" t-field="ml.equivalent_product_uom_qty" groups="uom.group_uom"/>
+                <span t-if="o.state == 'done'" t-field="ml.equivalent_qty_done" groups="uom.group_uom"/>
+                <span t-field="ml.equivalent_uom_id" groups="uom.group_uom"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

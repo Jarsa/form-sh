@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_stock_quant_tree_stock_uom_equivalence" model="ir.ui.view">
+        <field name="name">view.stock.quant.tree.stock.uom.equivalencew</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_uom_id']" position="after">
+                <field name="equivalent_reserved_quantity" groups="uom.group_uom"/>
+                <field name="equivalent_quantity" groups="uom.group_uom"/>
+                <field name="equivalent_uom_id" groups="uom.group_uom"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_stock_quant_form_stock_uom_equivalence" model="ir.ui.view">
+        <field name="name">view.stock.quant.form.stock.uom.equivalencew</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='reserved_quantity']" position="before">
+                <label for="equivalent_quantity"/>
+                <div>
+                    <field name="equivalent_quantity" class="oe_inline" groups="uom.group_uom"/>
+                    <field name="equivalent_uom_id" class="oe_inline" groups="uom.group_uom"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='in_date']" position="before">
+                <label for="equivalent_reserved_quantity"/>
+                <div>
+                    <field name="equivalent_reserved_quantity" class="oe_inline" groups="uom.group_uom"/>
+                    <field name="equivalent_uom_id" class="oe_inline" groups="uom.group_uom"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

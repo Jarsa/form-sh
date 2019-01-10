@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_stock_uom_equivalence_form_view" model="ir.ui.view">
+        <field name="name">product.template.stock.uom.equivalence.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <label for="equivalent_factor"/>
+                <div>
+                    <field name="equivalent_factor" class="oe_inline" groups="uom.group_uom" required="1"/>
+                    <field name="equivalent_uom_id" class="oe_inline" groups="uom.group_uom" options="{'no_create_edit': True, 'no_open': True, }" required="1"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_normal_stock_uom_equivalence_form_view" model="ir.ui.view">
+        <field name="name">product.normal.stock.uom.equivalence.form.view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <label for="equivalent_factor"/>
+                <div>
+                    <field name="equivalent_factor" class="oe_inline" groups="uom.group_uom" required="1"/>
+                    <field name="equivalent_uom_id" class="oe_inline" groups="uom.group_uom" options="{'no_create_edit': True, 'no_open': True, }" required="1"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_stock_product_tree2_stock_uom_equivalence" model="ir.ui.view">
+        <field name="name">product.stock.tree.2.stock.uom.equivalence</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock_account.view_stock_product_tree2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <field name="equivalent_qty_at_date" groups="uom.group_uom"/>
+                <field name="equivalent_uom_id" groups="uom.group_uom"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
