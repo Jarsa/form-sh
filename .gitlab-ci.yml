@@ -52,7 +52,8 @@ test:
     - travis_install_nightly
     - travis_run_tests
     - travis_after_tests_success || true
-    - coverage report -m --show-missing --rcfile=${TRAVIS_BUILD_DIR}/.coveragerc || true
+    - coverage html --rcfile=${CI_PROJECT_DIR}/.coveragerc -d $CI_COMMIT_REF_SLUG || true
+    - coverage report -m --show-missing --rcfile=${CI_PROJECT_DIR}/.coveragerc || true
 
 build:
   stage: build
