@@ -33,5 +33,9 @@
         'sale_stock_sample',
         'sale_to_plm_eco',
         'stock_uom_equivalence',
+        'account_currency_rate_difference_reference',
+        'account_skip_exchange_reversal',
+        'account_tax_cash_basis_reference',
+        'res_currency_rate_custom_decimals',
     ],
 }
