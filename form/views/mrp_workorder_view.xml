@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
+        <field name="name">view.mrp.workorder.inherit.custom.kanban</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.workcenter_line_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_uom_id']" position="after">
+                <field name="date_planned_start"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
+                <div>
+                    <strong><span>Date Planned Start - </span></strong><span><t t-esc="record.date_planned_start.value"/></span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
