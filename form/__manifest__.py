@@ -39,6 +39,7 @@
         'res_currency_rate_custom_decimals',
         'l10n_mx_edi_partner_defaults',
         'sale_request',
+        'mrp_product_alternative',
     ],
     'data': [
         'views/mrp_workorder_view.xml',

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_alternative_wizard_form" model="ir.ui.view">
+        <field name="name">view.product.alternative.wizard.form</field>
+        <field name="model">product.alternative.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group attrs="{'invisible': [('line_ids', '!=', [])]}">
+                        <h2><strong>Please Click the Button to Get the Products Without Stock Avaliable</strong></h2>
+                    </group>
+                    <group attrs="{'invisible': [('line_ids', '=', [])]}">
+                        <h2><strong>Please Select the Alternative Product to change it</strong></h2>
+                    </group>
+                    <group>
+                        <group>
+                            <button name="compute_lines" type="object" class="oe_highlight" string="Compute Lines" icon="fa-cogs" attrs="{'invisible': [('line_ids', '!=', [])]}"/>
+                        </group>
+                    </group>
+                    <group string="Lines Without Stock Available" attrs="{'invisible': [('line_ids', '=', [])]}">
+                        <field name="line_ids" nolabel="1">
+                            <tree editable="top" create="0" delete="0">
+                                <field name="wiz_id" invisible="1"/>
+                                <field name="alternative_ids" invisible="1"/>
+                                <fieldn name="move_id" invisible="1"/>
+                                <field name="product_id"/>
+                                <field name="alternative_id" options="{'no_create_edit': True, 'no_open': True, }" domain="[('id', 'in', alternative_ids)]" required="1"/>
+                                <field name="stock_available_unreserved"/>
+                                <field name="uom_id" groups="uom.group_uom"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="change_products" string='Confirm' type="object" class="oe_highlight" attrs="{'invisible': [('line_ids', '=', [])]}"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </sheet>
+           </form>
+        </field>
+    </record>
+    <record id="action_product_alternative_wizard" model="ir.actions.act_window">
+        <field name="name">Change Alternative Products</field>
+        <field name="res_model">product.alternative.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

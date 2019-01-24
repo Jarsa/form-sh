@@ -12,6 +12,8 @@
     'depends': ['mrp', 'stock_available_unreserved'],
     'data': [
         'security/ir.model.access.csv',
+        'wizards/product_alternative_wizard_view.xml',
+        'views/mrp_production_view.xml',
         'views/product_view.xml',
     ],
 }

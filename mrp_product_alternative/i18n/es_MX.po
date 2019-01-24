@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* sale_stock_sample
+#	* mrp_product_alternative
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-08 18:17+0000\n"
-"PO-Revision-Date: 2019-01-08 18:17+0000\n"
+"POT-Creation-Date: 2019-01-24 20:37+0000\n"
+"PO-Revision-Date: 2019-01-24 20:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,146 +15,216 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: sale_stock_sample
-#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
-msgid "<strong>Please Select the Stock Route and the Quantities to Procure</strong>"
-msgstr "<strong>Seleccione la Ruta de Almacén y las Cantidades a Abastecer</strong>"
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_mrp_production_product_alternative_form
+msgid "<strong><i class=\"fa fa-warning\"/>Warning!</strong> There are some products without stock available. Click"
+msgstr "<strong><i class=\"fa fa-warning\"/>¡Advertencia!</strong> Hay algunos productos sin stock disponible. Click"
 
-#. module: sale_stock_sample
-#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_alternative_wizard_form
+msgid "<strong>Please Click the Button to Get the Products Without Stock Avaliable</strong>"
+msgstr "<strong>Por Favor Presione El Botón Para Obtener Los Productos Sin Stock Disponible</strong>"
+
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_alternative_wizard_form
+msgid "<strong>Please Select the Alternative Product to change it</strong>"
+msgstr "<strong>Por Favor Seleccione El Producto Sustituto</strong>"
+
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__alternative_id
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__alternative_ids
+msgid "Alternative"
+msgstr "Sustituto"
+
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__alternative_id
+msgid "Alternative Product"
+msgstr "Producto Sustituto"
+
+#. module: mrp_product_alternative
+#: model:ir.model,name:mrp_product_alternative.model_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_template__alternative_ids
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_product_alternative_form
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_template_alternative_form
+msgid "Alternative Products"
+msgstr "Productos Sustitutos"
+
+#. module: mrp_product_alternative
+#: model:ir.model.fields,help:mrp_product_alternative.field_product_template__alternative_ids
+msgid "Alternative Products compatible with this product."
+msgstr "Productos sustitutos compatibles con este producto."
+
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_alternative_wizard_form
 msgid "Cancel"
 msgstr "Cancelar"
 
-#. module: sale_stock_sample
-#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
+#. module: mrp_product_alternative
+#: model:ir.actions.act_window,name:mrp_product_alternative.action_product_alternative_wizard
+msgid "Change Alternative Products"
+msgstr "Cambiar Productos Sustitutos"
+
+#. module: mrp_product_alternative
+#: model:ir.model,name:mrp_product_alternative.model_product_alternative_wizard
+msgid "Change Products Without Stock For Alternative Products"
+msgstr "Cambiar Productos Sin Stock Por Productos Sustitutos"
+
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_alternative_wizard_form
+msgid "Compute Lines"
+msgstr "Obtener Lineas"
+
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_alternative_wizard_form
 msgid "Confirm"
 msgstr "Confirmar"
 
-#. module: sale_stock_sample
-#: model:ir.model,name:sale_stock_sample.model_sale_stock_sample_procurement_wizard
-msgid "Create Procurement for Sample Products"
-msgstr "Crear Abastecimientos para Productos Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__create_uid
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__create_uid
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
 
-#. module: sale_stock_sample
-#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_order_inherit_form_sale_stock_sample
-msgid "Create Procurements"
-msgstr "Crear Abastecimientos"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__create_date
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__create_date
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__create_date
+msgid "Created on"
+msgstr "Creado el"
 
-#. module: sale_stock_sample
-#: model:ir.actions.act_window,name:sale_stock_sample.action_sale_stock_sample_procurement_wizard
-msgid "Create Procurements For Sample Products"
-msgstr "Crear Abastecimientos para Productos Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__display_name
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__display_name
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard__route_id
-#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__route_id
-msgid "Define the route to generate the procurement for each product."
-msgstr "Defina la ruta para generar el abastecimiento para cada producto."
+#. module: mrp_product_alternative
+#: code:addons/mrp_product_alternative/wizards/product_alternative_wizard.py:63
+#, python-format
+msgid "Error! There are some products without stock and without alternatives with stock. \n"
+" %s"
+msgstr "¡Error! Hay algunos productos sin stock disponible y sin productos sustitos con stock disponible. \n"
+" %s"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__name
-msgid "Description"
-msgstr "Descripción"
+#. module: mrp_product_alternative
+#: code:addons/mrp_product_alternative/models/product.py:25
+#, python-format
+msgid "Error! You cannot set the same product as alternative."
+msgstr "¡Error! No puede asignar el mismo producto como sustituto."
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__date_planned
-msgid "Date Planned"
-msgstr "Fecha Estimada"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_mrp_production__has_lines_wo_stock
+msgid "Has Lines Without Stock"
+msgstr "Tiene Lineas Sin Stock"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__date_planned
-msgid "Define the estimated date to deliver the sample product."
-msgstr "Defina la fecha estimada para entregar el producto muestra."
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__id
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__id
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__id
+msgid "ID"
+msgstr "ID"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,help:sale_stock_sample.field_stock_location_route__sample_selectable
-msgid "If you select this checkbox this route will appear on the stock sample wizard of sale orders."
-msgstr "Si selecciona esta casilla esta ruta aparecerá en el asistente para crear muestras en los pedidos de venta."
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative____last_update
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard____last_update
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
 
-#. module: sale_stock_sample
-#: model:ir.model,name:sale_stock_sample.model_stock_location_route
-msgid "Inventory Routes"
-msgstr "Rutas de inventario"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__write_uid
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__write_uid
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
 
-#. module: sale_stock_sample
-#: model:ir.model,name:sale_stock_sample.model_sale_stock_sample_procurement_wizard_line
-msgid "Lines to Create Procurement for Sample Products"
-msgstr "Lineas para Crear Abastecimiento para Productos Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__write_date
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__write_date
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard__line_ids
-#: model_terms:ir.ui.view,arch_db:sale_stock_sample.view_sale_stock_sample_procurement_wizard_form
-msgid "Lines to Procure"
-msgstr "Lineas a Abastecer"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard__line_ids
+msgid "Lines"
+msgstr "Líneas"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_uom_qty
-msgid "Ordered Quantity"
-msgstr "Cantidad Pedida"
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_product_alternative_wizard_form
+msgid "Lines Without Stock Available"
+msgstr "Líneas Sin Stock Disponible"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_id
+#. module: mrp_product_alternative
+#: model:ir.model,name:mrp_product_alternative.model_product_alternative_wizard_line
+msgid "Lines to Change Products Without Stock For Alternative Products"
+msgstr "Lineas Para Cambiar Productos Sin Stock Disponible Por Productos Sustitutos"
+
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__product_id
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__product_id
 msgid "Product"
 msgstr "Producto"
 
-#. module: sale_stock_sample
-#: model:stock.picking.type,name:sale_stock_sample.stock_sample_op
-msgid "Product Sample Delivery"
-msgstr "Entregas de Productos Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model,name:mrp_product_alternative.model_product_template
+msgid "Product Template"
+msgstr "Plantilla del producto"
 
-#. module: sale_stock_sample
-#: model:stock.picking.type,name:sale_stock_sample.stock_sample_dev_op
-msgid "Product Sample Delivery Devolutions"
-msgstr "Devoluciones de Entregas de Productos Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model,name:mrp_product_alternative.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de Producción"
 
-#. module: sale_stock_sample
-#: model:stock.location.route,name:sale_stock_sample.stock_sample_route
-msgid "Product Sample Route"
-msgstr "Ruta Producto Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__stock_available_unreserved
+msgid "Quantity Available"
+msgstr "Cantidad Disponible"
 
-#. module: sale_stock_sample
-#: model_terms:ir.ui.view,arch_db:sale_stock_sample.stock_location_route_product_sample_form_view
-msgid "Product Sample Wizard"
-msgstr "Asistente Productos Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__move_id
+msgid "Raw Move"
+msgstr "Material Consumido"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__qty_to_procure
-msgid "Qty To Procure"
-msgstr "Cantidad a Abastecer"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_mrp_production__moves_assigned
+msgid "Raw Moves Assigned"
+msgstr "Materiales Asignados"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard__route_id
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__route_id
-msgid "Route"
-msgstr "Ruta"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative__sequence
+msgid "Sequence"
+msgstr "Secuencia"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__order_id
-msgid "Sale Order"
-msgstr "Pedido de venta"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,help:mrp_product_alternative.field_mrp_production__has_lines_wo_stock
+msgid "Technical field that represents a flag to identify if exists a stock move without stock avaliable in the raw moves."
+msgstr "Campo técnico que representa una bandera para identificar si existe un movimiento de almacén sin stock disponible en los materiales consumidos."
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__sale_line_id
-msgid "Sale Order Line"
-msgstr "Linea de Pedido de Venta"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,help:mrp_product_alternative.field_mrp_production__moves_assigned
+msgid "Technical field used to identify if the user assign the raw stock moves."
+msgstr "Campo técnico usado para identificar si el usuario ha asignado los materiales consumidos."
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_stock_location_route__sample_selectable
-msgid "Sample Selectable"
-msgstr "Seleccionable como Muestra"
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
 
-#. module: sale_stock_sample
-#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__qty_to_procure
-msgid "Set the product quantity to procure."
-msgstr "Seleccione la cantidad a abastecer"
-
-
-#. module: sale_stock_sample
-#: model:stock.rule,name:sale_stock_sample.stock_sample_route_cutomers_stock_rule
-msgid "WH: Stock -> Product Samples Location"
-msgstr "WH: Existencias -> Ubicación Productos Muestra"
-
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__wizard_id
+#. module: mrp_product_alternative
+#: model:ir.model.fields,field_description:mrp_product_alternative.field_product_alternative_wizard_line__wiz_id
 msgid "Wizard"
 msgstr "Asistente"
+
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_mrp_production_product_alternative_form
+msgid "here"
+msgstr "aqui"
+
+#. module: mrp_product_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_product_alternative.view_mrp_production_product_alternative_form
+msgid "to change it to an alternative products."
+msgstr "para cambiarlos por productos alternos."
+
