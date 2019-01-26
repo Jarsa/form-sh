@@ -37,6 +37,7 @@
         'account_skip_exchange_reversal',
         'account_tax_cash_basis_reference',
         'res_currency_rate_custom_decimals',
+        'l10n_mx_edi_partner_defaults',
     ],
     'data': [
         'views/mrp_workorder_view.xml',
