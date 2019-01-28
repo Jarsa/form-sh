@@ -48,7 +48,6 @@ class SaleOrderToECO(models.TransientModel):
             'product_id': line.product_id.id,
             'product_uom_qty': line.product_uom_qty,
             'uom_id': line.product_uom.id,
-            'price_unit': line.price_unit,
             'bom_ids': [(6, 0, line.product_id.product_tmpl_id.bom_ids.ids)],
         }
 
@@ -78,7 +77,6 @@ class SaleOrdeECOLine(models.TransientModel):
     product_id = fields.Many2one('product.product', required=True)
     product_uom_qty = fields.Float(string='Quantity', required=True)
     uom_id = fields.Many2one('uom.uom', required=True)
-    price_unit = fields.Float()
     type_id = fields.Many2one('mrp.eco.type', required=True)
     bom_id = fields.Many2one(
         'mrp.bom',
