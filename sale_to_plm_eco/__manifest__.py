@@ -10,7 +10,7 @@
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
     'depends': [
-        'sale_management',
+        'sale_request',
     ],
     'data': [
         'wizard/eco_wizard_view.xml',

@@ -5,10 +5,8 @@
         <field name="model">mrp.eco</field>
         <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='toggle_active']" position="before">                
-                <field name="order_id" invisible="1"/>
-            </xpath>
             <xpath expr="//button[@name='toggle_active']" position="before">
+                <field name="order_id" invisible="1"/>
                 <button class="oe_stat_button" icon="fa-shopping-cart" name="show_sale_order" string="Sale Order" type="object"  attrs="{'invisible':[('order_id','=',False)]}"/>
             </xpath>
         </field>
