@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header/button[@name='action_confirm']" position="before">
-                <button class="oe_highlight" name="%(action_sale_stock_sample_procurement_wizard)d" string=" Create Procurements" type="action" icon="fa-truck" states='draft,sent'/>
+                <button name="%(action_sale_stock_sample_procurement_wizard)d" string=" Create Procurements" type="action" icon="fa-truck" attrs="{'invisible': [('master_sale_order', '=', False)]}"/>
             </xpath>
         </field>
     </record>

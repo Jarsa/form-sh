@@ -9,7 +9,9 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'depends': ['sale_management', 'sale_stock'],
+    'depends': [
+        'sale_request',
+    ],
     'data': [
         'data/ir_sequence_data.xml',
         'data/stock_location_data.xml',
