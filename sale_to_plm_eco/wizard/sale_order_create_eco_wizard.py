@@ -5,12 +5,12 @@ from odoo import _, api, fields, models
 
 
 class SaleOrderToECO(models.TransientModel):
-    _name = "sale.order.eco.wizard"
-    _description = "Create ECO from sale order"
+    _name = 'sale.order.eco.wizard'
+    _description = 'Create ECO from sale order'
 
     name = fields.Char(string='Description',)
     line_ids = fields.One2many(
-        'sale.order.eco.line', 'wiz_id', string='Lines')
+        'sale.order.eco.wizard.line', 'wiz_id', string='Lines')
 
     @api.model
     def _prepare_eco_line(self, line):
@@ -66,7 +66,8 @@ class SaleOrderToECO(models.TransientModel):
 
 
 class SaleOrdeECOLine(models.TransientModel):
-    _name = "sale.order.eco.line"
+    _name = 'sale.order.eco.wizard.line'
+    _description = 'Wizard line'
 
     wiz_id = fields.Many2one('sale.order.eco.wizard')
     order_id = fields.Many2one(
