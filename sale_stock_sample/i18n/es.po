@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-08 18:17+0000\n"
-"PO-Revision-Date: 2019-01-08 18:17+0000\n"
+"POT-Creation-Date: 2019-01-28 01:30+0000\n"
+"PO-Revision-Date: 2019-01-28 01:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -46,17 +46,6 @@ msgid "Create Procurements For Sample Products"
 msgstr "Crear Abastecimientos para Productos Muestra"
 
 #. module: sale_stock_sample
-#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard__route_id
-#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__route_id
-msgid "Define the route to generate the procurement for each product."
-msgstr "Defina la ruta para generar el abastecimiento para cada producto."
-
-#. module: sale_stock_sample
-#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__name
-msgid "Description"
-msgstr "Descripción"
-
-#. module: sale_stock_sample
 #: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__date_planned
 msgid "Date Planned"
 msgstr "Fecha Estimada"
@@ -65,6 +54,17 @@ msgstr "Fecha Estimada"
 #: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__date_planned
 msgid "Define the estimated date to deliver the sample product."
 msgstr "Defina la fecha estimada para entregar el producto muestra."
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard__route_id
+#: model:ir.model.fields,help:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__route_id
+msgid "Define the route to generate the procurement for each product."
+msgstr "Define la ruta para generar el abastecimiento para cada producto."
+
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__name
+msgid "Description"
+msgstr "Descripción"
 
 #. module: sale_stock_sample
 #: model:ir.model.fields,help:sale_stock_sample.field_stock_location_route__sample_selectable
@@ -95,7 +95,7 @@ msgstr "Cantidad Pedida"
 #. module: sale_stock_sample
 #: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_id
 msgid "Product"
-msgstr "Producto"
+msgstr "Producto"s
 
 #. module: sale_stock_sample
 #: model:stock.picking.type,name:sale_stock_sample.stock_sample_op
@@ -108,14 +108,19 @@ msgid "Product Sample Delivery Devolutions"
 msgstr "Devoluciones de Entregas de Productos Muestra"
 
 #. module: sale_stock_sample
-#: model:stock.location.route,name:sale_stock_sample.stock_sample_route
-msgid "Product Sample Route"
-msgstr "Ruta Producto Muestra"
+#: model:stock.location.route,name:sale_stock_sample.stock_sample_route_mto
+msgid "Product Sample Route MTO"
+msgstr "Ruta MTO para producto de muestra"
+
+#. module: sale_stock_sample
+#: model:stock.location.route,name:sale_stock_sample.stock_sample_route_mts
+msgid "Product Sample Route MTS"
+msgstr "Ruta MTS para producto de muestra"
 
 #. module: sale_stock_sample
 #: model_terms:ir.ui.view,arch_db:sale_stock_sample.stock_location_route_product_sample_form_view
 msgid "Product Sample Wizard"
-msgstr "Asistente Productos Muestra"
+msgstr "Asistente de producto de muestra"
 
 #. module: sale_stock_sample
 #: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__qty_to_procure
@@ -148,13 +153,23 @@ msgstr "Seleccionable como Muestra"
 msgid "Set the product quantity to procure."
 msgstr "Seleccione la cantidad a abastecer"
 
+#. module: sale_stock_sample
+#: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_uom
+msgid "Unit of Measure"
+msgstr "Unidad de Medida"
 
 #. module: sale_stock_sample
-#: model:stock.rule,name:sale_stock_sample.stock_sample_route_cutomers_stock_rule
+#: model:stock.rule,name:sale_stock_sample.stock_sample_route_cutomers_stock_rule_mts
 msgid "WH: Stock -> Product Samples Location"
 msgstr "WH: Existencias -> Ubicación Productos Muestra"
+
+#. module: sale_stock_sample
+#: model:stock.rule,name:sale_stock_sample.stock_sample_route_cutomers_stock_rule_mto
+msgid "WH: Stock -> Product Samples Location (MTO)"
+msgstr "WH: Existencias -> Ubicación Productos Muestra (MTO)"
 
 #. module: sale_stock_sample
 #: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__wizard_id
 msgid "Wizard"
 msgstr "Asistente"
+

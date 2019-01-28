@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-12 14:23+0000\n"
-"PO-Revision-Date: 2019-01-12 14:23+0000\n"
+"POT-Creation-Date: 2019-01-28 01:26+0000\n"
+"PO-Revision-Date: 2019-01-28 01:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,14 +28,14 @@ msgstr "Orden de cambio de ingeniería (ECO)"
 #. module: mrp_plm_survey
 #: model:ir.model.fields,field_description:mrp_plm_survey.field_mrp_eco__has_survey
 msgid "Has Survey"
-msgstr "Tiene Encuesta"
+msgstr "Tiene encuesta"
 
 #. module: mrp_plm_survey
 #: code:addons/mrp_plm_survey/models/mrp_eco.py:29
 #: code:addons/mrp_plm_survey/models/mrp_eco.py:39
 #, python-format
 msgid "Results of the Survey"
-msgstr "Resultados de la Encuesta"
+msgstr "Resultados de la encuesta"
 
 #. module: mrp_plm_survey
 #: model:ir.model.fields,field_description:mrp_plm_survey.field_mrp_eco__survey_id
@@ -45,5 +45,5 @@ msgstr "Encuesta"
 #. module: mrp_plm_survey
 #: model_terms:ir.ui.view,arch_db:mrp_plm_survey.view_eco_inherit_form_form
 msgid "View Results"
-msgstr "Ver Resultados"
+msgstr "Ver resultados"
 
