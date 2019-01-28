@@ -42,5 +42,6 @@
     ],
     'data': [
         'views/mrp_workorder_view.xml',
+        'views/stock_backorder_confirmation_view.xml',
     ],
 }
