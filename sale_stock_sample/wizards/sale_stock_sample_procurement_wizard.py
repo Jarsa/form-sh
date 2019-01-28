@@ -136,7 +136,7 @@ class SaleStockSampleProcurementLineWizard(models.TransientModel):
         return {
             'company_id': self.order_id.company_id,
             'group_id': group_id,
-            'sale_line_id': self.sale_line_id.id,
+            'sale_line_id': self.id,
             'date_planned': self.date_planned,
             'route_ids': self.route_id,
             'warehouse_id': self.order_id.warehouse_id or False,
