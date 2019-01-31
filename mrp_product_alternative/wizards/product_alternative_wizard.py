@@ -78,6 +78,11 @@ class ProductAlternativeWizard(models.TransientModel):
                 'product_id': line.alternative_id.id,
             })
             line.move_id._action_assign()
+            if line.move_id.move_orig_ids:
+                line.move_id.move_orig_ids.write({
+                    'product_id': line.alternative_id.id,
+                })
+                line.move_id.move_orig_ids._action_assign()
         return True
 
 
