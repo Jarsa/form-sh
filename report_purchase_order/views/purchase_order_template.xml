@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_purchase_order_external_for_form" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//t[1]/div[1]/h2[3]" position="replace">
+            <h2 t-if="o.state in ['purchase', 'done']">Purchase Order #<span t-field="o.name"/></h2>
+        </xpath>
+        <xpath expr="//div[@id='informations']" position="replace">
+            <div id="informations" class="row mt32 mb32">
+                <div class="col-3 bm-2">
+                    <strong>Supplier:</strong>
+                    <p t-field="o.partner_id.id" class="m-0"/>
+                </div>
+                <div t-if="o.conditions_text" class="col-3 bm-2">
+                    <strong>Conditions:</strong>
+                    <p t-field="o.conditions_text" class="m-0"/>
+                </div>
+                <div t-if="o.name" class="col-3 bm-2">
+                    <strong>Our Order Reference:</strong>
+                    <p t-field="o.name" class="m-0"/>
+                </div>
+                <div t-if="o.date_order" class="col-3 bm-2">
+                    <strong>Order Date:</strong>
+                    <p t-field="o.date_order" class="m-0"/>
+                </div>
+                <div t-if="o.picking_type_id.warehouse_id" class="col-3 bm-2">
+                    <strong>Warehouse:</strong>
+                    <p t-field="o.picking_type_id.warehouse_id.name" class="m-0"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//p[@t-field='o.notes']" position="replace">
+        </xpath>
+        <xpath expr="//div[@id='total']/div[1]" position="before">
+            <div class="col-8 pull-left">
+                <p t-field="o.notes"/>
+                <p t-esc="'%s' % (o._amount_to_text(o.amount_total, o.currency_id.name, o.partner_id.lang))"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='total']" position="after">
+            <br/><br/>
+            <p>Please confirm delivery date in a term not major to 24 hours, email way.
+            Deliver with purchase order and invoice.</p>
+            <p>Reception schedule Mon-Fri 8:30 to 1:30 and 2:30 to 16:30, Saturday 8:30 to 1:30</p>
+        </xpath>
+        <xpath expr="//t[1]/div[1]/table[1]/thead[1]/tr[1]/th[1]" position="before">
+            <th><strong>Code</strong></th>
+        </xpath>
+        <xpath expr="//t[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]" position="before">
+            <td><span t-field="line.product_id.default_code"/></td>
+        </xpath>
+    </template>
+</odoo>
