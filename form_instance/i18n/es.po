@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* form
+#	* form_instance
 #
 msgid ""
 msgstr ""
@@ -15,13 +15,13 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: form
-#: model_terms:ir.ui.view,arch_db:form.view_mrp_workorder_inherit_custom_kanban
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_workorder_inherit_custom_kanban
 msgid "<strong><span>Date Planned Start - </span></strong>"
 msgstr "<strong><span>Fecha Planeada de Inicio - </span></strong>"
 
-#. module: form
-#: model_terms:ir.ui.view,arch_db:form.backorder_confirmation_form_custom
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.backorder_confirmation_form_custom
 msgid "Are you sure you don't want to create a backorder?"
 msgstr "¿Está seguro de que no desea crear un pedido en espera?"
 
