@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-05 15:36+0000\n"
-"PO-Revision-Date: 2019-02-05 15:36+0000\n"
+"POT-Creation-Date: 2019-02-06 04:26+0000\n"
+"PO-Revision-Date: 2019-02-06 04:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -52,9 +52,14 @@ msgstr "Condiciones"
 
 #. module: report_purchase_order
 #: model_terms:ir.ui.view,arch_db:report_purchase_order.report_purchase_order_external_for_form
+msgid "Ordered to"
+msgstr "Ordenado a: "
+
+#. module: report_purchase_order
+#: model_terms:ir.ui.view,arch_db:report_purchase_order.report_purchase_order_external_for_form
 msgid "Please confirm delivery date in a term not major to 24 hours, email way.\n"
 "            Deliver with purchase order and invoice."
-msgstr "FAVOR DE CONFIRMAR FECHA DE ENTREGA EN UN PLAZO NO MAYOR A 24 HORAS VIA CORREO ELECTRONICO ENTREGAR CON ORDEN DE COMPRA Y FACTURA"
+msgstr "FAVOR DE CONFIRMAR FECHA DE ENTREGA EN UN PLAZO NO MAYOR A 24 HORAS VÍA CORREO ELECTRÓNICO ENTREGAR CON ORDEN DE COMPRA Y FACTURA"
 
 #. module: report_purchase_order
 #: model:ir.model,name:report_purchase_order.model_purchase_order
@@ -68,6 +73,6 @@ msgstr "Orden de compra: "
 
 #. module: report_purchase_order
 #: model_terms:ir.ui.view,arch_db:report_purchase_order.report_purchase_order_external_for_form
-msgid "Reception schedule Mon-Fri 8:30 to 1:30 and 2:30 to 16:30, Saturday 8:30 to 1:30"
-msgstr "HORARIO DE RECEPCION LUN-VIER 8:30 A 1:30 Y DE 2:30 A 16:30 SABADOS 8:30 A 12:30"
+msgid "Reception schedule Mon-Fri 8:30 to 13:30 and 14:30 to 16:30, Saturday 8:30 A.M. to 12:30 P.M."
+msgstr "HORARIO DE RECEPCIÓN LUN-VIER 8:30 A 13:30 Y DE 14:30 A 16:30, SÁBADOS 8:30 A.M. A 12:30 P.M."
 

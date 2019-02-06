@@ -4,6 +4,9 @@
         <xpath expr="//t[1]/div[1]/h2[3]" position="replace">
             <h2 t-if="o.state in ['purchase', 'done']">Purchase Order #<span t-field="o.name"/></h2>
         </xpath>
+        <xpath expr="//t[1]/t[2]/div[1]" position="before">
+            <h4>Ordered to</h4>
+        </xpath>
         <xpath expr="//div[@id='informations']" position="replace">
             <div id="informations" class="row mt32 mb32">
                 <div class="col-3 bm-2">
@@ -40,7 +43,7 @@
             <br/><br/>
             <p>Please confirm delivery date in a term not major to 24 hours, email way.
             Deliver with purchase order and invoice.</p>
-            <p>Reception schedule Mon-Fri 8:30 to 1:30 and 2:30 to 16:30, Saturday 8:30 to 1:30</p>
+            <p>Reception schedule Mon-Fri 8:30 to 13:30 and 14:30 to 16:30, Saturday 8:30 A.M. to 12:30 P.M.</p>
         </xpath>
         <xpath expr="//t[1]/div[1]/table[1]/thead[1]/tr[1]/th[1]" position="before">
             <th><strong>Code</strong></th>
