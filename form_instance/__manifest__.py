@@ -43,6 +43,7 @@
         'l10n_mx_edi_reports',
         'sale_request',
         'mrp_product_alternative',
+        'mrp_auto_assign',
     ],
     'data': [
         'views/mrp_workorder_view.xml',
