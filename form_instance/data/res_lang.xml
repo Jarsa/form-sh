@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="base.lang_es" model="res.lang">
+        <field name="grouping">[3,3,3,3,3,3,3,3,3,-2]</field>
+        <field name="decimal_point">.</field>
+        <field name="thousands_sep">,</field>
+    </record>
+</odoo>

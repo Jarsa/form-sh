@@ -46,6 +46,7 @@
         'mrp_auto_assign',
     ],
     'data': [
+        'data/res_lang.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/mrp_workorder_view.xml',
