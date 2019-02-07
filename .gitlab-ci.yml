@@ -39,8 +39,8 @@ test:
   variables:
     LINT_CHECK: "1"
     TESTS: "1"
-    INCLUDE: "form_instance"
-    INSTALL: "form_instance"
+    INCLUDE: "form"
+    INSTALL: "form"
   script:
     - export TRAVIS_BUILD_DIR=$(pwd)
     - pip install deployv-addon-gitlab-tools
@@ -61,8 +61,8 @@ build:
   tags:
     - build
   variables:
-    INSTALL: "form_instance"
-    CUSTOMER: "form_instance"
+    INSTALL: "form"
+    CUSTOMER: "form"
 
   script:
     - deployvcmd gitlab_tools check_keys
