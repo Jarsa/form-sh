@@ -48,6 +48,7 @@
     'data': [
         'data/res_lang.xml',
         'security/security.xml',
+        'security/rules.xml',
         'security/ir.model.access.csv',
         'views/mrp_workorder_view.xml',
         'views/stock_backorder_confirmation_view.xml',

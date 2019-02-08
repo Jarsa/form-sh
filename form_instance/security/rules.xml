@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="payables_vendors_form" model="ir.rule">
+        <field name="name">Payable Only Vendors</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">['|', '&amp;', ('customer', '=', False), ('supplier', '=', False), ('supplier', '=', True)]</field>
+        <field name="groups" eval="[(4, ref('form_instance.group_payable_form'))]"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="receivables_vendors_form" model="ir.rule">
+        <field name="name">Receivable Only Customers</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">['|', '&amp;', ('customer', '=', False), ('supplier', '=', False), ('customer', '=', True)]</field>
+        <field name="groups" eval="[(4, ref('form_instance.group_receivable_form'))]"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+</odoo>
