@@ -6,23 +6,15 @@
 
         <xpath expr="//div[1]" position="before">            
             <h2 t-if="o.purchase_id">payment against receipt</h2>
-            <h2 t-if="o.sale_id">Remission</h2><br/>
-            <strong t-if="o.sale_id">Remission code:</strong><span t-esc="o.name"/>
         </xpath>
         <xpath expr="//table[1]" position="replace">
             <table class="table table-sm">
-                <thead>
+                <thead style="background-color: #F36B21; color: white;">
                     <tr t-if="o.purchase_id">
                         <th>User code</th>
                         <th>User name</th>
                         <th t-if="o.origin"><strong>Order code</strong></th>
                         <th name="td_sched_date_h" width="20%"><strong>Scheduled Date</strong></th>
-                    </tr>
-                    <tr t-if="o.sale_id">
-                        <th><strong>Partner code</strong></th>
-                        <th><strong>Order partner</strong></th>
-                        <th><strong>Vendor name</strong></th>
-                        <th><strong>Scheduled Date</strong></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,32 +28,13 @@
                             <span t-field="o.scheduled_date"/>
                         </td>
                     </tr>
-                    <tr t-if="o.sale_id">
-                        <td><span t-esc="o.partner_id.id"/></td>
-                        <td t-if="o.origin">
-                            <span t-field="o.origin"/>
-                        </td>
-                        <td><span t-esc="o.sale_id.user_id.name"/></td>
-                        <td><span t-field="o.scheduled_date"/></td>
-                    </tr>
-                    <tr  t-if="o.sale_id">
-                        <th><strong>Remission Date</strong></th>
-                        <th><strong>Contact</strong></th>
-                        <th><strong>Conditions</strong></th>
-                    </tr>
-                    <tr t-if="o.sale_id">
-                        <td><span t-field="o.sale_id.confirmation_date"/></td>
-                        <td><span t-esc="o.partner_id.contact_address"/></td>
-                        <td><span t-field="o.sale_id.payment_term_id"/></td>
-                    </tr>
                 </tbody>
             </table>
         </xpath>
         <xpath expr="//table[2]" position="replace">
             <t t-if="o.purchase_id" t-value="o.purchase_id.order_line" t-set="l"/>
-            <t t-if="o.sale_id" t-value="o.sale_id.order_line" t-set="l"/>
             <table class="table table-sm">
-                <thead>
+                <thead style="background-color: #F36B21; color: white;">
                     <tr>
                         <th><strong>Quantity</strong></th>
                         <th><strong>Unit</strong></th>
@@ -73,15 +46,12 @@
                         <th><strong class="text-right">Unit Price</strong></th>
                         <th t-if="o.purchase_id">
                             <strong class="text-right">Total</strong></th>
-                        <th t-if="o.sale_id" class="text-right">
-                            <strong>This remission</strong></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr t-foreach="l" t-as="line">
                         <td>
                             <span t-if="o.purchase_id" t-esc="line.product_qty"/>
-                            <span t-if="o.sale_id" t-field="line.product_uom_qty"/>
                         </td>
                         <td>
                             <span t-field="line.product_uom"/>
@@ -98,23 +68,12 @@
                         </td>
                         <td>
                             <span t-field="line.product_id"/>
-                            <t t-if="o.sale_id" t-foreach="line.product_id.bom_ids" t-as="boms">
-                                <t t-foreach="boms.bom_line_ids" t-as="bom">
-                                    <br/>
-                                    <span style="font-size: 10px;" t-field="bom.product_id"/>
-                                    <span style="font-size: 9px;" t-field="bom.product_qty"/>
-                                    <span style="font-size: 9px;" t-field="bom.product_uom_id"/>
-                                </t>
-                            </t>
                         </td>
                         <td class="text-right">
                             <span t-esc="line.price_unit"/>
                         </td>
                         <td  t-if="o.purchase_id" class="text-right" >
                             <span t-esc="(line.price_unit * line.product_qty) + line.taxes_id.amount"/>
-                        </td>
-                        <td t-if="o.sale_id" class="text-right">
-                            <span t-esc="(line.price_unit * line.product_uom_qty) + line.tax_id.amount"/>
                         </td>
                     </tr>
                 </tbody>
@@ -126,7 +85,6 @@
                             <td><strong>Subtotal</strong></td>
                             <td class="text-right">
                                 <span t-if="o.purchase_id" t-field="o.purchase_id.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.purchase_id.currency_id}'/>
-                                <span t-if="o.sale_id" t-field="o.sale_id.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.sale_id.currency_id}'/>
                             </td>
                         </tr>
                         <tr>
@@ -134,14 +92,12 @@
                             <td class="text-right">
                                 <span t-if="o.purchase_id" t-field="o.purchase_id.amount_tax"
                                     t-options='{"widget": "monetary", "display_currency": o.purchase_id.currency_id}'/>
-                                <span t-if="o.sale_id" t-field="o.sale_id.amount_tax" t-options='{"widget": "monetary", "display_currency": o.sale_id.currency_id}'/>
                             </td>
                         </tr>
-                        <tr class="border-black o_total">
-                            <td><strong>Total</strong></td>
-                            <td class="text-right">
+                        <tr class="border-black">
+                            <td style="background-color: #F36B21; color: white;"><strong>Total</strong></td>
+                            <td style="background-color: #F36B21; color: white;" class="text-right">
                                 <span t-if="o.purchase_id" t-field="o.purchase_id.amount_total" t-options='{"widget": "monetary", "display_currency": o.purchase_id.currency_id}'/>
-                                <span t-if="o.sale_id" t-field="o.sale_id.amount_total" t-options='{"widget": "monetary", "display_currency": o.sale_id.currency_id}'/>
                             </td>
                         </tr>
                     </table>
@@ -151,29 +107,7 @@
                 <span t-esc="o._total_to_text(o.purchase_id.amount_total, o.purchase_id.currency_id.name, o.purchase_id.partner_id.lang)"/>
             </div> 
         </xpath>
-        <xpath expr="//p[2]" position="after">
-            <div class="row" t-if="o.sale_id">
-                <div class="col-6">
-                    <p>_____________________</p>
-                    <p>Deliver</p>
-                </div>
-                <div class="col-6">                    
-                    <p>_____________________</p>
-                    <p>Receipt</p>
-                </div>
-            </div>
-        </xpath>
         <xpath expr="//h1[1]" position="replace"/>
-        <xpath expr="//div[1]/div[2]" position="before">
-             <div t-if="o.sale_id">
-                <span><strong>Sold to:</strong></span><br/>
-                <div t-if="o.partner_id" name="partner_header">
-                    <div t-field="o.partner_id"
-                       t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True, "phone_icons": True}'/>
-                    <p t-if="o.sudo().partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.sudo().partner_id.vat"/></p>
-                </div>
-            </div>
-        </xpath>
         <xpath expr="//p[@t-field='o.note']" position="before">
             <strong>Observations</strong><br/>
         </xpath>

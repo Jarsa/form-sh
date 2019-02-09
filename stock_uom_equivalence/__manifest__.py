@@ -12,7 +12,6 @@
     'depends': ['stock_account', ],
     'data': [
         'report/report_delivery_slip.xml',
-        'report/report_picking.xml',
         'views/product_view.xml',
         'views/stock_move_view.xml',
         'views/stock_picking_view.xml',

@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
 import logging
-from odoo import fields, models
+from odoo import models
 
 _logger = logging.getLogger(__name__)
 try:
@@ -13,10 +13,6 @@ except ImportError as err:
 
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
-
-    conditions_text = fields.Text(
-        string='Conditions',
-    )
 
     def _amount_to_text(
             self, amount, currency, partner_lang='es_MX'):

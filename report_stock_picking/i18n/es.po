@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-06 22:29+0000\n"
-"PO-Revision-Date: 2019-02-06 22:29+0000\n"
+"POT-Creation-Date: 2019-02-26 16:01+0000\n"
+"PO-Revision-Date: 2019-02-26 16:01+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "<span><strong>Vendido a:</strong></span><br/>"
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
 msgid "<strong class=\"text-right\">Total</strong>"
-msgstr "<strong class=\"text-right\">Total</strong>"
+msgstr ""
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
@@ -47,13 +47,18 @@ msgstr "<strong>Contacto</strong>"
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
+msgid "<strong>Description supplier</strong>"
+msgstr "<strong>Descripción del proveedor</strong>"
+
+#. module: report_stock_picking
+#: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
 msgid "<strong>Lot/Serial Number</strong>"
 msgstr "<strong>Número Lote/Serie</strong>"
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
-msgid "<strong>Obserations</strong><br/>"
-msgstr "<strong>Obserbaciones</strong><br/>"
+msgid "<strong>Observations</strong><br/>"
+msgstr "<strong>Observaciones</strong><br/>"
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
@@ -93,7 +98,7 @@ msgstr "<strong>Fecha planificada</strong>"
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
 msgid "<strong>Subtotal</strong>"
-msgstr "<strong>Subtotal</strong>"
+msgstr ""
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
@@ -103,7 +108,7 @@ msgstr "<strong>Esta Remisión</strong>"
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
 msgid "<strong>Total</strong>"
-msgstr "<strong>Total</strong>"
+msgstr ""
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
@@ -124,6 +129,11 @@ msgstr "Código de barras"
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
 msgid "Deliver"
 msgstr "Entregó"
+
+#. module: report_stock_picking
+#: model:ir.model.fields,field_description:report_stock_picking.field_stock_picking__description_supp
+msgid "Description supplier"
+msgstr "Descripción del proveedor"
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
@@ -163,7 +173,7 @@ msgstr "NOmbre del comprador"
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form
 msgid "_____________________"
-msgstr ""
+msgstr "___________________________"
 
 #. module: report_stock_picking
 #: model_terms:ir.ui.view,arch_db:report_stock_picking.report_picking_form

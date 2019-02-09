@@ -2,21 +2,23 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
 {
-    'name': 'Report picking for FORM',
+    'name': 'Report invoice for FORM',
     'external_dependencies': {
         'python': [
             'num2words',
         ],
     },
-    'summary': 'Custom picking report ',
+    'summary': 'Custom invoice report ',
     'version': '12.0.1.0.0',
     'category': 'Report',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'depends': ['purchase'],
+    'depends': [
+        'account',
+        'l10n_mx_edi',
+    ],
     'data': [
-        'views/stock_picking_template.xml',
-        'views/stock_picking_view.xml',
+        'views/invoice_template.xml',
     ],
 }

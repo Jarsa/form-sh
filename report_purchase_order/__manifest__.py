@@ -17,6 +17,5 @@
     'depends': ['purchase'],
     'data': [
         'views/purchase_order_template.xml',
-        'views/purchase_order_view.xml',
     ],
 }

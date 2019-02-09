@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
 import logging
-from odoo import models
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 try:
@@ -13,6 +13,10 @@ except ImportError as err:
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
+
+    description_supp = fields.Char(
+        string='Description supplier',
+    )
 
     def _total_to_text(
             self, amount, currency, partner_lang='es_MX'):
