@@ -44,6 +44,8 @@
         'sale_request',
         'mrp_product_alternative',
         'mrp_auto_assign',
+        'product_code_mandatory',
+        'product_code_unique',
     ],
     'data': [
         'data/res_lang.xml',
