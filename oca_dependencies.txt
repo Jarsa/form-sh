@@ -6,4 +6,4 @@ manufacture git@github.com:jarsa/manufacture 12.0
 xunnel-account git@git.vauxoo.com:vauxoo/xunnel-account 12.0
 account-fix-tools git@github.com:jarsa/account-fix-tools 12.0
 sale-workflow git@github.com:jarsa/sale-workflow 12.0
-mexico git@github.com:jarsa/mexico 12.0
+mexico git@git.vauxoo.com:jarsa/mexico 12.0
