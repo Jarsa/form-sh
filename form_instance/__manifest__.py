@@ -46,6 +46,7 @@
         'mrp_auto_assign',
         'product_code_mandatory',
         'product_code_unique',
+        'base_user_role',
     ],
     'data': [
         'data/res_lang.xml',
