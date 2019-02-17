@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_production_plan_user,mrp.production.plan.user,model_mrp_production_plan,group_mrp_production_plan_user,1,1,1,0
+access_mrp_production_plan_manager,mrp.production.plan.manager,model_mrp_production_plan,group_mrp_production_plan_manager,1,1,1,1
+access_mrp_production_plan_line_user,mrp.production.plan.user,model_mrp_production_plan_line,group_mrp_production_plan_user,1,1,1,0
+access_mrp_production_plan_line_manager,mrp.production.plan.manager,model_mrp_production_plan_line,group_mrp_production_plan_manager,1,1,1,1
