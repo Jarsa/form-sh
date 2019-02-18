@@ -37,7 +37,7 @@ test:
     - odoo
     - test
   variables:
-    LINT_CHECK: "1"
+    LINT_CHECK: "0"
     TESTS: "1"
     INCLUDE: "form_instance"
     INSTALL: "form_instance"
