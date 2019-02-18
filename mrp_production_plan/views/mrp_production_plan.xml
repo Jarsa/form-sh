@@ -7,9 +7,30 @@
             <form string="Production Plan">
                 <header>
                     <button name="get_mrp_production_requests" string="Get Maufacturing Requests" type="object"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved,done"/>
+                    <button name="button_draft"
+                        states="approved,cancel,done"
+                        string="Reset"
+                        type="object"/>
+                    <button name="button_approved" states="draft"
+                            string="Approve" type="object" class="oe_highlight"/>
+                    <button name="button_done" states="approved"
+                            string="Done" type="object" class="oe_highlight"/>
+                    <button name="button_cancel" states="approved"
+                            string="Reject" type="object"/>
+                    <button name="run_plan" string="Run Plan" type="object" class="oe_highlight" states="approved"/>
+                    <button name="re_plan" string="Re-Plan" type="object" class="oe_highlight" states="planned"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved,done,planned"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                            name="action_view_productions"
+                            class="oe_stat_button"
+                            icon="fa-wrench"
+                            string="Productions"
+                            attrs="{'invisible': [('production_ids', '=', [])]}">
+                        </button>
+                    </div>
                     <h1>
                         <field name="name"/>
                     </h1>
@@ -23,13 +44,20 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Line">
-                            <field name="line_ids" readonly="0">
-                                <tree editable="bottom">
+                        <page string="Lines">
+                            <field name="line_ids">
+                                <tree editable="bottom" create="0" decoration-danger="not planned and production_id" decoration-success="planned and production_id">
+                                    <field name="planned" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
                                     <field name="request_id"/>
                                     <field name="product_id"/>
                                     <field name="required_qty"/>
-                                    <field name="qty"/>
+                                    <field name="requested_qty"/>
+                                    <field name="production_id"/>
+                                    <field name="date_planned_start_wo"/>
+                                    <field name="date_planned_finished_wo"/>
+                                    <field name="done_qty"/>
+                                    <field name="product_uom_id" groups="uom.group_uom"/>
                                 </tree>
                             </field>
                         </page>

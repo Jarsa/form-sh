@@ -11,6 +11,7 @@
     'license': 'LGPL-3',
     'depends': [
         'mrp_production_request',
+        'mrp_workorder',
     ],
     'data': [
         'security/security.xml',
