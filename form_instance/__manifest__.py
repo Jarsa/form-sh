@@ -49,6 +49,7 @@
         'base_user_role',
     ],
     'data': [
+        'data/product_template.xml',
         'data/res_lang.xml',
         'security/security.xml',
         'security/rules.xml',

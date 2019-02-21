@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale.product_template_action" model="ir.actions.act_window">
+        <field name="context">{'default_l10n_mx_edi_code_sat_id': 15661}</field>
+    </record>
+</odoo>
