@@ -23,4 +23,33 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="view_sale_request_inherit_form">
+        <field name="name">view.sale.request.inherit.form</field>
+        <field name="model">sale.request</field>
+        <field name="inherit_id" ref="sale_request.view_sale_request_form"/>
+        <field name="groups_id" eval="[(6, 0, [ref('form_instance.group_purchase_request_manager_form')])]" />
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='button_confirm']" position="attributes">
+                <attribute name="groups">sale_request.group_sale_request_manager,form_instance.group_purchase_request_manager_form</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='button_cancel']" position="attributes">
+                <attribute name="groups">sale_request.group_sale_request_manager,form_instance.group_purchase_request_manager_form</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='button_draft']" position="attributes">
+                <attribute name="groups">sale_request.group_sale_request_manager,form_instance.group_purchase_request_manager_form</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='warehouse_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='requested_by']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
