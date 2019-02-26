@@ -62,6 +62,9 @@ account.access_product_template_account_manager,product.template.account.manager
 mrp.access_product_template_mrp_manager,product.template mrp_manager,product.model_product_template,mrp.group_mrp_manager,1,0,0,0
 purchase.access_product_template_purchase_manager,product.template purchase_manager,product.model_product_template,purchase.group_purchase_manager,1,0,0,0
 
+product_template_creation_form,product_template_creation_form,product.model_product_template,form_instance.group_product_creation_form,1,1,1,0
+product_product_creation_form,product_product_creation_form,product.model_product_product,form_instance.group_product_creation_form,1,1,1,0
+
 product.access_product_pricelist_item_manager,product.pricelist.item.manager,product.model_product_pricelist_item,base.group_system,1,0,0,0
 stock.access_product_pricelist_item_stock_manager,product.pricelist.item stock_manager,product.model_product_pricelist_item,stock.group_stock_manager,1,0,0,0
 mrp.access_product_pricelist_item_mrp_manager,product.pricelist.item mrp_manager,product.model_product_pricelist_item,mrp.group_mrp_manager,1,0,0,0
