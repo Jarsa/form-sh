@@ -51,6 +51,7 @@ product.access_product_product_manager,product.product manager,product.model_pro
 stock.access_product_product_stock_manager,product.product stock_manager,product.model_product_product,stock.group_stock_manager,1,0,0,0
 account.access_product_product_account_manager,product.product.account.manager,product.model_product_product,account.group_account_manager,1,0,0,0
 mrp.access_product_product_mrp_manager,product.product mrp_manager,product.model_product_product,mrp.group_mrp_manager,1,0,0,0
+access_product_product_mrp_edit_user,access_product_product_mrp_edit_user,product.model_product_product,form_instance.group_edit_product_mrp_user,1,1,0,0
 purchase.access_product_product_purchase_manager,product.product purchase_manager,product.model_product_product,purchase.group_purchase_manager,1,0,0,0
 
 receivable_product_template,receivable_product_template,product.model_product_template,form_instance.group_receivable_form,1,0,0,0
@@ -60,6 +61,7 @@ product.access_product_template_manager,product.template.manager,product.model_p
 stock.access_product_template_stock_manager,product.template stock_manager,product.model_product_template,stock.group_stock_manager,1,0,0,0
 account.access_product_template_account_manager,product.template.account.manager,product.model_product_template,account.group_account_manager,1,0,0,0
 mrp.access_product_template_mrp_manager,product.template mrp_manager,product.model_product_template,mrp.group_mrp_manager,1,0,0,0
+access_product_template_mrp_edit_user,access_product_template_mrp_edit_user,product.model_product_template,form_instance.group_edit_product_mrp_user,1,1,0,0
 purchase.access_product_template_purchase_manager,product.template purchase_manager,product.model_product_template,purchase.group_purchase_manager,1,0,0,0
 
 product_template_creation_form,product_template_creation_form,product.model_product_template,form_instance.group_product_creation_form,1,1,1,0

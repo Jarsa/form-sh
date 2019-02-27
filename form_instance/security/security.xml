@@ -14,6 +14,10 @@
         <field name="menu_access" eval="[(4, ref('account.menu_finance_receivables')), (4, ref('account.menu_finance')), (4, ref('account_accountant.menu_accounting'))]"/>
         <field name="implied_ids" eval="[(4, ref('documents.group_documents_user')), (4, ref('hr_attendance.group_hr_attendance_user'))]"/>
     </record>
+    <record id="group_edit_product_mrp_user" model="res.groups">
+        <field name="name">MRP Edit Products</field>
+        <field name="comment">The user can edit only certain fields of products</field>
+    </record>
     <record id="account.menu_finance_payables" model="ir.ui.menu">
         <field name="groups_id" eval="[(4, ref('base.group_no_one')), (4, ref('form_instance.group_payable_form')), (4, ref('account.group_account_manager'))]"/>
     </record>
