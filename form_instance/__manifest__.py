@@ -47,6 +47,7 @@
         'product_code_mandatory',
         'product_code_unique',
         'base_user_role',
+        'stock_no_negative',
     ],
     'data': [
         'data/product_template.xml',
