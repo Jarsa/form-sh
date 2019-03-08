@@ -1,0 +1,162 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* report_sale_order_form
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-08 18:57+0000\n"
+"PO-Revision-Date: 2019-03-08 18:57+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<span><strong>Costumer address:</strong></span><br/>"
+msgstr "<span><strong>Direccion del Cliente:</strong></span><br/>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<span><strong>Sold to:</strong></span><br/>"
+msgstr "<span><strong>Vendido a:</strong></span><br/>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Conditions</strong>"
+msgstr "<strong>Condiciones</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Contact</strong>"
+msgstr "<strong>Contacto</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Description supplier</strong>"
+msgstr "<strong>Descripción del proveedor</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr "<strong>Posición fiscal:</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Observations:</strong>"
+msgstr "<strong>Observaciones:</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Order partner</strong>"
+msgstr "<strong>Pedido del cliente</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Partner code</strong>"
+msgstr "<strong>Clave de cliente</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Remission Date</strong>"
+msgstr "<strong>Fecha de remisión</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Remission code:</strong>"
+msgstr "<strong>Folio de remisión:</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Scheduled Date</strong>"
+msgstr "<strong>Fecha planificada</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Shipping address:</strong>"
+msgstr "<strong>Dirección de almacén:</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Subtotal</strong>"
+msgstr ""
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Vendor name</strong>"
+msgstr "<strong>Nombre del vendedor</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Code"
+msgstr "Clave"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Deliver"
+msgstr "Entregó"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Invoicing address:"
+msgstr "Dirección de facturación:"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Invoicing and shipping address:"
+msgstr "Dirección de facturación y entrega:"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Receipt"
+msgstr "Recibió"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Remission"
+msgstr "REMISIÓN"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "This remission"
+msgstr "Esta remisión"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "________________________________"
+msgstr ""
+

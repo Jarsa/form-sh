@@ -33,6 +33,7 @@
         'report_acount_invoice_form',
         'report_purchase_order_form',
         'report_stock_picking_form',
+        'report_sale_order_form',
         'sale_stock_sample',
         'sale_to_plm_eco',
         'stock_uom_equivalence',
