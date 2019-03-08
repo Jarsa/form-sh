@@ -18,3 +18,9 @@ class ProductTemplate(models.Model):
                     raise ValidationError(
                         _('You are not allowed to modify products.'))
         return super().write(vals)
+
+    @api.onchange('item_ids')
+    def _onchange_items_ids(self):
+        if self.item_ids:
+            price = self.item_ids[0]
+            self.write({'lst_price': price.fixed_price})
