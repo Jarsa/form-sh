@@ -51,6 +51,7 @@
         'product_code_unique',
         'base_user_role',
         'stock_no_negative',
+        'web_m2x_options',
     ],
     'data': [
         'data/product_template.xml',
