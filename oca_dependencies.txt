@@ -1,4 +1,5 @@
 enterprise git@github.com:Jarsa/enterprise.git 12.0
+web git@github.com:Jarsa/web.git 12.0
 odoo-utilities git@git.vauxoo.com:jarsa/odoo-utilities 12.0
 mail-addons git@github.com:jarsa/mail-addons 12.0
 social git@github.com:jarsa/social 12.0
@@ -10,4 +11,3 @@ mexico git@git.vauxoo.com:jarsa/mexico 12.0
 product-attribute git@github.com:Jarsa/product-attribute 12.0
 server-backend git@github.com:Jarsa/server-backend 12.0
 stock-logistics-workflow git@github.com:Jarsa/stock-logistics-workflow.git 12.0
-web git@github.com:Jarsa/web.git 12.0
