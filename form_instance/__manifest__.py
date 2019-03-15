@@ -57,6 +57,7 @@
     'data': [
         'data/product_template.xml',
         'data/res_lang.xml',
+        'data/ir_config_parameter.xml',
         'security/security.xml',
         'security/rules.xml',
         'security/ir.model.access.csv',
