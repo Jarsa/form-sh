@@ -3,6 +3,7 @@
 
 from odoo import _, api, fields, models
 from odoo.addons import decimal_precision as dp
+from odoo.exceptions import UserError
 
 
 class MrpProductionPlan(models.Model):
@@ -260,3 +261,12 @@ class MrpProductionPlanLine(models.Model):
                 rec.production_id.action_cancel()
                 if rec.request_id.orderpoint_id:
                     rec.request_id.button_cancel()
+
+    @api.multi
+    def unlink(self):
+        for rec in self:
+            if rec.request_id.state == 'done':
+                raise UserError(_(
+                    'You cannot remove a line that has been programmed, you '
+                    'need to cancel the Manufacturing Order'))
+        return super().unlink()
