@@ -69,7 +69,7 @@ class MrpProductionPlan(models.Model):
         self.ensure_one()
         mrp_plan_line_obj = self.env['mrp.production.plan.line']
         requests = self.env['mrp.production.request'].search([
-            ('plan_line_id', '=', False)])
+            ('plan_line_id', '=', False), ('state', '=', 'approved')])
         for request in requests:
             if request in self.line_ids.mapped('request_id'):
                 continue
