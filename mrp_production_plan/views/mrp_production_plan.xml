@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Production Plan">
                 <header>
-                    <button name="get_mrp_production_requests" string="Get Maufacturing Requests" type="object"/>
+                    <button name="get_mrp_production_requests" string="Get Manufacturing Requests" type="object"/>
                     <button name="button_draft"
                         states="approved,cancel,done"
                         string="Reset"

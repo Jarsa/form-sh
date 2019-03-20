@@ -114,6 +114,32 @@ class MrpProductionPlan(models.Model):
                 'date_planned_finished_wo': (
                     line.production_id.date_planned_finished_wo),
             })
+        self.link_workorders()
+
+    @api.multi
+    def link_workorders(self):
+        self.ensure_one()
+        mrp_plan_wc_obj = self.env['mrp.production.plan.workcenter']
+        workcenters = self.production_ids.filtered(
+            lambda l: l.workorder_ids).mapped(
+                'workorder_ids.workcenter_id')
+        for workcenter in workcenters:
+            workorders = self.env['mrp.workorder'].search([
+                ('workcenter_id', '=', workcenter.id),
+                ('production_id', 'in', self.production_ids.ids)])
+            old_workcenter = mrp_plan_wc_obj.search([
+                ('workcenter_id', '=', workcenter.id),
+                ('plan_id', '=', self.id)])
+            if old_workcenter:
+                old_workcenter.write({
+                    'line_ids': [(6, 0, workorders.ids)]
+                })
+            else:
+                mrp_plan_wc_obj.create({
+                    'plan_id': self.id,
+                    'workcenter_id': workcenter.id,
+                    'line_ids': [(6, 0, workorders.ids)]
+                })
 
     @api.multi
     def run_plan(self):
@@ -153,6 +179,7 @@ class MrpProductionPlan(models.Model):
                         production.date_planned_finished_wo),
                 })
             self.state = 'planned'
+        self.link_workorders()
         return {
             'name': _('Manufacturing Orders'),
             'type': 'ir.actions.act_window',
@@ -200,7 +227,6 @@ class MrpProductionPlanLine(models.Model):
         'product.product', string='Product', related='request_id.product_id',
         readonly=True)
     required_qty = fields.Float(
-        string='Required Qty',
         readonly=True,
         related='request_id.product_qty',
         digits=dp.get_precision('Product Unit of Measure'),
@@ -258,11 +284,11 @@ class MrpProductionPlanLine(models.Model):
             # day the order will be unplaned and cancelled and if the
             # request document was created of an orderpoint the request
             # will be cancelled too
-            if not rec.planned:
-                rec.production_id.button_unplan()
-                rec.production_id.action_cancel()
-                if rec.request_id.orderpoint_id:
-                    rec.request_id.button_cancel()
+            # if not rec.planned:
+            #     rec.production_id.button_unplan()
+            #     rec.production_id.action_cancel()
+            #     if rec.request_id.orderpoint_id:
+            #         rec.request_id.button_cancel()
 
     @api.multi
     def unlink(self):
