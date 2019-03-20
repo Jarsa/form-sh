@@ -84,6 +84,36 @@
             </form>
         </field>
     </record>
+    <record model="ir.ui.view" id="mrp_production_plan_workcenter">
+        <field name="name">mrp_production_plan_workcenter.form</field>
+        <field name="model">mrp.production.plan.workcenter</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="workcenter_id"/>
+                    </group>
+                    <group>
+                        <field name="plan_id"/>
+                    </group>
+                </group>
+                <field name="line_ids">
+                    <tree editable="bottom" decoration-success="date_planned_start&gt;=current_date and state == 'ready'" decoration-muted="state in ('done','cancel')" decoration-danger="date_planned_start&lt;current_date and state in ('ready')">
+                        <field name="sequence" widget="handle"/>
+                        <field name="name"/>
+                        <field name="date_planned_start"/>
+                        <field name="date_planned_finished"/>
+                        <field name="workcenter_id" widget="selection"/>
+                        <field name="production_id"/>
+                        <field name="product_id"/>
+                        <field name="qty_production"/>
+                        <field name="product_uom_id"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
     <record model="ir.ui.view" id="mrp_production_plan_tree">
         <field name="name">mrp_production_plan.tree</field>
         <field name="model">mrp.production.plan</field>
