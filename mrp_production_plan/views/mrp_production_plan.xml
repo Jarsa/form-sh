@@ -61,6 +61,13 @@
                                 </tree>
                             </field>
                         </page>
+                        <page string="Workcenter Lines">
+                            <field name="workcenter_line_ids">
+                                <tree create="0" edit="0">
+                                    <field name="workcenter_id"/>
+                                </tree>
+                            </field>
+                        </page>
                         <page string="Manufacturing requests">
                             <field name="request_ids"/>
                         </page>

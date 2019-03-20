@@ -23,7 +23,9 @@ class MrpProductionPlan(models.Model):
         'mrp.production', 'plan_id',
         string='Productions', copy=False, readonly=True,)
     line_ids = fields.One2many(
-        'mrp.production.plan.line', 'plan_id', copy=False)
+        'mrp.production.plan.line', 'plan_id')
+    workcenter_line_ids = fields.One2many(
+        'mrp.production.plan.workcenter', 'plan_id')
     company_id = fields.Many2one(
         'res.company', string='Company', required=True,
         default=lambda self: self.env.user.company_id)
@@ -270,3 +272,13 @@ class MrpProductionPlanLine(models.Model):
                     'You cannot remove a line that has been programmed, you '
                     'need to cancel the Manufacturing Order'))
         return super().unlink()
+
+
+class MrpProductionPlanWorkcenter(models.Model):
+    _name = 'mrp.production.plan.workcenter'
+    _description = 'Production plan workcenter'
+
+    workcenter_id = fields.Many2one('mrp.workcenter')
+    plan_id = fields.Many2one('mrp.production.plan')
+    line_ids = fields.One2many(
+        'mrp.workorder', 'plan_workcenter_id', string='Workorder Lines')
