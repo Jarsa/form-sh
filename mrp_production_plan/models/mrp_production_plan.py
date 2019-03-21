@@ -83,7 +83,7 @@ class MrpProductionPlan(models.Model):
         return True
 
     @api.multi
-    def sort_workorders_by_sequence(self):
+    def _sort_workorders_by_sequence(self):
         for wc in self.workcenter_line_ids:
             wc.line_ids.mapped('production_id').button_unplan()
             wc.line_ids.sorted('sequence').mapped(
@@ -96,12 +96,12 @@ class MrpProductionPlan(models.Model):
             lambda l: l.request_id.state != 'done').sorted(
             'sequence')
         if not pending_lines and self.workcenter_line_ids:
-            self.sort_workorders_by_sequence()
+            self._sort_workorders_by_sequence()
         elif pending_lines:
             self.with_context(lines=pending_lines).run_plan()
             for line in pending_lines.mapped('production_id'):
                 line.button_plan()
-            self.sort_workorders_by_sequence()
+            self._sort_workorders_by_sequence()
 
     @api.multi
     def link_workorders(self):
@@ -266,15 +266,6 @@ class MrpProductionPlanLine(models.Model):
             start_day = rec.date_planned_start_wo.day
             end_day = rec.date_planned_finished_wo.day
             rec.planned = start_day == end_day
-            # If the manufacture order could not finished in the same
-            # day the order will be unplaned and cancelled and if the
-            # request document was created of an orderpoint the request
-            # will be cancelled too
-            # if not rec.planned:
-            #     rec.production_id.button_unplan()
-            #     rec.production_id.action_cancel()
-            #     if rec.request_id.orderpoint_id:
-            #         rec.request_id.button_cancel()
 
     @api.multi
     def unlink(self):
