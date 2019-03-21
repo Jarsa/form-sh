@@ -83,38 +83,25 @@ class MrpProductionPlan(models.Model):
         return True
 
     @api.multi
+    def sort_workorders_by_sequence(self):
+        for wc in self.workcenter_line_ids:
+            wc.line_ids.mapped('production_id').button_unplan()
+            wc.line_ids.sorted('sequence').mapped(
+                'production_id').button_plan()
+
+    @api.multi
     def re_plan(self):
         self.ensure_one()
         pending_lines = self.line_ids.filtered(
             lambda l: l.request_id.state != 'done').sorted(
             'sequence')
-        if not pending_lines:
-            return True
-        self.with_context(lines=pending_lines).run_plan()
-        # Get and loop the corresponding lines in order to replan the dates
-        to_replan = self.line_ids.filtered(
-            lambda l: l.sequence > pending_lines[0].sequence).sorted(
-            'sequence')
-        to_replan.mapped('production_id').button_unplan()
-        # Plan the new manufacture orders
-        pending_lines.mapped('production_id').button_plan()
-        for line in pending_lines:
-            line.write({
-                'date_planned_start_wo': (
-                    line.production_id.date_planned_start_wo),
-                'date_planned_finished_wo': (
-                    line.production_id.date_planned_finished_wo),
-            })
-        # Plan the remaining manufacture orders
-        for line in to_replan:
-            line.production_id.button_plan()
-            line.write({
-                'date_planned_start_wo': (
-                    line.production_id.date_planned_start_wo),
-                'date_planned_finished_wo': (
-                    line.production_id.date_planned_finished_wo),
-            })
-        self.link_workorders()
+        if not pending_lines and self.workcenter_line_ids:
+            self.sort_workorders_by_sequence()
+        elif pending_lines:
+            self.with_context(lines=pending_lines).run_plan()
+            for line in pending_lines.mapped('production_id'):
+                line.button_plan()
+            self.sort_workorders_by_sequence()
 
     @api.multi
     def link_workorders(self):
@@ -168,17 +155,16 @@ class MrpProductionPlan(models.Model):
             line.request_id.button_done()
         # Plan the production
         productions = self.env['mrp.production'].browse(production_ids)
-        if not self._context.get('lines', False):
-            # Write the start and end date
-            productions.button_plan()
-            for production in productions:
-                production.plan_line_id.write({
-                    'date_planned_start_wo': (
-                        production.date_planned_start_wo),
-                    'date_planned_finished_wo': (
-                        production.date_planned_finished_wo),
-                })
-            self.state = 'planned'
+        # Write the start and end date
+        productions.button_plan()
+        for production in productions:
+            production.plan_line_id.write({
+                'date_planned_start_wo': (
+                    production.date_planned_start_wo),
+                'date_planned_finished_wo': (
+                    production.date_planned_finished_wo),
+            })
+        self.state = 'planned'
         self.link_workorders()
         return {
             'name': _('Manufacturing Orders'),
