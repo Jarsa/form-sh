@@ -54,6 +54,7 @@
         'stock_no_negative',
         'web_m2x_options',
         'mrp_production_plan',
+        'mrp_production_limit',
     ],
     'data': [
         'data/product_template.xml',
