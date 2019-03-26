@@ -103,7 +103,6 @@
                         <field name="name"/>
                         <field name="date_planned_start"/>
                         <field name="date_planned_finished"/>
-                        <field name="workcenter_id" widget="selection"/>
                         <field name="production_id"/>
                         <field name="product_id"/>
                         <field name="qty_production"/>

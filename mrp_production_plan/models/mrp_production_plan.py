@@ -1,9 +1,13 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
-from odoo import _, api, fields, models
+from odoo import _, api, fields, models, tools
 from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError
+
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+import math
 
 
 class MrpProductionPlan(models.Model):
@@ -83,11 +87,86 @@ class MrpProductionPlan(models.Model):
         return True
 
     @api.multi
+    def _plan_workorders(self, workorders):
+        wo_obj = self.env['mrp.workorder']
+        if not workorders.mapped('check_ids'):
+            workorders._create_checks()
+        start_date = datetime.now()
+        from_date_set = False
+        workorders.write(
+            {'date_planned_start': False, 'date_planned_finished': False})
+        for workorder in workorders:
+            workcenter = workorder.workcenter_id
+            wos = wo_obj.search([
+                ('workcenter_id', '=', workcenter.id),
+                ('date_planned_finished', '!=', False),
+                ('plan_workcenter_id.plan_id', '=', self.id),
+                ('state', 'in', ('ready', 'pending', 'progress')),
+                ('date_planned_finished', '>=',
+                    start_date.strftime(
+                        tools.DEFAULT_SERVER_DATETIME_FORMAT))],
+                order='date_planned_start')
+            from_date = start_date
+            to_date = workcenter.resource_calendar_id.attendance_ids and (
+                workcenter.resource_calendar_id.plan_hours(
+                    workorder.duration_expected / 60.0, from_date,
+                    compute_leaves=True, resource=workcenter.resource_id))
+            if to_date:
+                if not from_date_set:
+                    # planning 0 hours gives the start of the next attendance
+                    from_date = workcenter.resource_calendar_id.plan_hours(
+                        0, from_date, compute_leaves=True,
+                        resource=workcenter.resource_id)
+                    from_date_set = True
+            else:
+                to_date = from_date + relativedelta(
+                    minutes=workorder.duration_expected)
+            # Check interval
+            for wo in wos:
+                if from_date < fields.Datetime.from_string(
+                    wo.date_planned_finished) and (
+                    to_date > fields.Datetime.from_string(
+                        wo.date_planned_start)):
+                    from_date = fields.Datetime.from_string(
+                        wo.date_planned_finished)
+                    to_date = (
+                        workcenter.resource_calendar_id.attendance_ids) and (
+                        workcenter.resource_calendar_id.plan_hours(
+                            workorder.duration_expected / 60.0, from_date,
+                            compute_leaves=True,
+                            resource=workcenter.resource_id))
+                    if not to_date:
+                        to_date = from_date + relativedelta(
+                            minutes=workorder.duration_expected)
+            workorder.write({
+                'date_planned_start': from_date,
+                'date_planned_finished': to_date})
+            if (workorder.operation_id.batch == 'no') or (
+                    workorder.operation_id.batch_size >=
+                    workorder.qty_production):
+                start_date = to_date
+            else:
+                qty = min(workorder.operation_id.batch_size,
+                          workorder.qty_production)
+                cycle_number = math.ceil(
+                    qty / workorder.production_id.product_qty /
+                    workcenter.capacity)
+                duration = (
+                    workcenter.time_start + cycle_number * (
+                        workorder.operation_id.time_cycle * 100.0 /
+                        workcenter.time_efficiency))
+                to_date = workcenter.resource_calendar_id.attendance_ids and (
+                    workcenter.resource_calendar_id.plan_hours(
+                        duration / 60.0, from_date, compute_leaves=True,
+                        resource=workcenter.resource_id))
+                if not to_date:
+                    start_date = from_date + relativedelta(minutes=duration)
+
+    @api.multi
     def _sort_workorders_by_sequence(self):
         for wc in self.workcenter_line_ids:
-            wc.line_ids.mapped('production_id').button_unplan()
-            wc.line_ids.sorted('sequence').mapped(
-                'production_id').button_plan()
+            workorders = wc.line_ids.sorted('sequence')
+            self._plan_workorders(workorders)
 
     @api.multi
     def re_plan(self):
@@ -104,7 +183,7 @@ class MrpProductionPlan(models.Model):
             self._sort_workorders_by_sequence()
 
     @api.multi
-    def link_workorders(self):
+    def _link_workorders(self):
         self.ensure_one()
         mrp_plan_wc_obj = self.env['mrp.production.plan.workcenter']
         workcenters = self.production_ids.filtered(
@@ -165,7 +244,8 @@ class MrpProductionPlan(models.Model):
                     production.date_planned_finished_wo),
             })
         self.state = 'planned'
-        self.link_workorders()
+        self._link_workorders()
+        self._sort_workorders_by_sequence()
         return {
             'name': _('Manufacturing Orders'),
             'type': 'ir.actions.act_window',
