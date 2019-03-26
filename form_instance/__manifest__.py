@@ -55,6 +55,7 @@
         'web_m2x_options',
         'mrp_production_plan',
         'mrp_production_limit',
+        'mrp_plm_control_version_bom',
     ],
     'data': [
         'data/product_template.xml',
