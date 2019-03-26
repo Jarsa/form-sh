@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_order_product_reference_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-27 21:29+0000\n"
+"PO-Revision-Date: 2019-03-27 21:29+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model.fields,field_description:sale_order_product_reference_partner.field_product_product__partner_ids
+#: model:ir.model.fields,field_description:sale_order_product_reference_partner.field_product_template__partner_ids
+msgid "Customers"
+msgstr "Clientes"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_sale_order
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_order.py:45
+#, python-format
+msgid "The Customer %s is different to have the product %s"
+msgstr "El Cliente %s es diferente a cualquiera de los clientes que tiene asignados el producto %s"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_order.py:36
+#, python-format
+msgid "The product %s have not asiggned any customer"
+msgstr "El producto %s no tiene asignado ningun cliente"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_order.py:33
+#, python-format
+msgid "You has not selected a Customer to Sale Order"
+msgstr "No has seleccionado ningun Cliente para la Orden de Venta"
+

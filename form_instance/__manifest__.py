@@ -55,6 +55,7 @@
         'mrp_production_plan',
         'mrp_production_limit',
         'mrp_plm_control_version_bom',
+        'sale_order_product_reference_partner',
     ],
     'data': [
         'data/product_template.xml',
