@@ -17,6 +17,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/mrp_production_plan.xml',
+        'views/product_category_view.xml',
         'data/ir_sequence.xml',
     ],
 }

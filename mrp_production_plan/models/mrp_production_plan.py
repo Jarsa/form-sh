@@ -33,6 +33,9 @@ class MrpProductionPlan(models.Model):
     company_id = fields.Many2one(
         'res.company', string='Company', required=True,
         default=lambda self: self.env.user.company_id)
+    category_id = fields.Many2one(
+        'product.category',
+        domain=[('use_in_plan', '=', True)])
     state = fields.Selection(
         selection=[('draft', 'Draft'),
                    ('approved', 'Approved'),
@@ -74,9 +77,13 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def get_mrp_production_requests(self):
         self.ensure_one()
+        main_categ = self.category_id
+        product_categories = self._recursive_search_of_categories(main_categ)
+        product_categories |= main_categ
         mrp_plan_line_obj = self.env['mrp.production.plan.line']
         requests = self.env['mrp.production.request'].search([
-            ('plan_line_id', '=', False), ('state', '=', 'approved')])
+            ('plan_line_id', '=', False), ('state', '=', 'approved'),
+            ('product_id.categ_id', 'in', product_categories.ids)])
         for request in requests:
             if request in self.line_ids.mapped('request_id'):
                 continue
@@ -167,6 +174,19 @@ class MrpProductionPlan(models.Model):
         for wc in self.workcenter_line_ids:
             workorders = wc.line_ids.sorted('sequence')
             self._plan_workorders(workorders)
+
+    @api.model
+    def _recursive_search_of_categories(self, main_categ):
+        categories = self.env['product.category']
+        if main_categ.child_id:
+            for parent_categ in main_categ.child_id:
+                categories |= parent_categ
+                if parent_categ.child_id:
+                    parent_ids = self._recursive_search_of_categories(
+                        parent_categ)
+                    for parent_id in parent_ids:
+                        categories |= parent_id
+        return categories
 
     @api.multi
     def re_plan(self):
