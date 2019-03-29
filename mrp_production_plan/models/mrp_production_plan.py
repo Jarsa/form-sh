@@ -188,6 +188,27 @@ class MrpProductionPlan(models.Model):
                         categories |= parent_id
         return categories
 
+    @api.model
+    def _recursive_search_of_child_orders(self, production):
+        productions = self.env['mrp.production']
+        pr_child = productions.search([(
+            'origin', '=', production.name)])
+        if pr_child:
+            for child in pr_child:
+                productions |= child
+                pr_child2 = productions.search([
+                    ('origin', '=', child.name)])
+                for parent_prod in pr_child2:
+                    productions |= parent_prod
+                    parent_prod2 = productions.search([
+                        ('origin', '=', parent_prod.name)])
+                    if parent_prod2:
+                        parent_ids = self._recursive_search_of_child_orders(
+                            parent_prod)
+                        for parent_id in parent_ids:
+                            productions |= parent_id
+        return productions
+
     @api.multi
     def re_plan(self):
         self.ensure_one()
@@ -196,6 +217,7 @@ class MrpProductionPlan(models.Model):
             'sequence')
         if not pending_lines and self.workcenter_line_ids:
             self._sort_workorders_by_sequence()
+            self._link_workorders()
         elif pending_lines:
             self.with_context(lines=pending_lines).run_plan()
             for line in pending_lines.mapped('production_id'):
@@ -257,6 +279,10 @@ class MrpProductionPlan(models.Model):
         # Write the start and end date
         productions.button_plan()
         for production in productions:
+            child_orders = self._recursive_search_of_child_orders(production)
+            for child_order in child_orders:
+                child_order.plan_id = self.id
+                child_order.button_plan()
             production.plan_line_id.write({
                 'date_planned_start_wo': (
                     production.date_planned_start_wo),
