@@ -33,4 +33,7 @@
         <field name="category_id" ref="sale_request.module_category_sale_request"/>
         <field name="comment">The user will have only read access to Sale Request.</field>
     </record>
+    <record model="ir.ui.menu" id="mrp.menu_mrp_unbuild">
+        <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+    </record>
 </odoo>
