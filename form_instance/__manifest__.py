@@ -18,7 +18,6 @@
         'board',
         'repair',
         'mrp_plm_survey',
-        'quality_control',
         'hr_attendance',
         'hr_appraisal',
         'hr_holidays',
