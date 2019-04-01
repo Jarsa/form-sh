@@ -57,6 +57,7 @@
         'mrp_plm_control_version_bom',
         'sale_order_product_reference_partner',
         'stock_mts_mto_mrp',
+        'sale_order_invoice_merge_qty',
     ],
     'data': [
         'data/product_template.xml',

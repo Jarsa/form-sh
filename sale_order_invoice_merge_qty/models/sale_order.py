@@ -11,13 +11,6 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_invoice_create(self, grouped=False, final=False):
-        """
-        Create the invoice associated to the SO.
-        :param grouped: if True, invoices are grouped by SO id. If False,
-        :invoices are grouped by (partner_invoice_id, currency)
-        :param final: if True, refunds will be generated if necessary
-        :returns: list of created invoices
-        """
         inv_obj = self.env['account.invoice']
         precision = self.env['decimal.precision'].precision_get(
             'Product Unit of Measure')

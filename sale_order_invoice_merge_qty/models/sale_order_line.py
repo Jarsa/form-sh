@@ -18,10 +18,10 @@ class SaleOrderLine(models.Model):
             for invoice_line in line.invoice_lines:
                 if invoice_line.invoice_id.state != 'cancel':
                     if invoice_line.invoice_id.type == 'out_invoice' or inv:
-                            qty_invoiced = line.product_uom_qty
+                        qty_invoiced = line.product_uom_qty
                     elif invoice_line.invoice_id.type == 'out_refund':
                         qty_invoiced -= invoice_line.uom_id._compute_quantity(
                             invoice_line.quantity, line.product_uom)
                 if inv.state == 'cancel':
-                        qty_invoiced = 0.0
+                    qty_invoiced = 0.0
             line.qty_invoiced = qty_invoiced
