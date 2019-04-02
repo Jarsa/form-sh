@@ -10,15 +10,28 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     @api.multi
-    def action_invoice_create(self, grouped=False, final=False):
+    def _merge_line_qty(self, invoice):
+        for line in invoice.invoice_line_ids:
+            if line.invoice_id:
+                sibling_lines = line.search([
+                    ('product_id', '=', line.product_id.id),
+                    ('invoice_id', '=', invoice.id),
+                    ('id', '!=', line.id)])
+                if sibling_lines:
+                    total_qty = sum(sibling_lines.mapped('quantity'))
+                    line.quantity = line.quantity + total_qty
+                    sibling_lines.write({
+                        'invoice_id': False,
+                        'sibling_invoice_id': invoice.id})
+            line._set_additional_fields(invoice)
+
+    @api.multi
+    def _generate_lines_to_invoice(
+            self, invoices, references, invoices_origin, invoices_name,
+            final, grouped):
         inv_obj = self.env['account.invoice']
         precision = self.env['decimal.precision'].precision_get(
             'Product Unit of Measure')
-        invoices = {}
-        references = {}
-        invoices_origin = {}
-        invoices_name = {}
-
         for order in self:
             group_key = order.id if grouped else (
                 order.partner_invoice_id.id, order.currency_id.id)
@@ -60,6 +73,15 @@ class SaleOrder(models.Model):
                 if order not in references[invoices[group_key]]:
                     references[invoices[group_key]] |= order
 
+    @api.multi
+    def action_invoice_create(self, grouped=False, final=False):
+        invoices = {}
+        references = {}
+        invoices_origin = {}
+        invoices_name = {}
+        self._generate_lines_to_invoice(
+            invoices, references, invoices_origin, invoices_name,
+            final, grouped)
         for group_key in invoices:
             invoices[group_key].write({'name': ', '.join(
                 invoices_name[group_key]), 'origin': ', '.join(
@@ -87,19 +109,7 @@ class SaleOrder(models.Model):
                 for line in invoice.invoice_line_ids:
                     line.quantity = -line.quantity
             # Use additional field helper function (for account extensions)
-            for line in invoice.invoice_line_ids:
-                if line.invoice_id:
-                    sibling_lines = line.search([
-                        ('product_id', '=', line.product_id.id),
-                        ('invoice_id', '=', invoice.id),
-                        ('id', '!=', line.id)])
-                    if sibling_lines:
-                        total_qty = sum(sibling_lines.mapped('quantity'))
-                        line.quantity = line.quantity + total_qty
-                        sibling_lines.write({
-                            'invoice_id': False,
-                            'sibling_invoice_id': invoice.id})
-                line._set_additional_fields(invoice)
+            self._merge_line_qty(invoice)
             # Necessary to force computation of taxes. In account_invoice,
             # they are triggered
             # by onchanges, which are not triggered when doing a create.
