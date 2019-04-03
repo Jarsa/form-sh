@@ -24,8 +24,8 @@ msgstr "<strong>Cantidad Equivalente</strong>"
 #. module: stock_uom_equivalence
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_quantity_done
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_qty_done
-msgid "Done quantity in the secondary UoM computed multiplying quantity * product factor"
-msgstr "Cantidad Hecha en la unidad de medida secundaria calculada multiplicando cantidad * factor del producto"
+msgid "Done quantity in the secondary UoM computed dividing quantity / product factor"
+msgstr "Cantidad Hecha en la unidad de medida secundaria calculada dividiendo cantidad / factor del producto"
 
 #. module: stock_uom_equivalence
 #: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move__equivalent_quantity_done
@@ -86,8 +86,8 @@ msgstr "Error. El factor para calcular las cantidades secundarias debe ser mayor
 
 #. module: stock_uom_equivalence
 #: model:ir.model.fields,help:stock_uom_equivalence.field_product_template__equivalent_factor
-msgid "Factor to compute the product quantities in the secondary UoM. To compute that quantity the quantity in the original UoM will be multiplied by the value of this field."
-msgstr "Factor para calcular las cantidades de producto en la UdM secundaria. Para calcular la cantidad, la cantidad de la UdM original será multiplicada por el valor de este campo."
+msgid "Factor to compute the product quantities in the secondary UoM. To compute that quantity the quantity in the original UoM will be dividing by the value of this field."
+msgstr "Factor para calcular las cantidades de producto en la UdM secundaria. Para calcular la cantidad, la cantidad de la UdM original será dividiendo por el valor de este campo."
 
 #. module: stock_uom_equivalence
 #: model:ir.model,name:stock_uom_equivalence.model_product_product
@@ -110,8 +110,8 @@ msgstr "Plantilla de producto"
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_product_qty
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_product_uom_qty
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_quant__equivalent_quantity
-msgid "Quantity in the secondary UoM computed multiplying quantity * product factor"
-msgstr "Cantidad en la UdM secundaria calculada multiplicando cantidad * factor del producto"
+msgid "Quantity in the secondary UoM computed dividing quantity / product factor"
+msgstr "Cantidad en la UdM secundaria calculada dividiendo cantidad / factor del producto"
 
 #. module: stock_uom_equivalence
 #: model:ir.model,name:stock_uom_equivalence.model_stock_quant
@@ -121,8 +121,8 @@ msgstr "Existencias"
 #. module: stock_uom_equivalence
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_reserved_availability
 #: model:ir.model.fields,help:stock_uom_equivalence.field_stock_quant__equivalent_reserved_quantity
-msgid "Reserved quantity in the secondary UoM computed multiplying quantity * product factor"
-msgstr "Cantidad reservada en la UdM secundaria calculada multiplicando cantidad * factor del producto"
+msgid "Reserved quantity in the secondary UoM computed dividing quantity / product factor"
+msgstr "Cantidad reservada en la UdM secundaria calculada dividiendo cantidad / factor del producto"
 
 #. module: stock_uom_equivalence
 #: model:ir.model.fields,help:stock_uom_equivalence.field_product_template__equivalent_uom_id

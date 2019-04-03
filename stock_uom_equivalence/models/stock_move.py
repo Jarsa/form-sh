@@ -12,32 +12,32 @@ class StockMove(models.Model):
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_product_qty',
         store=True,
-        help='Quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_product_uom_qty = fields.Float(
         string='Equivalent Initial Demand',
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_product_uom_qty',
         store=True,
-        help='Quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_reserved_availability = fields.Float(
         string='Equivalent Reserved',
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_reserved_availability',
         store=True,
-        help='Reserved quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Reserved quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_quantity_done = fields.Float(
         string='Equivalent Done',
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_quantity_done',
         store=True,
-        help='Done quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Done quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_uom_id = fields.Many2one(
         comodel_name='uom.uom',
@@ -53,28 +53,28 @@ class StockMove(models.Model):
     def _compute_equivalent_product_qty(self):
         for rec in self:
             rec.product_qty = (
-                rec.product_qty * rec.product_id.equivalent_factor)
+                rec.product_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('product_uom_qty')
     def _compute_equivalent_product_uom_qty(self):
         for rec in self:
             rec.equivalent_product_uom_qty = (
-                rec.product_uom_qty * rec.product_id.equivalent_factor)
+                rec.product_uom_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('reserved_availability')
     def _compute_equivalent_reserved_availability(self):
         for rec in self:
             rec.equivalent_reserved_availability = (
-                rec.reserved_availability * rec.product_id.equivalent_factor)
+                rec.reserved_availability / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('quantity_done')
     def _compute_equivalent_quantity_done(self):
         for rec in self:
             rec.equivalent_quantity_done = (
-                rec.quantity_done * rec.product_id.equivalent_factor)
+                rec.quantity_done / rec.product_id.equivalent_factor)
 
 
 class StockMoveLine(models.Model):
@@ -84,24 +84,24 @@ class StockMoveLine(models.Model):
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_product_qty',
         store=True,
-        help='Quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_product_uom_qty = fields.Float(
         string='Equivalent Reserved',
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_product_uom_qty',
         store=True,
-        help='Quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_qty_done = fields.Float(
         string='Equivalent Done',
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_qty_done',
         store=True,
-        help='Done quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Done quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_uom_id = fields.Many2one(
         comodel_name='uom.uom',
@@ -117,18 +117,18 @@ class StockMoveLine(models.Model):
     def _compute_equivalent_product_qty(self):
         for rec in self:
             rec.product_qty = (
-                rec.product_qty * rec.product_id.equivalent_factor)
+                rec.product_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('product_uom_qty')
     def _compute_equivalent_product_uom_qty(self):
         for rec in self:
             rec.equivalent_product_uom_qty = (
-                rec.product_uom_qty * rec.product_id.equivalent_factor)
+                rec.product_uom_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('qty_done')
     def _compute_equivalent_qty_done(self):
         for rec in self:
             rec.equivalent_qty_done = (
-                rec.qty_done * rec.product_id.equivalent_factor)
+                rec.qty_done / rec.product_id.equivalent_factor)

@@ -13,16 +13,16 @@ class StockQuant(models.Model):
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_quantity',
         store=True,
-        help='Quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_reserved_quantity = fields.Float(
         string="Equivalent Quantity Reserved",
         digits=dp.get_precision('Product Unit of Measure'),
         compute='_compute_equivalent_reserved_quantity',
         store=True,
-        help='Reserved quantity in the secondary UoM computed multiplying '
-        'quantity * product factor',
+        help='Reserved quantity in the secondary UoM computed dividing '
+        'quantity / product factor',
     )
     equivalent_uom_id = fields.Many2one(
         comodel_name='uom.uom',
@@ -38,11 +38,11 @@ class StockQuant(models.Model):
     def _compute_equivalent_quantity(self):
         for rec in self:
             rec.equivalent_quantity = (
-                rec.quantity * rec.product_id.equivalent_factor)
+                rec.quantity / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('reserved_quantity')
     def _compute_equivalent_reserved_quantity(self):
         for rec in self:
             rec.equivalent_reserved_quantity = (
-                rec.reserved_quantity * rec.product_id.equivalent_factor)
+                rec.reserved_quantity / rec.product_id.equivalent_factor)

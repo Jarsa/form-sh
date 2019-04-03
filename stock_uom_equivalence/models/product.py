@@ -50,4 +50,4 @@ class ProductProduct(models.Model):
     def _compute_equivalent_qty_at_date(self):
         for rec in self:
             rec.equivalent_qty_at_date = (
-                rec.qty_at_date * rec.equivalent_factor)
+                rec.qty_at_date / rec.equivalent_factor)
