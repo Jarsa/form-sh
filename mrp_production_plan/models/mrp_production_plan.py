@@ -347,7 +347,7 @@ class MrpProductionPlanLine(models.Model):
         string='Requested Quantity',
         digits=dp.get_precision('Product Unit of Measure'),
         required=True,
-        default=1.0,
+        default=0.0,
     )
     done_qty = fields.Float(
         string='Done Quantity',
@@ -361,13 +361,16 @@ class MrpProductionPlanLine(models.Model):
     sequence = fields.Integer(default=10)
     date_planned_start_wo = fields.Datetime(
         'Scheduled Start Date',
+        readonly=True,
     )
     date_planned_finished_wo = fields.Datetime(
         'Scheduled End Date',
+        readonly=True,
     )
     production_id = fields.Many2one(
         'mrp.production',
         string='Manufacture Order',
+        readonly=True,
     )
     planned = fields.Boolean(
         compute='_compute_planned',
