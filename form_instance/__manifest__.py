@@ -58,6 +58,7 @@
         'sale_order_product_reference_partner',
         'stock_mts_mto_mrp',
         'sale_order_invoice_merge_qty',
+        'stock_picking_name_reference_change',
     ],
     'data': [
         'data/product_template.xml',
