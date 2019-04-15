@@ -12,4 +12,26 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="custom_form_sale_order_tree">
+        <field name="name">custom_form_sale_order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="priority">110</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="custom_form_quotation_tree">
+        <field name="name">custom_form_quotation.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="priority">110</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
