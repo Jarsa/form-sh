@@ -15,6 +15,7 @@
     'depends': [
         'sale_management',
         'stock',
+        'sale_request',
     ],
     'data': [
         'views/product_product.xml',
