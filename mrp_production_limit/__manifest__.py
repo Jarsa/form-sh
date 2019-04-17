@@ -15,4 +15,7 @@
     'depends': [
         'mrp',
     ],
+    'data': [
+        'data/mail_template.xml',
+    ],
 }

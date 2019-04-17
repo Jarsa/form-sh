@@ -28,5 +28,5 @@ class MrpProductProduce(models.TransientModel):
         # only to can use this method and
         # no repeat code
         workorder = self.env['mrp.workorder']
-        workorder._calcule_limit_production(
-            quantity, qty_produced)
+        workorder._calcule_limit_production_manufacture_order(
+            quantity, qty_produced, self.product_qty, order)
