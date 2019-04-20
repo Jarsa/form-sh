@@ -55,4 +55,14 @@
     <record id="purchase.view_invoice_supplier_purchase_form" model="ir.ui.view">
         <field name="groups_id" eval="[(4,ref('purchase.group_purchase_user')), (4,ref('form_instance.group_payable_form'))]"/>
     </record>
+    <record model="ir.ui.view" id="account_invoice_custom_form_instance_tree">
+        <field name="name">account_invoice_custom_form_instance.tree</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='number']" position="after">
+                <field name="l10n_mx_edi_cfdi_uuid"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
