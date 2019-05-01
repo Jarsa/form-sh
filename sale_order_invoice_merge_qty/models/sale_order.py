@@ -34,7 +34,8 @@ class SaleOrder(models.Model):
             'Product Unit of Measure')
         for order in self:
             group_key = order.id if grouped else (
-                order.partner_invoice_id.id, order.currency_id.id)
+                order.partner_invoice_id.id, order.currency_id.id,
+                order.client_order_ref)
             # We only want to create sections that have at least one
             # invoiceable line
             pending_section = None
