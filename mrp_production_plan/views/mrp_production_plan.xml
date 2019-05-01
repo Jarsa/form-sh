@@ -6,15 +6,21 @@
         <field name="arch" type="xml">
             <form string="Production Plan">
                 <header>
-                    <button name="get_mrp_production_requests" string="Get Manufacturing Requests" type="object"/>
+                    <button name="get_mrp_production_requests" string="Get Manufacturing Requests" type="object" attrs="{'invisible': [('state', '=', 'done')]}"/>
                     <button name="button_draft"
                         states="approved,cancel,done"
                         string="Reset"
                         type="object"/>
                     <button name="button_approved" states="draft"
                             string="Approve" type="object" class="oe_highlight"/>
-                    <button name="button_done" states="approved"
-                            string="Done" type="object" class="oe_highlight"/>
+                    <field name="finished_orders" invisible="1"/>
+                    <button name="button_done"
+                            string="Done" type="object" class="oe_highlight"
+                            attrs="{'invisible': ['|', '|', ('production_ids', '=', []), ('finished_orders','=', False), ('state', '=', 'done')]}"/>
+                    <button name="button_done"
+                            string="Done" type="object" class="oe_highlight"
+                            attrs="{'invisible': ['|', '|', ('production_ids', '=', []), ('finished_orders','=', True), ('state', '=', 'done')]}"
+                            confirm="Are you sure you want to finish this production plan? All the unfinished production orders will be canceled"/>
                     <button name="button_cancel" states="approved"
                             string="Reject" type="object"/>
                     <button name="run_plan" string="Run Plan" type="object" class="oe_highlight" states="approved"/>
@@ -36,17 +42,17 @@
                     </h1>
                     <group>
                         <group>
-                            <field name="user_id"/>
-                            <field name="category_id"/>
+                            <field name="user_id" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                            <field name="category_id" attrs="{'readonly': [('state', '=', 'done')]}"/>
                         </group>
                         <group>
-                            <field name="date"/>
-                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="date" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                            <field name="company_id" groups="base.group_multi_company" attrs="{'readonly': [('state', '=', 'done')]}"/>
                         </group>
                     </group>
                     <notebook>
                         <page string="Lines">
-                            <field name="line_ids">
+                            <field name="line_ids" attrs="{'readonly': [('state', '=', 'done')]}">
                                 <tree editable="bottom" create="0" decoration-danger="not planned and production_id" decoration-success="planned and production_id">
                                     <field name="planned" invisible="1"/>
                                     <field name="sequence" widget="handle"/>
@@ -63,7 +69,7 @@
                             </field>
                         </page>
                         <page string="Workcenter Lines">
-                            <field name="workcenter_line_ids">
+                            <field name="workcenter_line_ids" attrs="{'readonly': [('state', '=', 'done')]}">
                                 <tree create="0" edit="0">
                                     <field name="workcenter_id"/>
                                 </tree>

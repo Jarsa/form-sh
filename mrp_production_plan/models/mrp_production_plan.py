@@ -35,7 +35,8 @@ class MrpProductionPlan(models.Model):
         default=lambda self: self.env.user.company_id)
     category_id = fields.Many2one(
         'product.category',
-        domain=[('use_in_plan', '=', True)])
+        domain=[('use_in_plan', '=', True)],
+        required=True,)
     state = fields.Selection(
         selection=[('draft', 'Draft'),
                    ('approved', 'Approved'),
@@ -44,6 +45,8 @@ class MrpProductionPlan(models.Model):
                    ('cancel', 'Cancelled')],
         index=True, track_visibility='onchange',
         required=True, copy=False, default='draft')
+    finished_orders = fields.Boolean(
+        compute='_compute_finished_orders', default=True)
 
     @api.multi
     def action_view_productions(self):
@@ -62,8 +65,24 @@ class MrpProductionPlan(models.Model):
             }
         }
 
+    @api.depends('production_ids')
+    def _compute_finished_orders(self):
+        if 'done' not in self.production_ids.mapped('state'):
+            self.finished_orders = False
+
+    @api.model
+    def _avoid_duplicate_planned_plans(self, vals):
+        existing_plan = self.search([
+            ('state', '!=', 'done'),
+            ('category_id', '=', vals['category_id'])])
+        if existing_plan:
+            raise UserError(_(
+                'You cannot create a new plan with this category'
+                ' if you have not finished a started one.'))
+
     @api.model
     def create(self, vals):
+        self._avoid_duplicate_planned_plans(vals)
         if vals.get('name', _('New')) == _('New'):
             if 'company_id' in vals:
                 vals['name'] = self.env['ir.sequence'].with_context(
@@ -292,18 +311,6 @@ class MrpProductionPlan(models.Model):
         self.state = 'planned'
         self._link_workorders()
         self._sort_workorders_by_sequence()
-        return {
-            'name': _('Manufacturing Orders'),
-            'type': 'ir.actions.act_window',
-            'res_model': 'mrp.production',
-            'view_mode': 'tree,form',
-            'view_type': 'form',
-            'domain': [('id', 'in', production_ids)],
-            'context': {
-                'create': False,
-                'delete': False,
-            }
-        }
 
     @api.multi
     def button_approved(self):
@@ -312,6 +319,14 @@ class MrpProductionPlan(models.Model):
 
     @api.multi
     def button_done(self):
+        undone_orders = self.production_ids.filtered(
+            lambda x: x.state != 'done')
+        if undone_orders:
+            undone_orders.action_cancel()
+        unplanned_requests = self.env['mrp.production.request'].search([
+            ('origin', 'ilike', 'OP/'), ('plan_line_id', '=', False)])
+        if unplanned_requests:
+            unplanned_requests.button_cancel()
         self.write({'state': 'done'})
         return True
 
