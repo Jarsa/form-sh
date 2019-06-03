@@ -36,4 +36,9 @@
     <record model="ir.ui.menu" id="mrp.menu_mrp_unbuild">
         <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
     </record>
+    <record id="group_send_production_to_scrap" model="res.groups">
+        <field name="name">Can send production to scrap</field>
+        <field name="comment">The users with this group are allowed to see the button "Scrap" in production form view and also in work order tablet view.</field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
 </odoo>
