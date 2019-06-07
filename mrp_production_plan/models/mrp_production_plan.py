@@ -47,6 +47,10 @@ class MrpProductionPlan(models.Model):
         required=True, copy=False, default='draft')
     finished_orders = fields.Boolean(
         compute='_compute_finished_orders', default=True)
+    has_phantom = fields.Boolean(
+        readonly=True, compute='_compute_has_phantom',
+        help='Technical field used to show or hide columns bom_id and '
+        'qty_per_kit if the lines has BoM from Kits.')
 
     @api.multi
     def action_view_productions(self):
@@ -69,6 +73,11 @@ class MrpProductionPlan(models.Model):
     def _compute_finished_orders(self):
         if 'done' not in self.production_ids.mapped('state'):
             self.finished_orders = False
+
+    @api.depends('line_ids')
+    def _compute_has_phantom(self):
+        if any(self.line_ids.mapped('bom_id')):
+            self.has_phantom = True
 
     @api.model
     def _avoid_duplicate_planned_plans(self, vals):
@@ -392,6 +401,13 @@ class MrpProductionPlanLine(models.Model):
         help='Technical field used to identify if the'
         ' manufacture order will be processed',
     )
+    bom_id = fields.Many2one(
+        'mrp.bom',
+        string='BoM',
+        help='Field used to set the BoM used to compute the quantity per kit.'
+    )
+    bom_line_ids = fields.Many2many('mrp.bom.line', string='BoM Lines')
+    qty_per_kit = fields.Float(readonly=True, default=1.0)
 
     @api.multi
     @api.depends('production_id')
@@ -419,6 +435,35 @@ class MrpProductionPlanLine(models.Model):
                     'You cannot remove a line that has been programmed, you '
                     'need to cancel the Manufacturing Order'))
         return super().unlink()
+
+    @api.model
+    def create(self, values):
+        request = self.env['mrp.production.request'].browse(
+            values.get('request_id'))
+        qty_per_kit = 1.0
+        bom_line = request.product_id.bom_line_ids
+        if bom_line:
+            values.update({
+                'bom_line_ids': [(6, 0, bom_line.ids)],
+                'bom_id': bom_line[0].bom_id.id,
+            })
+            qty_per_kit = bom_line[0].product_qty
+        values['qty_per_kit'] = qty_per_kit
+        return super().create(values)
+
+    @api.multi
+    def write(self, vals):
+        if vals.get('bom_id'):
+            bom = self.env['mrp.bom'].browse(vals.get('bom_id'))
+            bom_line = bom.bom_line_ids.filtered(
+                lambda l: l.product_id.id == self.product_id.id)
+            vals['qty_per_kit'] = bom_line.product_qty
+        return super().write(vals)
+
+    @api.onchange('bom_id')
+    def _onchange_bom_id(self):
+        self.qty_per_kit = self.bom_id.bom_line_ids.filtered(
+            lambda l: l.product_id.id == self.product_id.id).product_qty
 
 
 class MrpProductionPlanWorkcenter(models.Model):
