@@ -1,0 +1,566 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * mrp_production_plan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-07 01:46+0000\n"
+"PO-Revision-Date: 2019-06-07 01:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: mrp_production_plan
+#: selection:mrp.production.plan,state:0
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Are you sure you want to finish this production plan? All the unfinished production orders will be canceled"
+msgstr "¿Seguro que quieres terminar este plan de producción? Todas las órdenes de producción no terminadas serán canceladas."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__bom_id
+msgid "BoM"
+msgstr "LdM"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__bom_line_ids
+msgid "BoM Lines"
+msgstr "Líneas de LdM"
+
+#. module: mrp_production_plan
+#: selection:mrp.production.plan,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__create_uid
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__create_uid
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__create_date
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__create_date
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__display_name
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__display_name
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+#: selection:mrp.production.plan,state:0
+msgid "Done"
+msgstr "Hecho"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__done_qty
+msgid "Done Quantity"
+msgstr "Cant. Hecha"
+
+#. module: mrp_production_plan
+#: selection:mrp.production.plan,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan_line__bom_id
+msgid "Field used to set the BoM used to compute the quantity per kit."
+msgstr "Campo utilizado para establecer la LdM utilizada para calcular la cantidad por kit."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__finished_orders
+msgid "Finished Orders"
+msgstr "Órdenes Finalizadas"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Get Manufacturing Requests"
+msgstr "Obtener Solicitudes de Fabricación"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__has_phantom
+msgid "Has Phantom"
+msgstr "Tiene Kit"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__id
+msgid "ID"
+msgstr ""
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan____last_update
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line____last_update
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__write_uid
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__write_uid
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__write_date
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__write_date
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__line_ids
+msgid "Line"
+msgstr "Linea"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Lines"
+msgstr "Líneas"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: mrp_production_plan
+#: model:res.groups,name:mrp_production_plan.group_mrp_production_plan_manager
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__production_id
+msgid "Manufacture Order"
+msgstr "Orden de Producción"
+
+#. module: mrp_production_plan
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:59
+#, python-format
+msgid "Manufacturing Orders"
+msgstr "Ordenes de Producción"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_production_request
+msgid "Manufacturing Request"
+msgstr "Solicitud de Fabricación"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Manufacturing orders"
+msgstr "Ordenes de producción"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Manufacturing requests"
+msgstr "Solicitudes de fabricación"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: mrp_production_plan
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:95
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:99
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:102
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: mrp_production_plan
+#: selection:mrp.production.plan,activity_state:0
+msgid "Overdue"
+msgstr "Atrasado"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__plan_id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__plan_id
+msgid "Plan"
+msgstr ""
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__planned
+#: selection:mrp.production.plan,activity_state:0
+#: selection:mrp.production.plan,state:0
+msgid "Planned"
+msgstr "Planeado"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de Producción"
+
+#. module: mrp_production_plan
+#: model:ir.actions.act_window,name:mrp_production_plan.action_mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production__plan_id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_request__plan_id
+#: model:ir.module.category,name:mrp_production_plan.module_category_mrp_production_plan
+#: model:ir.ui.menu,name:mrp_production_plan.mrp_production_plan_menu
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Production Plan"
+msgstr "Plan de Producción"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production__plan_line_id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_request__plan_line_id
+msgid "Production Plan Line"
+msgstr "Línea de Plan de Producción"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_production_plan_line
+msgid "Production plan line"
+msgstr "Línea de Plan de Producción"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_production_plan_workcenter
+msgid "Production plan workcenter"
+msgstr "Centro de trabajo del plan de producción"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__production_ids
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Productions"
+msgstr "Producciones"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__qty_per_kit
+msgid "Qty Per Kit"
+msgstr "Cant. por Kit"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Re-Plan"
+msgstr "Re-planear"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Reject"
+msgstr "Rechazar"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__request_id
+msgid "Request"
+msgstr "Solicitud"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__requested_qty
+msgid "Requested Quantity"
+msgstr "Cantidad Solicitada"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__request_ids
+msgid "Requests"
+msgstr "Solicitudes"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__required_qty
+msgid "Required Quantity"
+msgstr "Cantidad Requerida"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Reset"
+msgstr "Reiniciar"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__user_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Run Plan"
+msgstr "Ejecutar Plan"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__date_planned_finished_wo
+msgid "Scheduled End Date"
+msgstr "Fecha de finalización programada"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__date_planned_start_wo
+msgid "Scheduled Start Date"
+msgstr "Fecha de inicio programada"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__sequence
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_workorder__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__state
+msgid "State"
+msgstr "Estado"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr "Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan_line__planned
+msgid "Technical field used to identify if the manufacture order will be processed"
+msgstr "Campo técnico utilizado para identificar si la orden de fabricación será procesada."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__has_phantom
+msgid "Technical field used to show or hide columns bom_id and qty_per_kit if the lines has BoM from Kits."
+msgstr "Campo técnico utilizado para mostrar u ocultar las columnas bom_id y qty_per_kit si las líneas tienen BoM de Kits."
+
+#. module: mrp_production_plan
+#: selection:mrp.production.plan,activity_state:0
+msgid "Today"
+msgstr "Hoy"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__product_uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_product_category__use_in_plan
+msgid "Use In Plan"
+msgstr "Usar en Plan"
+
+#. module: mrp_production_plan
+#: model:res.groups,name:mrp_production_plan.group_mrp_production_plan_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_production_request_create_mo
+msgid "Wizard to create Manufacturing Orders"
+msgstr "Asistente para crear órdenes de fabricación"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_workorder
+msgid "Work Order"
+msgstr "Orden de trabajo"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__workcenter_id
+msgid "Workcenter"
+msgstr "Centro de Trabajo"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__workcenter_line_ids
+msgid "Workcenter Line"
+msgstr "Línea de Centro de Trabajo"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
+msgid "Workcenter Lines"
+msgstr "Líneas de Centros de Trabajo"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_workorder__plan_workcenter_id
+msgid "Workcenter Plan Line"
+msgstr "Línea de Plan de Centro de Trabajo"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__line_ids
+msgid "Workorder Lines"
+msgstr "Líneas de Ordenes de Trabajo"
+
+#. module: mrp_production_plan
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:88
+#, python-format
+msgid "You cannot create a new plan with this category if you have not finished a started one."
+msgstr "No puede crear un nuevo plan con esta categoría si no ha terminado uno iniciado."
+
+#. module: mrp_production_plan
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:434
+#, python-format
+msgid "You cannot remove a line that has been programmed, you need to cancel the Manufacturing Order"
+msgstr "No puede eliminar una línea que ha sido programada, necesita cancelar la orden de fabricación"
+
+#. module: mrp_production_plan
+#: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_tree
+msgid "description"
+msgstr "descripción"
+
