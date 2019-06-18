@@ -19,5 +19,6 @@
     ],
     'data': [
         'views/product_product.xml',
+        'data/ir_config_parameter.xml',
     ],
 }

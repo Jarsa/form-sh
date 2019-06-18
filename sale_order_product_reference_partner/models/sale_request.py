@@ -2,7 +2,8 @@
 # Copyright 2019 JARSA Sistemas S.A. de C.V.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
-from odoo import api, models
+from odoo import _, api, models
+from odoo.exceptions import ValidationError
 
 
 class SaleRequest(models.Model):
@@ -27,20 +28,18 @@ class SaleRequestLine(models.Model):
 
     @api.model
     def _check_customer_product(self):
-        # if self.product_id:
-        #     if not self.request_id.partner_id:
-        #         raise ValidationError(
-        #             _('You has not selected a Customer to Sale Order'))
-        #     if not self.product_id.partner_ids:
-        #         raise ValidationError(
-        #             _('The product %s have not asiggned any customer')
-        #             % self.product_id.name)
-        #     if self.request_id.partner_id not in self.product_id.partner_ids:
-        #         raise ValidationError(
-        #             _('The Customer %s is different to have'
-        #                 ' the product %s')
-        #             % (
-        #                 self.request_id.partner_id.name,
-        #                 self.product_id.name)
-        #             )
+        parameter = self.env['ir.config_parameter'].sudo().get_param(
+            'sale_order_product_reference_partner.validate_product_partner')
+        if self.product_id and parameter:
+            if not self.request_id.partner_id:
+                raise ValidationError(
+                    _('You have not defined a customer to the sales request'))
+            if not self.product_id.partner_ids:
+                raise ValidationError(
+                    _('You have not defined a customer to the product %s')
+                    % self.product_id.name)
+            if self.request_id.partner_id not in self.product_id.partner_ids:
+                raise ValidationError(
+                    _('The customer %s is not defined in the product %s')
+                    % (self.order_id.partner_id.name, self.product_id.name))
         return True
