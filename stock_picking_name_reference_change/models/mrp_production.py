@@ -10,10 +10,10 @@ class MrpProduction(models.Model):
     @api.model
     def create(self, values):
         res = super().create(values)
+        product_name = res.product_tmpl_id.name
+        if res.product_tmpl_id.description_purchase:
+            product_name = res.product_tmpl_id.description_purchase
         for rec in res.picking_ids:
-            product_name = rec.product_id.name
-            if rec.product_id.description_purchase:
-                product_name = rec.product_id.description_purchase
             rec.origin = '%s - [%s] %s' % (
                 rec.origin, rec.product_id.default_code, product_name)
         return res
