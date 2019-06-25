@@ -41,5 +41,5 @@ class SaleRequestLine(models.Model):
             if self.request_id.partner_id not in self.product_id.partner_ids:
                 raise ValidationError(
                     _('The customer %s is not defined in the product %s')
-                    % (self.order_id.partner_id.name, self.product_id.name))
+                    % (self.request_id.partner_id.name, self.product_id.name))
         return True
