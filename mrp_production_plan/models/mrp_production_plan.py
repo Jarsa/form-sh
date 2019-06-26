@@ -331,7 +331,8 @@ class MrpProductionPlan(models.Model):
         undone_orders = self.production_ids.filtered(
             lambda x: x.state != 'done')
         if undone_orders:
-            undone_orders.action_cancel()
+            for order in undone_orders:
+                order.action_cancel()
         unplanned_requests = self.env['mrp.production.request'].search([
             ('origin', 'ilike', 'OP/'), ('plan_line_id', '=', False)])
         if unplanned_requests:
