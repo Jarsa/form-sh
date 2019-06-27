@@ -60,6 +60,7 @@
         'sale_order_invoice_merge_qty',
         'stock_picking_name_reference_change',
         'account_reports',
+        'mrp_production_request_produce_location',
     ],
     'data': [
         'data/product_template.xml',
