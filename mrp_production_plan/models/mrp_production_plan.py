@@ -371,8 +371,7 @@ class MrpProductionPlanLine(models.Model):
     requested_qty = fields.Float(
         string='Requested Quantity',
         digits=dp.get_precision('Product Unit of Measure'),
-        required=True,
-        default=0.0,
+        compute='_compute_requested_qty',
     )
     done_qty = fields.Float(
         string='Done Quantity',
@@ -409,6 +408,18 @@ class MrpProductionPlanLine(models.Model):
     )
     bom_line_ids = fields.Many2many('mrp.bom.line', string='BoM Lines')
     qty_per_kit = fields.Float(readonly=True, default=1.0)
+    requested_kit_qty = fields.Float(
+        string='Requested Kits',
+        digits=dp.get_precision('Product Unit of Measure'),
+        required=True,
+        default=0.0,
+    )
+
+    @api.multi
+    @api.depends('requested_kit_qty')
+    def _compute_requested_qty(self):
+        for rec in self:
+            rec.requested_qty = rec.requested_kit_qty * rec.qty_per_kit
 
     @api.multi
     @api.depends('production_id')

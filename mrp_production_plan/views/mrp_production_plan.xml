@@ -63,6 +63,7 @@
                                     <field name="bom_line_ids" invisible="1"/>
                                     <field name="qty_per_kit" attrs="{'column_invisible': [('parent.has_phantom', '=', False)]}"/>
                                     <field name="required_qty"/>
+                                    <field name="requested_kit_qty"/>
                                     <field name="requested_qty"/>
                                     <field name="production_id"/>
                                     <field name="date_planned_start_wo"/>

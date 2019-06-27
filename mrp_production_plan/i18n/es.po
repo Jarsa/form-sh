@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-07 01:46+0000\n"
-"PO-Revision-Date: 2019-06-07 01:46+0000\n"
+"POT-Creation-Date: 2019-06-27 01:06+0000\n"
+"PO-Revision-Date: 2019-06-27 01:06+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "Fecha"
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__display_name
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Nombre a mostrar"
 
 #. module: mrp_production_plan
 #: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
@@ -362,7 +362,7 @@ msgstr "Línea de Plan de Producción"
 #. module: mrp_production_plan
 #: model:ir.model,name:mrp_production_plan.model_mrp_production_plan_line
 msgid "Production plan line"
-msgstr "Línea de Plan de Producción"
+msgstr "Linea de plan de producción"
 
 #. module: mrp_production_plan
 #: model:ir.model,name:mrp_production_plan.model_mrp_production_plan_workcenter
@@ -394,6 +394,11 @@ msgstr "Rechazar"
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__request_id
 msgid "Request"
 msgstr "Solicitud"
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__requested_kit_qty
+msgid "Requested Kits"
+msgstr "Kits Solicitados"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__requested_qty
@@ -554,7 +559,7 @@ msgid "You cannot create a new plan with this category if you have not finished 
 msgstr "No puede crear un nuevo plan con esta categoría si no ha terminado uno iniciado."
 
 #. module: mrp_production_plan
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:434
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:446
 #, python-format
 msgid "You cannot remove a line that has been programmed, you need to cancel the Manufacturing Order"
 msgstr "No puede eliminar una línea que ha sido programada, necesita cancelar la orden de fabricación"
