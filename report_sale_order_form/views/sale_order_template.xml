@@ -53,6 +53,16 @@
                 </div><br/>
                 <div class="row">
                     <div class="col">
+                        <t t-set="picking_type" t-value="0"/>
+                        <t t-set="description_supp" t-value="''"/>
+                        <t t-if="doc.picking_ids"> 
+                            <t t-foreach="doc.picking_ids" t-as="pickings">
+                                <t t-if="pickings.picking_type_id.code == 'internal' and pickings != 'cancel'">
+                                    <t t-set="picking_type" t-value="picking_type + 1"/>
+                                    <t t-set="description_supp" t-value="pickings.description_supp"/>
+                                </t>
+                            </t>
+                        </t>
                         <table class="table table-sm table-bordered">
                             <thead>
                                 <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
@@ -75,14 +85,14 @@
                                     <th><strong>Remission Date</strong></th>
                                     <th><strong>Contact</strong></th>
                                     <th><strong>Conditions</strong></th>
-                                    <t t-if="doc.picking_ids and doc.picking_ids.picking_type_id.code == 'internal'"><th><strong>Description supplier</strong></th></t>
+                                    <t t-if="picking_type != 0"><th><strong>Description supplier</strong></th></t>
                                 </tr>
                             </thead>
                             <tr style="background-color: #FFFFFF; font-style: normal;">
                                 <th><span t-field="doc.confirmation_date"/></th>
                                 <th><span t-esc="doc.partner_id.contact_address"/></th>
                                 <th><span t-field="doc.payment_term_id"/></th>
-                                <t t-if="doc.picking_ids and doc.picking_ids.picking_type_id.code == 'internal'"><th><span t-field="o.description_supp"/></th></t>
+                                <t t-if="picking_type != 0"><th><span t-esc="description_supp"/></th></t>
                             </tr>
                         </table>
                     </div>
