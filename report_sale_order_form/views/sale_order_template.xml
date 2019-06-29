@@ -74,7 +74,7 @@
                             </thead>
                             <tr style="background-color: #FFFFFF; font-style: normal;">
                                 <th><span t-esc="doc.partner_id.ref"/></th>
-                                <th><span t-field="doc.name"/></th>
+                                <th><span t-field="doc.client_order_ref"/></th>
                                 <th><span t-esc="doc.user_id.name"/></th>
                                 <th><span t-field="doc.confirmation_date"/></th>
                             </tr>
@@ -83,6 +83,7 @@
                             <thead>
                                 <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
                                     <th><strong>Remission Date</strong></th>
+                                    <th><strong>Currency</strong></th>
                                     <th><strong>Contact</strong></th>
                                     <th><strong>Conditions</strong></th>
                                     <t t-if="picking_type != 0"><th><strong>Description supplier</strong></th></t>
@@ -90,6 +91,7 @@
                             </thead>
                             <tr style="background-color: #FFFFFF; font-style: normal;">
                                 <th><span t-field="doc.confirmation_date"/></th>
+                                <th><span t-esc="doc.pricelist_id.currency_id.name"/></th>
                                 <th><span t-esc="doc.partner_id.contact_address"/></th>
                                 <th><span t-field="doc.payment_term_id"/></th>
                                 <t t-if="picking_type != 0"><th><span t-esc="description_supp"/></th></t>
