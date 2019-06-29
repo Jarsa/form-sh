@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_sale_order_form
+#   * report_sale_order_form
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 18:57+0000\n"
-"PO-Revision-Date: 2019-03-08 18:57+0000\n"
+"POT-Creation-Date: 2019-06-29 12:40+0000\n"
+"PO-Revision-Date: 2019-06-29 12:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -37,6 +37,11 @@ msgstr "<strong>Contacto</strong>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
+msgid "<strong>Currency</strong>"
+msgstr "<strong>Moneda</strong>"
+
+#. module: report_sale_order_form
+#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<strong>Description supplier</strong>"
 msgstr "<strong>Descripción del proveedor</strong>"
 
@@ -58,7 +63,7 @@ msgstr "<strong>Pedido del cliente</strong>"
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<strong>Partner code</strong>"
-msgstr "<strong>Clave de cliente</strong>"
+msgstr "<strong>Clave del cliente</strong>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
@@ -78,7 +83,7 @@ msgstr "<strong>Fecha planificada</strong>"
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<strong>Shipping address:</strong>"
-msgstr "<strong>Dirección de almacén:</strong>"
+msgstr "<strong>Dirección de Envío</strong>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
@@ -98,7 +103,7 @@ msgstr "<strong>Nombre del vendedor</strong>"
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "Code"
-msgstr "Clave"
+msgstr "Código"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
@@ -118,7 +123,7 @@ msgstr "Dirección de facturación:"
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "Invoicing and shipping address:"
-msgstr "Dirección de facturación y entrega:"
+msgstr "Dirección de facturación y de envío:"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
@@ -128,12 +133,12 @@ msgstr "Cantidad"
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "Receipt"
-msgstr "Recibió"
+msgstr "Recepción"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "Remission"
-msgstr "REMISIÓN"
+msgstr "Remisión"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
