@@ -6,19 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-06 23:05+0000\n"
-"PO-Revision-Date: 2019-03-06 23:05+0000\n"
+"POT-Creation-Date: 2019-07-01 21:22+0000\n"
+"PO-Revision-Date: 2019-07-01 21:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "&amp;nbsp;&amp;nbsp;&amp;nbsp;"
-msgstr ""
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -31,6 +26,11 @@ msgid "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</s
 "                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
 msgstr "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Importe</span>\n"
 "                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Precio Total</span>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<span>Remission:</span>"
+msgstr "<span>Remisión:</span>
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -139,8 +139,43 @@ msgstr ""
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Comercial:</strong>"
-msgstr "<strong>Agente:</strong>"
+msgid "<strong style=\"margin-right:14px;\">CFDI Usage: </strong>"
+msgstr "<strong style=\"margin-right:14px;\">Uso de CFDI: </strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Due Date: </strong>"
+msgstr "<strong style=\"margin-right:14px;\">Fecha de vencimiento: </strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Invoice Date: </strong>"
+msgstr "<strong style=\"margin-right:14px;\">Fecha factura: </strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Partner order: </strong>"
+msgstr "<strong style=\"margin-right:14px;\">Orden de compra: </strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Payment Method:</strong>"
+msgstr "<strong style=\"margin-right:14px;\">Método de pago:</strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Payment Way: </strong>"
+msgstr "<strong style=\"margin-right:14px;\">Forma de pago: </strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Payment conditions:</strong>"
+msgstr "<strong style=\"margin-right:14px;\">Condiciones de pago:</strong>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<strong style=\"margin-right:14px;\">Rate: </strong>"
+msgstr "<strong style=\"margin-right:14px;\">Tipo de cambio: </strong>
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -149,43 +184,13 @@ msgstr "<strong>Entregar a: </strong><br/>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Due Date:</strong>"
-msgstr "<strong>Fecha de vencimiento:</strong>"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Invoice Date:</strong>"
-msgstr "<strong>Fecha factura:</strong>"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<strong>Invoiced to:</strong><br/>"
 msgstr "<strong>Facturado a:</strong><br/>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Partner order:</strong>"
-msgstr "<strong>Orden de compra:</strong>"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Payment Method:</strong>"
-msgstr "<strong>Método de Pago:</strong>"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Payment Way: </strong>"
-msgstr "<strong>Forma de Pago: </strong>"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<strong>Picking:</strong>"
 msgstr "<strong>Almacén:</strong>"
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Rate:</strong>"
-msgstr "<strong>Tipo de cambio:</strong>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -201,11 +206,6 @@ msgstr "<strong>Este documento es una representación impresa de un CFDI</strong
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<strong>Total</strong>"
 msgstr ""
-
-#. module: report_acount_invoice_form
-#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
-msgid "<strong>Usage: </strong>"
-msgstr "<strong>Uso: </strong>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -246,7 +246,7 @@ msgstr "Factura de proveedor"
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "Vendor Credit Note"
-msgstr "Nota de crédito de proveedor"
+msgstr "Factura rectificativa de proveedor"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit

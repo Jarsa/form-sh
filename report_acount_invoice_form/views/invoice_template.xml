@@ -10,11 +10,7 @@
                 <t t-set="tfd" t-value="o.l10n_mx_edi_get_tfd_etree(xml)"/>
                 <t t-set="tfd_original_string" t-value="o._get_l10n_mx_edi_cadena()"/>
             </t>
-            <div class="page">                
-                <div class="pull-left">
-                    <strong>Comercial:</strong>
-                    <span t-field="o.user_id"/><br/><br/>
-                </div>
+            <div class="page">
                 <div class="pull-right">
                     <h4>
                         <span t-if="o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">Invoice</span>
@@ -36,56 +32,84 @@
                 </t>
                 <div class="row">
                     <div class="col-6">
+                        <address/>
                         <strong>Invoiced to:</strong><br/>
-                        <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                        <span t-field="o.partner_id"/><br/>
+                        <span t-esc="o.partner_id.street_name + ' '"/>
+                        <span t-field="o.partner_id.street_number"/><br/>
+                        <span t-field="o.partner_id.street2"/>
+                        <span t-if="o.partner_id.l10n_mx_edi_colony" t-field="o.partner_id.l10n_mx_edi_colony"/>
+                        <span t-if="o.partner_id.l10n_mx_edi_locality" t-field="o.partner_id.l10n_mx_edi_locality"><br/></span>
+                        <span t-esc="'C.P.' + o.partner_id.zip"/><br/>
+                        <span t-field="o.partner_id.city"/>
+                        <span t-field="o.partner_id.state_id.name"/><br/>
+                        <span t-field="o.partner_id.country_id"/>
                         <t t-if="o.l10n_mx_edi_cfdi_uuid">
                             <span t-if="o.company_id.vat != o.l10n_mx_edi_cfdi_supplier_rfc">XML VAT: <span t-esc="o.l10n_mx_edi_cfdi_supplier_rfc"></span></span>
                         </t>
                     </div>
                     <div class="col-6">
                         <strong>Delivered to: </strong><br/>
-                        <address t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                        <span t-field="o.partner_id"/><br/>
+                        <span t-esc="o.partner_id.street_name + ' '"/>
+                        <span t-field="o.partner_id.street_number"/><br/>
+                        <span t-field="o.partner_id.street2"/>
+                        <span t-if="o.partner_id.l10n_mx_edi_colony" t-field="o.partner_id.l10n_mx_edi_colony"/>
+                        <span t-if="o.partner_id.l10n_mx_edi_locality" t-field="o.partner_id.l10n_mx_edi_locality"><br/></span>
+                        <span t-esc="'C.P.' + o.partner_id.zip"/><br/>
+                        <span t-field="o.partner_id.city"/>
+                        <span t-field="o.partner_id.state_id.name"/><br/>
+                        <span t-field="o.partner_id.country_id"/>
                     </div>
                 </div>
-                <div id="informations" class="row mt32 mb32">
-                    <div class="col-auto mw-100 mb-2" t-if="o.date_invoice" name="invoice_date">
-                        <strong>Invoice Date:</strong>
-                        <p class="m-0" t-field="o.date_invoice"/>
-                    </div>
-                    <div class="col-auto mw-100 mb-2" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" name="due_date">
-                        <strong>Due Date:</strong>
-                        <p class="m-0" t-field="o.date_due"/>
-                    </div>
-                    <div class="col-auto mw-100 mb-2" t-if="o.name" name="name">
-                        <strong>Partner order:</strong>
-                        <p class="m-0" t-field="o.name"/>
-                    </div>
-                    <div name="reference" class="col-auto mw-100 mb-2">
-                        <strong>Rate:</strong>
-                        <p class="m-0" t-esc="o.get_rate()"/>
-                    </div>
-                    <t t-if="xml.Receptor.get('UsoCFDI', False)">
-                        <t t-set="usage" t-value="xml.Receptor.get('UsoCFDI')"/>
-                        <div name="usage" class="col-auto o_grid_layout col-auto">
-                            <strong>Usage: </strong>
-                            <p><span t-esc="usage"/> - <span t-field="o.l10n_mx_edi_usage"/>&amp;nbsp;&amp;nbsp;&amp;nbsp;</p>
-                        </div>
-                    </t>
-                    <t t-if="o.l10n_mx_edi_payment_method_id">
-                        <div class="col-auto o_grid_layout col-auto">
-                            <strong>Payment Way: </strong>
-                            <p t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"/>
-                        </div>
-                        <div class="col-auto o_grid_layout col-auto">
-                            <strong>Payment Method:</strong>
-                            <p t-esc="xml.get('formaDePago', xml.get('MetodoPago'))"/>
-                        </div>
-                    </t>
+                <br/>
+                <table style="border: none; font-size: 10px;">
+                    <tr>
+                        <td t-if="o.date_invoice" style="border: none;"><strong style="margin-right:14px;">Invoice Date: </strong></td>
+                        <td t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" style="border: none;"><strong style="margin-right:14px;">Due Date: </strong></td>
+                        <td t-if="o.name" style="border: none;"><strong style="margin-right:14px;">Partner order: </strong></td>
+                        <td t-if="o.currency_id.name == 'USD'" style="border: none;"><strong style="margin-right:14px;">Rate: </strong></td>
+                        <td t-if="xml.Receptor.get('UsoCFDI', False)" style="border: none;"><strong style="margin-right:14px;">CFDI Usage: </strong></td>
+                        <td t-if="o.l10n_mx_edi_payment_method_id" style="border: none;"><strong style="margin-right:14px;">Payment Way: </strong></td>
+                        <td t-if="xml.get('formaDePago', xml.get('MetodoPago'))" style="border: none;  background-color: white;"><strong style="margin-right:14px;">Payment Method:</strong></td>
+                        <td t-if="o.payment_term_id.name" style="border: none; background-color: white;"><strong style="margin-right:14px;">Payment conditions:</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;" t-if="o.date_invoice" >
+                            <span t-field="o.date_invoice"/>
+                        </td>
+                        <td style="border: none;" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">
+                            <span t-field="o.date_due"/>
+                        </td>
+                        <td style="border: none;" t-if="o.name">
+                            <span t-field="o.name"/>
+                        </td>
+                        <td style="border: none;" t-if="o.currency_id.name == 'USD'">
+                            <p t-esc="'%.2f' % (float(o.get_rate()))"/>
+                        </td>
+                        <t t-if="xml.Receptor.get('UsoCFDI', False)">
+                            <t t-set="usage" t-value="xml.Receptor.get('UsoCFDI')"/>
+                            <td style="border: none;">
+                                <span t-esc="usage"/>
+                            </td>
+                        </t>
+                        <td t-if="o.l10n_mx_edi_payment_method_id" style="border: none;"><p t-esc="o.l10n_mx_edi_payment_method_id.code"/>
+                        </td>
+                        <td t-if="xml.get('formaDePago', xml.get('MetodoPago'))" style="border: none;  background-color: white;">
+                            <span t-esc="xml.get('formaDePago', xml.get('MetodoPago'))"/>
+                        </td>
+                        <td t-if="o.payment_term_id.name" style="border: none;  background-color: white;">
+                            <span t-esc="o.payment_term_id.name"/>
+                        </td>
+                    </tr>
+                </table>
+                <div id="informations">
+                    <div  name="reference"/>
                 </div>
                 <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
                 <table class="table table-sm o_main_table" name="invoice_line_table">
                         <thead  style="background-color: #F36B21; color: white;">
-                            <tr>
+                            <tr style="font-size: 10px;">
                                 <t t-set="colspan" t-value="6"/>
                                 <th class="text-left"><span>CODE</span></th>
                                 <th class="text-left"><span>Description</span></th>
@@ -117,7 +141,7 @@
                                 <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
                                 <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
 
-                                <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <tr style="font-size: 10px;" t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                                     <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                         <td><span t-field="line.product_id.default_code"/></td>
                                         <td name="account_invoice_line_name"><span t-field="line.name"/></td>
@@ -172,8 +196,8 @@
                 <div class="clearfix">
                         <div id="total" class="row">
                             <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
-                                <table class="table table-sm">
-                                    <tr class="border-black o_subtotal" style="">
+                                <table style="font-size: 10px;" class="table table-sm">
+                                    <tr class="border-black o_subtotal">
                                         <td><strong>Subtotal</strong></td>
                                         <td class="text-right">
                                             <span t-field="o.amount_untaxed"/>
@@ -217,6 +241,9 @@
                 </t>
                 <p t-if="o.comment" name="comment">
                     <span t-field="o.comment"/>
+                </p>
+                <p t-if="o.origin">
+                    <span>Remission:</span><span t-field="o.origin"/>
                 </p>
                 <t t-if="o.l10n_mx_edi_cfdi_uuid">
                     <div class="row" id='complement'>
@@ -273,6 +300,27 @@
                     </div>
                 </t>
             </div>
+        </xpath>
+    </template>
+    <template id="external_layout_boxed_inherit_form" inherit_id="web.external_layout_boxed">
+        <xpath expr="div[1]/div[1]/div[1]/div[2]" position="replace">
+             <div class="col-6 text-right mb4">
+                    <h4 class="mt0" t-field="company.report_header"/>
+                    <div class="mb4" style="font-size:10px;">
+                        <strong style="font-size:11px;" t-field="company.name"/><br/>
+                        <span t-esc="'TEL '+ company.partner_id.phone"/><br/>
+                        <span t-esc="'RFC '+ company.partner_id.vat"/><br/>
+                        <span t-esc="company.street_name + ' '"/>
+                        <span t-field="company.street_number"/><br/>
+                        <span t-field="company.street2"/>
+                        <span t-if="company.l10n_mx_edi_colony" t-field="company.l10n_mx_edi_colony"/>
+                        <span t-if="company.l10n_mx_edi_locality" t-field="company.l10n_mx_edi_locality"><br/></span>
+                        <span t-esc="'C.P.' + company.zip"/><br/>
+                        <span t-field="company.city"/>
+                        <span t-field="company.state_id.name"/><br/>
+                        <span t-field="company.country_id"/>
+                    </div>
+                </div>
         </xpath>
     </template>
 </odoo>
