@@ -137,6 +137,7 @@ class MrpProductionPlan(models.Model):
                 ('date_planned_finished', '!=', False),
                 ('plan_workcenter_id.plan_id', '=', self.id),
                 ('state', 'in', ('ready', 'pending', 'progress')),
+                ('id', 'in', workorders.ids),
                 ('date_planned_finished', '>=',
                     start_date.strftime(
                         tools.DEFAULT_SERVER_DATETIME_FORMAT))],
@@ -263,13 +264,14 @@ class MrpProductionPlan(models.Model):
         for workcenter in workcenters:
             workorders = self.env['mrp.workorder'].search([
                 ('workcenter_id', '=', workcenter.id),
-                ('production_id', 'in', self.production_ids.ids)])
+                ('production_id', 'in', self.production_ids.ids),
+                ('plan_workcenter_id', '=', False)])
             old_workcenter = mrp_plan_wc_obj.search([
                 ('workcenter_id', '=', workcenter.id),
                 ('plan_id', '=', self.id)])
             if old_workcenter:
                 old_workcenter.write({
-                    'line_ids': [(6, 0, workorders.ids)]
+                    'line_ids': [(4, 0, workorders.ids)]
                 })
             else:
                 mrp_plan_wc_obj.create({
