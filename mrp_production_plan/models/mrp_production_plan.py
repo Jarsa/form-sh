@@ -200,7 +200,8 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def _sort_workorders_by_sequence(self):
         for wc in self.workcenter_line_ids:
-            workorders = wc.line_ids.sorted('sequence')
+            workorders = wc.line_ids.filtered(
+                lambda l: l.state in ['pending', 'ready']).sorted('sequence')
             self._plan_workorders(workorders)
 
     @api.model
