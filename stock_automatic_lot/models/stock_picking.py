@@ -9,7 +9,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def _get_lot_sequence(self, active_model):
-        if active_model == 'stock.picking' or active_model == 'purchase.order':
+        if active_model in ['stock.picking', 'purchase.order']:
             lot_sequence = self.env.ref(
                 'stock_automatic_lot.stock_production_lot_in_data')
         elif active_model == 'mrp.production':

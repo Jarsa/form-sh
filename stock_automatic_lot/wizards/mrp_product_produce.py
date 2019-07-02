@@ -1,8 +1,7 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import _, api, models
-from odoo.exceptions import UserError
+from odoo import api, models
 
 
 class MrpProductProduce(models.TransientModel):

@@ -8,4 +8,4 @@ class MrpRouting(models.Model):
     _inherit = 'mrp.routing'
 
     product_id = fields.Many2one(
-        'product.product', required=True, domain=[('bom_ids', '!=', False)])
+        'product.product', domain=[('bom_ids', '!=', False)])
