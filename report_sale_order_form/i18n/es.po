@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * report_sale_order_form
+#	* report_sale_order_form
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 12:40+0000\n"
-"PO-Revision-Date: 2019-06-29 12:40+0000\n"
+"POT-Creation-Date: 2019-07-02 15:38+0000\n"
+"PO-Revision-Date: 2019-07-02 15:38+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,22 +18,12 @@ msgstr ""
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<span><strong>Costumer address:</strong></span><br/>"
-msgstr "<span><strong>Direccion del Cliente:</strong></span><br/>"
+msgstr "<span><strong>Dirección de entrega:</strong></span><br/>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<span><strong>Sold to:</strong></span><br/>"
 msgstr "<span><strong>Vendido a:</strong></span><br/>"
-
-#. module: report_sale_order_form
-#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
-msgid "<strong>Conditions</strong>"
-msgstr "<strong>Condiciones</strong>"
-
-#. module: report_sale_order_form
-#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
-msgid "<strong>Contact</strong>"
-msgstr "<strong>Contacto</strong>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
@@ -77,11 +67,6 @@ msgstr "<strong>Folio de remisión:</strong>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
-msgid "<strong>Scheduled Date</strong>"
-msgstr "<strong>Fecha planificada</strong>"
-
-#. module: report_sale_order_form
-#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<strong>Shipping address:</strong>"
 msgstr "<strong>Dirección de Envío</strong>"
 
@@ -94,11 +79,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "<strong>Total</strong>"
 msgstr ""
-
-#. module: report_sale_order_form
-#: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
-msgid "<strong>Vendor name</strong>"
-msgstr "<strong>Nombre del vendedor</strong>"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form

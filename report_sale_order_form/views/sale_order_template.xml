@@ -20,8 +20,16 @@
                     <div class="col-6">
                         <span><strong>Sold to:</strong></span><br/>
                         <div t-if="doc.partner_id" name="partner_header">
-                            <div t-field="doc.partner_id"
-                               t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                            <span t-field="doc.partner_id"/><br/>
+                            <span t-esc="doc.partner_id.street_name + ' '"/>
+                            <span t-field="doc.partner_id.street_number"/><br/>
+                            <span t-field="doc.partner_id.street2"/>
+                            <span t-if="doc.partner_id.l10n_mx_edi_colony" t-field="doc.partner_id.l10n_mx_edi_colony"/>
+                            <span t-if="doc.partner_id.l10n_mx_edi_locality" t-field="doc.partner_id.l10n_mx_edi_locality"><br/></span>
+                            <span t-esc="'C.P.' + doc.partner_id.zip"/><br/>
+                            <span t-field="doc.partner_id.city"/>
+                            <span t-field="doc.partner_id.state_id.name"/><br/>
+                            <span t-field="doc.partner_id.country_id"/>
                             <p t-if="doc.sudo().partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.sudo().partner_id.vat"/></p>
                         </div>
                     </div>
@@ -29,8 +37,16 @@
                         <t t-if="doc.partner_id == doc.partner_invoice_id">
                             <span><strong>Costumer address:</strong></span><br/>
                             <div t-if="doc.partner_id" name="partner_header">
-                                <div t-field="doc.partner_id"
-                                   t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                                <span t-field="doc.partner_id"/><br/>
+                                <span t-esc="doc.partner_id.street_name + ' '"/>
+                                <span t-field="doc.partner_id.street_number"/><br/>
+                                <span t-field="doc.partner_id.street2"/>
+                                <span t-if="doc.partner_id.l10n_mx_edi_colony" t-field="doc.partner_id.l10n_mx_edi_colony"/>
+                                <span t-if="doc.partner_id.l10n_mx_edi_locality" t-field="doc.partner_id.l10n_mx_edi_locality"><br/></span>
+                                <span t-esc="'C.P.' + doc.partner_id.zip"/><br/>
+                                <span t-field="doc.partner_id.city"/>
+                                <span t-field="doc.partner_id.state_id.name"/><br/>
+                                <span t-field="doc.partner_id.country_id"/>
                                 <p t-if="doc.sudo().partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.sudo().partner_id.vat"/></p>
                             </div>
                         </t>
@@ -68,32 +84,16 @@
                                 <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
                                     <th><strong>Partner code</strong></th>
                                     <th><strong>Order partner</strong></th>
-                                    <th><strong>Vendor name</strong></th>
-                                    <th><strong>Scheduled Date</strong></th>
+                                    <th><strong>Remission Date</strong></th>
+                                    <th><strong>Currency</strong></th>
+                                    <t t-if="picking_type != 0"><th><strong>Description supplier</strong></th></t>
                                 </tr>
                             </thead>
                             <tr style="background-color: #FFFFFF; font-style: normal;">
                                 <th><span t-esc="doc.partner_id.ref"/></th>
                                 <th><span t-field="doc.client_order_ref"/></th>
-                                <th><span t-esc="doc.user_id.name"/></th>
-                                <th><span t-field="doc.confirmation_date"/></th>
-                            </tr>
-                        </table>
-                        <table class="table table-sm table-bordered">
-                            <thead>
-                                <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
-                                    <th><strong>Remission Date</strong></th>
-                                    <th><strong>Currency</strong></th>
-                                    <th><strong>Contact</strong></th>
-                                    <th><strong>Conditions</strong></th>
-                                    <t t-if="picking_type != 0"><th><strong>Description supplier</strong></th></t>
-                                </tr>
-                            </thead>
-                            <tr style="background-color: #FFFFFF; font-style: normal;">
                                 <th><span t-field="doc.confirmation_date"/></th>
                                 <th><span t-esc="doc.pricelist_id.currency_id.name"/></th>
-                                <th><span t-esc="doc.partner_id.contact_address"/></th>
-                                <th><span t-field="doc.payment_term_id"/></th>
                                 <t t-if="picking_type != 0"><th><span t-esc="description_supp"/></th></t>
                             </tr>
                         </table>
@@ -124,7 +124,7 @@
                                             <span t-field="line.price_unit"/>
                                         </th>
                                         <th style="background-color: #FFFFFF; font-style: normal;" class="text-right o_price_total">
-                                            <span t-esc="line.price_unit * line.product_uom_qty"/>
+                                            <span t-esc="'%.2f' % (float(line.price_unit * line.product_uom_qty))"/>
                                         </th>
                                     </t>
                                     <t t-if="line.display_type == 'line_section'">
@@ -148,7 +148,7 @@
                                     <tr class="border-black">
                                         <td><strong>Subtotal</strong></td>
                                         <td class="text-right">
-                                            <span t-field="doc.amount_untaxed" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                            <span t-esc="doc.amount_untaxed" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -161,7 +161,7 @@
                                     <tr class="border-black">
                                         <td style="background-color: #F36B21; color: white;"><strong>Total</strong></td>
                                         <td style="background-color: #F36B21; color: white;" class="text-right">
-                                            <span t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                            <span t-esc="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                         </td>
                                     </tr>
                                 </table>
