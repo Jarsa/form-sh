@@ -4,5 +4,6 @@
 from . import mrp_production
 from . import mrp_production_plan
 from . import mrp_production_request
+from . import mrp_routing
 from . import mrp_workorder
 from . import product_category

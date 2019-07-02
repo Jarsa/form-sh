@@ -19,5 +19,6 @@
         'views/mrp_production_plan.xml',
         'views/product_category_view.xml',
         'data/ir_sequence.xml',
+        'views/mrp_routing_view.xml',
     ],
 }
