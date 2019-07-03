@@ -107,16 +107,16 @@
                                 <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
                                     <th class="text-right">Quantity</th>
                                     <th class="text-left">Unit</th>
-                                    <th class="text-left">Code</th>
+                                    <th class="text-left">Key</th>
                                     <th class="text-left">Description</th>
                                     <th class="text-right">Unit Price</th>
-                                    <th class="text-right">This remission</th>
+                                    <th class="text-right">Import</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr t-foreach="doc.order_line" t-as="line">
                                     <t t-if="not line.display_type">
-                                        <th style="background-color: #FFFFFF; font-style: normal;" class="text-right"><span t-field="line.product_uom_qty"/></th>
+                                        <th style="background-color: #FFFFFF; font-style: normal;" class="text-right"><span t-esc="int(line.product_uom_qty)"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.product_uom"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.product_id.default_code"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.name"/></th>
@@ -151,13 +151,16 @@
                                             <span t-esc="doc.amount_untaxed" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Taxes</td>
-                                        <td class="text-right">
-                                            <span t-field="doc.amount_tax"
-                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                        </td>
-                                    </tr>
+                                    <t t-foreach="doc.get_tax()" t-as="taxes">
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong class="text-right" t-esc="taxes"/>
+                                            </td>
+                                            <td class="text-right o_price_total">
+                                                <span t-esc="taxes_value" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
                                     <tr class="border-black">
                                         <td style="background-color: #F36B21; color: white;"><strong>Total</strong></td>
                                         <td style="background-color: #F36B21; color: white;" class="text-right">

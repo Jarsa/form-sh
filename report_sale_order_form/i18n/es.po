@@ -82,8 +82,8 @@ msgstr ""
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
-msgid "Code"
-msgstr "Código"
+msgid "Key"
+msgstr "Clave"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
@@ -127,8 +127,8 @@ msgstr "Impuestos"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
-msgid "This remission"
-msgstr "Esta remisión"
+msgid "Import"
+msgstr "Importe"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
