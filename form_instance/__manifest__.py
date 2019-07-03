@@ -76,5 +76,6 @@
         'views/mrp_production_request_view.xml',
         'views/mrp_production_plan_view.xml',
         'views/mrp_production_view.xml',
+        'views/res_partner_view.xml',
     ],
 }
