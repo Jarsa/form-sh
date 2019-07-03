@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrp_production_bom_alternative_wizard_form" model="ir.ui.view">
+        <field name="name">view.mrp.production.bom.alternative.wizard.form</field>
+        <field name="model">mrp.production.bom.alternative.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Select BoM to change in the MO">
+                        <field name="product_tmpl_id" invisible="1"/>
+                        <field name="bom_id" domain="[('product_tmpl_id', '=', product_tmpl_id)]"/>
+                    </group>
+                    <group string="Components">
+                        <field name="line_ids" nolabel="1">
+                            <tree>
+                                <field name="product_id"/>
+                                <field name="product_qty"/>
+                                <field name="uom_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="change_bom" string='Confirm' type="object" class="oe_highlight" attrs="{'invisible': [('line_ids', '=', [])]}"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </sheet>
+           </form>
+        </field>
+    </record>
+    <record id="action_mrp_production_bom_alternative_wizard" model="ir.actions.act_window">
+        <field name="name">Change Alternative BoM</field>
+        <field name="res_model">mrp.production.bom.alternative.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

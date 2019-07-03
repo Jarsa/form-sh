@@ -2,10 +2,10 @@
    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
    :alt: License: LGPL-3
 
-MRP Product Alternative
-=======================
+MRP Production BoM Alternative
+==============================
 
-This module allows you to select an alternative product when a product wich is part of a BoM has no stock available
+This module allows you to select an alternative BoM when a product wich is part of a BoM has no stock available
 
 Credits
 =======

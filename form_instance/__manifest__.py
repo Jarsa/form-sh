@@ -45,7 +45,7 @@
         'l10n_mx_edi_bank',
         'l10n_mx_edi_reports',
         'sale_request',
-        'mrp_product_alternative',
+        'mrp_production_bom_alternative',
         'mrp_auto_assign',
         'product_code_mandatory',
         'product_code_unique',

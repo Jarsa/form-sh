@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="after">
                 <div class="alert alert-warning" role="alert" style="margin-bottom:0px;" attrs="{'invisible': [('has_lines_wo_stock', '=', False)]}">
-                    <strong><i class="fa fa-warning"/>Warning!</strong> There are some products without stock available. Click<strong><button name="%(action_product_alternative_wizard)d" type="action" string="here" style="background:none! important; color:inherit; border:none;  font: inherit; border-bottom:1px solid #444; cursor: pointer; text-transform: lowercase;"/></strong>to change it to an alternative products.
+                    <strong><i class="fa fa-warning"/>Warning!</strong> There are some products without stock available. Click<strong><button name="%(action_mrp_production_bom_alternative_wizard)d" type="action" string="here" style="background:none! important; color:inherit; border:none;  font: inherit; border-bottom:1px solid #444; cursor: pointer; text-transform: lowercase;"/></strong>to change it to an alternative Bill of Materials.
                 </div>
                 <field name="has_lines_wo_stock" invisible="1"/>
             </xpath>
