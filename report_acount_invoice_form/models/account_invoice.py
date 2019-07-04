@@ -36,6 +36,4 @@ class AccountInvoice(models.Model):
                         taxes_names[tax.description].append(value)
             for k, v in taxes_names.items():
                 dict_taxes[k] = sum(v)
-        import ipdb; ipdb.set_trace()
         return dict_taxes
-

@@ -65,12 +65,12 @@
                 <br/>
                 <table style="border: none; font-size: 10px;">
                     <tr>
-                        <td t-if="o.date_invoice" style="border: none;"><strong style="margin-right:14px;">Invoice Date: </strong></td>
-                        <td t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" style="border: none;"><strong style="margin-right:14px;">Due Date: </strong></td>
+                        <td t-if="o.date_invoice" style="border: none;"><strong style="margin-right:14px;">Invoice Date: </strong><strong t-esc="' '"/></td>
+                        <td t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" style="border: none; text-align: center;"><strong style="margin-right:14px;">Due Date: </strong></td>
                         <td t-if="o.name" style="border: none;"><strong style="margin-right:14px;">Partner order: </strong></td>
-                        <td t-if="o.currency_id.name == 'USD'" style="border: none;"><strong style="margin-right:14px;">Rate: </strong></td>
-                        <td t-if="xml.Receptor.get('UsoCFDI', False)" style="border: none;"><strong style="margin-right:14px;">CFDI Usage: </strong></td>
-                        <td t-if="o.l10n_mx_edi_payment_method_id" style="border: none;"><strong style="margin-right:14px;">Payment Way: </strong></td>
+                        <td t-if="o.currency_id.name == 'USD'" style="border: none;"><strong style="margin-right:14px;">Rate: </strong> <strong t-esc="' '"/>&amp;nbsp;</td>
+                        <td t-if="xml.Receptor.get('UsoCFDI', False)" style="border: none; text-align: center;"><strong style="margin-right:14px;">CFDI Usage: </strong>&amp;nbsp;&amp;nbsp;</td>
+                        <td t-if="o.l10n_mx_edi_payment_method_id" style="border: none; text-align: center;"><strong style="margin-right:14px;">Payment Way: </strong>&amp;nbsp;</td>
                         <td t-if="xml.get('formaDePago', xml.get('MetodoPago'))" style="border: none;  background-color: white;"><strong style="margin-right:14px;">Payment Method:</strong></td>
                         <td t-if="o.payment_term_id.name" style="border: none; background-color: white;"><strong style="margin-right:14px;">Payment conditions:</strong></td>
                         <td style="border: none; background-color: white;"><strong>Fiscal Regime:</strong></td>
@@ -79,7 +79,7 @@
                         <td style="border: none;" t-if="o.date_invoice" >
                             <span t-field="o.date_invoice"/>
                         </td>
-                        <td style="border: none;" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">
+                        <td style="border: none; text-align: center;" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">
                             <span t-field="o.date_due"/>
                         </td>
                         <td style="border: none;" t-if="o.name">
@@ -91,7 +91,7 @@
                         <t t-if="xml.Receptor.get('UsoCFDI', False)">
                             <t t-set="usage" t-value="xml.Receptor.get('UsoCFDI')"/>
                             <td style="border: none;">
-                                <p><span t-esc="usage"/> - <span t-field="o.l10n_mx_edi_usage"/></p>
+                                <p><span t-esc="' ' + usage"/> - <span t-field="o.l10n_mx_edi_usage"/></p>
                             </td>
                         </t>
                         <td class="text-center" t-if="o.l10n_mx_edi_payment_method_id" style="border: none;"><p t-esc="o.l10n_mx_edi_payment_method_id.code"/>
@@ -102,7 +102,7 @@
                         <td t-if="o.payment_term_id.name" style="border: none;  background-color: white;">
                             <span t-esc="o.payment_term_id.name"/>
                         </td>                        
-                        <td style="border: none;  background-color: white;"><span t-esc="xml.Emisor.get('RegimenFiscal', '')"/></td>
+                        <td style="border: none;  background-color: white;"><span t-field="o.company_id.partner_id.property_account_position_id"/></td>
                     </tr>
                 </table>
                 <div id="informations">
@@ -207,7 +207,7 @@
                                                 <strong class="text-right" t-esc="taxes"/>
                                             </td>
                                             <td class="text-right o_price_total">
-                                                <span t-esc="taxes_value" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                                <span t-esc="taxes_value" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                             </td>
                                         </tr>
                                     </t>
