@@ -37,12 +37,14 @@ class StockQuant(models.Model):
     @api.depends('quantity')
     def _compute_equivalent_quantity(self):
         for rec in self:
-            rec.equivalent_quantity = (
-                rec.quantity / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_quantity = (
+                    rec.quantity / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('reserved_quantity')
     def _compute_equivalent_reserved_quantity(self):
         for rec in self:
-            rec.equivalent_reserved_quantity = (
-                rec.reserved_quantity / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_reserved_quantity = (
+                    rec.reserved_quantity / rec.product_id.equivalent_factor)

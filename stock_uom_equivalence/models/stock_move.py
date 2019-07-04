@@ -52,29 +52,33 @@ class StockMove(models.Model):
     @api.depends('product_qty')
     def _compute_equivalent_product_qty(self):
         for rec in self:
-            rec.product_qty = (
-                rec.product_qty / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.product_qty = (
+                    rec.product_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('product_uom_qty')
     def _compute_equivalent_product_uom_qty(self):
         for rec in self:
-            rec.equivalent_product_uom_qty = (
-                rec.product_uom_qty / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_product_uom_qty = (
+                    rec.product_uom_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('reserved_availability')
     def _compute_equivalent_reserved_availability(self):
         for rec in self:
-            rec.equivalent_reserved_availability = (
-                rec.reserved_availability / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_reserved_availability = (
+                    rec.reserved_availability / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('quantity_done')
     def _compute_equivalent_quantity_done(self):
         for rec in self:
-            rec.equivalent_quantity_done = (
-                rec.quantity_done / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_quantity_done = (
+                    rec.quantity_done / rec.product_id.equivalent_factor)
 
 
 class StockMoveLine(models.Model):
@@ -116,19 +120,22 @@ class StockMoveLine(models.Model):
     @api.depends('product_qty')
     def _compute_equivalent_product_qty(self):
         for rec in self:
-            rec.product_qty = (
-                rec.product_qty / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.product_qty = (
+                    rec.product_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('product_uom_qty')
     def _compute_equivalent_product_uom_qty(self):
         for rec in self:
-            rec.equivalent_product_uom_qty = (
-                rec.product_uom_qty / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_product_uom_qty = (
+                    rec.product_uom_qty / rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('qty_done')
     def _compute_equivalent_qty_done(self):
         for rec in self:
-            rec.equivalent_qty_done = (
-                rec.qty_done / rec.product_id.equivalent_factor)
+            if rec.product_id:
+                rec.equivalent_qty_done = (
+                    rec.qty_done / rec.product_id.equivalent_factor)
