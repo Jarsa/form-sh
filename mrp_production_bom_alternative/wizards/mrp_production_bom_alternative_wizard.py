@@ -59,9 +59,11 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         move_orig_ids = self.production_id.move_raw_ids.mapped('move_orig_ids')
         if move_orig_ids:
             move_orig_ids._action_cancel()
-            move_orig_ids.unlink()
+            move_orig_ids.mapped('picking_id').unlink()
         self.production_id.move_raw_ids._action_cancel()
         self.production_id.move_raw_ids.unlink()
+        self.production_id.move_finished_ids._action_cancel()
+        self.production_id.move_finished_ids.unlink()
         self.production_id._generate_moves()
 
 
