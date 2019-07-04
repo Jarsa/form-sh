@@ -65,6 +65,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.production_id.move_finished_ids._action_cancel()
         self.production_id.move_finished_ids.unlink()
         self.production_id._generate_moves()
+        self.production_id._process_picking_origin()
 
 
 class ProductAlternativeWizardLine(models.TransientModel):

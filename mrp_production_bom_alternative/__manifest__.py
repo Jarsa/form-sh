@@ -9,7 +9,11 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'depends': ['mrp', 'stock_available_unreserved'],
+    'depends': [
+        'mrp',
+        'stock_available_unreserved',
+        'stock_picking_name_reference_change',
+    ],
     'data': [
         'wizards/mrp_production_bom_alternative_wizard_view.xml',
         'views/mrp_production_view.xml',
