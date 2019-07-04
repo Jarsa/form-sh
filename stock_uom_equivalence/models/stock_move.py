@@ -70,7 +70,8 @@ class StockMove(models.Model):
         for rec in self:
             if rec.product_id:
                 rec.equivalent_reserved_availability = (
-                    rec.reserved_availability / rec.product_id.equivalent_factor)
+                    rec.reserved_availability /
+                    rec.product_id.equivalent_factor)
 
     @api.multi
     @api.depends('quantity_done')
