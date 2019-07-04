@@ -21,6 +21,6 @@ class MrpProduction(models.Model):
             units = '%s %s' % (rec.product_qty, rec.product_uom_id.name)
             if rec.product_tmpl_id.description_purchase:
                 product_name = rec.product_tmpl_id.description_purchase
-            for rec in rec.picking_ids:
-                rec.origin = '%s - [%s] %s - %s' % (
-                    rec.origin, default_code, product_name, units)
+            for picking in rec.picking_ids:
+                picking.origin = '%s - [%s] %s - %s' % (
+                    picking.origin, default_code, product_name, units)
