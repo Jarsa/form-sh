@@ -11,6 +11,9 @@
             <xpath expr="//header/button[@name='action_invoice_draft']" position="attributes">
                 <attribute name="groups">account.group_account_invoice,form_instance.group_payable_form,form_instance.group_receivable_form</attribute>
             </xpath>
+            <xpath expr="//button[@id='account_invoice_payment_btn']" position="attributes">
+                <attribute name="groups">form_instance.group_receivable_form,account.group_account_invoice</attribute>
+            </xpath>
         </field>
     </record>
      <record model="ir.ui.view" id="view_account_invoice_inherit_form2">
