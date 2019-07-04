@@ -66,6 +66,10 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.production_id.move_finished_ids.unlink()
         self.production_id._generate_moves()
         self.production_id._process_picking_origin()
+        if self.production_id.workorder_ids:
+            self.production_id.workorder_ids.time_ids.unlink()
+            self.production_id.state = 'confirmed'
+            self.production_id.button_plan()
 
 
 class ProductAlternativeWizardLine(models.TransientModel):
