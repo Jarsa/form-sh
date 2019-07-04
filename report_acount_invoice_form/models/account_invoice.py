@@ -21,3 +21,21 @@ class AccountInvoice(models.Model):
             val_tc += rec.currency_id.with_context(
                 date=rec.date_invoice).rate
         return val_tc
+
+    @api.multi
+    def get_tax(self):
+        for rec in self:
+            dict_taxes = {}
+            taxes_names = {}
+            for line in rec.invoice_line_ids:
+                for tax in line.invoice_line_tax_ids:
+                    value = line.price_subtotal * (tax.amount / 100)
+                    if tax.description not in taxes_names.keys():
+                        taxes_names[tax.description] = [value]
+                    else:
+                        taxes_names[tax.description].append(value)
+            for k, v in taxes_names.items():
+                dict_taxes[k] = sum(v)
+        import ipdb; ipdb.set_trace()
+        return dict_taxes
+
