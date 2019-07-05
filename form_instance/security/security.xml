@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <record id="group_activate_cancel_form" model="res.groups">
+        <field name="name">Authorize Cancelation</field>
+        <field name="category_id" ref="base.module_category_accounting_and_finance"/>
+        <field name="comment">The user will have access to activate button cancel.</field>
+    </record>
     <record id="group_payable_form" model="res.groups">
         <field name="name">Payable</field>
         <field name="category_id" ref="base.module_category_accounting_and_finance"/>

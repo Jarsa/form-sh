@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-03 16:22+0000\n"
-"PO-Revision-Date: 2019-06-03 16:22+0000\n"
+"POT-Creation-Date: 2019-07-05 15:45+0000\n"
+"PO-Revision-Date: 2019-07-05 15:45+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,14 +26,44 @@ msgid "Are you sure you don't want to create a backorder?"
 msgstr "¿Está seguro de que no desea crear un pedido en espera?"
 
 #. module: form_instance
+#: model:res.groups,name:form_instance.group_activate_cancel_form
+msgid "Authorize Cancelation"
+msgstr "Autorizar Cancelación"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_account_invoice_inherit_form
+msgid "Authorize cancelation"
+msgstr "Autorizar Cancelación"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_invoice__authorized
+msgid "Authorized"
+msgstr "Autorizado"
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_send_production_to_scrap
 msgid "Can send production to scrap"
 msgstr "Puede desechar producción"
 
 #. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_account_invoice_inherit_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_account_invoice_inherit_form
+msgid "Cancel cancelation"
+msgstr "Cancelar autorización"
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_account_followup_report
 msgid "Follow-up Report"
 msgstr "Reporte de Seguimiento"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_edit_product_mrp_user
@@ -68,7 +98,7 @@ msgstr "Plantilla del producto"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr "Órden de producción"
+msgstr "Orden de producción"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_plan_line
@@ -95,14 +125,9 @@ msgid "Receivable"
 msgstr "Por cobrar"
 
 #. module: form_instance
-#: model_terms:ir.ui.view,arch_db:form_instance.mrp_production_custom_form
-msgid "Scrap"
-msgstr "Desechar"
-
-#. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento de Almacén"
+msgstr "Movimiento bursátil"
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_edit_product_mrp_user
@@ -113,6 +138,11 @@ msgstr "El usuario puede editar solo ciertos campos en productos"
 #: model:res.groups,comment:form_instance.group_product_creation_form
 msgid "The user will have access to Read, create and write product.product and product.template"
 msgstr "El usuario tendrá acceso a leer, crear y escribir en product.product y product.template"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_activate_cancel_form
+msgid "The user will have access to activate button cancel."
+msgstr "El usuario tendrá acceso a activar el botón de cancelar"
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_payable_form
@@ -145,4 +175,3 @@ msgstr ""
 #, python-format
 msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
-

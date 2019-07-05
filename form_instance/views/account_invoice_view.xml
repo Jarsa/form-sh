@@ -13,6 +13,11 @@
             </xpath>
             <xpath expr="//button[@id='account_invoice_payment_btn']" position="attributes">
                 <attribute name="groups">form_instance.group_receivable_form,account.group_account_invoice</attribute>
+            </xpath>            
+            <xpath expr="//header" position="inside">
+                <field name="authorized" invisible="1"/>
+                <button name="authorize_cancelation" string="Authorize cancelation" type="object" icon="fa-check-square-o" groups="form_instance.group_activate_cancel_form"  attrs="{'invisible': [('authorized', '!=', False)]}"/>
+                <button name="cancel_cancelation" string="Cancel cancelation" type="object" groups="form_instance.group_activate_cancel_form"  attrs="{'invisible': [('authorized', '!=', True)]}"/>
             </xpath>
         </field>
     </record>
@@ -23,6 +28,8 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_invoice_cancel']" position="attributes">
                 <attribute name="groups">account.group_account_invoice,form_instance.group_payable_form,form_instance.group_receivable_form</attribute>
+                <attribute name="attrs">{'invisible': [('authorized', '!=', True)]}</attribute>
+                <attribute name="states"></attribute>
             </xpath>
         </field>
     </record>
