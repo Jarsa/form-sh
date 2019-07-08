@@ -7,6 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_uom_id']" position="after">
                 <field name="date_planned_start"/>
+                <field name="mo_products_is_reserved" invisible="1"/>
+                <field name="production_id" invisible="1"/>
             </xpath>
             <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
                 <div>
@@ -14,5 +16,11 @@
                 </div>
             </xpath>
         </field>
+    </record>
+    <record id="mrp.mrp_workorder_todo" model="ir.actions.act_window">
+        <field name="domain">[('mo_products_is_reserved','=',True)]</field>
+    </record>
+    <record id="mrp.action_mrp_workorder_production_specific" model="ir.actions.act_window">
+        <field name="domain">[('production_id', '=', active_id),('mo_products_is_reserved','=',True)]</field>
     </record>
 </odoo>

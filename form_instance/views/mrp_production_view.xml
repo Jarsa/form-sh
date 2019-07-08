@@ -7,9 +7,17 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="product_supplier_name"/>
+                <field name="is_already_reserved" invisible="1"/>
             </xpath>
             <xpath expr="//header/button[@name='button_scrap']" position="attributes">
                     <attribute name="groups">form_instance.group_send_production_to_scrap</attribute>
+            </xpath>
+
+            <xpath expr="//header/button[@name='open_produce_product'][1]" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', '|', '|', '|', '|', ('is_locked', '=', False), ('check_to_done', '=', True), ('availability', 'not in', ['partially_available', 'assigned']), ('state', 'not in', ('confirmed','progress')), ('routing_id', '!=', False),('is_already_reserved','=',False)]}</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='open_produce_product'][2]" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_locked', '=', False), ('check_to_done', '=', True), ('availability', '!=', 'waiting'), ('state', 'not in', ('confirmed','progress')), ('routing_id', '!=', False),('is_already_reserved','=',False)]}</attribute>
             </xpath>
         </field>
     </record>
