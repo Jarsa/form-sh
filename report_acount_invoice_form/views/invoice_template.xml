@@ -94,10 +94,13 @@
                                 <p><span t-esc="' ' + usage"/> - <span t-field="o.l10n_mx_edi_usage"/></p>
                             </td>
                         </t>
-                        <td class="text-center" t-if="o.l10n_mx_edi_payment_method_id" style="border: none;"><p t-esc="o.l10n_mx_edi_payment_method_id.code"/>
+                        <td class="text-center" t-if="o.l10n_mx_edi_payment_method_id" style="border: none;"><p t-esc="o.l10n_mx_edi_payment_method_id.code + ' - ' + o.l10n_mx_edi_payment_method_id.name"/>
                         </td>
-                        <td t-if="xml.get('formaDePago', xml.get('MetodoPago'))" style="border: none;  background-color: white;">
-                            <span t-esc="xml.get('formaDePago', xml.get('MetodoPago'))"/>
+                        <td t-if="xml.get('formaDePago', xml.get('MetodoPago')) == 'PUE'" style="border: none;  background-color: white;">
+                            <span t-esc="xml.get('formaDePago', xml.get('MetodoPago')) + ' - ' + 'Pago en una sola exhibición'"/>
+                        </td>
+                        <td t-if="xml.get('formaDePago', xml.get('MetodoPago')) == 'PPD'" style="border: none;  background-color: white;">
+                            <span t-esc="xml.get('formaDePago', xml.get('MetodoPago')) + ' - ' + ' Pago en parcialidades o diferido'"/>
                         </td>
                         <td t-if="o.payment_term_id.name" style="border: none;  background-color: white;">
                             <span t-esc="o.payment_term_id.name"/>
