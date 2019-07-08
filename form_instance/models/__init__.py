@@ -9,3 +9,4 @@ from . import mrp_production_plan
 from . import mrp_production
 from . import account_followup_report
 from . import mrp_workorder
+from . import account_payment
