@@ -332,7 +332,7 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def button_done(self):
         undone_orders = self.production_ids.filtered(
-            lambda x: x.state != 'done')
+            lambda x: x.state not in ('cancel', 'done'))
         if undone_orders:
             for order in undone_orders:
                 order.action_cancel()
