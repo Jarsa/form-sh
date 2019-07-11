@@ -20,4 +20,19 @@
             </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="account_payment_groups_added_tree">
+        <field name="name">account.payment.groups_added.tree</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="l10n_mx_edi.view_account_payment_form_inh_l10n_mx"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='l10n_mx_edi_update_pac_status']" position="attributes">
+                <attribute name="groups">account.group_account_invoice,form_instance.group_receivable_form</attribute>
+            </xpath>
+            <xpath expr="//button[@name='l10n_mx_edi_update_sat_status']" position="attributes">
+                <attribute name="groups">account.group_account_invoice,form_instance.group_receivable_form</attribute>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
