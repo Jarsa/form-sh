@@ -25,10 +25,19 @@ class MrpProduction(models.Model):
     @api.depends('move_raw_ids', 'moves_assigned', 'state')
     def _compute_has_lines_wo_stock(self):
         for rec in self:
-            rec.has_lines_wo_stock = (
-                bool(rec.move_raw_ids.filtered(
-                    lambda m: not m.reserved_availability)) and
-                rec.moves_assigned and rec.state in ['confirmed', 'planned'])
+            stock = (bool(rec.move_raw_ids.filtered(
+                lambda m: not m.reserved_availability)) and
+                rec.moves_assigned)
+            has_bom = (bool(rec.move_raw_ids.filtered(
+                lambda m: m.product_id.bom_ids)))
+            if has_bom is False:
+                if stock is False and rec.state not in (
+                        ['confirmed', 'planned']):
+                    rec.has_lines_wo_stock = True
+                else:
+                    rec.has_lines_wo_stock = False
+            else:
+                rec.has_lines_wo_stock = True
 
     @api.model
     def create(self, values):
