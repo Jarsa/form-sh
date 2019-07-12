@@ -16,3 +16,10 @@ class AccountInvoice(models.Model):
     @api.multi
     def cancel_cancelation(self):
         self.authorized = False
+
+    @api.onchange('purchase_id')
+    def purchase_order_change(self):
+        res = super().purchase_order_change()
+        lines = self.invoice_line_ids.filtered(lambda l: l.quantity == 0.0)
+        self.invoice_line_ids -= lines
+        return res
