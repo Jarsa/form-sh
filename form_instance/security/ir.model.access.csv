@@ -93,5 +93,4 @@ payable_account_payment,payable_account_payment,account.model_account_payment,fo
 payable_account_partial_reconcile,payable_account_partial_reconcile,account.model_account_partial_reconcile,form_instance.group_payable_form,1,1,1,0
 payable_account_account_type,payable_account_account_type,account.model_account_account_type,form_instance.group_payable_form,1,0,0,0
 payable_account_full_reconcile,payable_account_full_reconcile,account.model_account_full_reconcile,form_instance.group_payable_form,1,0,1,0
-
-
+mrp.access_stock_move_mrp_manager,mrp.access_stock_move_mrp_manager,stock.model_stock_move,stock.move mrp_manager,1,1,1,1 

@@ -109,7 +109,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             self.production_id.workorder_ids.time_ids.unlink()
             self.production_id.workorder_ids.unlink()
         self.production_id.state = 'confirmed'
-        if self.procution_id.routing_id:
+        if self.prodution_id.routing_id:
             self.production_id.button_plan()
             if self.production_id.plan_id:
                 self.production_id.plan_id._sort_workorders_by_sequence()
