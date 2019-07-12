@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 03:59+0000\n"
-"PO-Revision-Date: 2019-07-03 03:59+0000\n"
+"POT-Creation-Date: 2019-07-12 05:10+0000\n"
+"PO-Revision-Date: 2019-07-12 05:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -41,6 +41,12 @@ msgid "Change Bill of Materials in Manufacturing Order"
 msgstr "Cambia la Lista de Materiales en una Orden de Producción"
 
 #. module: mrp_production_bom_alternative
+#: code:addons/mrp_production_bom_alternative/wizards/mrp_production_bom_alternative_wizard.py:85
+#, python-format
+msgid "Change to Alternative BoM:<br/>%s → %s"
+msgstr "Cambio a LdM Alterna:<br/>%s → %s"
+
+#. module: mrp_production_bom_alternative
 #: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_wizard_form
 msgid "Components"
 msgstr "Componentes"
@@ -61,6 +67,11 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__create_date
 msgid "Created on"
 msgstr "Creado el"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__current_bom_id
+msgid "Current Bill of Materials"
+msgstr "Lista de Materiales Actual"
 
 #. module: mrp_production_bom_alternative
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__display_name
@@ -157,6 +168,12 @@ msgstr "Unidad de medida"
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__wiz_id
 msgid "Wizard"
 msgstr "Asistente"
+
+#. module: mrp_production_bom_alternative
+#: code:addons/mrp_production_bom_alternative/wizards/mrp_production_bom_alternative_wizard.py:84
+#, python-format
+msgid "You are selecting the current BoM."
+msgstr "Estás seleccionando la LdM actual."
 
 #. module: mrp_production_bom_alternative
 #: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_product_alternative_form

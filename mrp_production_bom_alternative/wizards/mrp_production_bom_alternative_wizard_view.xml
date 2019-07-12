@@ -8,7 +8,8 @@
                 <sheet>
                     <group string="Select BoM to change in the MO">
                         <field name="product_tmpl_id" invisible="1"/>
-                        <field name="bom_id" domain="[('product_tmpl_id', '=', product_tmpl_id)]"/>
+                        <field name="current_bom_id" invisible="1"/>
+                        <field name="bom_id" domain="[('product_tmpl_id', '=', product_tmpl_id), ('id', '!=', current_bom_id)]"/>
                     </group>
                     <group string="Components">
                         <field name="line_ids" nolabel="1">

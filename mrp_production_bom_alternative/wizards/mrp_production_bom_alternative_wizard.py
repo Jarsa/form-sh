@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
 from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class MrpProductionBomAlternativeWizard(models.TransientModel):
@@ -17,6 +18,11 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         comodel_name='mrp.bom',
         string='Bill of Materials',
         required=True,
+    )
+    current_bom_id = fields.Many2one(
+        comodel_name='mrp.bom',
+        string='Current Bill of Materials',
+        readonly=True,
     )
     production_id = fields.Many2one(
         comodel_name='mrp.production',
@@ -36,6 +42,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         production = self.env['mrp.production'].browse(production_id)
         res['product_tmpl_id'] = production.product_tmpl_id.id
         res['production_id'] = production.id
+        res['current_bom_id'] = production.bom_id.id
         return res
 
     @api.onchange('bom_id')
@@ -73,31 +80,39 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
     @api.multi
     def change_bom(self):
         self.ensure_one()
+        if self.production_id.bom_id == self.bom_id:
+            raise UserError(_('You are selecting the current BoM.'))
+        message = _(
+            'Change to Alternative BoM:<br/>'
+            '%s → %s') % (
+            self.production_id.bom_id.display_name, self.bom_id.display_name)
+        self.production_id.message_post(body=message)
         self.production_id.bom_id = self.bom_id.id
-        old_mo = self._prepare_manufacturing_order(self.production_id)
-        pickings = self.production_id.move_raw_ids.mapped(
-            'move_orig_ids.picking_id').filtered(
-                lambda p: p.state not in ['done', 'cancel'])
+        # Get stock picking type of to pre-production
+        pbm_id = self.production_id.picking_type_id.warehouse_id.pbm_type_id.id
+        # Filter only pickings of type pre-production
+        pickings = self.production_id.picking_ids.with_context(
+            pbm_id=pbm_id).filtered(
+                lambda p: p.picking_type_id.id == p._context.get('pbm_id'))
         if pickings:
-            pickings.action_cancel()
+            pickings.mapped('move_lines').write({'propagate': False})
             pickings.unlink()
-        self.production_id.action_cancel()
-        self.production_id.unlink()
-        mo_obj = self.env['mrp.production']
-        mo = mo_obj.create(old_mo)
-        if mo.plan_id:
-            mo.button_plan()
-            mo.plan_id._sort_workorders_by_sequence()
-        else:
-            mo.button_plan()
-        return {
-            'name': _('Manufacturing Order'),
-            'type': 'ir.actions.act_window',
-            'res_model': 'mrp.production',
-            'view_mode': 'form',
-            'view_type': 'form',
-            'res_id': mo.id,
-        }
+        self.production_id.move_raw_ids.write({'propagate': False})
+        self.production_id.move_raw_ids._action_cancel()
+        self.production_id.move_raw_ids.unlink()
+        self.production_id.move_finished_ids.write({'propagate': False})
+        self.production_id.move_finished_ids._action_cancel()
+        self.production_id.move_finished_ids.unlink()
+        self.production_id._generate_moves()
+        self.production_id._process_picking_origin()
+        if self.production_id.workorder_ids:
+            self.production_id.workorder_ids.time_ids.unlink()
+            self.production_id.workorder_ids.unlink()
+        self.production_id.state = 'confirmed'
+        if self.procution_id.routing_id:
+            self.production_id.button_plan()
+            if self.production_id.plan_id:
+                self.production_id.plan_id._sort_workorders_by_sequence()
 
 
 class ProductAlternativeWizardLine(models.TransientModel):
