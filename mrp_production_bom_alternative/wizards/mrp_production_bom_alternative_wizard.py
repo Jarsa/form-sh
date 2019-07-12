@@ -106,7 +106,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.production_id._generate_moves()
         self.production_id._process_picking_origin()
         if self.production_id.workorder_ids:
-            self.production_id.workorder_ids.time_ids.unlink()
+            self.production_id.mapped('workorder_ids.time_ids').unlink()
             self.production_id.workorder_ids.unlink()
         self.production_id.state = 'confirmed'
         if self.prodution_id.routing_id:
