@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* form_instance
+#   * form_instance
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:45+0000\n"
-"PO-Revision-Date: 2019-07-05 15:45+0000\n"
+"POT-Creation-Date: 2019-07-13 11:28+0000\n"
+"PO-Revision-Date: 2019-07-13 11:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_workorder_inherit_custom_kanban
 msgid "<strong><span>Date Planned Start - </span></strong>"
 msgstr "<strong><span>Fecha Planeada de Inicio - </span></strong>"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_allow_edit_invoices
+msgid "Allow Edit Invoices"
+msgstr "Permitir Editar Facturas"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.backorder_confirmation_form_custom
@@ -41,14 +46,14 @@ msgid "Authorized"
 msgstr "Autorizado"
 
 #. module: form_instance
+#: model:ir.ui.menu,name:form_instance.stock_bill_of_materials
+msgid "Bills of Materials"
+msgstr "Lista de materiales"
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_send_production_to_scrap
 msgid "Can send production to scrap"
 msgstr "Puede desechar producción"
-
-#. module: form_instance
-#: model_terms:ir.ui.view,arch_db:form_instance.view_account_invoice_inherit_form
-msgid "Cancel"
-msgstr "Cancelar"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.view_account_invoice_inherit_form
@@ -64,6 +69,17 @@ msgstr "Reporte de Seguimiento"
 #: model:ir.model,name:form_instance.model_account_invoice
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Linea de factura"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production__is_already_reserved
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__mo_products_is_reserved
+msgid "Is Already Reserved"
+msgstr "Está Reservado"
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_edit_product_mrp_user
@@ -86,6 +102,16 @@ msgid "Payable"
 msgstr "A pagar"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_request__product_category_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "Movimientos de Producto (Stock Move Line)"
@@ -98,7 +124,7 @@ msgstr "Plantilla del producto"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr "Orden de producción"
+msgstr "Orden de Producción"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_plan_line
@@ -125,9 +151,25 @@ msgid "Receivable"
 msgstr "Por cobrar"
 
 #. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_payment__ref
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_production_request__product_category_id
+msgid "Select category for the current product"
+msgstr "Seleccione la categoría para el producto actual."
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento bursátil"
+msgstr "Movimiento de Almacén"
+
+#. module: form_instance
+#: code:addons/form_instance/models/account_invoice.py:41
+#, python-format
+msgid "The user %s can not permission to edit the priceunit, quantity and taxes"
+msgstr "El  usuario %s no tiene permisos de modificar el precio, cantidad o impuestos."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_edit_product_mrp_user
@@ -160,6 +202,11 @@ msgid "The user will have only read access to Sale Request."
 msgstr "El usuario tendrá acceso solo a leer en Requisición de Venta."
 
 #. module: form_instance
+#: model:res.groups,comment:form_instance.group_allow_edit_invoices
+msgid "The users there are on this group can edit the fields of a Invoice"
+msgstr "Los usuarios en este grupo pueden editar campos de las Facturas."
+
+#. module: form_instance
 #: model:res.groups,comment:form_instance.group_send_production_to_scrap
 msgid "The users with this group are allowed to see the button \"Scrap\" in production form view and also in work order tablet view."
 msgstr "Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la vista formulario de la orden de producción y también en la vista tableta de la orden de trabajo"
@@ -171,7 +218,13 @@ msgid "UUID"
 msgstr ""
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_workorder
+msgid "Work Order"
+msgstr "Orden de trabajo"
+
+#. module: form_instance
 #: code:addons/form_instance/models/product_template.py:19
 #, python-format
 msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
+
