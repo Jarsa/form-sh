@@ -20,20 +20,21 @@ class MrpWorkorder(models.Model):
         qty_produced = self.qty_produced
         self._calcule_limit_production_work_order(quantity, qty_produced)
 
-    @api.model
+    @api.multi
     def _calcule_limit_production_work_order(self, quantity, qty_produced):
-        # qty_limit = var used by store 10% from
-        # quantity to produce plus quantity
-        qty_limit = quantity * 1.1
-        qty_limit = qty_limit - qty_produced
-        if self.qty_producing <= qty_limit:
-            return True
-        template = self.env.ref(
-            'mrp_production_limit.send_mail_alert_production')
-        template.send_mail(self.id, True)
-        raise ValidationError(
-            _('You can not produce more than %s %s')
-            % (qty_limit, self.product_uom_id.name))
+        for rec in self:
+            # qty_limit = var used by store 10% from
+            # quantity to produce plus quantity
+            qty_limit = quantity * 1.1
+            qty_limit = qty_limit - qty_produced
+            if rec.qty_producing <= qty_limit:
+                return True
+            template = self.env.ref(
+                'mrp_production_limit.send_mail_alert_production')
+            template.send_mail(rec.production_id.id, True)
+            raise ValidationError(
+                _('You can not produce more than %s %s')
+                % (qty_limit, rec.product_uom_id.name))
 
     # I over this function because to produce a normal MO
     # Odoo read qty to produce from other field than
