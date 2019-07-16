@@ -12,13 +12,6 @@
             <xpath expr="//header/button[@name='button_scrap']" position="attributes">
                     <attribute name="groups">form_instance.group_send_production_to_scrap</attribute>
             </xpath>
-            <xpath expr="//header/button[@name='open_produce_product'][1]" position="attributes">
-                
-                    <attribute name="attrs">{'invisible': ['|', '|', '|', '|', '|', ('is_locked', '=', False), ('check_to_done', '=', True), ('availability', 'not in', ['partially_available', 'assigned']), ('state', 'not in', ('confirmed','progress')), ('routing_id', '!=', False),('availability','=','assigned')]}</attribute>
-            </xpath>
-            <xpath expr="//header/button[@name='open_produce_product'][2]" position="attributes">
-                    <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_locked', '=', False), ('check_to_done', '=', True), ('availability', '!=', 'waiting'), ('state', 'not in', ('confirmed','progress')), ('routing_id', '!=', False),('availability','=','assigned')]}</attribute>
-            </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="mrp_production_custom_tree">
