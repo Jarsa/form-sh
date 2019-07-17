@@ -209,7 +209,7 @@ class MrpWorkorder(models.Model):
     def _generate_lot_ids(self):
         """ Generate stock move lines """
         self.ensure_one()
-        MoveLine = self.env['stock.move.line']
+        sml_obj = self.env['stock.move.line']
         tracked_moves = self.move_raw_ids.filtered(
             lambda move: move.state not in ('done', 'cancel') and
             move.product_id.tracking != 'none' and
@@ -221,7 +221,7 @@ class MrpWorkorder(models.Model):
                 while float_compare(
                         qty, 0.0,
                         precision_rounding=move.product_uom.rounding) > 0:
-                    MoveLine.create({
+                    sml_obj.create({
                         'move_id': move.id,
                         'product_uom_qty': 0,
                         'product_uom_id': move.product_uom.id,
@@ -235,7 +235,7 @@ class MrpWorkorder(models.Model):
                     })
                     qty -= 1
             else:
-                MoveLine.create({
+                sml_obj.create({
                     'move_id': move.id,
                     'product_uom_qty': 0,
                     'product_uom_id': move.product_uom.id,
