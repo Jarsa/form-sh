@@ -29,8 +29,6 @@ class MrpWorkorder(models.Model):
 
     def open_tablet_view(self):
         res = super().open_tablet_view()
-        # moves = self.active_move_line_ids.filtered(
-        #     lambda m: m.state not in ('done', 'cancel') and not m.lot_id)
         last_step = False
         processed_moves = self.env['stock.move.line']
         while not last_step:
