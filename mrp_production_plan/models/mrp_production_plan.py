@@ -51,6 +51,15 @@ class MrpProductionPlan(models.Model):
         readonly=True, compute='_compute_has_phantom',
         help='Technical field used to show or hide columns bom_id and '
         'qty_per_kit if the lines has BoM from Kits.')
+    is_planned = fields.Boolean(
+        readonly=True, compute='_compute_is_planned',
+        help='Technical field used to show or hide columns production_id, and '
+        'done_qty if the line is not planned.')
+    has_routing = fields.Boolean(
+        readonly=True, compute='_compute_has_routing',
+        help='Technical field used to show or hide columns '
+        'date_planned_start_wo and date_planned_finished_wo if the line don\'t'
+        ' have a routing.')
 
     @api.multi
     def action_view_productions(self):
@@ -78,6 +87,16 @@ class MrpProductionPlan(models.Model):
     def _compute_has_phantom(self):
         if any(self.line_ids.mapped('bom_id')):
             self.has_phantom = True
+
+    @api.depends('line_ids')
+    def _compute_is_planned(self):
+        if any(self.line_ids.mapped('production_id')):
+            self.is_planned = True
+
+    @api.depends('line_ids')
+    def _compute_has_routing(self):
+        if any(self.line_ids.mapped('date_planned_start_wo')):
+            self.has_routing = True
 
     @api.model
     def _avoid_duplicate_planned_plans(self, vals):

@@ -20,5 +20,7 @@
         'views/product_category_view.xml',
         'data/ir_sequence.xml',
         'views/mrp_routing_view.xml',
+        'views/mrp_production_request_view.xml',
+        'views/mrp_production_view.xml',
     ],
 }
