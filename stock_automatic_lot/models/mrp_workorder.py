@@ -27,19 +27,23 @@ class MrpWorkorder(models.Model):
         return lot.id
 
     def open_tablet_view(self):
-        self.active_move_line_ids.filtered(
-            lambda m: m.state not in ('done', 'cancel') and
-            m.product_id == self.component_id).unlink()
-        moves = self.move_line_ids.filtered(
-            lambda m: m.state not in ('done', 'cancel') and
-            m.product_id == self.component_id)
-        if moves:
-            last_move = moves[-1]  # Get the last record to process.
-            for move in moves:
+        res = super().open_tablet_view()
+        # moves = self.active_move_line_ids.filtered(
+        #     lambda m: m.state not in ('done', 'cancel') and not m.lot_id)
+        last_step = False
+        processed_moves = self.env['stock.move.line']
+        while not last_step:
+            moves = self.move_line_ids.filtered(
+                lambda m: m.state not in ('done', 'cancel') and
+                m.product_id == self.component_id and
+                m not in processed_moves)
+            if moves:
                 self.write({
-                    'lot_id': move.lot_id.id,
-                    'qty_done': move.product_qty,
+                    'lot_id': moves[0].lot_id.id,
+                    'qty_done': moves[0].product_qty,
                 })
-                if last_move:
-                    self._next()
-        return super().open_tablet_view()
+                processed_moves |= moves[0]
+            last_step = self.is_last_step
+            if not last_step:
+                self.action_next()
+        return res
