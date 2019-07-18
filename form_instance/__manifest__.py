@@ -14,6 +14,7 @@
         'l10n_mx',
         'purchase',
         'crm',
+        'contacts',
         'timesheet_grid',
         'board',
         'repair',

@@ -46,4 +46,7 @@
         <field name="comment">The users with this group are allowed to see the button "Scrap" in production form view and also in work order tablet view.</field>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
+     <record id="contacts.menu_country_partner" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
+    </record>
 </odoo>
