@@ -24,4 +24,5 @@
             </xpath>
         </field>
     </record>
+    <menuitem id="menu_valuation_mrp" name="Inventory Report" parent="mrp.menu_mrp_reporting" sequence="100" action="stock.action_stock_quantity_history" groups="mrp.group_mrp_user"/>
 </odoo>
