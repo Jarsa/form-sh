@@ -4,6 +4,7 @@
 from . import account_invoice
 from . import product_template
 from . import stock_move
+from . import stock_picking_type
 from . import mrp_production_request
 from . import mrp_production_plan
 from . import mrp_production
