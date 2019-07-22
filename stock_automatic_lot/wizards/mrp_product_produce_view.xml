@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="mrp.view_mrp_product_produce_wizard"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='lot_id']" position="attributes">
-                <attribute name="attrs">{'invisible': [('product_tracking', '!=', 'none')]}</attribute>
+                <attribute name="attrs">{'invisible': True}</attribute>
             </xpath>
         </field> 
     </record>
