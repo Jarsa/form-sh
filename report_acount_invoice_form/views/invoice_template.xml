@@ -226,7 +226,7 @@
                 </div>
                 <t t-if="o.l10n_mx_edi_cfdi_uuid">
                     <p>
-                        <span t-esc="o.l10n_mx_edi_amount_to_text()"/>
+                        <span t-esc="o._amount_to_text()"/>
                     </p>
                 </t>
                 <p t-if="o.comment" name="comment">
