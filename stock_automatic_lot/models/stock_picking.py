@@ -20,11 +20,10 @@ class StockPicking(models.Model):
     @api.multi
     def button_validate(self):
         lot_obj = self.env['stock.production.lot']
-        active_model = self._context['active_model']
         for ml in self.move_line_ids.filtered(lambda ml: not ml.lot_id):
             if ml.product_id.tracking != 'none':
                 lot = lot_obj.create({
-                    'name': self._get_lot_name(active_model),
+                    'name': self._get_lot_name('stock.picking'),
                     'product_id': ml.product_id.id,
                     'product_qty': ml.product_qty})
                 ml.lot_id = lot.id
