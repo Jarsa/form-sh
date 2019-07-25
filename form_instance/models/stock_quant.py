@@ -9,3 +9,5 @@ class StockQuant(models.Model):
 
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')
+    categ_id = fields.Many2one(
+        'product.category', related='product_id.categ_id', store=True)
