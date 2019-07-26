@@ -15,7 +15,7 @@ class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
     @api.multi
-    def _amount_to_text(self):
+    def _amount_to_text_po(self):
         self.ensure_one()
         currency_name = self.currency_id.name.upper()
         currency_type = 'M.N' if currency_name == 'MXN' else 'M.E.'
@@ -26,9 +26,9 @@ class PurchaseOrder(models.Model):
         words = (
             num2words(
                 float(amount_i), lang=self.partner_id.lang or 'es_ES').upper())
-        invoice_words = (
+        amount_with_words = (
             '%(words)s %(currency)s  %(amount_d)02d/100 %(curr_t)s' %
             dict(
                 words=words, currency=currency,
                 amount_d=amount_d, curr_t=currency_type))
-        return invoice_words
+        return amount_with_words
