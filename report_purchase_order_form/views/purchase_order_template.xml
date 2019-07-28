@@ -42,12 +42,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12" style="font-size: 11px;">
+                    <div class="col-12" style="font-size: 10px;">
                         <div id="informations" class="row mt32 mb32">
                             <table class="col-12">
                                 <thead>
                                     <tr style="border: 1px solid black; background-color: #F36B21; color: white;">
-                                        <th t-if="o.name"><strong>Purchase Order code:</strong></th>
                                         <th t-if="o.date_order"><strong>Order Date</strong></th>
                                         <th t-if="o.payment_term_id"><strong>Conditions</strong></th>
                                         <th t-if="o.currency_id"><strong>Currency</strong></th>
@@ -56,12 +55,8 @@
                                 </thead>
                                 <tbody>
                                     <tr style="border: 1px solid black;">
-                                        <td t-if="o.name">
-                                            <span class="text-left" t-esc="str(o.name)[0:2]"/>
-                                            <span class="text-right" t-esc="str(o.name)[3:]"/>
-                                        </td>
                                         <td t-if="o.date_order">
-                                            <p t-field="o.date_order"/>
+                                            <p t-field="o.date_order" t-options="{'widget': 'date'}"/>
                                         </td>
                                         <td t-if="o.payment_term_id">
                                             <p t-field="o.payment_term_id"/>
@@ -80,19 +75,19 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-12" style="font-size: 12px;">
+                    <div class="col-12" style="font-size: 10px;">
                         <div id="line" class="row mt32 mb32">
                             <table class="col-12">
                                 <thead style="border: 1px solid black; background-color: #F36B21; color: white;">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th><strong>Code</strong></th>
-                                        <th class="text-right"><strong>Qty</strong></th>
-                                        <th class="text-right"><strong>Unit</strong></th>
+                                        <th><strong>Qty</strong></th>
+                                        <th><strong>Unit</strong></th>
                                         <th><strong>Description</strong></th>
-                                        <th class="text-center"><strong>Unit Price</strong></th>
+                                        <th><strong>Unit Price</strong></th>
                                         <th><strong>Taxes</strong></th>
-                                        <th class="text-left"><strong>Date Planned</strong></th>
-                                        <th class="text-right" style="margin-right:5px;"><strong>Amount</strong></th>
+                                        <th><strong>Date Planned</strong></th>
+                                        <th><strong>Amount</strong></th>
                                     </tr>
                                 </thead>
                                 <tbody style="border: 1px solid black; background-color: none;">
@@ -100,7 +95,7 @@
                                         <td>
                                             <span t-esc="line.product_id.default_code"/>
                                         </td>                        
-                                        <td class="text-right">
+                                        <td class="text-center">
                                             <span t-field="line.product_qty"/>
                                         </td>
                                         <td class="text-center">
@@ -112,11 +107,11 @@
                                         <td class="text-center">
                                             <span t-field="line.price_unit"/>
                                         </td>
-                                        <td>
-                                            <span t-esc="', '.join(map(lambda x: x.name, line.taxes_id))"/>
+                                        <td class="text-center">
+                                            <span t-esc="', '.join(map(lambda x: x.description, line.taxes_id))"/>
                                         </td>                                        
-                                        <td>
-                                            <span t-esc="line.date_planned"/>
+                                        <td class="text-center">
+                                            <span t-esc="line.date_planned" t-options="{'widget': 'date'}"/>
                                         </td>
                                         <td class="text-right">
                                             <span t-field="line.price_subtotal"
@@ -133,7 +128,7 @@
                     <div class="col-7 pull-left">
                         <strong>Obervations: </strong>
                         <p t-field="o.notes"/><br/><br/>
-                        <p t-esc="'%s' % (o._amount_to_text())"/>
+                        <p t-esc="'%s' % (o._amount_to_text_po())"/>
                     </div>
                     <div class="col-5 pull-right" style="padding-right: 0px;">
                         <table class="table table-sm">

@@ -14,7 +14,7 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'depends': ['purchase'],
+    'depends': ['purchase_stock'],
     'data': [
         'views/purchase_order_template.xml',
     ],

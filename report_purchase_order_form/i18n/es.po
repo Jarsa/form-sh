@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_purchase_order_form
+#   * report_purchase_order_form
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 23:26+0000\n"
-"PO-Revision-Date: 2019-07-25 23:26+0000\n"
+"POT-Creation-Date: 2019-07-28 13:52+0000\n"
+"PO-Revision-Date: 2019-07-28 13:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,17 +33,17 @@ msgstr "<strong>Clave</strong>"
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "<strong>Conditions</strong>"
-msgstr "<strong>Condiciones:</strong>"
+msgstr "<strong>Condiciones</strong>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "<strong>Currency</strong>"
-msgstr "<strong>Moneda:</strong>"
+msgstr "<strong>Moneda</strong>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "<strong>Date Planned</strong>"
-msgstr "<strong>Fecha de entrega:</strong>"
+msgstr "<strong>Fecha de entrega</strong>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
@@ -58,7 +58,7 @@ msgstr "<strong>Observaciones: </strong>"
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "<strong>Order Date</strong>"
-msgstr "<strong>Ordenado a: </strong>"
+msgstr "<strong>Fecha orden</strong>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
@@ -67,13 +67,8 @@ msgstr "<strong>Ordenar a:</strong><br/>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
-msgid "<strong>Purchase Order code:</strong>"
-msgstr "<strong>Folio de la orden:</strong>"
-
-#. module: report_purchase_order_form
-#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "<strong>Purchaser</strong>"
-msgstr "<strong>Comprador:</strong>"
+msgstr "<strong>Comprador</strong>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
@@ -125,3 +120,4 @@ msgstr "HORARIO DE RECEPCIÓN LUN-VIER 8:30 A.M. A 1:30 P.M. Y DE 2:30 P.M. A 4:
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "Taxes"
 msgstr "Impuestos"
+
