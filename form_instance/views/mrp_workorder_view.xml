@@ -16,10 +16,18 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="mrp_workorder_custom_form">
+        <field name="name">mrp_workorder_custom.form</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_inherit_workorder"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='open_tablet_view']" position="replace">
+                <field name="availability" invisible="1"/>
+                <button name="open_tablet_view" type="object" string="Process" attrs="{'invisible': ['|', ('state', 'not in', ('ready', 'progress')), ('availability', '!=', 'assigned')]}"/>
+            </xpath>
+        </field>
+    </record>
     <record id="mrp.mrp_workorder_todo" model="ir.actions.act_window">
         <field name="domain">[('production_id.availability','=','assigned')]</field>
-    </record>
-    <record id="mrp.action_mrp_workorder_production_specific" model="ir.actions.act_window">
-        <field name="domain">[('production_id', '=', active_id),('production_id.availability','=','assigned')]</field>
     </record>
 </odoo>
