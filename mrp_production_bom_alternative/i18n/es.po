@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-12 05:10+0000\n"
-"PO-Revision-Date: 2019-07-12 05:10+0000\n"
+"POT-Creation-Date: 2019-07-29 12:37+0000\n"
+"PO-Revision-Date: 2019-07-29 12:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -80,11 +80,6 @@ msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: mrp_production_bom_alternative
-#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production__has_lines_wo_stock
-msgid "Has Lines Without Stock"
-msgstr "Tiene Lineas Sin Stock"
-
-#. module: mrp_production_bom_alternative
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__id
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__id
 msgid "ID"
@@ -140,29 +135,20 @@ msgid "Qty"
 msgstr "Cant"
 
 #. module: mrp_production_bom_alternative
-#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production__moves_assigned
-msgid "Raw Moves Assigned"
-msgstr "Materiales Asignados"
-
-#. module: mrp_production_bom_alternative
 #: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_wizard_form
 msgid "Select BoM to change in the MO"
 msgstr "Seleccionar LdM para cambiar en la OP"
 
 #. module: mrp_production_bom_alternative
-#: model:ir.model.fields,help:mrp_production_bom_alternative.field_mrp_production__has_lines_wo_stock
-msgid "Technical field that represents a flag to identify if exists a stock move without stock avaliable in the raw moves."
-msgstr "Campo técnico que representa una bandera para identificar si existe un movimiento de almacén sin stock disponible en los materiales consumidos."
-
-#. module: mrp_production_bom_alternative
-#: model:ir.model.fields,help:mrp_production_bom_alternative.field_mrp_production__moves_assigned
-msgid "Technical field used to identify if the user assign the raw stock moves."
-msgstr "Campo técnico usado para identificar si el usuario ha asignado los materiales consumidos."
-
-#. module: mrp_production_bom_alternative
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__uom_id
 msgid "Unit of Measure"
 msgstr "Unidad de medida"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production__use_alternative_bom
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_search
+msgid "Use Alternative BoM"
+msgstr "Uso LdM Alternativa"
 
 #. module: mrp_production_bom_alternative
 #: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__wiz_id

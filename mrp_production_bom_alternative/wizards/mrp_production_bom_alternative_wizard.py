@@ -87,6 +87,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             '%s → %s') % (
             self.production_id.bom_id.display_name, self.bom_id.display_name)
         self.production_id.message_post(body=message)
+        self.production_id.use_alternative_bom = True
         self.production_id.bom_id = self.bom_id.id
         # Get stock picking type of to pre-production
         pbm_id = self.production_id.picking_type_id.warehouse_id.pbm_type_id.id

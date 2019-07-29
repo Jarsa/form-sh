@@ -1,11 +1,14 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
-from odoo import api, models
+from odoo import api, fields, models
 
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
+
+    use_alternative_bom = fields.Boolean(
+        string='Use Alternative BoM', readonly=True)
 
     @api.model
     def create(self, vals):
@@ -28,6 +31,8 @@ class MrpProduction(models.Model):
                 exploded_lines, stock_location, wip_location)
             if components_available:
                 return bom.id
+            vals['use_alternative_bom'] = True
+        vals['use_alternative_bom'] = False
         return boms[0].id
 
     @api.model
