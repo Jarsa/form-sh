@@ -121,3 +121,12 @@ msgstr "HORARIO DE RECEPCIÓN LUN-VIER 8:30 A.M. A 1:30 P.M. Y DE 2:30 P.M. A 4:
 msgid "Taxes"
 msgstr "Impuestos"
 
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "VAT&amp;nbsp;"
+msgstr "RFC&amp;nbsp;"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "ZIP&amp;nbsp;"
+msgstr "C.P.&amp;nbsp;"
