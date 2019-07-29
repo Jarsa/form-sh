@@ -14,3 +14,12 @@ class MrpProductionRequest(models.Model):
         if self.product_id and self.product_id.categ_id.location_dest_id:
             self.location_dest_id = self.product_id.categ_id.location_dest_id
         return super()._onchange_product_id()
+
+    @api.model
+    def create(self, vals):
+        product = self.env['product.product'].browse(vals['product_id'])
+        vals.update({
+            'location_src_id': product.categ_id.location_src_id.id,
+            'location_dest_id': product.categ_id.location_dest_id.id,
+        })
+        return super().create(vals)
