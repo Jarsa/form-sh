@@ -117,6 +117,13 @@ class StockMoveLine(models.Model):
         ' on stock reports.'
     )
 
+    def _action_done(self):
+        ''' We clean the cache due to an error when validating stock.move.lines
+        it takes the value from equivalent_product_qty instead of product_qty.
+        '''
+        self.invalidate_cache()
+        return super(StockMoveLine, self)._action_done()
+
     @api.multi
     @api.depends('product_qty')
     def _compute_equivalent_product_qty(self):
