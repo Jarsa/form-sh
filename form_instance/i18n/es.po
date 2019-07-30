@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 21:55+0000\n"
-"PO-Revision-Date: 2019-07-25 21:55+0000\n"
+"POT-Creation-Date: 2019-07-30 22:44+0000\n"
+"PO-Revision-Date: 2019-07-30 22:44+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -66,6 +66,11 @@ msgid "Follow-up Report"
 msgstr "Reporte de Seguimiento"
 
 #. module: form_instance
+#: model:ir.ui.menu,name:form_instance.menu_action_inventory_form
+msgid "Inventory Adjustments"
+msgstr "Ajustes de Inventario"
+
+#. module: form_instance
 #: model:ir.ui.menu,name:form_instance.menu_valuation_mrp
 msgid "Inventory Report"
 msgstr "Reporte de inventario"
@@ -109,6 +114,11 @@ msgstr "Pagos"
 #: model:ir.model,name:form_instance.model_stock_picking_type
 msgid "Picking Type"
 msgstr "Tipo de albarán"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_custom_form
+msgid "Process"
+msgstr "Procesar"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_request__product_category_id
@@ -185,7 +195,7 @@ msgstr "Mostrar tipos de operaciones a los seguidores"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento de almacén"
+msgstr "Movimiento de Almacén"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_stock_move__subtotal

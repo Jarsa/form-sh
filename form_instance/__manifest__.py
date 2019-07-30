@@ -82,5 +82,6 @@
         'views/mrp_bom_view.xml',
         'views/stock_picking_type_view.xml',
         'views/stock_quant_view.xml',
+        'views/stock_inventory_view.xml',
     ],
 }

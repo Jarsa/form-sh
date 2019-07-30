@@ -83,3 +83,5 @@ mrp.access_mrp_production_stock_worker,mrp.access_mrp_production_stock_worker,mr
 mrp.access_mrp_production,mrp.production user,model_mrp_production,mrp.group_mrp_user,1,1,1,0
 mrp_production_manager_stock_move,mrp_production_manager_stock_move,stock.model_stock_move,mrp.group_mrp_manager,1,1,1,1
 mrp_production_manager_stock_scrap,mrp_production_manager_stock_scrap,stock.model_stock_scrap,mrp.group_mrp_user,1,0,0,0
+mrp_production_manager_stock_inventory,mrp_production_manager_stock_inventory,stock.model_stock_inventory,mrp.group_mrp_manager,1,1,1,0
+mrp_production_manager_stock_inventory_line,mrp_production_manager_stock_inventory_line,stock.model_stock_inventory_line,mrp.group_mrp_manager,1,1,1,1
