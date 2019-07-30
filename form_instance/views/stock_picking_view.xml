@@ -19,6 +19,9 @@
                 <field name="price_unit" attrs="{'invisible': [('type_operation','!=','incoming')]}"/>
                 <field name="subtotal" attrs="{'invisible': [('type_operation','!=','incoming')]}"/>
             </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">base.group_system</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
