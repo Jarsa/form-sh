@@ -77,16 +77,6 @@
                 </div><br/>
                 <div class="row">
                     <div class="col">
-                        <t t-set="picking_type" t-value="0"/>
-                        <t t-set="description_supp" t-value="''"/>
-                        <t t-if="doc.picking_ids"> 
-                            <t t-foreach="doc.picking_ids" t-as="pickings">
-                                <t t-if="pickings.picking_type_id.code == 'internal' and pickings != 'cancel'">
-                                    <t t-set="picking_type" t-value="picking_type + 1"/>
-                                    <t t-set="description_supp" t-value="pickings.description_supp"/>
-                                </t>
-                            </t>
-                        </t>
                         <table class="table table-sm table-bordered">
                             <thead>
                                 <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
@@ -99,7 +89,6 @@
                                         </strong>
                                     </th>
                                     <th><strong>Currency</strong></th>
-                                    <t t-if="picking_type != 0"><th><strong>Description supplier</strong></th></t>
                                 </tr>
                             </thead>
                             <tr style="background-color: #FFFFFF; font-style: normal;">
@@ -107,7 +96,6 @@
                                 <th><span t-field="doc.client_order_ref"/></th>
                                 <th><span t-field="doc.confirmation_date"/></th>
                                 <th><span t-esc="doc.pricelist_id.currency_id.name"/></th>
-                                <t t-if="picking_type != 0"><th><span t-esc="description_supp"/></th></t>
                             </tr>
                         </table>
                     </div>
@@ -134,7 +122,7 @@
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.product_id.default_code"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.name"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;" class="text-right">
-                                            <span t-field="line.price_unit"/>
+                                            <span t-esc="'%.2f' % (float(line.price_unit))"/>
                                         </th>
                                         <th style="background-color: #FFFFFF; font-style: normal;" class="text-right o_price_total">
                                             <span t-esc="'%.2f' % (float(line.price_unit * line.product_uom_qty))"/>

@@ -51,7 +51,7 @@ class AccountInvoice(models.Model):
     def _amount_to_text(self):
         self.ensure_one()
         currency_name = self.currency_id.name.upper()
-        currency_type = 'M.N' if currency_name == 'MXN' else 'M.E.'
+        currency_type = 'M.N' if currency_name == 'MXN' else 'USD'
         currency = 'PESOS' if currency_name == 'MXN' else 'DOLARES'
         amount_i, amount_d = divmod(self.amount_total, 1)
         amount_d = round(amount_d, 2)
