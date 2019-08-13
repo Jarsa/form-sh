@@ -4,7 +4,7 @@
 {
     'name': 'MRP Production BoM Alternative',
     'summary': 'Select Alternative BoM in Manufacture Orders',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'category': 'Manufacture',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
