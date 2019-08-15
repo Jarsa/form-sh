@@ -23,4 +23,4 @@ class MrpProduction(models.Model):
                 product_name = rec.product_tmpl_id.description_purchase
             for picking in rec.picking_ids:
                 picking.origin = '%s - [%s] %s - %s' % (
-                    picking.origin, default_code, product_name, units)
+                    rec.name, default_code, product_name, units)
