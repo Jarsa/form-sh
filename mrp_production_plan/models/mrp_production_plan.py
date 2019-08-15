@@ -103,7 +103,9 @@ class MrpProductionPlan(models.Model):
         existing_plan = self.search([
             ('state', '!=', 'done'),
             ('category_id', '=', vals['category_id'])])
-        if existing_plan:
+        allow_multiple_plans = self.user_has_groups(
+            'mrp_production_plan.group_mrp_production_plan_allow_duplicate')
+        if existing_plan and not allow_multiple_plans:
             raise UserError(_(
                 'You cannot create a new plan with this category'
                 ' if you have not finished a started one.'))

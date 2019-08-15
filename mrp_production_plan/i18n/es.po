@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-27 01:06+0000\n"
-"PO-Revision-Date: 2019-06-27 01:06+0000\n"
+"POT-Creation-Date: 2019-08-15 12:38+0000\n"
+"PO-Revision-Date: 2019-08-15 12:38+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__message_needaction
 msgid "Action Needed"
-msgstr "Acción Necesaria"
+msgstr "Acción requerida"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_ids
@@ -29,6 +29,11 @@ msgstr "Actividades"
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_state
 msgid "Activity State"
 msgstr "Estado de la actividad"
+
+#. module: mrp_production_plan
+#: model:res.groups,name:mrp_production_plan.group_mrp_production_plan_allow_duplicate
+msgid "Allow to Open Multiple Production Plans"
+msgstr "Permite abrir múltiples planes de producción"
 
 #. module: mrp_production_plan
 #: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
@@ -99,7 +104,7 @@ msgstr "Fecha"
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__display_name
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__display_name
 msgid "Display Name"
-msgstr "Nombre a mostrar"
+msgstr "Nombre mostrado"
 
 #. module: mrp_production_plan
 #: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
@@ -153,6 +158,11 @@ msgid "Has Phantom"
 msgstr "Tiene Kit"
 
 #. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__has_routing
+msgid "Has Routing"
+msgstr "Tiene Ruta"
+
+#. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__id
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__id
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__id
@@ -180,25 +190,30 @@ msgid "Is Follower"
 msgstr "Es un seguidor"
 
 #. module: mrp_production_plan
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__is_planned
+msgid "Is Planned"
+msgstr "Está Planeado"
+
+#. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan____last_update
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line____last_update
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter____last_update
 msgid "Last Modified on"
-msgstr "Última modificación en"
+msgstr "Ultima modificacion realizada"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__write_uid
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__write_uid
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__write_uid
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Ultima actualizacion por"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__write_date
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__write_date
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_workcenter__write_date
 msgid "Last Updated on"
-msgstr "Última actualización el"
+msgstr "Ultima actualización realizada"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__line_ids
@@ -226,7 +241,7 @@ msgid "Manufacture Order"
 msgstr "Orden de Producción"
 
 #. module: mrp_production_plan
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:59
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:68
 #, python-format
 msgid "Manufacturing Orders"
 msgstr "Ordenes de Producción"
@@ -262,9 +277,9 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: mrp_production_plan
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:95
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:99
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:102
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:116
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:120
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:123
 #, python-format
 msgid "New"
 msgstr "Nuevo"
@@ -329,6 +344,7 @@ msgstr "Planeado"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__product_id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_routing__product_id
 msgid "Product"
 msgstr "Producto"
 
@@ -340,7 +356,7 @@ msgstr "Categoría de producto"
 #. module: mrp_production_plan
 #: model:ir.model,name:mrp_production_plan.model_mrp_production
 msgid "Production Order"
-msgstr "Orden de Producción"
+msgstr "Órden de Producción"
 
 #. module: mrp_production_plan
 #: model:ir.actions.act_window,name:mrp_production_plan.action_mrp_production_plan
@@ -388,7 +404,7 @@ msgstr "Re-planear"
 #. module: mrp_production_plan
 #: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
 msgid "Reject"
-msgstr "Rechazar"
+msgstr "Rechazado"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan_line__request_id
@@ -429,6 +445,11 @@ msgstr "Responsable"
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_plan__activity_user_id
 msgid "Responsible User"
 msgstr "Usuario responsable"
+
+#. module: mrp_production_plan
+#: model:ir.model,name:mrp_production_plan.model_mrp_routing
+msgid "Routings"
+msgstr "Rutas de producción"
 
 #. module: mrp_production_plan
 #: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
@@ -476,6 +497,16 @@ msgstr "Campo técnico utilizado para identificar si la orden de fabricación se
 #: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__has_phantom
 msgid "Technical field used to show or hide columns bom_id and qty_per_kit if the lines has BoM from Kits."
 msgstr "Campo técnico utilizado para mostrar u ocultar las columnas bom_id y qty_per_kit si las líneas tienen BoM de Kits."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__has_routing
+msgid "Technical field used to show or hide columns date_planned_start_wo and date_planned_finished_wo if the line don't have a routing."
+msgstr "Campo técnico utilizado para mostrar u ocultar la columna date_planned_start_wo y date_planned_finished-wo si la línea no tiene una ruta."
+
+#. module: mrp_production_plan
+#: model:ir.model.fields,help:mrp_production_plan.field_mrp_production_plan__is_planned
+msgid "Technical field used to show or hide columns production_id, and done_qty if the line is not planned."
+msgstr "Campo técnico utilizado para mostrar u ocultar columnas production_id y done_qty si la línea no está planeada."
 
 #. module: mrp_production_plan
 #: selection:mrp.production.plan,activity_state:0
@@ -553,13 +584,13 @@ msgid "Workorder Lines"
 msgstr "Líneas de Ordenes de Trabajo"
 
 #. module: mrp_production_plan
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:88
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:109
 #, python-format
 msgid "You cannot create a new plan with this category if you have not finished a started one."
 msgstr "No puede crear un nuevo plan con esta categoría si no ha terminado uno iniciado."
 
 #. module: mrp_production_plan
-#: code:addons/mrp_production_plan/models/mrp_production_plan.py:446
+#: code:addons/mrp_production_plan/models/mrp_production_plan.py:470
 #, python-format
 msgid "You cannot remove a line that has been programmed, you need to cancel the Manufacturing Order"
 msgstr "No puede eliminar una línea que ha sido programada, necesita cancelar la orden de fabricación"
