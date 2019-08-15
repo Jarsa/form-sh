@@ -13,7 +13,7 @@ class MrpBom(models.Model):
         'material.', default=1, )
 
     _sql_constraints = [
-        ('sequence_uniq', 'unique(sequence, product_tmpl_id)',
+        ('sequence_uniq', 'unique(product_tmpl_id, sequence)',
             _('The sequence must be unique !')),
     ]
 
