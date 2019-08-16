@@ -22,6 +22,7 @@
     <record model="ir.ui.view" id="mrp_workorder_custom_form">
         <field name="name">mrp_workorder_custom.form</field>
         <field name="model">mrp.workorder</field>
+        <field name="priority">100</field>
         <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_inherit_workorder"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='open_tablet_view']" position="replace">
@@ -30,4 +31,18 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="mrp_workcenter_custom_chatter_form">
+        <field name="name">mrp.workcenter.custom.chatter.form</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]" position="inside">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <menuitem id="menu_workcenter_root" name="Workcenter" action="mrp.mrp_workcenter_kanban_action" groups="form_instance.group_mrp_workcenter_form" sequence="30" web_icon="base,static/description/board.png"/>
 </odoo>
