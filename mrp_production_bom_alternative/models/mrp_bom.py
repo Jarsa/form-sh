@@ -17,6 +17,18 @@ class MrpBom(models.Model):
             _('The sequence must be unique !')),
     ]
 
+    @api.multi
+    def copy(self, default=None):
+        if not default:
+            default = {}
+        sequences = self.env['mrp.bom'].with_context(
+            active_test=False).search([
+                ('product_tmpl_id', '=', self.product_tmpl_id.id)],
+                order='sequence asc').mapped('sequence')
+        sequence = sequences[-1] + 1 if sequences else 1
+        default['sequence'] = sequence
+        return super().copy(default)
+
     @api.constrains('sequence')
     @api.multi
     def _constraint_sequence(self):
