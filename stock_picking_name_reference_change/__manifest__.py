@@ -18,4 +18,7 @@
         'stock',
         'mrp',
     ],
+    'data': [
+        'views/stock_picking_view.xml',
+    ],
 }
