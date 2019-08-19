@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mrp_production_surplus_type_operation" model="stock.picking.type">
+        <field name="name">Sobrantes</field>
+        <field name="sequence_id" ref="mrp_production_surplus.mrp_production_surplus_sequence"/>
+        <field name="code">mrp_operation</field>
+    </record>
+</odoo>
