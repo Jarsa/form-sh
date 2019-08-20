@@ -31,10 +31,15 @@ class ProductTemplate(models.Model):
                 'is_surplus': True,
                 'type': 'normal',
                 'product_qty': 1.0,
+                'product_uom_id': external_product.uom_id.id,
+                'code': '[%s] %s' % (
+                    res.product_variant_id.default_code,
+                    res.product_variant_id.name),
                 'sequence': sequence,
                 'bom_line_ids': [(0, 0, {
                     'product_id': res.product_variant_id.id,
                     'product_qty': 1.0,
+                    'product_uom': res.product_variant_id.uom_id.id,
                 })],
             })
         return res
