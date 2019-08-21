@@ -5,8 +5,16 @@
             <t>
                 <div class="row">
                     <div class="col">
-                        <h2 style="text-transform: uppercase;">Remission</h2>
-                        <p><strong>Remission code:</strong><span t-esc="doc.name"/></p>
+                        <h2 style="text-transform: uppercase;">
+                            <t t-if="not doc.master_sale_order">Remission</t>
+                            <t t-if="doc.master_sale_order">Order</t>
+                        </h2>
+                        <p>
+                            <strong>
+                                <t t-if="not doc.master_sale_order">Remission code:</t>
+                                <t t-if="doc.master_sale_order">Order code:</t>
+                            </strong><span t-esc="doc.name"/>
+                        </p>
                     </div>
                 </div>
             </t>
@@ -84,7 +92,12 @@
                                 <tr style="text-transform: uppercase;background-color: #F36B21; color: white;">
                                     <th><strong>Partner code</strong></th>
                                     <th><strong>Order partner</strong></th>
-                                    <th><strong>Remission Date</strong></th>
+                                    <th>
+                                        <strong>
+                                            <t t-if="not doc.master_sale_order">Remission Date</t>
+                                            <t t-if="doc.master_sale_order">Order Date</t>
+                                        </strong>
+                                    </th>
                                     <th><strong>Currency</strong></th>
                                     <t t-if="picking_type != 0"><th><strong>Description supplier</strong></th></t>
                                 </tr>
