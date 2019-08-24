@@ -37,6 +37,7 @@ class MrpProduction(models.Model):
                     'origin': '%s - [%s] %s - %s' % (
                         rec.name, default_code, product_name, units),
                     'origin_mo': origin_mo if origin_mo else False,
+                    'production_id': rec.id,
                 })
 
     @api.multi
