@@ -360,6 +360,10 @@ class MrpProductionPlan(models.Model):
         unplanned_requests = self.env['mrp.production.request'].search([
             ('origin', 'ilike', 'OP/'), ('plan_line_id', '=', False)])
         if unplanned_requests:
+            # If a dest move is done the request cannot be cencelled
+            unplanned_requests.write({
+                'move_dest_ids': False,
+            })
             unplanned_requests.button_cancel()
         self.write({'state': 'done'})
         return True
