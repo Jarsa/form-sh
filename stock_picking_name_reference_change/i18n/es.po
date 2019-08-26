@@ -17,7 +17,7 @@ msgstr ""
 
 #. module: stock_picking_name_reference_change
 #: model_terms:ir.ui.view,arch_db:stock_picking_name_reference_change.stock_picking_form
-msgid "<span class=\"o_stat_text\">Order Production</span>"
+msgid "<span class=\"o_stat_text\">Production Order</span>"
 msgstr "<span class=\"o_stat_text\">Orden de Producción</span>"
 
 #. module: stock_picking_name_reference_change

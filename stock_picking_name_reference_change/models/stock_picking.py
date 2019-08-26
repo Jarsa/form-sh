@@ -9,18 +9,17 @@ class StockPicking(models.Model):
 
     origin_mo = fields.Char(string='Origin MO', readonly=True)
     production_id = fields.Many2one(
-        'mrp.production',
+        'mrp.production', readonly=True,
     )
 
     @api.multi
     def action_view_production_id(self):
         self.ensure_one()
-        action = {
+        return {
             'name': _('Mrp Orders'),
             'view_type': 'form',
-            'view_mode': 'tree, form',
+            'view_mode': 'form',
             'res_model': 'mrp.production',
             'type': 'ir.actions.act_window',
-            'domain': [('id', '=', self.production_id.id)],
+            'res_id': self.production_id.id,
         }
-        return action
