@@ -3,6 +3,7 @@
 
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
+from odoo.osv import expression
 
 
 class ProductTemplate(models.Model):
@@ -24,3 +25,24 @@ class ProductTemplate(models.Model):
         if self.item_ids:
             price = self.item_ids[0]
             self.write({'lst_price': price.fixed_price})
+
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    @api.model
+    def _name_search(
+            self, name, args=None, operator='=ilike',
+            limit=100, name_get_uid=None):
+        if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
+            args = args or []
+            domain = (['|', '|', ('default_code', 'ilike', name),
+                       ('description', 'ilike', name),
+                       ('name', 'ilike', name)])
+            product_ids = self._search(
+                expression.AND([domain, args]),
+                limit=limit, access_rights_uid=name_get_uid)
+            return self.browse(product_ids).name_get()
+        return super(ProductProduct, self)._name_search(
+            name=name, args=args, operator=operator,
+            limit=limit, name_get_uid=name_get_uid)
