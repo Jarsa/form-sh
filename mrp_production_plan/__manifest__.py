@@ -12,6 +12,7 @@
     'depends': [
         'mrp_production_request',
         'mrp_workorder',
+        'stock',
     ],
     'data': [
         'security/security.xml',
@@ -19,6 +20,7 @@
         'views/mrp_production_plan.xml',
         'views/product_category_view.xml',
         'data/ir_sequence.xml',
+        'data/stock_picking_type.xml',
         'views/mrp_routing_view.xml',
         'views/mrp_production_request_view.xml',
         'views/mrp_production_view.xml',

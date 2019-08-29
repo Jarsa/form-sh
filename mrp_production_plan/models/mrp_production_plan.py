@@ -381,6 +381,50 @@ class MrpProductionPlan(models.Model):
             })
             unplanned_requests.button_cancel()
         self.write({'state': 'done'})
+        quant_obj = self.env['stock.quant']
+        picking_type = self.env.ref(
+            'mrp_production_plan.return_raw_material_form')
+        raw_material_categ = self.env.ref(
+            '__import__.product_category_002')
+        products = quant_obj.search([
+            ('location_id', '=', picking_type.warehouse_id.pbm_loc_id.id),
+            ('product_id.categ_id.id', '=', raw_material_categ.id)]).mapped(
+            'product_id')
+        picking = self.env['stock.picking'].create({
+            'picking_type_id': picking_type.id,
+            'partner_id': self.env.user.company_id.partner_id.id,
+            'location_id': picking_type.warehouse_id.pbm_loc_id.id,
+            'location_dest_id': (
+                picking_type.warehouse_id.int_type_id.
+                default_location_src_id.id),
+        })
+        for product in products:
+            product_qty = quant_obj._get_available_quantity(
+                product_id=product, location_id=picking.location_id)
+            self.env['stock.move'].create({
+                'name': product.name,
+                'product_id': product.id,
+                'product_uom_qty': product_qty,
+                'product_uom': product.uom_id.id,
+                'picking_id': picking.id,
+                'location_id': picking.location_id.id,
+                'location_dest_id': picking.location_dest_id.id,
+            })
+        picking.action_confirm()
+        picking.action_assign()
+        validate_picking = picking.button_validate()
+        if validate_picking.get('res_id', False):
+            wiz = self.env['stock.immediate.transfer'].browse(
+                validate_picking['res_id'])
+            wiz.process()
+            validate_picking2 = picking.button_validate()
+            wiz2 = self.env['stock.backorder.confirmation'].browse(
+                validate_picking2['res_id'])
+            wiz2.process_cancel_backorder()
+        quants = self.env['stock.quant'].search([
+            ('location_id', '=', picking_type.warehouse_id.pbm_loc_id.id),
+            ('product_id.categ_id.id', '=', raw_material_categ.id)])
+        quants.unlink()
         return True
 
     @api.multi
