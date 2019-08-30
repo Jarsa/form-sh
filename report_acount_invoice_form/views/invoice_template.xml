@@ -47,17 +47,17 @@
                     </div>
                     <div class="col-6">
                         <strong>Delivered to: </strong><br/>
-                        <span t-field="o.partner_id"/><br/>
-                        <span t-esc="o.partner_id.street_name + ' ' if o.partner_id.street_name else ''"/>
-                        <span t-field="o.partner_id.street_number"/><br/>
-                        <span t-field="o.partner_id.street2"/>
-                        <span t-if="o.partner_id.l10n_mx_edi_colony" t-field="o.partner_id.l10n_mx_edi_colony"/>
-                        <span t-if="o.partner_id.l10n_mx_edi_locality" t-field="o.partner_id.l10n_mx_edi_locality"><br/></span>
-                        <span t-esc="'C.P.' + o.partner_id.zip if o.partner_id.zip else ''"/><br/>
-                        <span t-field="o.partner_id.city"/>
-                        <span t-field="o.partner_id.state_id.name"/><br/>
-                        <span t-field="o.partner_id.country_id"/><br/>
-                        <span t-field="o.partner_id.vat"/>
+                        <span t-field="o.partner_shipping_id"/><br/>
+                        <span t-esc="o.partner_shipping_id.street_name + ' ' if o.partner_shipping_id.street_name else ''"/>
+                        <span t-field="o.partner_shipping_id.street_number"/><br/>
+                        <span t-field="o.partner_shipping_id.street2"/>
+                        <span t-if="o.partner_shipping_id.l10n_mx_edi_colony" t-field="o.partner_shipping_id.l10n_mx_edi_colony"/>
+                        <span t-if="o.partner_shipping_id.l10n_mx_edi_locality" t-field="o.partner_shipping_id.l10n_mx_edi_locality"><br/></span>
+                        <span t-esc="'C.P.' + o.partner_shipping_id.zip if o.partner_shipping_id.zip else ''"/><br/>
+                        <span t-field="o.partner_shipping_id.city"/>
+                        <span t-field="o.partner_shipping_id.state_id.name"/><br/>
+                        <span t-field="o.partner_shipping_id.country_id"/><br/>
+                        <span t-field="o.partner_shipping_id.vat"/>
                     </div>
                 </div>
                 <br/>

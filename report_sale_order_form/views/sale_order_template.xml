@@ -42,36 +42,21 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <t t-if="doc.partner_id == doc.partner_invoice_id">
+                        <t t-if="doc.partner_shipping_id">
                             <span><strong>Costumer address:</strong></span><br/>
-                            <div t-if="doc.partner_id" name="partner_header">
-                                <span t-field="doc.partner_id"/><br/>
-                                <span t-esc="doc.partner_id.street_name + ' '"/>
-                                <span t-field="doc.partner_id.street_number"/><br/>
-                                <span t-field="doc.partner_id.street2"/>
-                                <span t-if="doc.partner_id.l10n_mx_edi_colony" t-field="doc.partner_id.l10n_mx_edi_colony"/>
-                                <span t-if="doc.partner_id.l10n_mx_edi_locality" t-field="doc.partner_id.l10n_mx_edi_locality"><br/></span>
-                                <span t-esc="'C.P.' + doc.partner_id.zip"/><br/>
-                                <span t-field="doc.partner_id.city"/>
-                                <span t-field="doc.partner_id.state_id.name"/><br/>
-                                <span t-field="doc.partner_id.country_id"/>
-                                <p t-if="doc.sudo().partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.sudo().partner_id.vat"/></p>
+                            <div t-if="doc.partner_shipping_id" name="partner_header">
+                                <span t-field="doc.partner_shipping_id"/><br/>
+                                <span t-esc="doc.partner_shipping_id.street_name + ' '"/>
+                                <span t-field="doc.partner_shipping_id.street_number"/><br/>
+                                <span t-field="doc.partner_shipping_id.street2"/>
+                                <span t-if="doc.partner_shipping_id.l10n_mx_edi_colony" t-field="doc.partner_shipping_id.l10n_mx_edi_colony"/>
+                                <span t-if="doc.partner_shipping_id.l10n_mx_edi_locality" t-field="doc.partner_shipping_id.l10n_mx_edi_locality"><br/></span>
+                                <span t-esc="'C.P.' + doc.partner_shipping_id.zip"/><br/>
+                                <span t-field="doc.partner_shipping_id.city"/>
+                                <span t-field="doc.partner_shipping_id.state_id.name"/><br/>
+                                <span t-field="doc.partner_shipping_id.country_id"/>
+                                <p t-if="doc.sudo().partner_shipping_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.sudo().partner_shipping_id.vat"/></p>
                             </div>
-                        </t>
-                        <t t-if="doc.partner_shipping_id == doc.partner_invoice_id
-                             and doc.partner_invoice_id != doc.partner_id
-                             or doc.partner_shipping_id != doc.partner_invoice_id">
-                            <t t-set="information_block">
-                                <strong t-if="doc.partner_shipping_id == doc.partner_invoice_id">Invoicing and shipping address:</strong>
-                                <strong t-if="doc.partner_shipping_id != doc.partner_invoice_id">Invoicing address:</strong>
-                                <div t-field="doc.partner_invoice_id"
-                                t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
-                                <t t-if="doc.partner_shipping_id != doc.partner_invoice_id">
-                                    <strong>Shipping address:</strong>
-                                    <div t-field="doc.partner_shipping_id"
-                                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
-                                </t>
-                            </t>
                         </t>
                     </div>
                 </div><br/>
