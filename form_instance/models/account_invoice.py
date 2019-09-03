@@ -25,6 +25,12 @@ class AccountInvoice(models.Model):
         self.invoice_line_ids -= lines
         return res
 
+    @api.multi
+    def copy(self, default=None):
+        raise UserError(
+            _('The user can not duplicate the invoices'))
+        return super().copy(default)
+
 
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
