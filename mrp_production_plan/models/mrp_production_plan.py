@@ -352,8 +352,14 @@ class MrpProductionPlan(models.Model):
 
     @api.multi
     def button_done(self):
+        paperboard_finished_categ = self.env.ref(
+            '__import__.product_category_001').id
+        return_finished_categ = self.env.ref(
+            '__export__.product_category_28_e9aa8d29').id
         undone_orders = self.production_ids.filtered(
-            lambda x: x.state not in ('cancel', 'done'))
+            lambda x: x.state not in ('cancel', 'done') and
+            x.availability != 'assigned' and x.product_id.categ_id.id not in (
+                paperboard_finished_categ, return_finished_categ))
         if undone_orders:
             for order in undone_orders:
                 order.action_cancel()
