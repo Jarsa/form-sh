@@ -63,6 +63,7 @@
         'account_reports',
         'mrp_production_request_produce_location',
         'mrp_production_surplus',
+        'product_category_validation',
     ],
     'data': [
         'data/product_template.xml',
