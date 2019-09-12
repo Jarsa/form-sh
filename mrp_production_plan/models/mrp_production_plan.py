@@ -365,6 +365,14 @@ class MrpProductionPlan(models.Model):
                 order.action_cancel()
         unplanned_requests = self.env['mrp.production.request'].search([
             ('origin', 'ilike', 'OP/'), ('plan_line_id', '=', False)])
+        sab_stock_loc = self.env.ref('stock.stock_location_stock').id
+        transit_loc = self.env.ref('__export__.stock_location_17_4d7ec339').id
+        unreserved_moves = self.env['stock.move'].search([
+            ('location_id', '=', sab_stock_loc),
+            ('location_dest_id', '=', transit_loc),
+            ('state', 'in', ('waiting', 'confirmed', 'partially_available'))])
+        if unreserved_moves:
+            unreserved_moves._action_cancel()
         if unplanned_requests:
             # If a dest move is done the request cannot be cencelled
             unplanned_requests.write({
