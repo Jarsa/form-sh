@@ -144,7 +144,7 @@ msgstr "Plantilla del producto"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr ""
+msgstr "Orden de Producción"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_plan_line
@@ -258,7 +258,7 @@ msgstr "El usuario va a tener acceso a ver los tipos de operación en las que es
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_mrp_workcenter_form
 msgid "The user will have access to the centers where is follower."
-msgstr ""
+msgstr "El usuario tendrá acceso a los centros de trabajo en los que es seguidor."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_purchase_request_manager_form
@@ -295,7 +295,7 @@ msgstr "Precio unitario"
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_mrp_workcenter_form
 msgid "User Workcenter"
-msgstr ""
+msgstr "Usuario de Centro de Trabajo"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_workcenter
@@ -310,7 +310,7 @@ msgstr "Orden de trabajo"
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.menu_workcenter_root
 msgid "Workcenter"
-msgstr ""
+msgstr "Centro de Trabajo"
 
 #. module: form_instance
 #: code:addons/form_instance/models/product_template.py:20

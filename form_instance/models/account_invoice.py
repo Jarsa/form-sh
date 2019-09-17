@@ -27,9 +27,9 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def copy(self, default=None):
+        # pylint: disable=method-required-super
         raise UserError(
             _('The user can not duplicate the invoices'))
-        return super().copy(default)
 
 
 class AccountInvoiceLine(models.Model):
