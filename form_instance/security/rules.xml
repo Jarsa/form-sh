@@ -21,8 +21,8 @@
         <field name="perm_read" eval="True"/>
     </record>
     <record id="group_allow_edit_invoices" model="res.groups">
-        <field name="name">Allow Edit Invoices</field>
-        <field name="comment">The users there are on this group can edit the fields of a Invoice</field>
+        <field name="name">Block invoice editing</field>
+        <field name="comment">The users in this group aren't allowed to edit invoice fields</field>
         <field name="users" eval="[(4,ref('base.user_admin'))]"/>
     </record>
     <record id="workcenter_user_form" model="ir.rule">

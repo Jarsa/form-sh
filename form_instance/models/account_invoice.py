@@ -33,14 +33,14 @@ class AccountInvoiceLine(models.Model):
     def write(self, values):
         name_user = self.env.user.name
         fields_blocked = ['quantity', 'price_unit', 'invoice_line_tax_ids']
-        if not self.user_has_groups(
+        if self.user_has_groups(
                 'form_instance.group_allow_edit_invoices'):
             for rec in fields_blocked:
                 if rec in values:
                     raise UserError(
                         _(
-                            'The user %s can not permission to edit the price'
-                            'unit, quantity and taxes'
+                            '%s is not allowed to edit price'
+                            'unit, quantity or taxes'
                         ) % name_user
                     )
         return super().write(values)
