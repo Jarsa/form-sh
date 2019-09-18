@@ -75,4 +75,14 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="view_account_invoice_supplier2_inherit_form">
+        <field name="name">view.account.invoice.supplier2.inherit.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_invoice_open']" position="attributes">
+                <attribute name="groups">account.group_account_manager</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
