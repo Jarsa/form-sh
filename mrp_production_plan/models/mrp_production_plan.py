@@ -14,6 +14,7 @@ class MrpProductionPlan(models.Model):
     _name = 'mrp.production.plan'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Production Plan'
+    _order = 'date desc'
 
     name = fields.Char(readonly=True, copy=False)
     date = fields.Date(required=True, default=fields.Date.context_today)

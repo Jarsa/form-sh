@@ -139,11 +139,23 @@
             </tree>
         </field>
     </record>
+    <record id="mrp_production_plan_search" model="ir.ui.view">
+        <field name="name">mrp.production.plan.search</field>
+        <field name="model">mrp.production.plan</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="done" string="Done" domain="[('state', '=', 'done')]"/>
+                <filter name="cancel" string="Cancel" domain="[('state', '=', 'cancel')]"/>
+                <filter name="in_progress" string="In Progress" domain="[('state', 'in', ['draft', 'approved', 'planned'])]"/>
+            </search>
+        </field>
+    </record>
     <record id="action_mrp_production_plan" model="ir.actions.act_window">
         <field name="name">Production Plan</field>
         <field name="res_model">mrp.production.plan</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_in_progress': 1}</field>
     </record>
     <menuitem id="mrp_production_plan_menu" name="Production Plan" parent="mrp.menu_mrp_manufacturing" action="action_mrp_production_plan"/>
 </odoo>
