@@ -29,12 +29,15 @@
                         <span><strong>Sold to:</strong></span><br/>
                         <div t-if="doc.partner_id" name="partner_header">
                             <span t-field="doc.partner_id"/><br/>
-                            <span t-esc="doc.partner_id.street_name + ' '"/>
+                            <t t-set="street_name" t-value="doc.partner_id.street_name or ''"/>
+                            <span t-esc="street_name + ' '"/>
                             <span t-field="doc.partner_id.street_number"/><br/>
                             <span t-field="doc.partner_id.street2"/>
                             <span t-if="doc.partner_id.l10n_mx_edi_colony" t-field="doc.partner_id.l10n_mx_edi_colony"/>
                             <span t-if="doc.partner_id.l10n_mx_edi_locality" t-field="doc.partner_id.l10n_mx_edi_locality"><br/></span>
-                            <span t-esc="'C.P.' + doc.partner_id.zip"/><br/>
+                            
+                            <t t-set="zip_code" t-value="doc.partner_id.zip or ''"/>
+                            <span t-esc="'C.P. ' + zip_code"/><br/>
                             <span t-field="doc.partner_id.city"/>
                             <span t-field="doc.partner_id.state_id.name"/><br/>
                             <span t-field="doc.partner_id.country_id"/>
@@ -46,12 +49,14 @@
                             <span><strong>Costumer address:</strong></span><br/>
                             <div t-if="doc.partner_shipping_id" name="partner_header">
                                 <span t-field="doc.partner_shipping_id"/><br/>
-                                <span t-esc="doc.partner_shipping_id.street_name + ' '"/>
+                                <t t-set="street_name2" t-value="doc.partner_shipping_id.street_name or ''"/>
+                                <span t-esc="street_name2 + ' '"/>
                                 <span t-field="doc.partner_shipping_id.street_number"/><br/>
                                 <span t-field="doc.partner_shipping_id.street2"/>
                                 <span t-if="doc.partner_shipping_id.l10n_mx_edi_colony" t-field="doc.partner_shipping_id.l10n_mx_edi_colony"/>
                                 <span t-if="doc.partner_shipping_id.l10n_mx_edi_locality" t-field="doc.partner_shipping_id.l10n_mx_edi_locality"><br/></span>
-                                <span t-esc="'C.P.' + doc.partner_shipping_id.zip"/><br/>
+                                <t t-set="zip_code2" t-value="doc.partner_shipping_id.zip or ''"/>
+                                <span t-esc="'C.P. ' + zip_code2"/><br/>
                                 <span t-field="doc.partner_shipping_id.city"/>
                                 <span t-field="doc.partner_shipping_id.state_id.name"/><br/>
                                 <span t-field="doc.partner_shipping_id.country_id"/>
@@ -180,7 +185,6 @@
                     <strong>Fiscal Position Remark:</strong>
                     <span t-field="doc.fiscal_position_id.note"/>
                 </p>
-
             </div>
         </xpath>
     </template>
