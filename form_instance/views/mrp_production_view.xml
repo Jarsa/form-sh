@@ -11,6 +11,9 @@
             <xpath expr="//header/button[@name='button_scrap']" position="attributes">
                     <attribute name="groups">form_instance.group_send_production_to_scrap</attribute>
             </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="create_date"/>
+            </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="mrp_production_custom_tree">

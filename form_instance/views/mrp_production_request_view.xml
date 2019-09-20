@@ -9,6 +9,9 @@
                 <field name="product_supplier_name"/>
                 <field name="product_category_id"/>
             </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="after">
+                <field name="create_date"/>
+            </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="mrp_production_request_custom_tree">
