@@ -19,7 +19,7 @@ class ProductTemplate(models.Model):
         elif 'CMP-C' in default_code:
             external_product = self.env[
                 'product.template'].search(
-                    [('default_code', '=', 'CMP-SD-0145')], limit=1)
+                    [('default_code', '=', 'CMP-SC-0145')], limit=1)
         if external_product:
             sequences = self.env['mrp.bom'].with_context(
                 active_test=False).search([
