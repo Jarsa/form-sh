@@ -21,8 +21,9 @@ class ProductCategoryValidation(models.Model):
     hide_field = fields.Boolean()
 
     _sql_constraints = [(
-        'prod_categ_val', 'unique (field_id)', """Make sure field ids are not
-        duplicated!!!""")
+        'prod_categ_val',
+        'unique (field_id,categ_id)',
+        'Make sure field ids are not duplicated!')
     ]
 
     @api.onchange('field_id')
