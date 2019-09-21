@@ -352,7 +352,7 @@ class MrpProductionPlan(models.Model):
         return True
 
     @api.multi
-    def transfer_raw_material(self):
+    def _transfer_raw_material(self):
         quant_obj = self.env['stock.quant']
         picking_type = self.env.ref(
             'mrp_production_plan.return_raw_material_form')
@@ -370,6 +370,8 @@ class MrpProductionPlan(models.Model):
         for product in products:
             product_qty = quant_obj._get_available_quantity(
                 product_id=product, location_id=pre_prod_loc)
+            if not product_qty:
+                continue
             products_list.append((0, 0, {
                 'name': product.name,
                 'product_id': product.id,
@@ -395,13 +397,9 @@ class MrpProductionPlan(models.Model):
             wiz2 = self.env['stock.backorder.confirmation'].browse(
                 validate_picking2['res_id'])
             wiz2.process_cancel_backorder()
-        quants = self.env['stock.quant'].search([
-            ('location_id', '=', pre_prod_loc.id),
-            ('product_id.categ_id.id', '=', raw_material_categ.id)])
-        quants.unlink()
 
     @api.multi
-    def button_done(self):
+    def _cancel_undone_orders(self):
         paperboard_finished_categ = self.env.ref(
             '__import__.product_category_001').id
         return_finished_categ = self.env.ref(
@@ -413,8 +411,25 @@ class MrpProductionPlan(models.Model):
         if undone_orders:
             for order in undone_orders:
                 order.action_cancel()
+
+    @api.multi
+    def _cancel_unplanned_requests(self):
         unplanned_requests = self.env['mrp.production.request'].search([
             ('origin', 'ilike', 'OP/'), ('plan_line_id', '=', False)])
+        if unplanned_requests:
+            # If a dest move is done the request cannot be cencelled
+            unplanned_requests.write({
+                'move_dest_ids': False,
+            })
+            unplanned_requests.button_cancel()
+
+    @api.multi
+    def _cancel_unreserved_moves_to_cedis(self):
+        '''This method is created to cancel moves crated by orderpoints that
+        are not reserved. If we don't cancel this moves the orderpoint rules
+        created the next day it will consider it as vitual stock.
+
+        '''
         sab_stock_loc = self.env.ref('stock.stock_location_stock').id
         transit_loc = self.env.ref('__export__.stock_location_17_4d7ec339').id
         unreserved_moves = self.env['stock.move'].search([
@@ -423,14 +438,14 @@ class MrpProductionPlan(models.Model):
             ('state', 'in', ('waiting', 'confirmed', 'partially_available'))])
         if unreserved_moves:
             unreserved_moves._action_cancel()
-        if unplanned_requests:
-            # If a dest move is done the request cannot be cencelled
-            unplanned_requests.write({
-                'move_dest_ids': False,
-            })
-            unplanned_requests.button_cancel()
+
+    @api.multi
+    def button_done(self):
+        self._cancel_undone_orders()
+        self._cancel_unplanned_requests()
+        self._cancel_unreserved_moves_to_cedis()
+        self._transfer_raw_material()
         self.write({'state': 'done'})
-        self.transfer_raw_material()
         return True
 
     @api.multi
