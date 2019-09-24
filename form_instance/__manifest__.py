@@ -64,6 +64,8 @@
         'mrp_production_request_produce_location',
         'mrp_production_surplus',
         'product_category_validation',
+        'quality',
+        'quality_control',
     ],
     'data': [
         'data/product_template.xml',
@@ -85,5 +87,6 @@
         'views/stock_picking_type_view.xml',
         'views/stock_quant_view.xml',
         'views/stock_inventory_view.xml',
+        'views/root_cause_quality_view.xml',
     ],
 }

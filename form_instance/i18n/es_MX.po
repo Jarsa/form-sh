@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-02 23:40+0000\n"
-"PO-Revision-Date: 2019-09-02 23:40+0000\n"
+"POT-Creation-Date: 2019-09-24 17:23+0000\n"
+"PO-Revision-Date: 2019-09-24 17:23+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,14 +16,21 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: form_instance
+#: code:addons/form_instance/models/account_invoice.py:47
+#, python-format
+msgid "%s is not allowed to edit priceunit, quantity or taxes"
+msgstr "%s no es permitido editar precio unitario, cantidad o impuestos"
+
+#. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_workorder_inherit_custom_kanban
 msgid "<strong><span>Date Planned Start - </span></strong>"
 msgstr "<strong><span>Fecha Planeada de Inicio - </span></strong>"
 
 #. module: form_instance
-#: model:res.groups,name:form_instance.group_allow_edit_invoices
-msgid "Allow Edit Invoices"
-msgstr "Permitir Editar Facturas"
+#: model:ir.ui.menu,name:form_instance.add_root_cause
+#: model_terms:ir.ui.view,arch_db:form_instance.cause_form_view
+msgid "Add Root Cause"
+msgstr "Agregar Causa Principal"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.backorder_confirmation_form_custom
@@ -49,6 +56,11 @@ msgstr "Autorizado"
 #: model:ir.ui.menu,name:form_instance.stock_bill_of_materials
 msgid "Bills of Materials"
 msgstr "Lista de materiales"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_allow_edit_invoices
+msgid "Block invoice editing"
+msgstr "No permitir Edicion de factura"
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_send_production_to_scrap
@@ -144,7 +156,7 @@ msgstr "Plantilla del producto"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr "Orden de Producción"
+msgstr "Orden de Produccion"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_plan_line
@@ -169,7 +181,7 @@ msgstr "Descripción de compra"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_quant
 msgid "Quants"
-msgstr ""
+msgstr "Cantidades"
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_receivable_form
@@ -180,6 +192,12 @@ msgstr "Por cobrar"
 #: model:ir.model.fields,field_description:form_instance.field_account_payment__ref
 msgid "Reference"
 msgstr "Referencia"
+
+#. module: form_instance
+#: model:ir.actions.act_window,name:form_instance.action_log
+#: model_terms:ir.ui.view,arch_db:form_instance.cause_tree_view
+msgid "Root Cause"
+msgstr "Causa principal"
 
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.menu_procurement_compute
@@ -214,18 +232,12 @@ msgid "Technical field used to record the product cost set by the user during a 
 msgstr "Campo técnico usado para registrar el coste de un producto establecido por el usuario durante la confirmación de recolección (cuando el método de coste usado es 'precio medio' o 'real'). El valor viene dado en la moneda de la compañía y en la UdM del producto."
 
 #. module: form_instance
-#: code:addons/form_instance/models/account_invoice.py:48
-#, python-format
-msgid "The user %s can not permission to edit the priceunit, quantity and taxes"
-msgstr "El  usuario %s no tiene permisos de modificar el precio, cantidad o impuestos."
-
-#. module: form_instance
 #: model:res.groups,comment:form_instance.group_edit_product_mrp_user
 msgid "The user can edit only certain fields of products"
 msgstr "El usuario puede editar solo ciertos campos en productos"
 
 #. module: form_instance
-#: code:addons/form_instance/models/account_invoice.py:31
+#: code:addons/form_instance/models/account_invoice.py:32
 #, python-format
 msgid "The user can not duplicate the invoices"
 msgstr "El usuario no puede duplicar facturas"
@@ -267,8 +279,8 @@ msgstr "El usuario tendrá acceso solo a leer en Requisición de Venta."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_allow_edit_invoices
-msgid "The users there are on this group can edit the fields of a Invoice"
-msgstr "Los usuarios en este grupo pueden editar campos de las Facturas."
+msgid "The users in this group aren't allowed to edit invoice fields"
+msgstr "Los usuarios de este grupo no pueden editar campos de factura"
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_send_production_to_scrap
