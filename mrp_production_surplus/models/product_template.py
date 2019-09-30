@@ -26,7 +26,7 @@ class ProductTemplate(models.Model):
                     ('product_tmpl_id', '=', external_product.id),
                 ], order='sequence asc').mapped('sequence')
             sequence = sequences[-1] + 1 if sequences else 1
-            self.env['mrp.bom'].create({
+            self.env['mrp.bom'].sudo().create({
                 'product_tmpl_id': external_product.id,
                 'is_surplus': True,
                 'type': 'normal',
