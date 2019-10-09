@@ -37,16 +37,13 @@ class AccountInvoiceLine(models.Model):
 
     @api.multi
     def write(self, values):
-        name_user = self.env.user.name
         fields_blocked = ['quantity', 'price_unit', 'invoice_line_tax_ids']
+        allow_write = not self._context.get('allow_write', False)
         if self.user_has_groups(
-                'form_instance.group_allow_edit_invoices'):
+                'form_instance.group_allow_edit_invoices') and allow_write:
             for rec in fields_blocked:
                 if rec in values:
-                    raise UserError(
-                        _(
-                            '%s is not allowed to edit price'
-                            'unit, quantity or taxes'
-                        ) % name_user
+                    raise UserError(_(
+                        'You are not allowed to edit price, quantity or taxes')
                     )
         return super().write(values)

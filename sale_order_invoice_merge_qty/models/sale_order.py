@@ -16,7 +16,9 @@ class SaleOrder(models.Model):
                 lines = invoice.invoice_line_ids.filtered(
                     lambda l: l.product_id.id == product.id)
                 if len(lines) > 1:
-                    lines[0].write({
+                    context = dict(self._context)
+                    context['allow_write'] = True
+                    lines[0].with_context(context).write({
                         'quantity': sum(lines.mapped('quantity')),
                         'sale_line_ids': [
                             (6, 0, lines.mapped('sale_line_ids').ids)],
