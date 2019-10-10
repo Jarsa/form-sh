@@ -6,8 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< Updated upstream:form_instance/i18n/es_MX.po
 "POT-Creation-Date: 2019-10-09 23:54+0000\n"
 "PO-Revision-Date: 2019-10-09 23:54+0000\n"
+=======
+"POT-Creation-Date: 2019-10-10 18:46+0000\n"
+"PO-Revision-Date: 2019-10-10 18:46+0000\n"
+>>>>>>> Stashed changes:form_instance/i18n/es.po
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,6 +70,11 @@ msgstr "Puede desechar producción"
 #: model_terms:ir.ui.view,arch_db:form_instance.view_account_invoice_inherit_form
 msgid "Cancel cancelation"
 msgstr "Cancelar autorización"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_view_form_tablet_form
+msgid "Done and Close MO"
+msgstr "Hecho y Finalizar OP"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_account_followup_report

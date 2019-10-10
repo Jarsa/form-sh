@@ -55,6 +55,12 @@
             <xpath expr="//h3/field[@name='product_id']" position="after">
                 <field name="product_description" class="oe_inline"/>
             </xpath>
+            <xpath expr="//button[@name='do_finish']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_open_manufacturing_order']" position="attributes">
+                <attribute name="string">Done and Close MO</attribute>
+            </xpath>
         </field>
     </record>
     <menuitem id="menu_workcenter_root" name="Workcenter" action="mrp.mrp_workcenter_kanban_action" groups="form_instance.group_mrp_workcenter_form" sequence="30" web_icon="base,static/description/board.png"/>

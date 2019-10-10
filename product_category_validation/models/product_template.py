@@ -33,7 +33,7 @@ class ProductCategory(models.Model):
                 raise UserError(rec.error_msg)
             if rec.make_required and not search_field:
                 raise UserError(
-                    rec.field_id.name + ' must have a value assigned')
+                    rec.field_id.name + ' must have a value assigned ')
 
     @api.multi
     def write(self, vals):
