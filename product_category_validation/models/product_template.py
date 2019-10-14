@@ -23,13 +23,18 @@ class ProductCategory(models.Model):
 
     def _verify_defaults_set(self):
         for rec in self.categ_id.validation_ids:
+            sel = getattr(self, rec.field_id.name)
             if rec.field_id.ttype == 'many2one':
                 value = int(rec.value)
+            elif rec.field_id.ttype == 'many2many':
+                value = rec.make_required
+                sel = bool(sel)
+            elif rec.field_id.ttype == 'boolean':
+                value = rec.make_required
             else:
                 value = rec.value
-            se = getattr(self, rec.field_id.name)
             search_field = ('self.%s' % rec.field_id.name)
-            if (se != value) and value:
+            if sel != value:
                 raise UserError(rec.error_msg)
             if rec.make_required and not search_field:
                 raise UserError(
