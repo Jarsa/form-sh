@@ -4,7 +4,7 @@
 {
     'name': 'Form Instance',
     'summary': 'Module that install Form Instance',
-    'version': '12.0.1.0.1',
+    'version': '12.0.1.0.2',
     'category': 'Customs',
     'author': 'Jarsa Sistemas, Vauxoo, Odoo Community Association (OCA)',
     'website': 'https://www.jarsa.com.mx',
