@@ -35,6 +35,11 @@ class AccountInvoice(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
 
+    category_id = fields.Many2one(
+        'product.category',
+        string='Product Category',
+        related='product_id.categ_id')
+
     @api.multi
     def write(self, values):
         fields_blocked = ['quantity', 'price_unit', 'invoice_line_tax_ids']

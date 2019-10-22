@@ -19,6 +19,9 @@
                 <button name="authorize_cancelation" string="Authorize cancelation" type="object" icon="fa-check-square-o" groups="form_instance.group_activate_cancel_form"  attrs="{'invisible': [('authorized', '!=', False)]}"/>
                 <button name="cancel_cancelation" string="Cancel cancelation" type="object" groups="form_instance.group_activate_cancel_form"  attrs="{'invisible': [('authorized', '!=', True)]}"/>
             </xpath>
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <field name="category_id"/>
+            </xpath>
         </field>
     </record>
      <record model="ir.ui.view" id="view_account_invoice_inherit_form2">
@@ -72,6 +75,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='number']" position="after">
                 <field name="l10n_mx_edi_cfdi_uuid"/>
+                <field name="currency_id"/>
             </xpath>
         </field>
     </record>
@@ -82,6 +86,16 @@
         <field name="arch" type="xml">
             <xpath expr="//header/button[@name='action_invoice_open']" position="attributes">
                 <attribute name="groups">account.group_account_manager</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_account_invoice_supplier2_inherit_tree">
+        <field name="name">view.account.invoice.supplier2.inherit.tree</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+        <field name="arch" type="xml">
+              <xpath expr="//field[@name='reference']" position="before">
+                <field name="currency_id"/>
             </xpath>
         </field>
     </record>
