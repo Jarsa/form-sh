@@ -4,6 +4,7 @@
         <field name="name">mrp_production_custom_form.form</field>
         <field name="model">mrp.production</field>
         <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="priority" eval="110"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="product_supplier_name"/>
@@ -14,6 +15,9 @@
             <xpath expr="//field[@name='origin']" position="after">
                 <field name="create_date"/>
             </xpath>
+            <xpath expr="//header/button[@name='post_inventory']" position="replace">
+                <button name="post_inventory" string="Post Inventory" type="object"/>
+             </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="mrp_production_custom_tree">
