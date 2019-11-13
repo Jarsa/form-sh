@@ -341,3 +341,14 @@ msgstr "No tienes permitido editar precio, cantidad o impuestos"
 msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
 
+#. module: form_instance
+#: code:addons/form_instance/models/sale_order.py:44
+#, python-format
+msgid "At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, cannot cancel Sale Order."
+msgstr "Hay almenos una \"Cantidad Entregada\" de la Orden de Venta que no era igual a 0, no se puede cancelar la Orden de Venta."
+
+#. module: form_instance
+#: code:addons/form_instance/models/sale_order.py:24
+#, python-format
+msgid "At least one picking is not in status Done or Cancelled, cannot cancel Sale Order."
+msgstr "Hay al menos un tipo de opreacion que no esta en estado “Hecho” o “Cancelado”, no se puede cancelar la Orden de Venta."
