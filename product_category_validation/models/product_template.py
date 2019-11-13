@@ -16,6 +16,10 @@ class ProductCategory(models.Model):
                 self.update({
                     name: int(rec.value)
                 })
+            elif rec.field_id.ttype == 'boolean':
+                self.update({
+                    name: rec.make_required
+                })
             else:
                 self.update({
                     name: rec.value
