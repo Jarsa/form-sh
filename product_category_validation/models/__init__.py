@@ -4,3 +4,4 @@
 from . import product_category_validation
 from . import product_category
 from . import product_template
+from . import mrp_bom

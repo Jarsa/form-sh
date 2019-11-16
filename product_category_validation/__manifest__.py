@@ -10,7 +10,7 @@
     'website': 'https://www.jarsa.com.mx',
     'license': 'AGPL-3',
     'depends': [
-        'product'
+        'mrp',
     ],
     'data': [
         'views/product_category_view.xml',

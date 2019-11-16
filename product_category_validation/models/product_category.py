@@ -8,3 +8,4 @@ class ProductCategory(models.Model):
     _inherit = 'product.category'
 
     validation_ids = fields.One2many('product.category.validation', 'categ_id')
+    is_kit = fields.Boolean()
