@@ -89,5 +89,6 @@
         'views/stock_inventory_view.xml',
         'views/root_cause_quality_view.xml',
         'views/mrp_routing_view.xml',
+        'views/product_template_view.xml',
     ],
 }
