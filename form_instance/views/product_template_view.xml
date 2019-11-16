@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='default_code']" position="after">
                 <field name="id"/>
+                <field name="id_form"/>
             </xpath>
         </field>
     </record>

@@ -1,13 +1,18 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import _, api, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.osv import expression
 
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+
+    id_form = fields.Char(
+        string='ID FORM',
+        help='Internal field used to identify the product internally '
+        'respecting sales default code')
 
     @api.multi
     def write(self, vals):
