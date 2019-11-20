@@ -217,7 +217,7 @@ msgstr "Código de barras"
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "Credit Note"
-msgstr "Rectificativa"
+msgstr "Nota de Crédito"
 
 #. module: report_acount_invoice_form
 #: model:ir.model,name:report_acount_invoice_form.model_account_invoice
@@ -237,4 +237,4 @@ msgstr "Factura de proveedor"
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "Vendor Credit Note"
-msgstr "Factura rectificativa de proveedor"
+msgstr "Nota de Crédito de proveedor"
