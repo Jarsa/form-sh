@@ -1,7 +1,7 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
-
-from odoo import api, fields, models
+from odoo.exceptions import UserError
+from odoo import _, api, fields, models
 
 
 class MrpProduction(models.Model):
@@ -38,3 +38,13 @@ class MrpProduction(models.Model):
                 order.availability = (
                     all(assigned_list) and 'assigned') or (
                     any(partial_list) and 'partially_available') or 'waiting'
+
+    @api.multi
+    def button_mark_done(self):
+        if self.finished_move_line_ids:
+            if bool(self.move_raw_ids.filtered(
+                    lambda m: m.quantity_done == 0.0)):
+                raise UserError(_(
+                    'You can not finish a MO if there'
+                    ' are raw materials quantity to consume in 0'))
+        return super(MrpProduction, self).button_mark_done()

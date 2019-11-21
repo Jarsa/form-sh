@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 21:47+0000\n"
-"PO-Revision-Date: 2019-10-22 21:47+0000\n"
+"POT-Creation-Date: 2019-11-20 23:15+0000\n"
+"PO-Revision-Date: 2019-11-20 23:15+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,18 @@ msgid "Are you sure you don't want to create a backorder?"
 msgstr "¿Está seguro de que no desea crear un pedido en espera?"
 
 #. module: form_instance
+#: code:addons/form_instance/models/sale_order.py:37
+#, python-format
+msgid "At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, cannot cancel Sale Order"
+msgstr ""
+
+#. module: form_instance
+#: code:addons/form_instance/models/sale_order.py:23
+#, python-format
+msgid "At least one picking is not in status Done or Cancelled, cannot cancel Sale Order."
+msgstr "Hay al menos un tipo de opreacion que no esta en estado “Hecho” o “Cancelado”, no se puede cancelar la Orden de Venta."
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_activate_cancel_form
 msgid "Authorize Cancelation"
 msgstr "Autorizar Cancelación"
@@ -45,6 +57,11 @@ msgstr "Autorizar Cancelación"
 #: model:ir.model.fields,field_description:form_instance.field_account_invoice__authorized
 msgid "Authorized"
 msgstr "Autorizado"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Lista de materiales"
 
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.stock_bill_of_materials
@@ -132,6 +149,11 @@ msgid "Picking Type"
 msgstr "Tipo de albarán"
 
 #. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.mrp_production_custom_form
+msgid "Post Inventory"
+msgstr "Confirmar Inventario"
+
+#. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_custom_form
 msgid "Process"
 msgstr "Procesar"
@@ -161,7 +183,7 @@ msgstr "Plantilla del producto"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr "Orden de Produccion"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_plan_line
@@ -182,6 +204,11 @@ msgstr "Creación de productos"
 #: model:ir.model.fields,field_description:form_instance.field_stock_quant__product_supplier_name
 msgid "Purchase Description"
 msgstr "Descripción de compra"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_quant
@@ -210,6 +237,17 @@ msgid "Run Scheduler"
 msgstr "Ejecutar Planificador"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_sale_order
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_account_invoice_line__category_id
 #: model:ir.model.fields,help:form_instance.field_mrp_production_request__product_category_id
 #: model:ir.model.fields,help:form_instance.field_stock_quant__categ_id
 msgid "Select category for the current product"
@@ -330,7 +368,7 @@ msgid "Workcenter"
 msgstr "Centro de Trabajo"
 
 #. module: form_instance
-#: code:addons/form_instance/models/account_invoice.py:50
+#: code:addons/form_instance/models/account_invoice.py:51
 #, python-format
 msgid "You are not allowed to edit price, quantity or taxes"
 msgstr "No tienes permitido editar precio, cantidad o impuestos"
@@ -342,13 +380,8 @@ msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
 
 #. module: form_instance
-#: code:addons/form_instance/models/sale_order.py:44
+#: code:addons/form_instance/models/mrp_production.py:47
 #, python-format
-msgid "At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, cannot cancel Sale Order."
-msgstr "Hay almenos una \"Cantidad Entregada\" de la Orden de Venta que no era igual a 0, no se puede cancelar la Orden de Venta."
+msgid "You can not finish a MO if there are raw materials quantity to consume in 0"
+msgstr "No puedes finalizar una OP si la cantidad de alguna de las materias primas a consumir está en 0"
 
-#. module: form_instance
-#: code:addons/form_instance/models/sale_order.py:24
-#, python-format
-msgid "At least one picking is not in status Done or Cancelled, cannot cancel Sale Order."
-msgstr "Hay al menos un tipo de opreacion que no esta en estado “Hecho” o “Cancelado”, no se puede cancelar la Orden de Venta."
