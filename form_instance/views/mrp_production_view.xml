@@ -15,8 +15,8 @@
             <xpath expr="//field[@name='origin']" position="after">
                 <field name="create_date"/>
             </xpath>
-            <xpath expr="//header/button[@name='post_inventory']" position="replace">
-                <button name="post_inventory" string="Post Inventory" type="object"/>
+            <xpath expr="//header/button[@name='post_inventory']" position="attributes">
+                <attribute name="groups"/>
              </xpath>
         </field>
     </record>
