@@ -12,7 +12,8 @@ class ProductTemplate(models.Model):
     id_form = fields.Char(
         string='ID FORM',
         help='Internal field used to identify the product internally '
-        'respecting sales default code')
+        'respecting sales default code',
+        compute="_compute_id_form")
 
     @api.multi
     def write(self, vals):
@@ -30,6 +31,19 @@ class ProductTemplate(models.Model):
         if self.item_ids:
             price = self.item_ids[0]
             self.write({'lst_price': price.fixed_price})
+
+    @api.multi
+    @api.depends('partner_ids')
+    def _compute_id_form(self):
+        for rec in self:
+            if rec.partner_ids:
+                full_reference = ''
+                for partner in rec.partner_ids:
+                    reference = partner.ref or '00'
+                    full_reference = full_reference + reference + '-'
+                partner_code = rec.partner_ids[0].partner_code or '00'
+                name = (partner_code + '-' + full_reference + str(rec.id))
+                rec.id_form = name
 
 
 class ProductProduct(models.Model):

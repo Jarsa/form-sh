@@ -17,4 +17,14 @@
             </field>
         </field>
     </record>
+    <record id="view_res_partner_reference_template_form" model="ir.ui.view">
+        <field name="name">res.partner.reference.template.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+              <field name="partner_code"/>
+            </xpath>
+        </field> 
+    </record>
 </odoo>
