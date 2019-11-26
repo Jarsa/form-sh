@@ -106,7 +106,7 @@
                             </thead>
                             <tbody>
                                 <tr t-foreach="doc.order_line" t-as="line">
-                                    <t t-if="not line.display_type">
+                                    <t t-if="not line.display_type and line.qty_delivered">
                                         <th style="background-color: #FFFFFF; font-style: normal;" class="text-right"><span t-esc="int(line.qty_delivered)"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.product_uom"/></th>
                                         <th style="background-color: #FFFFFF; font-style: normal;"><span t-field="line.product_id.default_code"/></th>
