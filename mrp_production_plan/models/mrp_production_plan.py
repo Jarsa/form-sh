@@ -370,7 +370,7 @@ class MrpProductionPlan(models.Model):
         for product in products:
             product_qty = quant_obj._get_available_quantity(
                 product_id=product, location_id=pre_prod_loc)
-            if not product_qty:
+            if not product_qty or product_qty < 0.001:
                 continue
             products_list.append((0, 0, {
                 'name': product.name,
@@ -380,6 +380,8 @@ class MrpProductionPlan(models.Model):
                 'location_id': pre_prod_loc.id,
                 'location_dest_id': stock_loc.id,
             }))
+        if not products_list:
+            return True
         picking = self.env['stock.picking'].create({
             'picking_type_id': picking_type.id,
             'move_ids_without_package': products_list,
