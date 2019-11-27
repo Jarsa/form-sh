@@ -43,8 +43,9 @@ class MrpProduction(models.Model):
     def button_mark_done(self):
         if self.finished_move_line_ids:
             if bool(self.move_raw_ids.filtered(
-                    lambda m: m.quantity_done == 0.0)):
+                    lambda m: m.quantity_done != m.product_uom_qty)):
                 raise UserError(_(
                     'You can not finish a MO if there'
-                    ' are raw materials quantity to consume in 0'))
+                    ' are raw materials quantity done different to'
+                    ' the quantity to consume'))
         return super(MrpProduction, self).button_mark_done()

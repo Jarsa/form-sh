@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-20 23:15+0000\n"
-"PO-Revision-Date: 2019-11-20 23:15+0000\n"
+"POT-Creation-Date: 2019-11-27 00:00+0000\n"
+"PO-Revision-Date: 2019-11-27 00:00+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -84,6 +84,11 @@ msgid "Cancel cancelation"
 msgstr "Cancelar autorización"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__product_description
 msgid "Description"
 msgstr "Descripción"
@@ -97,6 +102,18 @@ msgstr "Hecho y Finalizar OP"
 #: model:ir.model,name:form_instance.model_account_followup_report
 msgid "Follow-up Report"
 msgstr "Reporte de Seguimiento"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_product_product__id_form
+#: model:ir.model.fields,field_description:form_instance.field_product_template__id_form
+msgid "ID FORM"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_product_product__id_form
+#: model:ir.model.fields,help:form_instance.field_product_template__id_form
+msgid "Internal field used to identify the product internally respecting sales default code"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.menu_action_inventory_form
@@ -134,6 +151,12 @@ msgid "Manufacturing Request"
 msgstr "Solicitud de Fabricación"
 
 #. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_res_partner__partner_code
+#: model:ir.model.fields,field_description:form_instance.field_res_users__partner_code
+msgid "Partner Code"
+msgstr ""
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_payable_form
 msgid "Payable"
 msgstr "A pagar"
@@ -147,11 +170,6 @@ msgstr "Pagos"
 #: model:ir.model,name:form_instance.model_stock_picking_type
 msgid "Picking Type"
 msgstr "Tipo de albarán"
-
-#. module: form_instance
-#: model_terms:ir.ui.view,arch_db:form_instance.mrp_production_custom_form
-msgid "Post Inventory"
-msgstr "Confirmar Inventario"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_custom_form
@@ -374,7 +392,7 @@ msgid "You are not allowed to edit price, quantity or taxes"
 msgstr "No tienes permitido editar precio, cantidad o impuestos"
 
 #. module: form_instance
-#: code:addons/form_instance/models/product_template.py:20
+#: code:addons/form_instance/models/product_template.py:26
 #, python-format
 msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
@@ -382,6 +400,6 @@ msgstr "No tienes permitido modificar productos"
 #. module: form_instance
 #: code:addons/form_instance/models/mrp_production.py:47
 #, python-format
-msgid "You can not finish a MO if there are raw materials quantity to consume in 0"
-msgstr "No puedes finalizar una OP si la cantidad de alguna de las materias primas a consumir está en 0"
+msgid "You can not finish a MO if there are raw materials quantity done different to the quantity to consume"
+msgstr "No puedes finalizar una OP si la cantidad a consumir y la cantidad consumida de los componentes es diferente"
 
