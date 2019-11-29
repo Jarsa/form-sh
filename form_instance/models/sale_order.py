@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
         # the order cannot be cancelled.
 
         for rec in self.picking_ids:
-            if rec.state not in ['done', 'cancelled']:
+            if rec.state not in ['done', 'cancel']:
                 raise ValidationError(
                     _('At least one picking is not in status'
                         ' Done or Cancelled, cannot cancel Sale Order.'))
