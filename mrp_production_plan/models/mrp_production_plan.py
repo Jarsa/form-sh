@@ -395,10 +395,12 @@ class MrpProductionPlan(models.Model):
             wiz = self.env['stock.immediate.transfer'].browse(
                 validate_picking['res_id'])
             wiz.process()
-            validate_picking2 = picking.button_validate()
-            wiz2 = self.env['stock.backorder.confirmation'].browse(
-                validate_picking2['res_id'])
-            wiz2.process_cancel_backorder()
+            if sum(picking.mapped(
+                    'move_line_ids').mapped('product_qty')) != 0.0:
+                validate_picking2 = picking.button_validate()
+                wiz2 = self.env['stock.backorder.confirmation'].browse(
+                    validate_picking2['res_id'])
+                wiz2.process_cancel_backorder()
 
     @api.multi
     def _cancel_undone_orders(self):
