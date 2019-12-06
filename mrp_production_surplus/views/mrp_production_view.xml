@@ -12,6 +12,7 @@
     </record>
     <record id="mrp.mrp_production_action" model="ir.actions.act_window">
         <field name="domain">[('is_surplus', '=', False)]</field>
+        <field name="context">{'search_default_todo': True, 'create': False}</field>
     </record>
     <record id="mrp_production_surplus_action" model="ir.actions.act_window">
         <field name="name">Manufacturing Orders</field>
