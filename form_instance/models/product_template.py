@@ -13,7 +13,8 @@ class ProductTemplate(models.Model):
         string='ID FORM',
         help='Internal field used to identify the product internally '
         'respecting sales default code',
-        compute="_compute_id_form")
+        compute="_compute_id_form",
+        store=True)
 
     @api.multi
     def write(self, vals):
@@ -49,15 +50,23 @@ class ProductTemplate(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
+    id_form = fields.Char(
+        string='ID FORM',
+        help='Internal field used to identify the product internally '
+        'respecting sales default code',
+        related="product_tmpl_id.id_form",
+        store=True)
+
     @api.model
     def _name_search(
             self, name, args=None, operator='=ilike',
             limit=100, name_get_uid=None):
         if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
             args = args or []
-            domain = (['|', '|', ('default_code', 'ilike', name),
+            domain = (['|', '|', '|', ('default_code', 'ilike', name),
                        ('description', 'ilike', name),
-                       ('name', 'ilike', name)])
+                       ('name', 'ilike', name),
+                       ('id_form', 'ilike', name)])
             product_ids = self._search(
                 expression.AND([domain, args]),
                 limit=limit, access_rights_uid=name_get_uid)
