@@ -40,7 +40,7 @@ class ProductTemplate(models.Model):
             if rec.partner_ids:
                 full_reference = ''
                 for partner in rec.partner_ids:
-                    reference = partner.ref or '00'
+                    reference = partner.ref and partner.ref.zfill(3) or '00'
                     full_reference = full_reference + reference + '-'
                 partner_code = rec.partner_ids[0].partner_code or '00'
                 name = (partner_code + '-' + full_reference + str(rec.id))
