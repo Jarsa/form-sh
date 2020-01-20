@@ -70,6 +70,7 @@
     'data': [
         'data/product_template.xml',
         'data/ir_config_parameter.xml',
+        'data/ir_sequence_data.xml',
         'security/security.xml',
         'security/rules.xml',
         'security/ir.model.access.csv',

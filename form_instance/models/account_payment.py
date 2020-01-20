@@ -1,7 +1,7 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class AccountPayment(models.Model):
@@ -12,6 +12,7 @@ class AccountPayment(models.Model):
         related='partner_id.ref',
     )
 
+    @api.model
     def create(self, vals):
         if vals['partner_type']:
             sequence_code = ''
@@ -25,8 +26,9 @@ class AccountPayment(models.Model):
                     sequence_code = 'account.payment.supplier.refund'
                 if vals['payment_type'] == 'outbound':
                     sequence_code = 'account.payment.supplier.invoice'
-            vals['name'] = self.env['ir.sequence'].with_context(
-                ir_sequence_date=vals['payment_date']).next_by_code(
-                sequence_code)
-        res = super().create(vals)
-        return res
+        else:
+            sequence_code = 'account.payment.internal.move'
+        vals['name'] = self.env['ir.sequence'].with_context(
+            ir_sequence_date=vals['payment_date']).next_by_code(
+            sequence_code)
+        return super().create(vals)
