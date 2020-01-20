@@ -71,6 +71,7 @@
         'data/product_template.xml',
         'data/ir_config_parameter.xml',
         'data/ir_sequence_data.xml',
+        'data/ir_base_automation_data.xml',
         'security/security.xml',
         'security/rules.xml',
         'security/ir.model.access.csv',
