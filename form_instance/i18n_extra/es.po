@@ -29,3 +29,12 @@ msgstr "Diseñador"
 #: model:ir.ui.menu,name:form_instance.mrp_stock_warehouse
 msgid "Reordening Rules"
 msgstr "Reglas de Abastecimiento"
+
+#: model:res.groups,name:form_instance.group_create_lead_in_crm_form
+msgid "Create tag in CRM"
+msgstr "Crear Etiquetas en CRM"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_create_lead_in_crm_form
+msgid "The user will have access to create a tag from CRM."
+msgstr "El usuario tendra acceso a crear Etiquetas en el modulo de CRM"

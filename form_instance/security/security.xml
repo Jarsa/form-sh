@@ -68,4 +68,9 @@
     <record id="contacts.menu_country_partner" model="ir.ui.menu">
         <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
     </record>
+    <record id="group_create_lead_in_crm_form" model="res.groups">
+        <field name="name">Create tag in CRM</field>
+        <field name="category_id" ref="base.module_category_sales_management"/>
+        <field name="comment">The user will have access to create a tag from CRM.</field>
+    </record>
 </odoo>
