@@ -24,3 +24,8 @@ msgstr "Orden de Compra"
 #: model:ir.model.fields,field_description:form_instance.field_crm_lead__designer_id
 msgid "Designer"
 msgstr "Diseñador"
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.mrp_stock_warehouse
+msgid "Reordening Rules"
+msgstr "Reglas de Abastecimiento"

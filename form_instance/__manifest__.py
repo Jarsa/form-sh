@@ -94,5 +94,6 @@
         'views/product_template_view.xml',
         'views/stock_move_line_view.xml',
         'views/crm_lead_view.xml',
+        'views/stock_warehouse_view.xml',
     ],
 }
