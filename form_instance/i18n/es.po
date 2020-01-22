@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-27 00:00+0000\n"
-"PO-Revision-Date: 2019-11-27 00:00+0000\n"
+"POT-Creation-Date: 2020-01-22 19:35+0000\n"
+"PO-Revision-Date: 2020-01-22 19:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,13 +32,13 @@ msgid "Are you sure you don't want to create a backorder?"
 msgstr "¿Está seguro de que no desea crear un pedido en espera?"
 
 #. module: form_instance
-#: code:addons/form_instance/models/sale_order.py:37
+#: code:addons/form_instance/models/sale_order.py:57
 #, python-format
 msgid "At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, cannot cancel Sale Order"
 msgstr ""
 
 #. module: form_instance
-#: code:addons/form_instance/models/sale_order.py:23
+#: code:addons/form_instance/models/sale_order.py:25
 #, python-format
 msgid "At least one picking is not in status Done or Cancelled, cannot cancel Sale Order."
 msgstr "Hay al menos un tipo de opreacion que no esta en estado “Hecho” o “Cancelado”, no se puede cancelar la Orden de Venta."
@@ -57,11 +57,6 @@ msgstr "Autorizar Cancelación"
 #: model:ir.model.fields,field_description:form_instance.field_account_invoice__authorized
 msgid "Authorized"
 msgstr "Autorizado"
-
-#. module: form_instance
-#: model:ir.model,name:form_instance.model_mrp_bom
-msgid "Bill of Material"
-msgstr "Lista de materiales"
 
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.stock_bill_of_materials
@@ -89,9 +84,26 @@ msgid "Contact"
 msgstr "Contacto"
 
 #. module: form_instance
+#: model:ir.actions.server,name:form_instance.ir_cron_quality_points_tecmur_ir_actions_server
+#: model:ir.cron,cron_name:form_instance.ir_cron_quality_points_tecmur
+#: model:ir.cron,name:form_instance.ir_cron_quality_points_tecmur
+msgid "Control Quality Points Form"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_create_lead_in_crm_form
+msgid "Create tag in CRM"
+msgstr "Crear Etiquetas en CRM"
+
+#. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__product_description
 msgid "Description"
 msgstr "Descripción"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__designer_id
+msgid "Designer"
+msgstr "Diseñador"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_view_form_tablet_form
@@ -136,6 +148,11 @@ msgid "Invoice Line"
 msgstr "Linea de factura"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_edit_product_mrp_user
 msgid "MRP Edit Products"
 msgstr "Editar Productos de MRP"
@@ -149,6 +166,12 @@ msgstr "Administrador Form"
 #: model:ir.model,name:form_instance.model_mrp_production_request
 msgid "Manufacturing Request"
 msgstr "Solicitud de Fabricación"
+
+#. module: form_instance
+#: model:base.automation,name:form_instance.no_duplicate_vats
+#: model:ir.actions.server,name:form_instance.no_duplicate_vats_ir_actions_server
+msgid "No Duplicar RFC"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_res_partner__partner_code
@@ -244,6 +267,11 @@ msgid "Reference"
 msgstr "Referencia"
 
 #. module: form_instance
+#: model:ir.ui.menu,name:form_instance.mrp_stock_warehouse
+msgid "Reordening Rules"
+msgstr "Reglas de Abastecimiento"
+
+#. module: form_instance
 #: model:ir.actions.act_window,name:form_instance.action_log
 #: model_terms:ir.ui.view,arch_db:form_instance.cause_tree_view
 msgid "Root Cause"
@@ -314,6 +342,11 @@ msgid "The user will have access to activate button cancel."
 msgstr "El usuario tendrá acceso a activar el botón de cancelar"
 
 #. module: form_instance
+#: model:res.groups,comment:form_instance.group_create_lead_in_crm_form
+msgid "The user will have access to create a tag from CRM."
+msgstr "El usuario tendra acceso a crear Etiquetas en el modulo de CRM"
+
+#. module: form_instance
 #: model:res.groups,comment:form_instance.group_payable_form
 msgid "The user will have access to payable accounts."
 msgstr "El usuario tendrá acceso a cuentas por pagar."
@@ -332,6 +365,11 @@ msgstr "El usuario va a tener acceso a ver los tipos de operación en las que es
 #: model:res.groups,comment:form_instance.group_mrp_workcenter_form
 msgid "The user will have access to the centers where is follower."
 msgstr "El usuario tendrá acceso a los centros de trabajo en los que es seguidor."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_update_so_status_form
+msgid "The user will have access to update sale orders status."
+msgstr "El usuario tendrá acceso a actualizar el estado a facturar del pedido de venta"
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_purchase_request_manager_form
@@ -366,6 +404,16 @@ msgid "Unit Price"
 msgstr "Precio unitario"
 
 #. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.custom_form_sale_order_form
+msgid "Update SO status"
+msgstr "Actualizar estado a facturar"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_update_so_status_form
+msgid "Update Sale Order Status"
+msgstr "Actualizar estado a facturar del Pedido de Venta"
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_mrp_workcenter_form
 msgid "User Workcenter"
 msgstr "Usuario de Centro de Trabajo"
@@ -392,14 +440,8 @@ msgid "You are not allowed to edit price, quantity or taxes"
 msgstr "No tienes permitido editar precio, cantidad o impuestos"
 
 #. module: form_instance
-#: code:addons/form_instance/models/product_template.py:26
+#: code:addons/form_instance/models/product_template.py:27
 #, python-format
 msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
-
-#. module: form_instance
-#: code:addons/form_instance/models/mrp_production.py:47
-#, python-format
-msgid "You can not finish a MO if there are raw materials quantity done different to the quantity to consume"
-msgstr "No puedes finalizar una OP si la cantidad a consumir y la cantidad consumida de los componentes es diferente"
 

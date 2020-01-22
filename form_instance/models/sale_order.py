@@ -1,6 +1,8 @@
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
 
+from datetime import date
+
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -25,6 +27,25 @@ class SaleOrder(models.Model):
         self.mapped('order_line')._validate_zero_qty_delivered()
 
         return super().action_cancel()
+
+    @api.multi
+    def change_so_state(self):
+        for rec in self:
+            for line in rec.order_line:
+                line.qty_invoiced = line.qty_delivered
+                categ = line.product_id.categ_id
+                goods_account = categ.property_stock_account_output_categ_id.id
+                sale_cost_account = categ.property_account_expense_categ_id.id
+                aml = line.move_ids.filtered(
+                    lambda m: m.state == 'done').mapped(
+                    'account_move_ids.line_ids').filtered(
+                    lambda aml: aml.account_id.id == goods_account)
+                aml.move_id.button_cancel()
+                aml.move_id.write({'date': date.today()})
+                aml.write({
+                    'account_id': sale_cost_account,
+                    'date': date.today()})
+                aml.move_id.action_post()
 
 
 class SaleOrderLine(models.Model):
