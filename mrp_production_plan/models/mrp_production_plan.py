@@ -102,7 +102,7 @@ class MrpProductionPlan(models.Model):
     @api.model
     def _avoid_duplicate_planned_plans(self, vals):
         existing_plan = self.search([
-            ('state', '!=', 'done'),
+            ('state', 'not in', ['done', 'cancel']),
             ('category_id', '=', vals['category_id'])])
         allow_multiple_plans = self.user_has_groups(
             'mrp_production_plan.group_mrp_production_plan_allow_duplicate')
