@@ -72,6 +72,9 @@
                                     <field name="date_planned_finished_wo" attrs="{'column_invisible': [('parent.has_routing', '=', False)]}"/>
                                     <field name="done_qty" attrs="{'column_invisible': [('parent.is_planned', '=', False)]}"/>
                                     <field name="product_uom_id" groups="uom.group_uom" attrs="{'column_invisible': [('parent.is_planned', '=', False)]}"/>
+                                    <field name="canceled_mo" invisible="1"/>
+                                    <button class="oe_stat_button" name="recreate_mo"
+                                    string="Update Request State" type="object" icon="fa-refresh" attrs="{'invisible': [('canceled_mo', '=', False)]}"/>
                                 </tree>
                             </field>
                         </page>

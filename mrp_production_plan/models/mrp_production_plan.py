@@ -527,6 +527,18 @@ class MrpProductionPlanLine(models.Model):
         required=True,
         default=0.0,
     )
+    order_is_cancel = fields.Boolean(
+        compute='_compute_order_is_cancel',
+        help='Technical field used to identify if the'
+        ' manufacture order will be created again if it was'
+        ' cancelled by error.',
+    )
+    canceled_mo = fields.Boolean(
+        compute='_compute_canceled_mo',
+        help='Technical field used to identify if there'
+        'are cancelled manufacture orders in order to put their'
+        'related manufacture request in approved state again ',
+    )
 
     @api.multi
     @api.depends('requested_kit_qty')
@@ -544,6 +556,17 @@ class MrpProductionPlanLine(models.Model):
     @api.multi
     @api.depends('production_id')
     def _compute_planned(self):
+        for rec in self:
+            if not rec.date_planned_finished_wo:
+                rec.planned = False
+                return True
+            start_day = rec.date_planned_start_wo.day
+            end_day = rec.date_planned_finished_wo.day
+            rec.planned = start_day == end_day
+
+    @api.multi
+    @api.depends('production_id')
+    def _compute_order_is_cancel(self):
         for rec in self:
             if not rec.date_planned_finished_wo:
                 rec.planned = False
@@ -589,6 +612,22 @@ class MrpProductionPlanLine(models.Model):
     def _onchange_bom_id(self):
         self.qty_per_kit = self.bom_id.bom_line_ids.filtered(
             lambda l: l.product_id.id == self.product_id.id).product_qty
+
+    @api.multi
+    @api.depends('request_id.mrp_production_ids', 'plan_id.production_ids')
+    def _compute_canceled_mo(self):
+        for rec in self:
+            productions = rec.request_id.mrp_production_ids
+            if all([mo.state == 'cancel' for mo in productions]):
+                rec.canceled_mo = True
+
+    @api.multi
+    def recreate_mo(self):
+        for rec in self:
+            productions = rec.request_id.mrp_production_ids
+            if all([mo.state == 'cancel' for mo in productions]):
+                rec.request_id.button_draft()
+                rec.request_id.state = 'approved'
 
 
 class MrpProductionPlanWorkcenter(models.Model):
