@@ -405,14 +405,32 @@ class MrpProductionPlan(models.Model):
 
     @api.multi
     def _cancel_undone_orders(self):
-        paperboard_finished_categ = self.env.ref(
-            '__import__.product_category_001').id
-        return_finished_categ = self.env.ref(
-            '__export__.product_category_28_e9aa8d29').id
+        workorders = self.production_ids.filtered(
+            lambda x: x.state not in ('cancel', 'done')).mapped(
+                'workorder_ids')
+        for workorder in workorders:
+            workorder.time_ids.unlink()
+            workorder.unlink()
         undone_orders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
-            x.availability != 'assigned' and x.product_id.categ_id.id not in (
-                paperboard_finished_categ, return_finished_categ))
+            x.availability != 'assigned')
+        wrong_orders = undone_orders.filtered(
+            lambda w: w.finished_move_line_ids)
+        sfp_pickings = self.production_ids.filtered(
+            lambda p: p.state == 'done').mapped('picking_ids').filtered(
+                lambda p: p.picking_type_id.id == 7 and (
+                    p.state in ['assigned', 'confirmed']))
+        for line in sfp_pickings.mapped('move_line_ids_without_package'):
+            line.qty_done = line.product_uom_qty
+        sfp_pickings.split_process()
+        empty_pickings = self.env['stock.picking'].search([
+            ('backorder_id', 'in', sfp_pickings.ids)])
+        empty_pickings.action_cancel()
+        if wrong_orders:
+            for move_raw in wrong_orders.mapped('move_raw_ids'):
+                move_raw.quantity_done = 0.0
+            for finished_move in wrong_orders.mapped('finished_move_line_ids'):
+                finished_move.qty_done = 0.0
         if undone_orders:
             for order in undone_orders:
                 order.action_cancel()

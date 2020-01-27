@@ -12,6 +12,7 @@
     'depends': [
         'mrp_production_request',
         'mrp_workorder',
+        'stock_split_picking',
     ],
     'data': [
         'security/security.xml',
