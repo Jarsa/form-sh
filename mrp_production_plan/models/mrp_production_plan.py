@@ -438,13 +438,28 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def _cancel_unplanned_requests(self):
         unplanned_requests = self.env['mrp.production.request'].search([
-            ('origin', 'ilike', 'OP/'), ('plan_line_id', '=', False)])
+            ('plan_line_id', '=', False), '|',
+            ('origin', '=', False), ('origin', 'ilike', 'OP/')])
         if unplanned_requests:
             # If a dest move is done the request cannot be cencelled
             unplanned_requests.write({
                 'move_dest_ids': False,
             })
             unplanned_requests.button_cancel()
+
+    @api.multi
+    def _create_new_requests(self):
+        pending_requests = self.request_ids.filtered(
+            lambda mr: mr.origin and 'OP' not in mr.origin and (
+                mr.pending_qty > 0.0))
+        for request in pending_requests:
+            new_mr = request.sudo().create({
+                'product_id': request.product_id.id,
+                'product_qty': request.pending_qty,
+                'bom_id': request.bom_id.id,
+                'origin': request.origin,
+            })
+            new_mr.button_to_approve()
 
     @api.multi
     def _cancel_unreserved_moves_to_cedis(self):
@@ -468,6 +483,7 @@ class MrpProductionPlan(models.Model):
         self._cancel_unplanned_requests()
         self._cancel_unreserved_moves_to_cedis()
         self._transfer_raw_material()
+        self._create_new_requests()
         self.write({'state': 'done'})
         return True
 
