@@ -458,6 +458,7 @@ class MrpProductionPlan(models.Model):
                 'product_qty': request.pending_qty,
                 'bom_id': request.bom_id.id,
                 'origin': request.origin,
+                'product_uom_id': request.product_id.uom_id.id,
             })
             new_mr.button_to_approve()
 
