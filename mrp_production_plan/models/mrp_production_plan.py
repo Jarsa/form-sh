@@ -61,6 +61,11 @@ class MrpProductionPlan(models.Model):
         help='Technical field used to show or hide columns '
         'date_planned_start_wo and date_planned_finished_wo if the line don\'t'
         ' have a routing.')
+    requests_wo_order = fields.Boolean(
+        readonly=True, compute='_compute_requests_wo_order',
+        help='Technical field used to show or hide button '
+        'done if there are at least one Line (Manufacturing Request) '
+        'without a linked Manufacturing Order.')
 
     @api.multi
     def action_view_productions(self):
@@ -406,8 +411,8 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
-            lambda x: x.state not in ('cancel', 'done')).mapped(
-                'workorder_ids')
+            lambda x: x.state not in ('cancel', 'done') and (
+                x.finished_move_line_ids)).mapped('workorder_ids')
         for workorder in workorders:
             workorder.time_ids.unlink()
             workorder.unlink()
@@ -497,6 +502,13 @@ class MrpProductionPlan(models.Model):
     def button_cancel(self):
         self.write({'state': 'cancel'})
         return True
+
+    @api.multi
+    @api.depends('line_ids')
+    def _compute_requests_wo_order(self):
+        for rec in self:
+            if any([not line.production_id for line in rec.line_ids]):
+                rec.requests_wo_order = True
 
 
 class MrpProductionPlanLine(models.Model):
@@ -653,8 +665,11 @@ class MrpProductionPlanLine(models.Model):
     def _compute_canceled_mo(self):
         for rec in self:
             productions = rec.request_id.mrp_production_ids
-            if all([mo.state == 'cancel' for mo in productions]):
-                rec.canceled_mo = True
+            if productions:
+                if all([mo.state == 'cancel' for mo in productions]):
+                    rec.canceled_mo = True
+            else:
+                rec.canceled_mo = False
 
     @api.multi
     def recreate_mo(self):

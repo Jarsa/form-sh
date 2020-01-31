@@ -14,12 +14,13 @@
                     <button name="button_approved" states="draft"
                             string="Approve" type="object" class="oe_highlight"/>
                     <field name="finished_orders" invisible="1"/>
+                    <field name="requests_wo_order" invisible="1"/>
                     <button name="button_done"
                             string="Done" type="object" class="oe_highlight"
-                            attrs="{'invisible': ['|', '|', ('production_ids', '=', []), ('finished_orders','=', False), ('state', '=', 'done')]}"/>
+                            attrs="{'invisible': ['|', '|', '|', ('production_ids', '=', []), ('finished_orders','=', False), ('state', '=', 'done'), ('requests_wo_order', '=', True)]}"/>
                     <button name="button_done"
                             string="Done" type="object" class="oe_highlight"
-                            attrs="{'invisible': ['|', '|', ('production_ids', '=', []), ('finished_orders','=', True), ('state', '=', 'done')]}"
+                            attrs="{'invisible': ['|', '|', '|', ('production_ids', '=', []), ('finished_orders','=', True), ('state', '=', 'done'), ('requests_wo_order', '=', True)]}"
                             confirm="Are you sure you want to finish this production plan? All the unfinished production orders will be canceled"/>
                     <button name="button_cancel" states="approved"
                             string="Reject" type="object"/>
