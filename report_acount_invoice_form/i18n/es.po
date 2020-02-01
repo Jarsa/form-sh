@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_acount_invoice_form
+#   * report_acount_invoice_form
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-22 17:54+0000\n"
-"PO-Revision-Date: 2019-08-22 17:54+0000\n"
+"POT-Creation-Date: 2020-02-01 16:35+0000\n"
+"PO-Revision-Date: 2020-02-01 16:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -52,12 +52,12 @@ msgstr "<span> | Lugar de expedición:</span>"
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<span> | SAT Certificate:</span>"
-msgstr ""
+msgstr "<span> | Certificado del SAT:</span>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<span>CODE</span>"
-msgstr "CLAVE"
+msgstr "<span>CLAVE</span>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -96,6 +96,11 @@ msgstr "<span>Folio Fiscal:</span>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
+msgid "<span>Invoice:</span>"
+msgstr "<span>Factura:</span>"
+
+#. module: report_acount_invoice_form
+#: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<span>Issued from</span>"
 msgstr "<span>Emitido en</span>"
 
@@ -107,7 +112,7 @@ msgstr "<span>Cadena original del complemento del certificado digital del SAT</s
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "<span>Product code</span>"
-msgstr "<span>CÓDIGO SAT </span>"
+msgstr "<span>CÓDIGO SAT</span>"
 
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
@@ -237,4 +242,5 @@ msgstr "Factura de proveedor"
 #. module: report_acount_invoice_form
 #: model_terms:ir.ui.view,arch_db:report_acount_invoice_form.report_invoice_document_mx_inherit
 msgid "Vendor Credit Note"
-msgstr "Nota de Crédito de proveedor"
+msgstr "Nota de Crédito de Proveedor"
+
