@@ -424,7 +424,8 @@ class MrpProductionPlan(models.Model):
         sfp_pickings = self.production_ids.filtered(
             lambda p: p.state == 'done').mapped('picking_ids').filtered(
                 lambda p: p.picking_type_id.id == 7 and (
-                    p.state in ['assigned', 'confirmed']))
+                    p.state in ['assigned', 'confirmed']) and (
+                        p.move_line_ids_without_package))
         for line in sfp_pickings.mapped('move_line_ids_without_package'):
             line.qty_done = line.product_uom_qty
         sfp_pickings.split_process()
