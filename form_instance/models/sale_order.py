@@ -40,12 +40,12 @@ class SaleOrder(models.Model):
                     lambda m: m.state == 'done').mapped(
                     'account_move_ids.line_ids').filtered(
                     lambda aml: aml.account_id.id == goods_account)
-                aml.move_id.button_cancel()
-                aml.move_id.write({'date': date.today()})
+                aml.mapped('move_id').button_cancel()
+                aml.mapped('move_id').write({'date': date.today()})
                 aml.write({
                     'account_id': sale_cost_account,
                     'date': date.today()})
-                aml.move_id.action_post()
+                aml.mapped('move_id').action_post()
 
 
 class SaleOrderLine(models.Model):
