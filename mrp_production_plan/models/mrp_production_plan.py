@@ -409,10 +409,24 @@ class MrpProductionPlan(models.Model):
                 wiz2.process_cancel_backorder()
 
     @api.multi
+    def _check_orders_with_partialities(self):
+        orders_to_done = self.production_ids.filtered(
+            lambda x: x.state not in ('cancel', 'done') and (
+                x.finished_move_line_ids))
+        if orders_to_done:
+            orders = ''
+            for ordr in orders_to_done:
+                orders = orders + '\n-' + ordr.name
+            raise UserError(
+                _('The following orders have partialities '
+                  'and have not been marked as done yet: %s \n')
+                % (orders))
+
+    @api.multi
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
-            lambda x: x.state not in ('cancel', 'done') and (
-                x.finished_move_line_ids)).mapped('workorder_ids')
+            lambda x: x.state not in ('cancel', 'done')).mapped(
+                'workorder_ids')
         for workorder in workorders:
             workorder.time_ids.unlink()
             workorder.unlink()
@@ -486,6 +500,7 @@ class MrpProductionPlan(models.Model):
 
     @api.multi
     def button_done(self):
+        self._check_orders_with_partialities()
         self._cancel_undone_orders()
         self._cancel_unplanned_requests()
         self._cancel_unreserved_moves_to_cedis()
