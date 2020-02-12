@@ -78,4 +78,9 @@
         <field name="comment">The user will have access to update sale orders status.</field>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
+    <record id="group_allow_delete_prod_attachment" model="res.groups">
+        <field name="name">Delete product attachment</field>
+        <field name="comment">The user will have access to delete product atachments.</field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
 </odoo>
