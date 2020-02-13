@@ -100,3 +100,9 @@ sale.access_sale_order_manager,sale.order.manager,sale.model_sale_order,sales_te
 create_lead_in_crm,create_lead_in_crm,crm.model_crm_lead_tag,form_instance.group_create_lead_in_crm_form,0,0,1,0
 crm.access_crm_lead_tag_salesman,crm_lead_tag salesman,crm.model_crm_lead_tag,sales_team.group_sale_salesman,1,1,0,0
 crm.access_crm_lead_tag_manager,crm_lead_tag manager,crm.model_crm_lead_tag,sales_team.group_sale_manager,1,1,0,1
+base.access_ir_attachment_group_user,ir_attachment group_user,base.model_ir_attachment,base.group_user,1,1,1,0
+documents.access_documents_attachment_group_manager,documents_attachment_group_manager,documents.model_ir_attachment,documents.group_documents_manager,1,1,1,0
+mrp.access_mrp_document_mrp_manager,mrp.document group_user,mrp.model_mrp_document,mrp.group_mrp_manager,1,1,1,0
+mrp.access_mrp_document_mrp_user,mrp.document group_user,mrp.model_mrp_document,mrp.group_mrp_user,1,1,1,0
+access_ir_attachment_perm_delete,ir_attachment permit delete,base.model_ir_attachment,form_instance.group_allow_delete_prod_attachment,1,1,1,1
+access_mrp_document_perm_delete,mrp.document permit delete,mrp.model_mrp_document,form_instance.group_allow_delete_prod_attachment,1,1,1,1
