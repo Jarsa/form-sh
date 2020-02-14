@@ -412,7 +412,8 @@ class MrpProductionPlan(models.Model):
     def _check_orders_with_partialities(self):
         orders_to_done = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and (
-                x.finished_move_line_ids))
+                x.finished_move_line_ids) and
+            x.availability != 'assigned')
         if orders_to_done:
             orders = ''
             for ordr in orders_to_done:
@@ -425,7 +426,8 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
-            lambda x: x.state not in ('cancel', 'done')).mapped(
+            lambda x: x.state not in ('cancel', 'done') and
+            x.availability != 'assigned').mapped(
                 'workorder_ids')
         for workorder in workorders:
             workorder.time_ids.unlink()
