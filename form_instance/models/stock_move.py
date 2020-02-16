@@ -9,9 +9,6 @@ class StockMove(models.Model):
 
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')
-    type_operation = fields.Selection(
-        related='picking_id.picking_type_id.code',
-        store=True)
     subtotal = fields.Float(compute='_compute_subtotal', store=True)
 
     @api.multi
@@ -27,7 +24,7 @@ class StockMoveLine(models.Model):
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')
     type_operation_line = fields.Selection(
-        related='move_id.type_operation',
+        related='move_id.picking_code',
         store=True)
     price_unit = fields.Float(related='move_id.price_unit')
     subtotal = fields.Float(compute='_compute_subtotal')

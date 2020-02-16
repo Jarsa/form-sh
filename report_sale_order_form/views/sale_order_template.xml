@@ -22,7 +22,7 @@
         <xpath expr="//t[1]/t[3]" position="replace">
             <t></t>
         </xpath>
-        <xpath expr="//div[@class='page']" position="replace">
+        <xpath expr="//div[hasclass('page')]" position="replace">
             <div class="page">
                 <div class="row">
                     <div class="col-6">

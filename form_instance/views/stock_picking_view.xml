@@ -15,9 +15,9 @@
                 <field name="product_supplier_name"/>
             </xpath>
              <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']" position="after">
-                <field name="type_operation" invisible="1"/>
-                <field name="price_unit" attrs="{'invisible': [('type_operation','!=','incoming')]}"/>
-                <field name="subtotal" attrs="{'invisible': [('type_operation','!=','incoming')]}"/>
+                <field name="picking_code" invisible="1"/>
+                <field name="price_unit" attrs="{'invisible': [('picking_code','!=','incoming')]}"/>
+                <field name="subtotal" attrs="{'invisible': [('picking_code','!=','incoming')]}"/>
             </xpath>
             <xpath expr="//button[@name='action_cancel']" position="attributes">
                 <attribute name="groups">base.group_system</attribute>

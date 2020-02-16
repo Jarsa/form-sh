@@ -2,7 +2,7 @@
 <odoo>
     <template id="report_invoice_document_mx_inherit" inherit_id="account.report_invoice_document">
         <xpath expr="//t[1]/t[2]" position="replace"></xpath>
-        <xpath expr="//div[@class='page']" position="replace">
+        <xpath expr="//div[hasclass('page')]" position="replace">
             <!-- name and adress -->
             <t t-if="o.l10n_mx_edi_cfdi_uuid">
                 <!--New global variables-->

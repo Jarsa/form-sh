@@ -81,7 +81,7 @@ class SaleOrdeECOLine(models.TransientModel):
     type_id = fields.Many2one('mrp.eco.type', required=True)
     bom_id = fields.Many2one(
         'mrp.bom',
-        string='Bill of Materials',
+        string='Bill of Material',
     )
     bom_ids = fields.Many2many(
         'mrp.bom',
