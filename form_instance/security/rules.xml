@@ -35,10 +35,11 @@
         <field name="perm_unlink" eval="False"/>
         <field name="perm_read" eval="True"/>
     </record>
-    <record id="crm_lead_user_form" model="ir.rule">
-        <field name="name">User Crm Lead</field>
+    <record id="crm_lead_follower_form" model="ir.rule">
+        <field name="name">Follower Crm Lead</field>
         <field name="model_id" ref="crm.model_crm_lead"/>
         <field name="domain_force">[('message_partner_ids', 'in', [user.partner_id.id])]</field>
         <field name="perm_read" eval="True"/>
+        <field name="groups" eval="[(4, ref('mrp_plm.group_plm_manager'))]"/>
     </record>
 </odoo>
