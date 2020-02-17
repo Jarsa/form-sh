@@ -66,6 +66,7 @@
         'product_category_validation',
         'quality',
         'quality_control',
+        'account_aged_partner_balance_by_currency',
     ],
     'data': [
         'data/product_template.xml',
