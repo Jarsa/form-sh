@@ -20,7 +20,7 @@ class AccountAgedPartner(models.AbstractModel):
 
     @api.model
     def _get_lines(self, options, line_id=None):
-        if isinstance(options['currency_id'], int):
+        if type(options['currency_id']) == int:
             return self._get_lines_2(options, line_id)
         return super()._get_lines(options, line_id)
 
