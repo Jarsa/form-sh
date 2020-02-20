@@ -1,5 +1,6 @@
 # Copyright 2020, Jarsa Sistemas
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+# pylint: disable=unidiomatic-typecheck
 
 from odoo import _, api, models
 from odoo.tools.misc import format_date
