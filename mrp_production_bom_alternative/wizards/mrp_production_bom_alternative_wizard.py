@@ -95,6 +95,8 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.production_id.action_cancel()
         if self.production_id.picking_ids:
             self.production_id.picking_ids.sudo().unlink()
+        self.env['change.production.qty'].search(
+            [('mo_id', '=', self.production_id.id)]).sudo().unlink()
         self.production_id.sudo().unlink()
         production = self.env['mrp.production'].with_context(
             alternative_bom=True).create(data)
