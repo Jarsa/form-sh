@@ -12,7 +12,8 @@ class MrpProduction(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals.get('is_surplus', False):
+        if (not vals.get('is_surplus', False) and not
+                self._context.get('alternative_bom')):
             vals['bom_id'] = self._get_bom_id_with_stock(vals)
         return super().create(vals)
 

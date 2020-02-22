@@ -60,21 +60,25 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             self.line_ids = lines
 
     @api.multi
-    def _prepare_manufacturing_order(self, prod):
+    def _prepare_manufacturing_order(self):
         return {
-            'name': prod.name,
-            'product_id': prod.product_id.id,
-            'prouct_qty': prod.product_qty,
-            'product_uom_id': prod.product_uom_id.id,
-            'origin': prod.origin,
-            'picking_type_id': prod.picking_type_id.id,
-            'location_src_id': prod.location_src_id.id,
-            'location_dest_id': prod.location_dest_id.id,
+            'name': self.production_id.name,
+            'product_id': self.production_id.product_id.id,
+            'product_qty': self.production_id.product_qty,
+            'product_uom_id': self.production_id.product_uom_id.id,
             'bom_id': self.bom_id.id,
-            'mrp_production_request_id': prod.mrp_production_request_id.id,
-            'plan_line_id': (
-                prod.plan_line_id.id if prod.plan_line_id else False),
-            'plan_id': prod.plan_id.id if prod.plan_id else False
+            'date_planned_start': self.production_id.date_planned_start,
+            'user_id': self.production_id.user_id.id,
+            'origin': self.production_id.origin,
+            'picking_type_id': self.production_id.picking_type_id.id,
+            'location_src_id': self.production_id.location_src_id.id,
+            'location_dest_id': self.production_id.location_dest_id.id,
+            'mrp_production_request_id':
+                self.production_id.mrp_production_request_id.id,
+            'plan_id': self.production_id.plan_id.id,
+            'plan_line_id': self.production_id.plan_line_id.id,
+            'use_alternative_bom': True,
+            'move_dest_ids': [(6, 0, self.production_id.move_dest_ids.ids)]
         }
 
     @api.multi
@@ -86,34 +90,31 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             'Change to Alternative BoM:<br/>'
             '%s → %s') % (
             self.production_id.bom_id.display_name, self.bom_id.display_name)
-        self.production_id.message_post(body=message)
-        self.production_id.use_alternative_bom = True
-        self.production_id.bom_id = self.bom_id.id
-        # Get stock picking type of to pre-production
-        pbm_id = self.production_id.picking_type_id.warehouse_id.pbm_type_id.id
-        # Filter only pickings of type pre-production
-        pickings = self.production_id.picking_ids.with_context(
-            pbm_id=pbm_id).filtered(
-                lambda p: p.picking_type_id.id == p._context.get('pbm_id'))
-        if pickings:
-            pickings.mapped('move_lines').write({'propagate': False})
-            pickings.unlink()
-        self.production_id.move_raw_ids.write({'propagate': False})
-        self.production_id.move_raw_ids._action_cancel()
-        self.production_id.move_raw_ids.unlink()
-        self.production_id.move_finished_ids.write({'propagate': False})
-        self.production_id.move_finished_ids._action_cancel()
-        self.production_id.move_finished_ids.unlink()
-        self.production_id._generate_moves()
-        self.production_id._process_picking_origin()
-        if self.production_id.workorder_ids:
-            self.production_id.mapped('workorder_ids.time_ids').unlink()
-            self.production_id.workorder_ids.unlink()
-        self.production_id.state = 'confirmed'
-        if self.production_id.routing_id:
-            self.production_id.button_plan()
-            if self.production_id.plan_id:
-                self.production_id.plan_id._sort_workorders_by_sequence()
+        data = self._prepare_manufacturing_order()
+        plan_line = self.production_id.plan_line_id
+        self.production_id.action_cancel()
+        if self.production_id.picking_ids:
+            self.production_id.picking_ids.sudo().unlink()
+        self.production_id.sudo().unlink()
+        production = self.env['mrp.production'].with_context(
+            alternative_bom=True).create(data)
+        plan_line.write({
+            'production_id': production.id,
+            'bom_id': production.bom_id.id,
+        })
+        production.message_post(body=message)
+        if production.routing_id:
+            production.button_plan()
+            if production.plan_id:
+                production.plan_id._sort_workorders_by_sequence()
+        return {
+            'name': production.name,
+            'type': 'ir.actions.act_window',
+            'res_model': 'mrp.production',
+            'res_id': production.id,
+            'target': 'main',
+            'view_mode': 'form',
+        }
 
 
 class ProductAlternativeWizardLine(models.TransientModel):
