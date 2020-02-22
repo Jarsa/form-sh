@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_change_production_qty_and_reason_wizard">
+        <field name="name">view.change.production.qty.and.dreason.wizard.form</field>
+        <field name="model">change.production.qty</field>
+        <field name="inherit_id" ref="mrp.view_change_production_qty_wizard"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mo_id']" position="after">
+                <field name="update_reason" required="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

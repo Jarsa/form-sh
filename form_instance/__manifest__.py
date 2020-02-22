@@ -94,5 +94,8 @@
         'views/crm_lead_view.xml',
         'views/stock_warehouse_view.xml',
         'views/mrp_document_view.xml',
+        'wizards/change_production_qty_views.xml',
+        'views/quality_alert_views.xml',
+        'views/mrp_production_update_reason_view.xml',
     ],
 }

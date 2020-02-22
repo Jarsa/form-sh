@@ -17,3 +17,5 @@ from . import purchase_order
 from . import sale_order
 from . import res_partner
 from . import crm_lead
+from . import quality_alert
+from . import mrp_production_update_reason
