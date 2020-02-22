@@ -12,4 +12,5 @@ class MrpProductionRequestCreateMo(models.TransientModel):
         self.ensure_one()
         res = super()._prepare_manufacturing_order()
         res['plan_line_id'] = self.mrp_production_request_id.plan_line_id.id
+        res['plan_id'] = self.mrp_production_request_id.plan_line_id.plan_id.id
         return res

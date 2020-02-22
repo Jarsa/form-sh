@@ -11,6 +11,4 @@ class MrpProduction(models.Model):
         'mrp.production.plan.line', string="Production Plan Line")
     plan_id = fields.Many2one(
         'mrp.production.plan', string="Production Plan",
-        related="plan_line_id.plan_id",
-        store=True,
     )
