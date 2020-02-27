@@ -9,6 +9,17 @@ class MrpProduction(models.Model):
 
     use_alternative_bom = fields.Boolean(
         string='Use Alternative BoM', readonly=True)
+    has_multiple_boms = fields.Boolean(
+        compute='_compute_has_multiple_boms',
+        help='Technical field used to get if the product has multiple BoM')
+
+    @api.depends('product_id')
+    def _compute_has_multiple_boms(self):
+        for rec in self:
+            multiple_boms = False
+            if len(rec.product_id.bom_ids) > 1:
+                multiple_boms = True
+            rec.has_multiple_boms = multiple_boms
 
     @api.model
     def create(self, vals):

@@ -9,6 +9,10 @@
             <xpath expr="//field[@name='mrp_production_request_id']" position="after">
                 <field name="plan_id"/>
             </xpath>
+            <xpath expr="//button[@name='button_scrap']" position="after">
+                <field name="has_multiple_routing" invisible="1"/>
+                <button name="%(mrp_production_plan.action_mrp_production_change_routing_wizard)d" type="action" string="Change Routing" attrs="{'invisible': ['|', '|', '|',('routing_id', '=', False), ('state', 'in', ['progess', 'done', 'cancel']), ('is_locked', '=', False), ('has_multiple_routing', '=', False)]}"/>
+            </xpath>
         </field>
     </record>
 </odoo>

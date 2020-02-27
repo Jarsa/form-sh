@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="product_id"/>
+                <field name="product_id" required="1"/>
+                <field name="sequence" required="1"/>
             </xpath>
         </field>
     </record>
