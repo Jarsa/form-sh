@@ -62,11 +62,13 @@
                                     <field name="planned" invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="product_id"/>
-                                    <field name="bom_id" domain="[('bom_line_ids', 'in', bom_line_ids)]" options="{'no_create_edit': True, 'no_open': True}" attrs="{'column_invisible': [('parent.has_phantom', '=', False)], 'readonly': [('bom_line_ids', '=', [])]}"/>
+                                    <field name="require_routing" invisible="1"/>
+                                    <field name="routing_id" domain="[('product_id', '=', product_id)]" attrs="{'required': [('require_routing', '=', True)], 'readonly': [('production_id', '!=', False)]}"/>
+                                    <field name="bom_id" domain="[('bom_line_ids', 'in', bom_line_ids)]" options="{'no_create_edit': True, 'no_open': True}" attrs="{'column_invisible': [('parent.has_phantom', '=', False)], 'readonly': ['|', ('bom_line_ids', '=', []), ('production_id', '!=', False)]}"/>
                                     <field name="bom_line_ids" invisible="1"/>
                                     <field name="qty_per_kit" attrs="{'column_invisible': [('parent.has_phantom', '=', False)]}"/>
                                     <field name="required_qty"/>
-                                    <field name="requested_kit_qty"/>
+                                    <field name="requested_kit_qty" attrs="{'readonly': [('production_id', '!=', False)]}"/>
                                     <field name="requested_qty"/>
                                     <field name="production_id" attrs="{'column_invisible': [('parent.is_planned', '=', False)]}"/>
                                     <field name="date_planned_start_wo" attrs="{'column_invisible': [('parent.has_routing', '=', False)]}"/>

@@ -66,6 +66,7 @@ class MrpProductionPlan(models.Model):
         help='Technical field used to show or hide button '
         'done if there are at least one Line (Manufacturing Request) '
         'without a linked Manufacturing Order.')
+    routing_id = fields.Many2one('mrp.routing', 'Routing')
 
     @api.multi
     def action_view_productions(self):
@@ -143,9 +144,13 @@ class MrpProductionPlan(models.Model):
         for request in requests:
             if request in self.line_ids.mapped('request_id'):
                 continue
+            routing = self.env['mrp.routing'].search([
+                ('product_id', '=', request.product_id.id)],
+                limit=1, order='sequence asc')
             request.plan_line_id = mrp_plan_line_obj.create({
                 'plan_id': self.id,
                 'request_id': request.id,
+                'routing_id': routing.id if routing else False,
             })
         return True
 
@@ -318,6 +323,7 @@ class MrpProductionPlan(models.Model):
             'sequence') if not self._context.get(
                 'lines', False) else self._context.get('lines')
         for line in pending_lines:
+            line.request_id.bom_id.write({'routing_id': line.routing_id.id})
             wizard = wizard_obj.with_context(
                 active_ids=line.request_id.ids,
                 active_model='mrp.production.request').create({
@@ -486,9 +492,10 @@ class MrpProductionPlan(models.Model):
 
     @api.multi
     def _cancel_unreserved_moves_to_cedis(self):
-        """This method is created to cancel moves crated by orderpoints that
+        """ This method is created to cancel moves crated by orderpoints that
         are not reserved. If we don't cancel this moves the orderpoint rules
         created the next day it will consider it as vitual stock.
+
         """
         sab_stock_loc = self.env.ref('stock.stock_location_stock').id
         transit_loc = self.env.ref('__export__.stock_location_17_4d7ec339').id
@@ -591,6 +598,11 @@ class MrpProductionPlanLine(models.Model):
         required=True,
         default=0.0,
     )
+    routing_id = fields.Many2one('mrp.routing', 'Routing')
+    require_routing = fields.Boolean(
+        readonly=True, compute='_compute_require_routing',
+        help='Technical field used to make required the routing in the plan'
+        'line.')
 
     @api.multi
     @api.depends('requested_kit_qty')
@@ -615,6 +627,15 @@ class MrpProductionPlanLine(models.Model):
             start_day = rec.date_planned_start_wo.day
             end_day = rec.date_planned_finished_wo.day
             rec.planned = start_day == end_day
+
+    @api.multi
+    @api.depends('product_id')
+    def _compute_require_routing(self):
+        for rec in self:
+            require_routing = False
+            if rec.product_id.routing_ids:
+                require_routing = True
+            rec.require_routing = require_routing
 
     @api.multi
     def unlink(self):

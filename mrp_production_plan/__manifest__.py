@@ -4,7 +4,7 @@
 {
     'name': 'MRP Production Plan',
     'summary': 'Schedule the production of the day',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'category': 'Manufacture',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
@@ -23,6 +23,7 @@
         'data/stock_picking_type.xml',
         'views/mrp_routing_view.xml',
         'views/mrp_production_request_view.xml',
+        'wizards/mrp_production_change_routing_view.xml',
         'views/mrp_production_view.xml',
     ],
 }
