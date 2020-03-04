@@ -7,8 +7,7 @@ from odoo import fields, models
 class ChangeProductionQty(models.TransientModel):
     _inherit = 'change.production.qty'
 
-    update_reason = fields.Many2one(
-        'mrp.production.update.reason', required=True)
+    update_reason = fields.Many2one('mrp.production.update.reason')
 
     def change_prod_qty(self):
         res = super(ChangeProductionQty, self).change_prod_qty()
