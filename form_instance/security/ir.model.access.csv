@@ -27,8 +27,6 @@ receivable_account_report_manager,receivable_account_report_manager,account_repo
 payable_account_report_manager,payable_account_report_manager,account_reports.model_account_report_manager,form_instance.group_payable_form,1,0,1,0
 receivable_account_analytic_line,receivable_account_analytic_line,analytic.model_account_analytic_line,form_instance.group_receivable_form,1,1,1,0
 payable_account_analytic_line,payable_account_analytic_line,analytic.model_account_analytic_line,form_instance.group_payable_form,1,1,1,0
-base.access_ir_attachment_group_user,ir_attachment group_user,base.model_ir_attachment,base.group_user,1,1,1,0
-access_ir_attachment_perm_delete,ir_attachment permit delete,base.model_ir_attachment,form_instance.group_allow_delete_prod_attachment,1,1,1,1
 base.access_res_country_group_user,res_country group_user,base.model_res_country,base.group_partner_manager,1,0,0,0
 admin_res_country,admin_res_country,base.model_res_country,base.group_system,1,1,1,1
 user_res_country,user_res_country,base.model_res_country,base.group_system,1,1,1,0
@@ -46,7 +44,6 @@ crm.access_crm_lost_reason_manager,crm.lost.reason.manager,crm.model_crm_lost_re
 crm_lost_reason_total_manager,crm_lost_reason_total_manager,crm.model_crm_lost_reason,form_instance.group_crm_manager_total,1,1,1,1
 crm.access_crm_stage_manager,crm.stage,crm.model_crm_stage,sales_team.group_sale_manager,1,0,0,0
 crm_stage_total_manager,crm_stage_total_manager,crm.model_crm_stage,form_instance.group_crm_manager_total,1,1,1,1
-documents.access_documents_attachment_group_manager,documents_attachment_group_manager,documents.model_ir_attachment,documents.group_documents_manager,1,1,1,0
 mrp.access_mrp_production,mrp.production user,model_mrp_production,mrp.group_mrp_user,1,1,1,0
 mrp_acess_mrp_document,mrp_document,mrp.model_mrp_document,stock.group_stock_manager,1,0,0,0
 mrp.access_mrp_document_mrp_manager,mrp.document group_user,mrp.model_mrp_document,mrp.group_mrp_manager,1,1,1,0
