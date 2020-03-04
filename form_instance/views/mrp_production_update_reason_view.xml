@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_production_update_reason">
+        <field name="name">Production Update Reason</field>
+        <field name="res_model">mrp.production.update.reason</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record model="ir.ui.view" id="production_update_reason_tree_view">
+        <field name="name">production.update.reason.tree</field>
+        <field name="model">mrp.production.update.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Production Update Reason" editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="Production Update Reason" id="menu_production_update_reason" parent="quality_control.menu_quality_configuration" action="action_production_update_reason" groups="quality.group_quality_manager"/>
+</odoo>
