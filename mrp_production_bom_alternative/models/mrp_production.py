@@ -1,7 +1,8 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class MrpProduction(models.Model):
@@ -46,6 +47,9 @@ class MrpProduction(models.Model):
                 return bom.id
             vals['use_alternative_bom'] = True
         vals['use_alternative_bom'] = False
+        if not boms:
+            raise UserError(
+                _("The product %s don't have a BoM defined"))
         return boms[0].id
 
     @api.model
