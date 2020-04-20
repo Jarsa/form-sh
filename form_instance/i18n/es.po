@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-22 19:35+0000\n"
-"PO-Revision-Date: 2020-01-22 19:35+0000\n"
+"POT-Creation-Date: 2020-04-20 20:30+0000\n"
+"PO-Revision-Date: 2020-04-20 20:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,12 +27,17 @@ msgid "Add Root Cause"
 msgstr "Agregar Causa Principal"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.backorder_confirmation_form_custom
 msgid "Are you sure you don't want to create a backorder?"
 msgstr "¿Está seguro de que no desea crear un pedido en espera?"
 
 #. module: form_instance
-#: code:addons/form_instance/models/sale_order.py:57
+#: code:addons/form_instance/models/sale_order.py:58
 #, python-format
 msgid "At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, cannot cancel Sale Order"
 msgstr ""
@@ -79,6 +84,11 @@ msgid "Cancel cancelation"
 msgstr "Cancelar autorización"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_change_production_qty
+msgid "Change Production Qty"
+msgstr "Cambiar la cantidad de producción"
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
@@ -91,9 +101,19 @@ msgid "Control Quality Points Form"
 msgstr ""
 
 #. module: form_instance
-#: model:res.groups,name:form_instance.group_create_lead_in_crm_form
-msgid "Create tag in CRM"
-msgstr "Crear Etiquetas en CRM"
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_allow_delete_prod_attachment
+msgid "Delete product attachment"
+msgstr "Borrar adjuntos de producto"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__product_description
@@ -106,6 +126,16 @@ msgid "Designer"
 msgstr "Diseñador"
 
 #. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_ir_attachment
+msgid "Document"
+msgstr ""
+
+#. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_view_form_tablet_form
 msgid "Done and Close MO"
 msgstr "Hecho y Finalizar OP"
@@ -114,6 +144,11 @@ msgstr "Hecho y Finalizar OP"
 #: model:ir.model,name:form_instance.model_account_followup_report
 msgid "Follow-up Report"
 msgstr "Reporte de Seguimiento"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__id
+msgid "ID"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_product_product__id_form
@@ -148,7 +183,23 @@ msgid "Invoice Line"
 msgstr "Linea de factura"
 
 #. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_crm_lead
+#: model:ir.model.fields,field_description:form_instance.field_account_analytic_line__lead_id
 msgid "Lead/Opportunity"
 msgstr "Iniciativa/Oportunidad"
 
@@ -163,15 +214,31 @@ msgid "Manager Form"
 msgstr "Administrador Form"
 
 #. module: form_instance
+#: model:res.groups,name:form_instance.group_crm_manager_total
+msgid "Manager of CRM (Configuration)"
+msgstr ""
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_request
 msgid "Manufacturing Request"
 msgstr "Solicitud de Fabricación"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__name
+msgid "Name"
+msgstr "Nombre"
 
 #. module: form_instance
 #: model:base.automation,name:form_instance.no_duplicate_vats
 #: model:ir.actions.server,name:form_instance.no_duplicate_vats_ir_actions_server
 msgid "No Duplicar RFC"
 msgstr ""
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.crm_lead_custom_form
+#: model_terms:ir.ui.view,arch_db:form_instance.form_crm_lead_custom_form
+msgid "Part of Hours"
+msgstr "Parte de Horas"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_res_partner__partner_code
@@ -219,11 +286,18 @@ msgstr "Movimientos de Producto (Stock Move Line)"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_product_template
 msgid "Product Template"
-msgstr "Plantilla del producto"
+msgstr "Plantilla de producto"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.actions.act_window,name:form_instance.action_production_update_reason
+#: model:ir.ui.menu,name:form_instance.menu_production_update_reason
+#: model_terms:ir.ui.view,arch_db:form_instance.production_update_reason_tree_view
+msgid "Production Update Reason"
 msgstr ""
 
 #. module: form_instance
@@ -250,6 +324,11 @@ msgstr "Descripción de compra"
 #: model:ir.model,name:form_instance.model_purchase_order_line
 msgid "Purchase Order Line"
 msgstr "Línea de pedido de compra"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_quality_alert
+msgid "Quality Alert"
+msgstr "Alerta de Calidad"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_quant
@@ -307,7 +386,7 @@ msgstr "Mostrar tipos de operaciones a los seguidores"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento de Almacén"
+msgstr "Movimiento de existencias"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_stock_move__subtotal
@@ -342,9 +421,9 @@ msgid "The user will have access to activate button cancel."
 msgstr "El usuario tendrá acceso a activar el botón de cancelar"
 
 #. module: form_instance
-#: model:res.groups,comment:form_instance.group_create_lead_in_crm_form
-msgid "The user will have access to create a tag from CRM."
-msgstr "El usuario tendra acceso a crear Etiquetas en el modulo de CRM"
+#: model:res.groups,comment:form_instance.group_allow_delete_prod_attachment
+msgid "The user will have access to delete product atachments."
+msgstr ""
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_payable_form
@@ -367,6 +446,11 @@ msgid "The user will have access to the centers where is follower."
 msgstr "El usuario tendrá acceso a los centros de trabajo en los que es seguidor."
 
 #. module: form_instance
+#: model:res.groups,comment:form_instance.group_crm_manager_total
+msgid "The user will have access to the configuration of the CRM."
+msgstr ""
+
+#. module: form_instance
 #: model:res.groups,comment:form_instance.group_update_so_status_form
 msgid "The user will have access to update sale orders status."
 msgstr "El usuario tendrá acceso a actualizar el estado a facturar del pedido de venta"
@@ -387,7 +471,11 @@ msgid "The users with this group are allowed to see the button \"Scrap\" in prod
 msgstr "Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la vista formulario de la orden de producción y también en la vista tableta de la orden de trabajo"
 
 #. module: form_instance
-#: model:ir.model.fields,field_description:form_instance.field_stock_move__type_operation
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__timesheet_ids
+msgid "Timesheet"
+msgstr ""
+
+#. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__type_operation_line
 msgid "Type of Operation"
 msgstr "Tipo de operación"
@@ -402,6 +490,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__price_unit
 msgid "Unit Price"
 msgstr "Precio unitario"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_change_production_qty__update_reason
+#: model:ir.model.fields,field_description:form_instance.field_quality_alert__update_reason
+msgid "Update Reason"
+msgstr ""
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.custom_form_sale_order_form
@@ -434,6 +528,12 @@ msgid "Workcenter"
 msgstr "Centro de Trabajo"
 
 #. module: form_instance
+#: code:addons/form_instance/models/ir_attachment.py:19
+#, python-format
+msgid "You are not allowed to delete product attachments"
+msgstr ""
+
+#. module: form_instance
 #: code:addons/form_instance/models/account_invoice.py:51
 #, python-format
 msgid "You are not allowed to edit price, quantity or taxes"
@@ -444,4 +544,9 @@ msgstr "No tienes permitido editar precio, cantidad o impuestos"
 #, python-format
 msgid "You are not allowed to modify products."
 msgstr "No tienes permitido modificar productos"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_production_update_reason
+msgid "mrp.production.update.reason"
+msgstr ""
 
