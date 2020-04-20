@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='phone']" position="after">
                 <field name="designer_id"/>
+                <field name="first_delivery_date" attrs="{'required': [('stage_id', '=', 5)], 'invisible': [('stage_id', '!=', 5)]}"/>
             </xpath>
             <xpath expr="//page[@name='lead']" position="before">
                 <page string="Part of Hours">

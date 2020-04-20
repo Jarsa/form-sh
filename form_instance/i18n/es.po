@@ -1,19 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* form_instance
+# 	* form_instance
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 20:30+0000\n"
-"PO-Revision-Date: 2020-04-20 20:30+0000\n"
+"PO-Revision-Date: 2020-04-24 09:32-0500\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_workorder_inherit_custom_kanban
@@ -40,7 +42,7 @@ msgstr "¿Está seguro de que no desea crear un pedido en espera?"
 #: code:addons/form_instance/models/sale_order.py:58
 #, python-format
 msgid "At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, cannot cancel Sale Order"
-msgstr ""
+msgstr "Al menos una “Cantidad Entregada” de una Requisición no es igual a 0, no se puede cancelar Requisición"
 
 #. module: form_instance
 #: code:addons/form_instance/models/sale_order.py:25
@@ -98,7 +100,7 @@ msgstr "Contacto"
 #: model:ir.cron,cron_name:form_instance.ir_cron_quality_points_tecmur
 #: model:ir.cron,name:form_instance.ir_cron_quality_points_tecmur
 msgid "Control Quality Points Form"
-msgstr ""
+msgstr "Puntos de Control de Calidad Form"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__create_uid
@@ -133,12 +135,17 @@ msgstr "Nombre mostrado"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_ir_attachment
 msgid "Document"
-msgstr ""
+msgstr "Documento"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_view_form_tablet_form
 msgid "Done and Close MO"
 msgstr "Hecho y Finalizar OP"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__first_delivery_date
+msgid "First Delivery Date"
+msgstr "Fecha de Primer Entrega"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_account_followup_report
@@ -148,19 +155,19 @@ msgstr "Reporte de Seguimiento"
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_product_product__id_form
 #: model:ir.model.fields,field_description:form_instance.field_product_template__id_form
 msgid "ID FORM"
-msgstr ""
+msgstr "ID FORM"
 
 #. module: form_instance
 #: model:ir.model.fields,help:form_instance.field_product_product__id_form
 #: model:ir.model.fields,help:form_instance.field_product_template__id_form
 msgid "Internal field used to identify the product internally respecting sales default code"
-msgstr ""
+msgstr "Campo interno utilizado para identificar el producto de forma interna respetando el código de ventas"
 
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.menu_action_inventory_form
@@ -216,7 +223,7 @@ msgstr "Administrador Form"
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_crm_manager_total
 msgid "Manager of CRM (Configuration)"
-msgstr ""
+msgstr "Administrador del CRM (Configuración)"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_request
@@ -232,7 +239,7 @@ msgstr "Nombre"
 #: model:base.automation,name:form_instance.no_duplicate_vats
 #: model:ir.actions.server,name:form_instance.no_duplicate_vats_ir_actions_server
 msgid "No Duplicar RFC"
-msgstr ""
+msgstr "No Duplicar RFC"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.crm_lead_custom_form
@@ -244,7 +251,7 @@ msgstr "Parte de Horas"
 #: model:ir.model.fields,field_description:form_instance.field_res_partner__partner_code
 #: model:ir.model.fields,field_description:form_instance.field_res_users__partner_code
 msgid "Partner Code"
-msgstr ""
+msgstr "Código de Contacto"
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_payable_form
@@ -291,14 +298,14 @@ msgstr "Plantilla de producto"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr ""
+msgstr "Orden de Producción"
 
 #. module: form_instance
 #: model:ir.actions.act_window,name:form_instance.action_production_update_reason
 #: model:ir.ui.menu,name:form_instance.menu_production_update_reason
 #: model_terms:ir.ui.view,arch_db:form_instance.production_update_reason_tree_view
 msgid "Production Update Reason"
-msgstr ""
+msgstr "Razón de Actualización de Producción"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_plan_line
@@ -376,7 +383,7 @@ msgstr "Línea de pedido de venta"
 #: model:ir.model.fields,help:form_instance.field_mrp_production_request__product_category_id
 #: model:ir.model.fields,help:form_instance.field_stock_quant__categ_id
 msgid "Select category for the current product"
-msgstr "Seleccione la categoría para el producto actual."
+msgstr "Seleccione la categoría para el producto actual"
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_show_only_followers_stock_picking_type_form
@@ -392,7 +399,7 @@ msgstr "Movimiento de existencias"
 #: model:ir.model.fields,field_description:form_instance.field_stock_move__subtotal
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__subtotal
 msgid "Subtotal"
-msgstr ""
+msgstr "Subtotal"
 
 #. module: form_instance
 #: model:ir.model.fields,help:form_instance.field_stock_move_line__price_unit
@@ -418,12 +425,12 @@ msgstr "El usuario tendrá acceso a leer, crear y escribir en product.product y 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_activate_cancel_form
 msgid "The user will have access to activate button cancel."
-msgstr "El usuario tendrá acceso a activar el botón de cancelar"
+msgstr "El usuario tendrá acceso a activar el botón de cancelar."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_allow_delete_prod_attachment
 msgid "The user will have access to delete product atachments."
-msgstr ""
+msgstr "El usuario va a tener acceso a borrar archivos adjuntos de los productos."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_payable_form
@@ -448,12 +455,12 @@ msgstr "El usuario tendrá acceso a los centros de trabajo en los que es seguido
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_crm_manager_total
 msgid "The user will have access to the configuration of the CRM."
-msgstr ""
+msgstr "El usuario va a tener acceso a la configuración del CRM."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_update_so_status_form
 msgid "The user will have access to update sale orders status."
-msgstr "El usuario tendrá acceso a actualizar el estado a facturar del pedido de venta"
+msgstr "El usuario tendrá acceso a actualizar el estado a facturar del pedido de venta."
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_purchase_request_manager_form
@@ -468,12 +475,12 @@ msgstr "Los usuarios de este grupo no pueden editar campos de factura"
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_send_production_to_scrap
 msgid "The users with this group are allowed to see the button \"Scrap\" in production form view and also in work order tablet view."
-msgstr "Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la vista formulario de la orden de producción y también en la vista tableta de la orden de trabajo"
+msgstr "Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la vista formulario de la orden de producción y también en la vista tableta de la orden de trabajo."
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_crm_lead__timesheet_ids
 msgid "Timesheet"
-msgstr ""
+msgstr "Partes de Hora"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__type_operation_line
@@ -484,7 +491,7 @@ msgstr "Tipo de operación"
 #: code:addons/form_instance/models/account_followup_report.py:13
 #, python-format
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__price_unit
@@ -495,7 +502,7 @@ msgstr "Precio unitario"
 #: model:ir.model.fields,field_description:form_instance.field_change_production_qty__update_reason
 #: model:ir.model.fields,field_description:form_instance.field_quality_alert__update_reason
 msgid "Update Reason"
-msgstr ""
+msgstr "Razón de Actualización"
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.custom_form_sale_order_form
@@ -531,7 +538,7 @@ msgstr "Centro de Trabajo"
 #: code:addons/form_instance/models/ir_attachment.py:19
 #, python-format
 msgid "You are not allowed to delete product attachments"
-msgstr ""
+msgstr "No tienes permitido borrar adjuntos de productos"
 
 #. module: form_instance
 #: code:addons/form_instance/models/account_invoice.py:51
@@ -543,10 +550,9 @@ msgstr "No tienes permitido editar precio, cantidad o impuestos"
 #: code:addons/form_instance/models/product_template.py:27
 #, python-format
 msgid "You are not allowed to modify products."
-msgstr "No tienes permitido modificar productos"
+msgstr "No tienes permitido modificar productos."
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_update_reason
 msgid "mrp.production.update.reason"
-msgstr ""
-
+msgstr "mrp.production.update.reason"

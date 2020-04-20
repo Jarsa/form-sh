@@ -11,6 +11,7 @@ class CrmTeam(models.Model):
     designer_id = fields.Many2one(
         'res.users',
     )
+    first_delivery_date = fields.Date()
 
     @api.model
     def create(self, vals):
