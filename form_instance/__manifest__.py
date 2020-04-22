@@ -63,6 +63,9 @@
         'quality',
         'quality_control',
         'account_aged_partner_balance_by_currency',
+        'hr_appraisal',
+        'hr_holidays',
+        'helpdesk',
     ],
     'data': [
         'data/product_template.xml',
