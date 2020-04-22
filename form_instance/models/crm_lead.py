@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class CrmTeam(models.Model):
     _inherit = 'crm.lead'
 
+    timesheet_ids = fields.One2many('account.analytic.line', 'lead_id')
     designer_id = fields.Many2one(
         'res.users',
     )
