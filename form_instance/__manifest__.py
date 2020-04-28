@@ -66,6 +66,7 @@
         'hr_appraisal',
         'hr_holidays',
         'helpdesk',
+        'cost_margin_utility_report',
     ],
     'data': [
         'data/product_template.xml',

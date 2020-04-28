@@ -123,3 +123,4 @@ helpdesk.access_mail_activity_type_helpdesk_manager,mail.activity.type.helpdesk.
 project.access_mail_activity_type_project_manager,mail.activity.type.project.manager,mail.model_mail_activity_type,project.group_project_manager,1,0,0,0
 form_mail_activity_type,form_mail_activity_type,mail.model_mail_activity_type,form_instance.group_crm_manager_total,1,1,1,1
 mail.access_mail_activity_type_system,mail.activity.type.system,mail.model_mail_activity_type,base.group_system,1,0,0,0
+cost_margin_utility_report.access_cost_margin_utility_report,cost_margin_utility_report.access_cost_margin_utility_report,cost_margin_utility_report.model_cost_margin_utility_report,base.group_user,1,1,1,1
