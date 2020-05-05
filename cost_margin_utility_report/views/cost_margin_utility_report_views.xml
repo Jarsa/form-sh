@@ -10,6 +10,7 @@
                 <field name="form_id"/>
                 <field name="product_id"/>
                 <field name="product_description"/>
+                <field name="partner_id"/>
                 <field name="sold_qty"/>
                 <field name="total_sale"/>
                 <field name="total_cost"/>
@@ -17,6 +18,21 @@
                 <field name="contribution"/>
                 <field name="margin"/>
             </tree>
+        </field>
+    </record>
+
+    <record id="cost_margin_utility_report_search_view" model="ir.ui.view">
+        <field name="name">cost.margin.utility.report.search</field>
+        <field name="model">cost.margin.utility.report</field>
+        <field name="arch" type="xml">
+            <search string="Search Cost Margin Utility">
+                <group string="Group By" name="groupby">
+                    <filter name="ref" string="Reference" context="{'group_by':'reference'}"/>
+                    <filter name="categ" string="Category" context="{'group_by':'product_category_id'}"/>
+                    <filter name="prod" string="Product" context="{'group_by':'product_id'}"/>
+                    <filter name="partner" string="Client" context="{'group_by':'partner_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 </odoo>
