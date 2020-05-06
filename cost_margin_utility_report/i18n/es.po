@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cost_margin_utility_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 17:04+0000\n"
+"PO-Revision-Date: 2020-05-05 17:04+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cost_margin_utility_report
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.view_cost_margin_utility_report
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: cost_margin_utility_report
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_search_view
+msgid "Category"
+msgstr "Categoría"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__partner_id
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_search_view
+msgid "Client"
+msgstr "Cliente"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__contribution
+msgid "Contribution"
+msgstr "Contribución"
+
+#. module: cost_margin_utility_report
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_tree_view
+msgid "Cost Margin Utility"
+msgstr "Utilidad con margen de costo"
+
+#. module: cost_margin_utility_report
+#: model:ir.actions.act_window,name:cost_margin_utility_report.action_cost_margin_utility_report
+#: model:ir.ui.menu,name:cost_margin_utility_report.menu_cost_margin_utility_report
+msgid "Cost Margin Utility Report"
+msgstr "Reporte de utilidad con margen de costo"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__create_uid
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__create_date
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__default_code
+msgid "Default Code"
+msgstr "Referencia Interna"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__display_name
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__form_id
+msgid "Form"
+msgstr "De"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__date_from
+msgid "From"
+msgstr "De"
+
+#. module: cost_margin_utility_report
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_search_view
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__id
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__id
+msgid "ID"
+msgstr ""
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report____last_update
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__write_uid
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__write_date
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__margin
+msgid "Margin"
+msgstr "Margen"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__product_id
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_search_view
+msgid "Product"
+msgstr "Producto"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__product_category_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__product_description
+msgid "Product Description"
+msgstr "Descripción del producto"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__reference
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_search_view
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: cost_margin_utility_report
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.view_cost_margin_utility_report
+msgid "Retrieve the Cost Margin Utility Report"
+msgstr "Recupere el informe de utilidad con margen de costo"
+
+#. module: cost_margin_utility_report
+#: model_terms:ir.ui.view,arch_db:cost_margin_utility_report.cost_margin_utility_report_search_view
+msgid "Search Cost Margin Utility"
+msgstr "Búsqueda de utilidad con margen de costo"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__sold_qty
+msgid "Sold Qty"
+msgstr "Cantidad vendida"
+
+#. module: cost_margin_utility_report
+#: model:ir.model,name:cost_margin_utility_report.model_cost_margin_utility_report
+msgid "This model creates a cost margin utility report"
+msgstr "Este modelo crea un informe de utilidad con margen de costo"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report_wiz__date_to
+msgid "To"
+msgstr "Para"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__total_cost
+msgid "Total Cost"
+msgstr "Coste total"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__total_sale
+msgid "Total Sale"
+msgstr "Venta total"
+
+#. module: cost_margin_utility_report
+#: model:ir.model.fields,field_description:cost_margin_utility_report.field_cost_margin_utility_report__unit_cost
+msgid "Unit Cost"
+msgstr "Costo unitario"
+
+#. module: cost_margin_utility_report
+#: model:ir.model,name:cost_margin_utility_report.model_cost_margin_utility_report_wiz
+msgid "Wizard to create cost margin utility reports"
+msgstr "Wizard para crear informes de utilidad con margen de costo"
+

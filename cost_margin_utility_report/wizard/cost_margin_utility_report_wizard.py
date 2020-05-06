@@ -134,18 +134,22 @@ class CostMarginUtilityReportWiz(models.TransientModel):
                     "reference": result["name"],
                     "default_code": result["default_code"],
                     "form_id": result["id_form"],
+                    "partner_id": result["partner_id"],
                 }
             )
         self.env["cost.margin.utility.report"].create(report_list)
+        search_view_id = self.env.ref(
+            "cost_margin_utility_report.cost_margin_utility_report_search_view"
+        ).id
         tree_view_id = self.env.ref(
             "cost_margin_utility_report.cost_margin_utility_report_tree_view"
         ).id
         action = {
             "type": "ir.actions.act_window",
-            "views": [(tree_view_id, "tree")],
-            "view_id": tree_view_id,
-            "view_mode": "tree",
             "name": _("Cost Margin Utility Report"),
             "res_model": "cost.margin.utility.report",
+            "view_mode": "tree",
+            "search_view_id": search_view_id,
+            "views": [[tree_view_id, "list"]],
         }
         return action

@@ -21,3 +21,5 @@ class CostMarginUtilityReport(models.Model):
     reference = fields.Char(readonly=True)
     default_code = fields.Char(readonly=True)
     form_id = fields.Char(readonly=True)
+    partner_id = fields.Many2one(
+        'res.partner', string='Client', readonly=True)
