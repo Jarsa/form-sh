@@ -16,12 +16,14 @@ class CrmTeam(models.Model):
     @api.model
     def create(self, vals):
         res = super().create(vals)
-        if 'designer_id' in vals:
+        if vals.get('designer_id', False):
             res.message_subscribe(partner_ids=res.designer_id.partner_id.ids)
         return res
 
     @api.multi
     def write(self, vals):
-        if 'designer_id' in vals:
-            self.message_subscribe(partner_ids=self.designer_id.partner_id.ids)
+        if vals.get('designer_id', False):
+            user = self.env['res.users'].browse(vals['designer_id'])
+            partner_ids = user.partner_id.ids
+            self.message_subscribe(partner_ids)
         return super().write(vals)
