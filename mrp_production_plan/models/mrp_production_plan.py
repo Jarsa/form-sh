@@ -297,14 +297,13 @@ class MrpProductionPlan(models.Model):
         for workcenter in workcenters:
             workorders = self.env['mrp.workorder'].search([
                 ('workcenter_id', '=', workcenter.id),
-                ('production_id', 'in', self.production_ids.ids),
-                ('plan_workcenter_id', '=', False)])
+                ('production_id', 'in', self.production_ids.ids)])
             old_workcenter = mrp_plan_wc_obj.search([
                 ('workcenter_id', '=', workcenter.id),
                 ('plan_id', '=', self.id)])
             if old_workcenter:
                 old_workcenter.write({
-                    'line_ids': [(4, 0, workorders.ids)]
+                    'line_ids': [(6, 0, workorders.ids)]
                 })
             else:
                 mrp_plan_wc_obj.create({
