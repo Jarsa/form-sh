@@ -21,3 +21,4 @@ from . import crm_lead
 from . import quality_alert
 from . import mrp_production_update_reason
 from . import ir_attachment
+from . import mrp_routing_workcenter
