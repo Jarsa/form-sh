@@ -5,8 +5,11 @@
         <field name="model">quality.point</field>
         <field name="inherit_id" ref="quality.quality_point_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='product_tmpl_id']" position="after">
-                <field name="routing_id" domain="[('product_id.product_tmpl_id', '=', product_tmpl_id)]" attrs="{'invisible': [('code', '!=', 'mrp_operation')]}"/>
+            <xpath expr="//field[@name='operation_id']" position="attributes">
+                <attribute name="domain">[('routing_id', '=', routing2_id)]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='operation_id']" position="before">
+                <field name="routing2_id" domain="[('product_id.product_tmpl_id', '=', product_tmpl_id)]" attrs="{'invisible': [('code', '!=', 'mrp_operation')]}"/>
             </xpath>
         </field>
     </record>
