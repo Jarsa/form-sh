@@ -67,6 +67,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             'product_qty': self.production_id.product_qty,
             'product_uom_id': self.production_id.product_uom_id.id,
             'bom_id': self.bom_id.id,
+            'routing_id': self.production_id.routing_id.id,
             'date_planned_start': self.production_id.date_planned_start,
             'user_id': self.production_id.user_id.id,
             'origin': self.production_id.origin,
@@ -100,6 +101,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.production_id.sudo().unlink()
         production = self.env['mrp.production'].with_context(
             alternative_bom=True).create(data)
+        production.routing_id = data['routing_id']
         plan_line.write({
             'production_id': production.id,
             'bom_id': production.bom_id.id,
