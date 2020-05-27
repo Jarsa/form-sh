@@ -19,7 +19,6 @@
         'board',
         'repair',
         'mrp_plm_survey',
-        'hr_attendance',
         'documents',
         'bo_import_direct_drive_sheet',
         'mailgun',
@@ -63,9 +62,6 @@
         'quality',
         'quality_control',
         'account_aged_partner_balance_by_currency',
-        'hr_appraisal',
-        'hr_holidays',
-        'helpdesk',
         'cost_margin_utility_report',
     ],
     'data': [
