@@ -81,6 +81,7 @@ class MrpProductionChangeRouting(models.TransientModel):
             'routing_id': self.routing_id.id,
         })
         if production.plan_id:
+            production.plan_id._link_workorders()
             production.plan_id._sort_workorders_by_sequence()
         return {
             'name': production.name,

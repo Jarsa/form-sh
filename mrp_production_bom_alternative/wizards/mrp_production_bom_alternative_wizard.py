@@ -111,6 +111,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         if production.routing_id:
             production.button_plan()
             if production.plan_id:
+                production.plan_id._link_workorders()
                 production.plan_id._sort_workorders_by_sequence()
         return {
             'name': production.name,
