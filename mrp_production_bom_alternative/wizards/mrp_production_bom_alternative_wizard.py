@@ -99,6 +99,7 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.env['change.production.qty'].search(
             [('mo_id', '=', self.production_id.id)]).sudo().unlink()
         self.production_id.sudo().unlink()
+        self.bom_id.write({'routing_id': self.current_bom_id.routing_id.id})
         production = self.env['mrp.production'].with_context(
             alternative_bom=True).create(data)
         production.routing_id = data['routing_id']
