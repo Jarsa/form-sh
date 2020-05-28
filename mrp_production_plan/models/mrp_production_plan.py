@@ -466,12 +466,12 @@ class MrpProductionPlan(models.Model):
     @api.multi
     def _cancel_unplanned_requests(self):
         unplanned_requests = self.env['mrp.production.request'].search([
-            ('plan_line_id', '=', False), '|',
+            ('plan_line_id', '=', False), ('state', '!=', 'cancel'), '|',
             ('origin', '=', False), ('origin', 'ilike', 'OP/')])
         if unplanned_requests:
             # If a dest move is done the request cannot be cencelled
             unplanned_requests.write({
-                'move_dest_ids': False,
+                'move_dest_ids': [(5, 0, 0)],
             })
             unplanned_requests.button_cancel()
 
