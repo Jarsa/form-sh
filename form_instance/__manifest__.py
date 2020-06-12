@@ -70,6 +70,7 @@
         'data/ir_sequence_data.xml',
         'data/ir_base_automation_data.xml',
         'data/ir_cron.xml',
+        'data/account_tag.xml',
         'security/security.xml',
         'security/rules.xml',
         'security/ir.model.access.csv',

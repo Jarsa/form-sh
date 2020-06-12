@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="account.account.tag" id="account_tag_no_concil_mtnmx">
+        <field name='name'>No-concil</field>
+    </record>
+</odoo>
