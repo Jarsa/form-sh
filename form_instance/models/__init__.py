@@ -23,3 +23,4 @@ from . import mrp_production_update_reason
 from . import ir_attachment
 from . import mrp_routing_workcenter
 from . import quality_point
+from . import reconciliation_widget
