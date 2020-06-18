@@ -368,15 +368,14 @@ class MrpProductionPlan(models.Model):
         quant_obj = self.env['stock.quant']
         picking_type = self.env.ref(
             'mrp_production_plan.return_raw_material_form')
-        raw_material_categ = self.env.ref(
-            '__import__.product_category_002')
+        raw_material_categ_ids = [31, 15]
         pre_prod_loc = self.env.ref(
             '__export__.stock_location_18_a77b305d')
         stock_loc = self.env.ref(
             '__export__.stock_location_31_2395bc4b')
         products = quant_obj.search([
             ('location_id', '=', pre_prod_loc.id),
-            ('product_id.categ_id.id', '=', raw_material_categ.id)]).mapped(
+            ('product_id.categ_id', 'in', raw_material_categ_ids)]).mapped(
             'product_id')
         products_list = []
         for product in products:
