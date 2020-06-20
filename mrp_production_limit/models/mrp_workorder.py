@@ -25,7 +25,7 @@ class MrpWorkorder(models.Model):
         for rec in self:
             # qty_limit = var used by store 10% from
             # quantity to produce plus quantity
-            qty_limit = quantity * 1.1
+            qty_limit = quantity + 3
             qty_limit = qty_limit - qty_produced
             if rec.qty_producing <= qty_limit:
                 return True
@@ -46,7 +46,7 @@ class MrpWorkorder(models.Model):
             ):
         # qty_limit = var used by store 10% from
         # quantity to produce plus quantity
-        qty_limit = quantity * 1.1
+        qty_limit = quantity + 3
         qty_limit = qty_limit - qty_produced
         if qty_producing <= qty_limit:
             return True
