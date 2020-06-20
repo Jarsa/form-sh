@@ -22,9 +22,6 @@
             <xpath expr="//button[@name='action_cancel']" position="attributes">
                 <attribute name="groups">base.group_system</attribute>
             </xpath>
-            <xpath expr="//field[@name='move_line_ids_without_package']/tree" position="attributes">
-                <attribute name="create">false</attribute>
-            </xpath>
         </field>
     </record>
     <record id="view_picking_tree_custom" model="ir.ui.view">
