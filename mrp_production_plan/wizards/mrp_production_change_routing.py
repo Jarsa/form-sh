@@ -58,28 +58,23 @@ class MrpProductionChangeRouting(models.TransientModel):
             self.current_routing_id.display_name, self.routing_id.display_name)
         data = self._prepare_manufacturing_order()
         plan_line = self.production_id.plan_line_id
+        bom = self.production_id.bom_id
         self.production_id.action_cancel()
         if self.production_id.picking_ids:
             self.production_id.picking_ids.sudo().unlink()
         self.env['change.production.qty'].search(
             [('mo_id', '=', self.production_id.id)]).sudo().unlink()
         self.production_id.sudo().unlink()
-        production = self.env['mrp.production'].create(data)
-        old_routing_id = production.bom_id.routing_id.id
-        production.bom_id.write({
+        bom.write({
             'routing_id': self.routing_id.id,
         })
+        production = self.env['mrp.production'].create(data)
         plan_line.write({
             'production_id': production.id,
+            'routing_id': self.routing_id.id,
         })
         production.message_post(body=message)
         production.button_plan()
-        production.bom_id.write({
-            'routing_id': old_routing_id,
-        })
-        production.write({
-            'routing_id': self.routing_id.id,
-        })
         if production.plan_id:
             production.plan_id._link_workorders()
             production.plan_id._sort_workorders_by_sequence()
