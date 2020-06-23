@@ -16,7 +16,7 @@ class AccountReconciliation(models.AbstractModel):
         )
         new_res = []
         if res:
-            account_tag_id = self.env.ref("mtnmx.account_tag_no_concil_mtnmx").id
+            account_tag_id = self.env.ref("form_instance.account_tag_no_concil_form").id
             account_ids = self.env['account.account'].search([('tag_ids', 'in', [account_tag_id])]).ids
             for rec in res:
                 if rec["account_id"][0] not in account_ids:
