@@ -8,6 +8,9 @@ class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
 
     product_description = fields.Text(related='product_id.description')
+    allow_start_production = fields.Boolean(
+        related="workcenter_id.allow_start_production",
+        string="Start Production")
 
     def do_finish(self):
         action = super().do_finish()

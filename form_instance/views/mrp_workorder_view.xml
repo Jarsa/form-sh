@@ -27,7 +27,9 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='open_tablet_view']" position="replace">
                 <field name="production_availability" invisible="1"/>
-                <button name="open_tablet_view" type="object" string="Process" attrs="{'invisible': ['|', ('state', 'not in', ('ready', 'progress')), ('production_availability', '!=', 'assigned')]}"/>
+                <field name="allow_start_production" invisible="1"/>
+                <button name="open_tablet_view" type="object" string="Process" attrs="{'invisible': ['|', '|', ('state', 'not in', ('ready', 'progress')), ('production_availability', '!=', 'assigned'), ('allow_start_production', '=', True)]}"/>
+                <button name="open_tablet_view" type="object" string="Process" attrs="{'invisible': [('allow_start_production', '=', False)]}"/>
             </xpath>
         </field>
     </record>
@@ -41,6 +43,9 @@
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
+            </xpath>
+             <xpath expr="//field[@name='costs_hour']" position="after">
+                <field name="allow_start_production"/>
             </xpath>
         </field>
     </record>
@@ -57,6 +62,17 @@
             </xpath>
             <xpath expr="//button[@name='action_open_manufacturing_order']" position="attributes">
                 <attribute name="string">Done and Close MO</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="mrp_workorder_custom_form2">
+        <field name="name">mrp_workorder_custom.form2</field>
+        <field name="model">mrp.workorder</field>
+        <field name="priority">110</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="allow_start_production"/>
             </xpath>
         </field>
     </record>
