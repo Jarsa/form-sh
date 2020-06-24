@@ -1,26 +1,35 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* form_instance
+#	* form_instance
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 20:30+0000\n"
-"PO-Revision-Date: 2020-04-24 09:32-0500\n"
+"POT-Creation-Date: 2020-06-24 01:59+0000\n"
+"PO-Revision-Date: 2020-06-24 01:59+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 2.3\n"
+
+#. module: form_instance
+#: code:addons/form_instance/models/mrp_routing_workcenter.py:15
+#, python-format
+msgid "%(name)s - %(workcenter)s"
+msgstr ""
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_workorder_inherit_custom_kanban
 msgid "<strong><span>Date Planned Start - </span></strong>"
 msgstr "<strong><span>Fecha Planeada de Inicio - </span></strong>"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_reconciliation_widget
+msgid "Account Reconciliation widget"
+msgstr "Widget de reconciliación de cuenta"
 
 #. module: form_instance
 #: model:ir.ui.menu,name:form_instance.add_root_cause
@@ -76,6 +85,11 @@ msgid "Block invoice editing"
 msgstr "No permitir Edicion de factura"
 
 #. module: form_instance
+#: model:res.groups,name:form_instance.res_groups_project_follower
+msgid "Can see projects where is follower"
+msgstr ""
+
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_send_production_to_scrap
 msgid "Can send production to scrap"
 msgstr "Puede desechar producción"
@@ -120,7 +134,7 @@ msgstr "Borrar adjuntos de producto"
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__product_description
 msgid "Description"
-msgstr "Descripción"
+msgstr "Descripción"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_crm_lead__designer_id
@@ -130,12 +144,12 @@ msgstr "Diseñador"
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Nombre a mostrar"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_ir_attachment
 msgid "Document"
-msgstr "Documento"
+msgstr ""
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_view_form_tablet_form
@@ -155,13 +169,13 @@ msgstr "Reporte de Seguimiento"
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_product_product__id_form
 #: model:ir.model.fields,field_description:form_instance.field_product_template__id_form
 msgid "ID FORM"
-msgstr "ID FORM"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model.fields,help:form_instance.field_product_product__id_form
@@ -192,12 +206,12 @@ msgstr "Linea de factura"
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason____last_update
 msgid "Last Modified on"
-msgstr "Última modificación en"
+msgstr "Ultima modificacion realizada"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__write_uid
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Ultima actualizacion por"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__write_date
@@ -239,7 +253,7 @@ msgstr "Nombre"
 #: model:base.automation,name:form_instance.no_duplicate_vats
 #: model:ir.actions.server,name:form_instance.no_duplicate_vats_ir_actions_server
 msgid "No Duplicar RFC"
-msgstr "No Duplicar RFC"
+msgstr ""
 
 #. module: form_instance
 #: model_terms:ir.ui.view,arch_db:form_instance.crm_lead_custom_form
@@ -293,12 +307,12 @@ msgstr "Movimientos de Producto (Stock Move Line)"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_product_template
 msgid "Product Template"
-msgstr "Plantilla de producto"
+msgstr "Plantilla del producto"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production
 msgid "Production Order"
-msgstr "Orden de Producción"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.actions.act_window,name:form_instance.action_production_update_reason
@@ -338,6 +352,11 @@ msgid "Quality Alert"
 msgstr "Alerta de Calidad"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_quality_point
+msgid "Quality Control Point"
+msgstr "Punto de Control de Calidad"
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_quant
 msgid "Quants"
 msgstr "Cantidades"
@@ -364,6 +383,11 @@ msgid "Root Cause"
 msgstr "Causa principal"
 
 #. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_quality_point__routing2_id
+msgid "Routing"
+msgstr "Ruta de producción"
+
+#. module: form_instance
 #: model:ir.ui.menu,name:form_instance.menu_procurement_compute
 msgid "Run Scheduler"
 msgstr "Ejecutar Planificador"
@@ -371,7 +395,7 @@ msgstr "Ejecutar Planificador"
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_sale_order
 msgid "Sale Order"
-msgstr "Pedido de venta"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_sale_order_line
@@ -383,12 +407,18 @@ msgstr "Línea de pedido de venta"
 #: model:ir.model.fields,help:form_instance.field_mrp_production_request__product_category_id
 #: model:ir.model.fields,help:form_instance.field_stock_quant__categ_id
 msgid "Select category for the current product"
-msgstr "Seleccione la categoría para el producto actual"
+msgstr "Seleccione la categoría para el producto actual."
 
 #. module: form_instance
 #: model:res.groups,name:form_instance.group_show_only_followers_stock_picking_type_form
 msgid "Show picking types to followers"
 msgstr "Mostrar tipos de operaciones a los seguidores"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__allow_start_production
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__allow_start_production
+msgid "Start Production"
+msgstr "Permitir iniciar producción"
 
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_stock_move
@@ -399,7 +429,7 @@ msgstr "Movimiento de existencias"
 #: model:ir.model.fields,field_description:form_instance.field_stock_move__subtotal
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__subtotal
 msgid "Subtotal"
-msgstr "Subtotal"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model.fields,help:form_instance.field_stock_move_line__price_unit
@@ -425,7 +455,7 @@ msgstr "El usuario tendrá acceso a leer, crear y escribir en product.product y 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_activate_cancel_form
 msgid "The user will have access to activate button cancel."
-msgstr "El usuario tendrá acceso a activar el botón de cancelar."
+msgstr "El usuario tendrá acceso a activar el botón de cancelar"
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_allow_delete_prod_attachment
@@ -436,6 +466,11 @@ msgstr "El usuario va a tener acceso a borrar archivos adjuntos de los productos
 #: model:res.groups,comment:form_instance.group_payable_form
 msgid "The user will have access to payable accounts."
 msgstr "El usuario tendrá acceso a cuentas por pagar."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.res_groups_project_follower
+msgid "The user will have access to projects where is a follower."
+msgstr ""
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_receivable_form
@@ -460,7 +495,7 @@ msgstr "El usuario va a tener acceso a la configuración del CRM."
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_update_so_status_form
 msgid "The user will have access to update sale orders status."
-msgstr "El usuario tendrá acceso a actualizar el estado a facturar del pedido de venta."
+msgstr "El usuario tendrá acceso a actualizar el estado a facturar del pedido de venta"
 
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_purchase_request_manager_form
@@ -475,7 +510,7 @@ msgstr "Los usuarios de este grupo no pueden editar campos de factura"
 #. module: form_instance
 #: model:res.groups,comment:form_instance.group_send_production_to_scrap
 msgid "The users with this group are allowed to see the button \"Scrap\" in production form view and also in work order tablet view."
-msgstr "Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la vista formulario de la orden de producción y también en la vista tableta de la orden de trabajo."
+msgstr "Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la vista formulario de la orden de producción y también en la vista tableta de la orden de trabajo"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_crm_lead__timesheet_ids
@@ -491,7 +526,7 @@ msgstr "Tipo de operación"
 #: code:addons/form_instance/models/account_followup_report.py:13
 #, python-format
 msgid "UUID"
-msgstr "UUID"
+msgstr ""
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__price_unit
@@ -525,6 +560,11 @@ msgid "Work Center"
 msgstr "Centro de producción"
 
 #. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_routing_workcenter
+msgid "Work Center Usage"
+msgstr "Utilización del centro de producción"
+
+#. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_workorder
 msgid "Work Order"
 msgstr "Orden de trabajo"
@@ -555,4 +595,5 @@ msgstr "No tienes permitido modificar productos."
 #. module: form_instance
 #: model:ir.model,name:form_instance.model_mrp_production_update_reason
 msgid "mrp.production.update.reason"
-msgstr "mrp.production.update.reason"
+msgstr ""
+
