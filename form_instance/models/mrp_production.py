@@ -37,3 +37,11 @@ class MrpProduction(models.Model):
                 order.availability = (
                     all(assigned_list) and 'assigned') or (
                     any(partial_list) and 'partially_available') or 'waiting'
+
+    @api.multi
+    def action_cancel(self):
+        action = super().action_cancel()
+        for move in self.move_raw_ids:
+            quants = move.mapped('product_id').stock_quant_ids
+            quants._update_quants_and_reserve_all()
+        return action
