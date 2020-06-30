@@ -444,7 +444,7 @@ class MrpProductionPlan(models.Model):
             lambda w: w.finished_move_line_ids)
         sfp_pickings = self.production_ids.filtered(
             lambda p: p.state == 'done').mapped('picking_ids').filtered(
-                lambda p: p.picking_type_id.id == 24 and (
+                lambda p: p.picking_type_id.id == 7 and (
                     p.state in ['assigned', 'confirmed']) and (
                         p.move_line_ids_without_package))
         for line in sfp_pickings.mapped('move_line_ids_without_package'):
