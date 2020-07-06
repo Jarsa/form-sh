@@ -364,6 +364,58 @@ class MrpProductionPlan(models.Model):
         return True
 
     @api.multi
+    def _transfer_raw_material_from_quality_to_materia(self):
+        quant_obj = self.env['stock.quant']
+        picking_type = self.env.ref(
+            'mrp_production_plan.return_raw_material_form')
+        raw_material_categ_ids = [31, 15]
+        pre_prod_loc = self.env.ref(
+            '__export__.stock_location_18_a77b305d')
+        quality_loc = self.env.ref(
+            '__export__.stock_location_32_8c8446df')
+        stock_loc = self.env.ref(
+            '__export__.stock_location_31_2395bc4b')
+        products = quant_obj.search([
+            ('location_id', '=', pre_prod_loc.id),
+            ('product_id.categ_id', 'in', raw_material_categ_ids)]).mapped(
+            'product_id')
+        products_list = []
+        for product in products:
+            product_qty = quant_obj._get_available_quantity(
+                product_id=product, location_id=quality_loc)
+            if not product_qty or product_qty < 0.001:
+                continue
+            products_list.append((0, 0, {
+                'name': product.name,
+                'product_id': product.id,
+                'product_uom_qty': product_qty,
+                'product_uom': product.uom_id.id,
+                'location_id': quality_loc.id,
+                'location_dest_id': stock_loc.id,
+            }))
+        if not products_list:
+            return True
+        picking = self.env['stock.picking'].create({
+            'picking_type_id': picking_type.id,
+            'move_ids_without_package': products_list,
+            'location_id': quality_loc.id,
+            'location_dest_id': stock_loc.id,
+        })
+        picking.action_confirm()
+        picking.action_assign()
+        validate_picking = picking.button_validate()
+        if validate_picking.get('res_id', False):
+            wiz = self.env['stock.immediate.transfer'].browse(
+                validate_picking['res_id'])
+            wiz.process()
+            if sum(picking.mapped(
+                    'move_line_ids').mapped('product_qty')) != 0.0:
+                validate_picking2 = picking.button_validate()
+                wiz2 = self.env['stock.backorder.confirmation'].browse(
+                    validate_picking2['res_id'])
+                wiz2.process_cancel_backorder()
+
+    @api.multi
     def _transfer_raw_material(self):
         quant_obj = self.env['stock.quant']
         picking_type = self.env.ref(
@@ -512,6 +564,7 @@ class MrpProductionPlan(models.Model):
         self._cancel_unplanned_requests()
         self._cancel_unreserved_moves_to_cedis()
         self._transfer_raw_material()
+        self._transfer_raw_material_from_quality_to_materia()
         self._create_new_requests()
         self.write({'state': 'done'})
         return True
