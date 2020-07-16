@@ -372,7 +372,7 @@ class MrpProductionPlan(models.Model):
         pre_prod_loc = self.env.ref(
             '__export__.stock_location_18_a77b305d')
         quality_loc = self.env.ref(
-            '__export__.stock_location_32_8c8446df')
+            '__export__.stock_location_34_b81a4181')
         stock_loc = self.env.ref(
             '__export__.stock_location_31_2395bc4b')
         products = quant_obj.search([
