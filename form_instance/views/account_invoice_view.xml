@@ -87,6 +87,9 @@
             <xpath expr="//header/button[@name='action_invoice_open']" position="attributes">
                 <attribute name="groups">account.group_account_manager</attribute>
             </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="attributes">
+                <attribute name="groups">account.group_account_user,form_instance.group_payable_form</attribute>
+            </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="view_account_invoice_supplier2_inherit_tree">
