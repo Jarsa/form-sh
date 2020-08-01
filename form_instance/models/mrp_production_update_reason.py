@@ -6,5 +6,6 @@ from odoo import fields, models
 
 class MrpProductionUpdateReason(models.Model):
     _name = 'mrp.production.update.reason'
+    _description = 'Reason to update a production'
 
     name = fields.Char(required=True)
