@@ -17,7 +17,7 @@
         </field>
     </record>
     <record id="mrp_workorder.mrp_workorder_action_tablet" model="ir.actions.act_window">
-        <field name="domain">[('state', 'not in', ['done', 'cancel']), ('workcenter_id','=',active_id), ('production_availability', '=', 'assigned')]</field>
+        <field name="domain">[('state', 'not in', ['done', 'cancel']), ('workcenter_id','=',active_id), '|', ('production_availability', '=', 'assigned'), ('allow_start_production', '=', True)]</field>
     </record>
     <record model="ir.ui.view" id="mrp_workorder_custom_form">
         <field name="name">mrp_workorder_custom.form</field>
