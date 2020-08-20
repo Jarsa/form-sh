@@ -30,6 +30,7 @@ msgstr "Diseñador"
 msgid "Reordening Rules"
 msgstr "Reglas de Abastecimiento"
 
+#. module: form_instance
 #: model:res.groups,name:form_instance.group_create_lead_in_crm_form
 msgid "Create tag in CRM"
 msgstr "Crear Etiquetas en CRM"
