@@ -96,6 +96,7 @@
         'views/stock_warehouse_view.xml',
         'views/mrp_document_view.xml',
         'wizards/change_production_qty_views.xml',
+        'wizards/change_account_expense_view.xml',
         'views/quality_alert_views.xml',
         'views/quality_point_view.xml',
         'views/mrp_production_update_reason_view.xml',
