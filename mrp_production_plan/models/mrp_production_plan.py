@@ -67,6 +67,10 @@ class MrpProductionPlan(models.Model):
         'done if there are at least one Line (Manufacturing Request) '
         'without a linked Manufacturing Order.')
     routing_id = fields.Many2one('mrp.routing', 'Routing')
+    log_ids = fields.One2many(
+        'mrp.production.plan.log',
+        'plan_id',
+    )
 
     @api.multi
     def action_view_productions(self):
@@ -401,6 +405,10 @@ class MrpProductionPlan(models.Model):
             'location_id': quality_loc.id,
             'location_dest_id': stock_loc.id,
         })
+        message = (
+            _('Make transfer reserved materials: %s')
+            % picking.move_ids_without_package.mapped('product_id.name'))
+        self._log(message, self.id)
         picking.action_confirm()
         picking.action_assign()
         validate_picking = picking.button_validate()
@@ -451,6 +459,10 @@ class MrpProductionPlan(models.Model):
             'location_id': pre_prod_loc.id,
             'location_dest_id': stock_loc.id,
         })
+        message = (
+            _('Make transfer reserved materials: %s')
+            % picking.move_ids_without_package.mapped('product_id.name'))
+        self._log(message, self.id)
         picking.action_confirm()
         picking.action_assign()
         validate_picking = picking.button_validate()
@@ -475,6 +487,12 @@ class MrpProductionPlan(models.Model):
             orders = ''
             for ordr in orders_to_done:
                 orders = orders + '\n-' + ordr.name
+                production_id = ordr.id
+                message = (
+                    _('Manufacturing Orden: %s canceled '
+                        'because has partialities') % ordr.name)
+                self._log(
+                    message, self.id, production_id)
             raise UserError(
                 _('The following orders have partialities '
                   'and have not been marked as done yet: %s \n')
@@ -512,6 +530,11 @@ class MrpProductionPlan(models.Model):
                 finished_move.qty_done = 0.0
         if undone_orders:
             for order in undone_orders:
+                production_id = order.id
+                message = (
+                    _('Orden Production: %s Cancelled becuase is not done')
+                    % order.name)
+                self._log(message, self.id, production_id)
                 order.action_cancel()
 
     @api.multi
@@ -524,6 +547,13 @@ class MrpProductionPlan(models.Model):
             unplanned_requests.write({
                 'move_dest_ids': [(5, 0, 0)],
             })
+            for rec in unplanned_requests:
+                message = (
+                    _('Mrp Plan Request: %s cancelled '
+                        'because is not done') % rec.name)
+                request_id = rec.id
+                self._log(
+                    message, self.id, request_id=request_id)
             unplanned_requests.button_cancel()
 
     @api.multi
@@ -539,6 +569,10 @@ class MrpProductionPlan(models.Model):
                 'origin': request.origin,
                 'product_uom_id': request.product_id.uom_id.id,
             })
+            message = (
+                _('New MRP Production Request: %s approved')
+                % new_mr.name)
+            self._log(message, self.id)
             new_mr.button_to_approve()
 
     @api.multi
@@ -555,6 +589,12 @@ class MrpProductionPlan(models.Model):
             ('location_dest_id', '=', transit_loc),
             ('state', 'in', ('waiting', 'confirmed', 'partially_available'))])
         if unreserved_moves:
+            for rec in unreserved_moves:
+                message = (
+                    _('Stock Move: %s cancelled '
+                        'because is not done') % rec.name)
+                self._log(
+                    message, self.id)
             unreserved_moves._action_cancel()
 
     @api.multi
@@ -568,6 +608,14 @@ class MrpProductionPlan(models.Model):
         self._create_new_requests()
         self.write({'state': 'done'})
         return True
+
+    def _log(self, message, plan_id, production_id=None, request_id=None):
+        with self.pool.cursor() as cr:
+            cr.execute("""
+                INSERT INTO mrp_production_plan_log(
+                name, plan_id, production_id, request_id)
+                VALUES (%s, %s, %s, %s)
+            """, (message, plan_id, production_id, request_id))
 
     @api.multi
     def button_draft(self):
@@ -736,3 +784,15 @@ class MrpProductionPlanWorkcenter(models.Model):
     plan_id = fields.Many2one('mrp.production.plan')
     line_ids = fields.One2many(
         'mrp.workorder', 'plan_workcenter_id', string='Workorder Lines')
+
+
+class MrpProductionPlanLog(models.Model):
+    _name = 'mrp.production.plan.log'
+
+    name = fields.Char()
+    production_id = fields.Many2one(
+        'mrp.production')
+    request_id = fields.Many2one(
+        'mrp.production.request')
+    plan_id = fields.Many2one(
+        'mrp.production.plan')
