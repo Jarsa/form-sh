@@ -24,3 +24,4 @@ from . import ir_attachment
 from . import mrp_routing_workcenter
 from . import quality_point
 from . import reconciliation_widget
+from . import uom_uom
