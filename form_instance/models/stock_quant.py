@@ -23,6 +23,17 @@ class StockQuant(models.Model):
         'product.category', related='product_id.categ_id', store=True)
 
     @api.model
+    def _get_available_quantity(
+        self, product_id, location_id, lot_id=None, package_id=None,
+            owner_id=None, strict=False, allow_negative=False):
+        res = super()._get_available_quantity(
+            product_id, location_id, lot_id, package_id, owner_id, strict,
+            allow_negative)
+        precision = self.env['decimal.precision'].precision_get(
+            'Product Unit of Measure')
+        return round(res, precision)
+
+    @api.model
     def _update_quants_and_reserve_all(self):
         for rec in self:
             domain = [
