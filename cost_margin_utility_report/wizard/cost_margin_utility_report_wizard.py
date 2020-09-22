@@ -115,28 +115,29 @@ class CostMarginUtilityReportWiz(models.TransientModel):
         query_result = self._cr.dictfetchall()
         report_list = []
         for result in query_result:
-            quantity = abs(result["quantity"])
-            total_cost = result["debit"]
-            unit_cost = total_cost / quantity
-            contribution = result["credit"] - total_cost
-            margin = contribution * 100.0 / result["credit"]
-            report_list.append(
-                {
-                    "product_id": result["product_id"],
-                    "product_category_id": result["categ_id"],
-                    "product_description": result["description"],
-                    "sold_qty": quantity,
-                    "total_sale": result["credit"],
-                    "total_cost": total_cost,
-                    "unit_cost": unit_cost,
-                    "contribution": contribution,
-                    "margin": margin,
-                    "reference": result["name"],
-                    "default_code": result["default_code"],
-                    "form_id": result["id_form"],
-                    "partner_id": result["partner_id"],
-                }
-            )
+            if result["credit"] > 0:
+                quantity = abs(result["quantity"])
+                total_cost = result["debit"]
+                unit_cost = total_cost / quantity
+                contribution = result["credit"] - total_cost
+                margin = contribution * 100.0 / result["credit"]
+                report_list.append(
+                    {
+                        "product_id": result["product_id"],
+                        "product_category_id": result["categ_id"],
+                        "product_description": result["description"],
+                        "sold_qty": quantity,
+                        "total_sale": result["credit"],
+                        "total_cost": total_cost,
+                        "unit_cost": unit_cost,
+                        "contribution": contribution,
+                        "margin": margin,
+                        "reference": result["name"],
+                        "default_code": result["default_code"],
+                        "form_id": result["id_form"],
+                        "partner_id": result["partner_id"],
+                    }
+                )
         self.env["cost.margin.utility.report"].create(report_list)
         search_view_id = self.env.ref(
             "cost_margin_utility_report.cost_margin_utility_report_search_view"
