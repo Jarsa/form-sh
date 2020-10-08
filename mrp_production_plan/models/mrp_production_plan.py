@@ -4,6 +4,7 @@
 from odoo import _, api, fields, models, tools
 from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError
+from odoo.tools.float_utils import float_is_zero
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -139,8 +140,8 @@ class MrpProductionPlan(models.Model):
     def get_mrp_production_requests(self):
         self.ensure_one()
         main_categ = self.category_id
-        product_categories = self._recursive_search_of_categories(main_categ)
-        product_categories |= main_categ
+        product_categories = self.env['product.category'].search([
+            ('id', 'child_of', main_categ)])
         mrp_plan_line_obj = self.env['mrp.production.plan.line']
         requests = self.env['mrp.production.request'].search([
             ('plan_line_id', '=', False), ('state', '=', 'approved'),
@@ -241,19 +242,6 @@ class MrpProductionPlan(models.Model):
             workorders = wc.line_ids.filtered(
                 lambda l: l.state in ['pending', 'ready']).sorted('sequence')
             self._plan_workorders(workorders)
-
-    @api.model
-    def _recursive_search_of_categories(self, main_categ):
-        categories = self.env['product.category']
-        if main_categ.child_id:
-            for parent_categ in main_categ.child_id:
-                categories |= parent_categ
-                if parent_categ.child_id:
-                    parent_ids = self._recursive_search_of_categories(
-                        parent_categ)
-                    for parent_id in parent_ids:
-                        categories |= parent_id
-        return categories
 
     @api.model
     def _recursive_search_of_child_orders(self, production):
@@ -368,96 +356,60 @@ class MrpProductionPlan(models.Model):
         return True
 
     @api.multi
-    def _transfer_raw_material_from_quality_to_materia(self):
-        quant_obj = self.env['stock.quant']
-        picking_type = self.env.ref(
-            'mrp_production_plan.return_raw_material_form')
-        raw_material_categ_ids = [31, 15]
-        pre_prod_loc = self.env.ref(
-            '__export__.stock_location_18_a77b305d')
+    def _transfer_raw_material_from_quality(self):
+        self.ensure_one()
         quality_loc = self.env.ref(
             '__export__.stock_location_34_b81a4181')
         stock_loc = self.env.ref(
             '__export__.stock_location_31_2395bc4b')
-        products = quant_obj.search([
-            ('location_id', '=', pre_prod_loc.id),
-            ('product_id.categ_id', 'in', raw_material_categ_ids)]).mapped(
-            'product_id')
-        products_list = []
-        for product in products:
-            product_qty = quant_obj._get_available_quantity(
-                product_id=product, location_id=quality_loc)
-            if not product_qty or product_qty < 0.001:
-                continue
-            products_list.append((0, 0, {
-                'name': product.name,
-                'product_id': product.id,
-                'product_uom_qty': product_qty,
-                'product_uom': product.uom_id.id,
-                'location_id': quality_loc.id,
-                'location_dest_id': stock_loc.id,
-            }))
-        if not products_list:
-            return True
-        picking = self.env['stock.picking'].create({
-            'picking_type_id': picking_type.id,
-            'move_ids_without_package': products_list,
-            'location_id': quality_loc.id,
-            'location_dest_id': stock_loc.id,
-        })
-        message = (
-            _('Make transfer reserved materials: %s')
-            % picking.move_ids_without_package.mapped('product_id.name'))
-        self._log(message, self.id)
-        picking.action_confirm()
-        picking.action_assign()
-        validate_picking = picking.button_validate()
-        if validate_picking.get('res_id', False):
-            wiz = self.env['stock.immediate.transfer'].browse(
-                validate_picking['res_id'])
-            wiz.process()
-            if sum(picking.mapped(
-                    'move_line_ids').mapped('product_qty')) != 0.0:
-                validate_picking2 = picking.button_validate()
-                wiz2 = self.env['stock.backorder.confirmation'].browse(
-                    validate_picking2['res_id'])
-                wiz2.process_cancel_backorder()
+        self._make_transfer(
+            location_id=quality_loc, location_dest_id=stock_loc)
 
     @api.multi
     def _transfer_raw_material(self):
-        quant_obj = self.env['stock.quant']
-        picking_type = self.env.ref(
-            'mrp_production_plan.return_raw_material_form')
-        raw_material_categ_ids = [31, 15]
+        self.ensure_one()
         pre_prod_loc = self.env.ref(
             '__export__.stock_location_18_a77b305d')
         stock_loc = self.env.ref(
             '__export__.stock_location_31_2395bc4b')
-        products = quant_obj.search([
-            ('location_id', '=', pre_prod_loc.id),
-            ('product_id.categ_id', 'in', raw_material_categ_ids)]).mapped(
-            'product_id')
+        self._make_transfer(
+            location_id=pre_prod_loc, location_dest_id=stock_loc)
+
+    @api.multi
+    def _make_transfer(self, location_id, location_dest_id):
+        self.ensure_one()
+        quant_obj = self.env['stock.quant']
+        picking_type = self.env.ref(
+            'mrp_production_plan.return_raw_material_form')
+        raw_material_categ_ids = [31, 15, 37, 27]
+        quants = quant_obj.search([
+            ('location_id', '=', location_id.id),
+            ('product_id.categ_id', 'in', raw_material_categ_ids)])
+        quants._update_quants_and_reserve_all()
+        products = quants.mapped('product_id')
         products_list = []
+        precision_digits = self.env['decimal.precision'].precision_get(
+            'Product Unit of Measure')
         for product in products:
             product_qty = quant_obj._get_available_quantity(
-                product_id=product, location_id=pre_prod_loc)
-            if not product_qty or product_qty < 0.001:
+                product_id=product, location_id=location_id, strict=True)
+            if float_is_zero(product_qty, precision_digits=precision_digits):
                 continue
             products_list.append((0, 0, {
                 'name': product.name,
                 'product_id': product.id,
                 'product_uom_qty': product_qty,
                 'product_uom': product.uom_id.id,
-                'location_id': pre_prod_loc.id,
-                'location_dest_id': stock_loc.id,
+                'location_id': location_id.id,
+                'location_dest_id': location_dest_id.id,
             }))
         if not products_list:
             return True
         picking = self.env['stock.picking'].create({
             'picking_type_id': picking_type.id,
             'move_ids_without_package': products_list,
-            'location_id': pre_prod_loc.id,
-            'location_dest_id': stock_loc.id,
+            'location_id': location_id.id,
+            'location_dest_id': location_dest_id.id,
         })
         message = (
             _('Make transfer reserved materials: %s')
@@ -465,17 +417,11 @@ class MrpProductionPlan(models.Model):
         self._log(message, self.id)
         picking.action_confirm()
         picking.action_assign()
-        validate_picking = picking.button_validate()
-        if validate_picking.get('res_id', False):
-            wiz = self.env['stock.immediate.transfer'].browse(
-                validate_picking['res_id'])
-            wiz.process()
-            if sum(picking.mapped(
-                    'move_line_ids').mapped('product_qty')) != 0.0:
-                validate_picking2 = picking.button_validate()
-                wiz2 = self.env['stock.backorder.confirmation'].browse(
-                    validate_picking2['res_id'])
-                wiz2.process_cancel_backorder()
+        for line in picking.mapped('move_line_ids_without_package'):
+            line.write({
+                'qty_done': line.product_uom_qty,
+            })
+        picking.button_validate()
 
     @api.multi
     def _check_orders_with_partialities(self):
@@ -504,14 +450,11 @@ class MrpProductionPlan(models.Model):
             lambda x: x.state not in ('cancel', 'done') and
             x.availability != 'assigned').mapped(
                 'workorder_ids')
-        for workorder in workorders:
-            workorder.time_ids.unlink()
-            workorder.unlink()
+        workorders.mapped('time_ids').unlink()
+        workorders.unlink()
         undone_orders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
             x.availability != 'assigned')
-        wrong_orders = undone_orders.filtered(
-            lambda w: w.finished_move_line_ids)
         sfp_pickings = self.production_ids.filtered(
             lambda p: p.state == 'done').mapped('picking_ids').filtered(
                 lambda p: p.picking_type_id.id == 7 and (
@@ -523,18 +466,12 @@ class MrpProductionPlan(models.Model):
         empty_pickings = self.env['stock.picking'].search([
             ('backorder_id', 'in', sfp_pickings.ids)])
         empty_pickings.action_cancel()
-        if wrong_orders:
-            for move_raw in wrong_orders.mapped('move_raw_ids'):
-                move_raw.quantity_done = 0.0
-            for finished_move in wrong_orders.mapped('finished_move_line_ids'):
-                finished_move.qty_done = 0.0
         if undone_orders:
             for order in undone_orders:
-                production_id = order.id
                 message = (
                     _('Orden Production: %s Cancelled becuase is not done')
                     % order.name)
-                self._log(message, self.id, production_id)
+                self._log(message, self.id, order.id)
                 order.action_cancel()
 
     @api.multi
@@ -551,9 +488,8 @@ class MrpProductionPlan(models.Model):
                 message = (
                     _('Mrp Plan Request: %s cancelled '
                         'because is not done') % rec.name)
-                request_id = rec.id
                 self._log(
-                    message, self.id, request_id=request_id)
+                    message, self.id, request_id=rec.id)
             unplanned_requests.button_cancel()
 
     @api.multi
@@ -570,24 +506,31 @@ class MrpProductionPlan(models.Model):
                 'product_uom_id': request.product_id.uom_id.id,
             })
             message = (
-                _('New MRP Production Request: %s approved')
+                _('New MRP Production Request: %s created')
                 % new_mr.name)
             self._log(message, self.id)
             new_mr.button_to_approve()
 
     @api.multi
     def _cancel_unreserved_moves_to_cedis(self):
-        """ This method is created to cancel moves crated by orderpoints that
+        """ This method is created to cancel moves created by orderpoints that
         are not reserved. If we don't cancel this moves the orderpoint rules
         created the next day it will consider it as vitual stock.
+        This will cancel moves from stock location to output location, this
+        assumes the routes are configured to propagate cancellation.
+        It also consider child location of stock.
 
         """
         sab_stock_loc = self.env.ref('stock.stock_location_stock').id
-        transit_loc = self.env.ref('__export__.stock_location_17_4d7ec339').id
+        sab_output_loc = self.env.ref('stock.stock_location_output').id
         unreserved_moves = self.env['stock.move'].search([
+            ('state', 'in', ['waiting', 'confirmed', 'partially_available']),
+            ('location_dest_id', '=', sab_output_loc),
+            ('origin', 'ilike', 'OP/'),
+            '|',
             ('location_id', '=', sab_stock_loc),
-            ('location_dest_id', '=', transit_loc),
-            ('state', 'in', ('waiting', 'confirmed', 'partially_available'))])
+            ('location_id', 'child_of', sab_stock_loc),
+        ])
         if unreserved_moves:
             for rec in unreserved_moves:
                 message = (
@@ -604,7 +547,7 @@ class MrpProductionPlan(models.Model):
         self._cancel_unplanned_requests()
         self._cancel_unreserved_moves_to_cedis()
         self._transfer_raw_material()
-        self._transfer_raw_material_from_quality_to_materia()
+        self._transfer_raw_material_from_quality()
         self._create_new_requests()
         self.write({'state': 'done'})
         return True
