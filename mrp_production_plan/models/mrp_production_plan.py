@@ -141,7 +141,7 @@ class MrpProductionPlan(models.Model):
         self.ensure_one()
         main_categ = self.category_id
         product_categories = self.env['product.category'].search([
-            ('id', 'child_of', main_categ)])
+            ('id', 'child_of', main_categ.id)])
         mrp_plan_line_obj = self.env['mrp.production.plan.line']
         requests = self.env['mrp.production.request'].search([
             ('plan_line_id', '=', False), ('state', '=', 'approved'),
