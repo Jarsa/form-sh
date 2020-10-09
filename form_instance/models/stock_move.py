@@ -35,7 +35,8 @@ class StockMove(models.Model):
                 ('move_dest_ids', 'not in', move.ids),
             ])
             if done_moves.filtered(
-                    lambda m: m.move_dest_ids.state in ['done', 'cancel']):
+                    lambda m: m.mapped(
+                        'move_dest_ids.state') in ['done', 'cancel']):
                 for mv in done_moves:
                     if mv.availability > 0:
                         mv.write({
