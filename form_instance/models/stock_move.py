@@ -17,6 +17,32 @@ class StockMove(models.Model):
         for rec in self:
             rec.subtotal = rec.quantity_done * rec.price_unit
 
+    def _prepare_extra_move_vals(self, qty):
+        res = super()._prepare_extra_move_vals(qty)
+        if self.move_dest_ids:
+            res['move_dest_ids'] = [(6, 0, self.move_dest_ids.ids)]
+        return res
+
+    def _action_assign(self):
+        moves = self.filtered(
+                lambda m: m.state in [
+                    'confirmed', 'waiting', 'partially_available'])
+        for move in moves:
+            done_moves = move.search([
+                ('product_id', '=', move.product_id.id),
+                ('location_dest_id', '=', move.location_id.id),
+                ('state', '=', 'done'),
+                ('move_dest_ids', 'not in', move.ids),
+            ])
+            if done_moves.filtered(
+                    lambda m: m.move_dest_ids.state in ['done', 'cancel']):
+                for mv in done_moves:
+                    if mv.availability > 0:
+                        mv.write({
+                            'move_dest_ids': [(6, 0, move.ids)]
+                        })
+        return super()._action_assign()
+
 
 class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'
