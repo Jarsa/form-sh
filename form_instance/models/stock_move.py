@@ -25,8 +25,8 @@ class StockMove(models.Model):
 
     def _action_assign(self):
         moves = self.filtered(
-                lambda m: m.state in [
-                    'confirmed', 'waiting', 'partially_available'])
+            lambda m: m.state in [
+                'confirmed', 'waiting', 'partially_available'])
         for move in moves:
             done_moves = move.search([
                 ('product_id', '=', move.product_id.id),
