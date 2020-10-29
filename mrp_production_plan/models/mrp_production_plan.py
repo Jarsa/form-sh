@@ -290,6 +290,7 @@ class MrpProductionPlan(models.Model):
             workorders = self.env['mrp.workorder'].search([
                 ('workcenter_id', '=', workcenter.id),
                 ('plan_workcenter_id', '=', False),
+                ('state', '!=', 'done'),
                 ('production_id', 'in', self.production_ids.ids)])
             old_workcenter = mrp_plan_wc_obj.search([
                 ('workcenter_id', '=', workcenter.id),
