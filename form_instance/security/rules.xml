@@ -23,7 +23,6 @@
     <record id="group_allow_edit_invoices" model="res.groups">
         <field name="name">Block invoice editing</field>
         <field name="comment">The users in this group aren't allowed to edit invoice fields</field>
-        <field name="users" eval="[(4,ref('base.user_admin'))]"/>
     </record>
     <record id="workcenter_user_form" model="ir.rule">
         <field name="name">User workcenter</field>
