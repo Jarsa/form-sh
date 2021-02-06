@@ -11,3 +11,4 @@ product-attribute git@github.com:Jarsa/product-attribute 12.0
 server-backend git@github.com:Jarsa/server-backend 12.0
 stock-logistics-workflow git@github.com:Jarsa/stock-logistics-workflow.git 12.0
 stock-logistics-reporting git@github.com:Jarsa/stock-logistics-reporting.git 12.0
+account-closing git@github.com:Jarsa/account-closing.git 12.0
