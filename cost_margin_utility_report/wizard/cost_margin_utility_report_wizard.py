@@ -8,10 +8,12 @@ class CostMarginUtilityReportWiz(models.TransientModel):
     _name = "cost.margin.utility.report.wiz"
     _description = "Wizard to create cost margin utility reports"
 
-    date_from = fields.Datetime(
-        string="From", required=True, default=fields.Datetime.now
+    date_from = fields.Date(
+        string="From", required=True, default=fields.Date.context_today
     )
-    date_to = fields.Datetime(string="To", required=True, default=fields.Datetime.now)
+    date_to = fields.Date(
+        string="To", required=True, default=fields.Date.context_today
+    )
 
     def open_table(self):
         self.env["cost.margin.utility.report"].search([]).unlink()
