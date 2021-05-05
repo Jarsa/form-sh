@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 class SaleOrderInvoiceMerge(TransactionCase):
 
     def setUp(self):
-        super(SaleOrderInvoiceMerge, self).setUp()
+        super().setUp()
         self.product = self.env.ref('product.product_product_16')
         self.partner_id = self.env.ref('base.res_partner_2').id
 

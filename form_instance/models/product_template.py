@@ -71,6 +71,6 @@ class ProductProduct(models.Model):
                 expression.AND([domain, args]),
                 limit=limit, access_rights_uid=name_get_uid)
             return self.browse(product_ids).name_get()
-        return super(ProductProduct, self)._name_search(
+        return super()._name_search(
             name=name, args=args, operator=operator,
             limit=limit, name_get_uid=name_get_uid)
