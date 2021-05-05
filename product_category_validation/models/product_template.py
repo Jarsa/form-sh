@@ -46,7 +46,7 @@ class ProductCategory(models.Model):
 
     @api.multi
     def write(self, vals):
-        res = super(ProductCategory, self).write(vals)
+        res = super().write(vals)
         for rec in self:
             rec._verify_defaults_set()
         return res

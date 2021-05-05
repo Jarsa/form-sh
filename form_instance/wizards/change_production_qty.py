@@ -10,7 +10,7 @@ class ChangeProductionQty(models.TransientModel):
     update_reason = fields.Many2one('mrp.production.update.reason')
 
     def change_prod_qty(self):
-        res = super(ChangeProductionQty, self).change_prod_qty()
+        res = super().change_prod_qty()
         for wizard in self:
             quality = self.env['quality.alert']
             msg = "Product %s Qty Updated - Reason: %s" % (

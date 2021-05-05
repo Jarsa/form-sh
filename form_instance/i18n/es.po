@@ -597,3 +597,7 @@ msgstr "No tienes permitido modificar productos."
 msgid "mrp.production.update.reason"
 msgstr ""
 
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory_line__cost
+msgid "Cost"
+msgstr "Coste"
