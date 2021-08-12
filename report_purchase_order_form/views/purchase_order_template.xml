@@ -128,7 +128,7 @@
                     <div class="col-7 pull-left">
                         <strong>Obervations: </strong>
                         <p t-field="o.notes"/><br/><br/>
-                        <p t-esc="'%s' % (o._amount_to_text_po())"/>
+                        <p t-esc="o.company_id.currency_id.amount_to_text(o.amount_total)"/>
                     </div>
                     <div class="col-5 pull-right" style="padding-right: 0px;">
                         <table class="table table-sm">
