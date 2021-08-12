@@ -53,7 +53,6 @@ class SaleStockSampleProcurementWizard(models.TransientModel):
         res['line_ids'] = lines
         return res
 
-    @api.multi
     def run_procurements(self):
         self.ensure_one()
         self.line_ids._action_launch_stock_rule()
@@ -127,7 +126,6 @@ class SaleStockSampleProcurementLineWizard(models.TransientModel):
         res = super().create(vals)
         return res
 
-    @api.multi
     def _prepare_procurement_values(self, group_id=False):
         """ Prepare specific key for moves or other components that will
         be created from a stock rule comming from a sale order line.
@@ -143,7 +141,6 @@ class SaleStockSampleProcurementLineWizard(models.TransientModel):
             'partner_id': self.order_id.partner_shipping_id.id,
         }
 
-    @api.multi
     def _action_launch_stock_rule(self):
         """ Launch procurement group run method with required/custom fields
         genrated by a sale order line. procurement group will launch

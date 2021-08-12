@@ -9,7 +9,6 @@ class MrpProduction(models.Model):
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')
 
-    @api.multi
     @api.depends(
         'move_raw_ids.state', 'workorder_ids.move_raw_ids',
         'bom_id.ready_to_produce')
@@ -38,7 +37,6 @@ class MrpProduction(models.Model):
                     all(assigned_list) and 'assigned') or (
                     any(partial_list) and 'partially_available') or 'waiting'
 
-    @api.multi
     def action_cancel(self):
         for move in self.move_raw_ids:
             quants = move.mapped('product_id').stock_quant_ids

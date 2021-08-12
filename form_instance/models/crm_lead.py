@@ -20,7 +20,6 @@ class CrmTeam(models.Model):
             res.message_subscribe(partner_ids=res.designer_id.partner_id.ids)
         return res
 
-    @api.multi
     def write(self, vals):
         if vals.get('designer_id', False):
             user = self.env['res.users'].browse(vals['designer_id'])

@@ -20,7 +20,6 @@ class SaleOrderToECO(models.TransientModel):
             'product_qty': line.qty,
         }
 
-    @api.multi
     def create_eco(self):
         self.ensure_one()
         ids = []

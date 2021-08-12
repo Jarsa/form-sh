@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ir_cron_quality_points_tecmur" model="ir.cron">
+    <!-- <record id="ir_cron_quality_points_tecmur" model="ir.cron">
         <field name="name">Control Quality Points Form</field>
         <field name="model_id" ref="bo_import_direct_drive_sheet.model_google_drive_sheet"/>
         <field name="state">code</field>
@@ -10,5 +10,5 @@
         <field name="numbercall">-1</field>
         <field name="doall" eval="False"/>
         <field name="active" eval="False" />
-    </record>
+    </record> -->
 </odoo>

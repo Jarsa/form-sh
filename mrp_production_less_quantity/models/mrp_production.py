@@ -7,7 +7,6 @@ from odoo import api, fields, models
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    @api.multi
     def button_mark_done(self):
         for wo in self.workorder_ids:
             if wo.time_ids.filtered(lambda x: (not x.date_end) and (

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.ui.view" id="mrp_production_custom_form">
+    <!-- <record model="ir.ui.view" id="mrp_production_custom_form">
         <field name="name">mrp_production_custom_form.form</field>
         <field name="model">mrp.production</field>
         <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
@@ -31,5 +31,5 @@
         </field>
     </record>
     <menuitem action="stock.action_procurement_compute" id="menu_procurement_compute" parent="mrp.menu_mrp_manufacturing" sequence="135"/>
-    <menuitem id="menu_valuation_mrp" name="Inventory Report" parent="mrp.menu_mrp_reporting" sequence="100" action="stock.action_stock_quantity_history" groups="mrp.group_mrp_user"/>
+    <menuitem id="menu_valuation_mrp" name="Inventory Report" parent="mrp.menu_mrp_reporting" sequence="100" action="stock.action_stock_quantity_history" groups="mrp.group_mrp_user"/> -->
 </odoo>

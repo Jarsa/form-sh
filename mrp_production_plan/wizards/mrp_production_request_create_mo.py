@@ -7,7 +7,6 @@ from odoo import api, models
 class MrpProductionRequestCreateMo(models.TransientModel):
     _inherit = "mrp.production.request.create.mo"
 
-    @api.multi
     def _prepare_manufacturing_order(self):
         self.ensure_one()
         res = super()._prepare_manufacturing_order()

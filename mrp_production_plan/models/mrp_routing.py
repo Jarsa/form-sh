@@ -27,7 +27,6 @@ class MrpRouting(models.Model):
                 [('product_id', '=', self.product_id.id)])
             self.sequence = count + 1
 
-    @api.multi
     def copy(self, default=None):
         if not default:
             default = {}
@@ -40,7 +39,6 @@ class MrpRouting(models.Model):
         return super().copy(default)
 
     @api.constrains('sequence')
-    @api.multi
     def _constraint_sequence(self):
         for rec in self:
             if rec.sequence <= 0:

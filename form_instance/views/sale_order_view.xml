@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="sale_enterprise.sale_report_action_dashboard" model="ir.actions.act_window">
+    <!-- <record id="sale_enterprise.sale_report_action_dashboard" model="ir.actions.act_window">
         <field name="context">{'search_default_master_sale_order_filter':1, 'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}}</field>
     </record>
     <record model="ir.ui.view" id="custom_form_sale_order_form">
@@ -46,5 +46,5 @@
         <field name="view_mode">form,tree,graph</field>
         <field name="domain">[('opportunity_id', '=', active_id)]</field>
         <field name="context">{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id, 'default_master_sale_order': True}</field>
-    </record>
+    </record> -->
 </odoo>

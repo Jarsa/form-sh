@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="param_create_m2x" model="ir.config_parameter">
+    <!-- <record id="param_create_m2x" model="ir.config_parameter">
         <field name="key">web_m2x_options.create</field>
         <field name="value">False</field>
     </record>
     <record id="param_create_edit_m2x" model="ir.config_parameter">
         <field name="key">web_m2x_options.create_edit</field>
         <field name="value">False</field>
-    </record>
+    </record> -->
 </odoo>

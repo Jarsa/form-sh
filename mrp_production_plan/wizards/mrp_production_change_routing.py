@@ -25,7 +25,6 @@ class MrpProductionChangeRouting(models.TransientModel):
         res['product_id'] = production.product_id.id
         return res
 
-    @api.multi
     def _prepare_manufacturing_order(self):
         return {
             'name': self.production_id.name,
@@ -47,7 +46,6 @@ class MrpProductionChangeRouting(models.TransientModel):
             'move_dest_ids': [(6, 0, self.production_id.move_dest_ids.ids)],
         }
 
-    @api.multi
     def change_routing(self):
         self.ensure_one()
         if self.production_id.routing_id == self.routing_id:

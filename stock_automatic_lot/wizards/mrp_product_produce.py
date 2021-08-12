@@ -7,7 +7,6 @@ from odoo import api, models
 class MrpProductProduce(models.TransientModel):
     _inherit = 'mrp.product.produce'
 
-    @api.multi
     def do_produce(self):
         lot_obj = self.env['stock.production.lot']
         picking_obj = self.env['stock.picking']

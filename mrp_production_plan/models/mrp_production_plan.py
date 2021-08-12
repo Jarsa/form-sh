@@ -73,7 +73,6 @@ class MrpProductionPlan(models.Model):
         'plan_id',
     )
 
-    @api.multi
     def action_view_productions(self):
         self.ensure_one()
         return {
@@ -136,7 +135,6 @@ class MrpProductionPlan(models.Model):
                     'mrp.production.plan') or _('New')
         return super().create(vals)
 
-    @api.multi
     def get_mrp_production_requests(self):
         self.ensure_one()
         main_categ = self.category_id
@@ -159,7 +157,6 @@ class MrpProductionPlan(models.Model):
             })
         return True
 
-    @api.multi
     def _plan_workorders(self, workorders):
         wo_obj = self.env['mrp.workorder']
         if not workorders.mapped('check_ids'):
@@ -236,7 +233,6 @@ class MrpProductionPlan(models.Model):
                 if not to_date:
                     start_date = from_date + relativedelta(minutes=duration)
 
-    @api.multi
     def _sort_workorders_by_sequence(self):
         for wc in self.workcenter_line_ids:
             workorders = wc.line_ids.filtered(
@@ -264,7 +260,6 @@ class MrpProductionPlan(models.Model):
                             productions |= parent_id
         return productions
 
-    @api.multi
     def re_plan(self):
         self.ensure_one()
         pending_lines = self.line_ids.filtered(
@@ -279,7 +274,6 @@ class MrpProductionPlan(models.Model):
                 line.button_plan()
             self._sort_workorders_by_sequence()
 
-    @api.multi
     def _link_workorders(self):
         self.ensure_one()
         mrp_plan_wc_obj = self.env['mrp.production.plan.workcenter']
@@ -306,7 +300,6 @@ class MrpProductionPlan(models.Model):
                     'line_ids': [(6, 0, workorders.ids)]
                 })
 
-    @api.multi
     def run_plan(self):
         self.ensure_one()
         wizard_obj = self.env['mrp.production.request.create.mo']
@@ -351,12 +344,10 @@ class MrpProductionPlan(models.Model):
         self._link_workorders()
         self._sort_workorders_by_sequence()
 
-    @api.multi
     def button_approved(self):
         self.write({'state': 'approved'})
         return True
 
-    @api.multi
     def _transfer_raw_material_from_quality(self):
         self.ensure_one()
         quality_loc = self.env.ref(
@@ -366,7 +357,6 @@ class MrpProductionPlan(models.Model):
         self._make_transfer(
             location_id=quality_loc, location_dest_id=stock_loc)
 
-    @api.multi
     def _transfer_raw_material(self):
         self.ensure_one()
         pre_prod_loc = self.env.ref(
@@ -376,7 +366,6 @@ class MrpProductionPlan(models.Model):
         self._make_transfer(
             location_id=pre_prod_loc, location_dest_id=stock_loc)
 
-    @api.multi
     def _make_transfer(self, location_id, location_dest_id):
         self.ensure_one()
         quant_obj = self.env['stock.quant']
@@ -424,7 +413,6 @@ class MrpProductionPlan(models.Model):
             })
         picking.button_validate()
 
-    @api.multi
     def _check_orders_with_partialities(self):
         orders_to_done = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and (
@@ -445,7 +433,6 @@ class MrpProductionPlan(models.Model):
                   'and have not been marked as done yet: %s \n')
                 % (orders))
 
-    @api.multi
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
@@ -475,7 +462,6 @@ class MrpProductionPlan(models.Model):
                 self._log(message, self.id, order.id)
                 order.action_cancel()
 
-    @api.multi
     def _cancel_unplanned_requests(self):
         unplanned_requests = self.env['mrp.production.request'].search([
             ('plan_line_id', '=', False), ('state', '!=', 'cancel'), '|',
@@ -493,7 +479,6 @@ class MrpProductionPlan(models.Model):
                     message, self.id, request_id=rec.id)
             unplanned_requests.button_cancel()
 
-    @api.multi
     def _create_new_requests(self):
         pending_requests = self.request_ids.filtered(
             lambda mr: mr.origin and 'OP' not in mr.origin and (
@@ -512,7 +497,6 @@ class MrpProductionPlan(models.Model):
             self._log(message, self.id)
             new_mr.button_to_approve()
 
-    @api.multi
     def _cancel_unreserved_moves_to_cedis(self):
         """ This method is created to cancel moves created by orderpoints that
         are not reserved. If we don't cancel this moves the orderpoint rules
@@ -541,7 +525,6 @@ class MrpProductionPlan(models.Model):
                     message, self.id)
             unreserved_moves._action_cancel()
 
-    @api.multi
     def button_done(self):
         self._check_orders_with_partialities()
         self._cancel_undone_orders()
@@ -561,17 +544,14 @@ class MrpProductionPlan(models.Model):
                 VALUES (%s, %s, %s, %s)
             """, (message, plan_id, production_id, request_id))
 
-    @api.multi
     def button_draft(self):
         self.write({'state': 'draft'})
         return True
 
-    @api.multi
     def button_cancel(self):
         self.write({'state': 'cancel'})
         return True
 
-    @api.multi
     @api.depends('line_ids')
     def _compute_requests_wo_order(self):
         for rec in self:
@@ -648,20 +628,17 @@ class MrpProductionPlanLine(models.Model):
         help='Technical field used to make required the routing in the plan'
         'line.')
 
-    @api.multi
     @api.depends('requested_kit_qty')
     def _compute_requested_qty(self):
         for rec in self:
             rec.requested_qty = rec.requested_kit_qty * rec.qty_per_kit
 
-    @api.multi
     @api.depends('production_id')
     def _compute_done_qty(self):
         for rec in self:
             rec.done_qty = sum(
                 rec.production_id.finished_move_line_ids.mapped('qty_done'))
 
-    @api.multi
     @api.depends('production_id')
     def _compute_planned(self):
         for rec in self:
@@ -672,7 +649,6 @@ class MrpProductionPlanLine(models.Model):
             end_day = rec.date_planned_finished_wo.day
             rec.planned = start_day == end_day
 
-    @api.multi
     @api.depends('product_id')
     def _compute_require_routing(self):
         for rec in self:
@@ -681,7 +657,6 @@ class MrpProductionPlanLine(models.Model):
                 require_routing = True
             rec.require_routing = require_routing
 
-    @api.multi
     def unlink(self):
         for rec in self:
             if rec.request_id.state == 'done':
@@ -705,7 +680,6 @@ class MrpProductionPlanLine(models.Model):
         values['qty_per_kit'] = qty_per_kit
         return super().create(values)
 
-    @api.multi
     def write(self, vals):
         if vals.get('bom_id'):
             bom = self.env['mrp.bom'].browse(vals.get('bom_id'))

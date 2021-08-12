@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
+    <!-- <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
         <field name="name">view.mrp.workorder.inherit.custom.kanban</field>
         <field name="model">mrp.workorder</field>
         <field name="inherit_id" ref="mrp.workcenter_line_kanban"/>
@@ -76,5 +76,5 @@
             </xpath>
         </field>
     </record>
-    <menuitem id="menu_workcenter_root" name="Workcenter" action="mrp.mrp_workcenter_kanban_action" groups="form_instance.group_mrp_workcenter_form" sequence="30" web_icon="base,static/description/board.png"/>
+    <menuitem id="menu_workcenter_root" name="Workcenter" action="mrp.mrp_workcenter_kanban_action" groups="form_instance.group_mrp_workcenter_form" sequence="30" web_icon="base,static/description/board.png"/> -->
 </odoo>

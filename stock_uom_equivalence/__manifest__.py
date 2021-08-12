@@ -9,6 +9,7 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
+    'installable': False,
     'depends': ['stock_account', ],
     'data': [
         'report/report_delivery_slip.xml',

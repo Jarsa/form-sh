@@ -1,5 +1,6 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+# pylint: skip-file
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -10,11 +11,9 @@ class AccountInvoice(models.Model):
 
     authorized = fields.Boolean(default=False)
 
-    @api.multi
     def authorize_cancelation(self):
         self.authorized = True
 
-    @api.multi
     def cancel_cancelation(self):
         self.authorized = False
 
@@ -25,7 +24,6 @@ class AccountInvoice(models.Model):
         self.invoice_line_ids -= lines
         return res
 
-    @api.multi
     def copy(self, default=None):
         # pylint: disable=method-required-super
         raise UserError(
@@ -40,7 +38,6 @@ class AccountInvoiceLine(models.Model):
         string='Product Category',
         related='product_id.categ_id')
 
-    @api.multi
     def write(self, values):
         fields_blocked = ['quantity', 'price_unit', 'invoice_line_tax_ids']
         allow_write = not self._context.get('allow_write', False)

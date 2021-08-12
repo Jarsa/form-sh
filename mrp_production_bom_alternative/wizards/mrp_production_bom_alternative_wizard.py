@@ -59,7 +59,6 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
                 }))
             self.line_ids = lines
 
-    @api.multi
     def _prepare_manufacturing_order(self):
         return {
             'name': self.production_id.name,
@@ -82,7 +81,6 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             'move_dest_ids': [(6, 0, self.production_id.move_dest_ids.ids)]
         }
 
-    @api.multi
     def change_bom(self):
         self.ensure_one()
         if self.production_id.bom_id == self.bom_id:

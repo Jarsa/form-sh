@@ -8,19 +8,16 @@ from odoo.exceptions import ValidationError
 class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
 
-    @api.multi
     def record_production(self):
         self._check_qty_to_produce()
         return super().record_production()
 
-    @api.multi
     def _check_qty_to_produce(self):
         self.ensure_one()
         quantity = self.qty_production
         qty_produced = self.qty_produced
         self._calcule_limit_production_work_order(quantity, qty_produced)
 
-    @api.multi
     def _calcule_limit_production_work_order(self, quantity, qty_produced):
         for rec in self:
             # qty_limit = var used by store 10% from

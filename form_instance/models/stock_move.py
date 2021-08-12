@@ -11,7 +11,6 @@ class StockMove(models.Model):
         related='product_id.description_purchase')
     subtotal = fields.Float(compute='_compute_subtotal', store=True)
 
-    @api.multi
     @api.depends('quantity_done', 'price_unit')
     def _compute_subtotal(self):
         for rec in self:
@@ -56,7 +55,6 @@ class StockMoveLine(models.Model):
     price_unit = fields.Float(related='move_id.price_unit')
     subtotal = fields.Float(compute='_compute_subtotal')
 
-    @api.multi
     @api.depends('qty_done', 'price_unit')
     def _compute_subtotal(self):
         for rec in self:

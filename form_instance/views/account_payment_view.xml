@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.ui.view" id="account_payment_ref_form">
+    <!-- <record model="ir.ui.view" id="account_payment_ref_form">
         <field name="name">account.payment.ref.form</field>
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account.view_account_payment_form"/>
@@ -36,6 +36,5 @@
                 <attribute name="groups">account.group_account_invoice,form_instance.group_receivable_form</attribute>
             </xpath>
         </field>
-    </record>
-
+    </record> -->
 </odoo>

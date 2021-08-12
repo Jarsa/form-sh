@@ -9,6 +9,7 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
+    'installable': False,
     'depends': [
         'mrp_production_request',
         'mrp_workorder',

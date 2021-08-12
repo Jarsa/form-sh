@@ -8,6 +8,7 @@
     'category': 'Manufacture',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
+    'installable': False,
     'license': 'LGPL-3',
     'depends': [
         'mrp',

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="res_partner_view_form_instance" model="ir.ui.view">
+    <!-- <record id="res_partner_view_form_instance" model="ir.ui.view">
         <field name="name">res.partner.view.form.instance.inherit</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="sale.res_partner_view_form_property_inherit"/>
@@ -25,5 +25,5 @@
               <field name="partner_code"/>
             </xpath>
         </field> 
-    </record>
+    </record> -->
 </odoo>

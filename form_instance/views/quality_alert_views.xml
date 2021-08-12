@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="quality_views_reason">
+    <!-- <record model="ir.ui.view" id="quality_views_reason">
         <field name="name">Quality Views Reason</field>
         <field name="model">quality.alert</field>
         <field name="inherit_id" ref="quality_control.quality_alert_view_form"/>
@@ -9,5 +9,5 @@
                 <field name="update_reason"/>
             </xpath>
         </field>
-    </record>
+    </record> -->
 </odoo>
