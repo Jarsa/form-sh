@@ -1,0 +1,9 @@
+[submodule "mexico"]
+	path = mexico
+	url = git@git.vauxoo.com:jarsa/mexico.git
+[submodule "odoo-utilities"]
+	path = odoo-utilities
+	url = git@git.vauxoo.com:jarsa/odoo-utilities.git
+[submodule "form"]
+	path = form
+	url = git@git.vauxoo.com:jarsa/form.git
