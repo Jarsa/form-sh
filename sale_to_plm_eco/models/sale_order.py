@@ -10,7 +10,6 @@ class SaleOrder(models.Model):
     eco_ids = fields.One2many(
         'mrp.eco', 'order_id', string='Engineering Change Order')
 
-    @api.multi
     def show_mrp_eco(self):
         return {
             'name': _('MRP ECO'),

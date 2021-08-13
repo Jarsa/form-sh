@@ -1,13 +1,12 @@
 # Copyright 2020, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import _, api, models
+from odoo import _, models
 
 
 class MRPRoutingWorkcenter(models.Model):
     _inherit = 'mrp.routing.workcenter'
 
-    @api.multi
     def name_get(self):
         res = []
         for rec in self:

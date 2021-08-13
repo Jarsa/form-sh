@@ -17,7 +17,6 @@ class MrpBom(models.Model):
             _('The sequence must be unique !')),
     ]
 
-    @api.multi
     def copy(self, default=None):
         if not default:
             default = {}
@@ -30,7 +29,6 @@ class MrpBom(models.Model):
         return super().copy(default)
 
     @api.constrains('sequence')
-    @api.multi
     def _constraint_sequence(self):
         for rec in self:
             if rec.sequence <= 0:

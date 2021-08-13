@@ -1,4 +1,4 @@
-from odoo import _, api, models
+from odoo import _, models
 from odoo.exceptions import ValidationError
 
 from datetime import date
@@ -7,7 +7,6 @@ from datetime import date
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.multi
     def action_cancel(self):
         # Override the original action_cancel for a Sale_Order
         #
@@ -28,7 +27,6 @@ class SaleOrder(models.Model):
 
         return super().action_cancel()
 
-    @api.multi
     def change_so_state(self):
         for rec in self:
             for line in rec.order_line:

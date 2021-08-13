@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 # pylint: disable=redefined-builtin
 
-from odoo import api, models
+from odoo import models
 
 round_method = round
 
@@ -10,7 +10,6 @@ round_method = round
 class UomUom(models.Model):
     _inherit = 'uom.uom'
 
-    @api.multi
     def _compute_quantity(
             self, qty, to_unit, round=True, rounding_method='UP',
             raise_if_failure=True):
@@ -20,7 +19,6 @@ class UomUom(models.Model):
             'Product Unit of Measure')
         return round_method(res, precision)
 
-    @api.multi
     def _compute_price(self, price, to_unit):
         self.ensure_one()
         if not self or not price or not to_unit or self == to_unit:

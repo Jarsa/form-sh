@@ -8,6 +8,7 @@
     'author': 'Jarsa Sistemas, Vauxoo, Odoo Community Association (OCA)',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
+    'installable': False,
     'depends': [
         'mrp',
     ],

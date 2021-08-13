@@ -14,6 +14,7 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
+    'installable': False,
     'depends': [
         'account',
         'l10n_mx_edi',

@@ -45,7 +45,6 @@ class ProductProduct(models.Model):
         compute='_compute_equivalent_qty_at_date',
     )
 
-    @api.multi
     @api.depends('qty_at_date')
     def _compute_equivalent_qty_at_date(self):
         for rec in self:

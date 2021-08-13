@@ -9,6 +9,7 @@
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'AGPL-3',
+    'installable': False,
     'depends': [
         'mrp',
     ],

@@ -15,13 +15,11 @@ class MrpEco(models.Model):
         compute='_compute_has_survey',
     )
 
-    @api.multi
     @api.depends('survey_id')
     def _compute_has_survey(self):
         for rec in self:
             rec.has_survey = bool(rec.survey_id)
 
-    @api.multi
     def action_answer_survey(self):
         self.ensure_one()
         return {
@@ -31,7 +29,6 @@ class MrpEco(models.Model):
             .public_url + "/phantom"
         }
 
-    @api.multi
     def action_show_result_survey(self):
         self.ensure_one()
         return {

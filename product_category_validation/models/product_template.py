@@ -44,7 +44,6 @@ class ProductCategory(models.Model):
                 raise UserError(
                     rec.field_id.name + ' must have a value assigned ')
 
-    @api.multi
     def write(self, vals):
         res = super().write(vals)
         for rec in self:

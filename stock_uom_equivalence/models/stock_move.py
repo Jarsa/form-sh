@@ -48,7 +48,6 @@ class StockMove(models.Model):
         ' on stock reports.'
     )
 
-    @api.multi
     @api.depends('product_qty')
     def _compute_equivalent_product_qty(self):
         for rec in self:
@@ -56,7 +55,6 @@ class StockMove(models.Model):
                 rec.product_qty = (
                     rec.product_qty / rec.product_id.equivalent_factor)
 
-    @api.multi
     @api.depends('product_uom_qty')
     def _compute_equivalent_product_uom_qty(self):
         for rec in self:
@@ -64,7 +62,6 @@ class StockMove(models.Model):
                 rec.equivalent_product_uom_qty = (
                     rec.product_uom_qty / rec.product_id.equivalent_factor)
 
-    @api.multi
     @api.depends('reserved_availability')
     def _compute_equivalent_reserved_availability(self):
         for rec in self:
@@ -73,7 +70,6 @@ class StockMove(models.Model):
                     rec.reserved_availability /
                     rec.product_id.equivalent_factor)
 
-    @api.multi
     @api.depends('quantity_done')
     def _compute_equivalent_quantity_done(self):
         for rec in self:
@@ -124,7 +120,6 @@ class StockMoveLine(models.Model):
         self.invalidate_cache()
         return super()._action_done()
 
-    @api.multi
     @api.depends('product_qty')
     def _compute_equivalent_product_qty(self):
         for rec in self:
@@ -132,7 +127,6 @@ class StockMoveLine(models.Model):
                 rec.product_qty = (
                     rec.product_qty / rec.product_id.equivalent_factor)
 
-    @api.multi
     @api.depends('product_uom_qty')
     def _compute_equivalent_product_uom_qty(self):
         for rec in self:
@@ -140,7 +134,6 @@ class StockMoveLine(models.Model):
                 rec.equivalent_product_uom_qty = (
                     rec.product_uom_qty / rec.product_id.equivalent_factor)
 
-    @api.multi
     @api.depends('qty_done')
     def _compute_equivalent_qty_done(self):
         for rec in self:

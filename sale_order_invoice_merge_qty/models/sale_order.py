@@ -25,7 +25,6 @@ class SaleOrder(models.Model):
                     })
                     lines[1:].unlink()
 
-    @api.multi
     def action_invoice_create(self, grouped=False, final=False):
         res = super().action_invoice_create(grouped, final)
         self._merge_line_qty(res)

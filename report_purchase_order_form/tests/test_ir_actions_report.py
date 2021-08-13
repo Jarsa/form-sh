@@ -12,5 +12,5 @@ class IrActionsReport(TransactionCase):
         self.purchase_order = self.env.ref('purchase.purchase_order_6')
 
     def test_10_print_report(self):
-        report = self.report.render(self.purchase_order.ids)
-        self.assertIsInstance(report[0], bytes)
+        report = self.report.report_action(self.purchase_order.ids)
+        self.assertIsInstance(report, dict)

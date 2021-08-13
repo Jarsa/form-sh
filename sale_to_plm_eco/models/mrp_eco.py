@@ -13,7 +13,6 @@ class MrpEco(models.Model):
         copy=False,
         readonly=True)
 
-    @api.multi
     def show_sale_order(self):
         self.ensure_one()
         return {

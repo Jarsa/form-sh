@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.ui.view" id="mrp_routing_form_instance_form">
+    <!-- <record model="ir.ui.view" id="mrp_routing_form_instance_form">
         <field name="name">mrp_routing_form_instance.form</field>
         <field name="model">mrp.routing</field>
         <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>
@@ -8,5 +8,5 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='location_id']" position="replace"/>
         </field>
-    </record>
+    </record> -->
 </odoo>

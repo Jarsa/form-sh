@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.actions.act_window" id="action_log">
+    <!-- <record model="ir.actions.act_window" id="action_log">
         <field name="name">Root Cause</field>
         <field name="res_model">quality.reason</field>
         <field name="view_type">form</field>
@@ -30,5 +30,5 @@
             </form>
         </field>
     </record>
-    <menuitem name="Add Root Cause" id="add_root_cause" parent="quality_control.menu_quality_configuration" action="action_log"/>
+    <menuitem name="Add Root Cause" id="add_root_cause" parent="quality_control.menu_quality_configuration" action="action_log"/> -->
 </odoo>

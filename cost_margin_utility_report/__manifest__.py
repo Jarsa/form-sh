@@ -10,6 +10,7 @@
     "website": "https://www.jarsa.com.mx",
     "license": "LGPL-3",
     "depends": ["stock", "mrp", "sale", "purchase", ],
+    "installable": False,
     "data": [
         "views/cost_margin_utility_report_views.xml",
         "wizard/cost_margin_utility_report_wizard_view.xml",

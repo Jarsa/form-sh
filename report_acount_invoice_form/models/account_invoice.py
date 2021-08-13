@@ -16,14 +16,12 @@ except ImportError as err:
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    @api.multi
     def get_picking(self):
         if self.origin:
             so = self.env['sale.order'].search(
                 [('name', '=', self.origin)])
             return so.warehouse_id.name
 
-    @api.multi
     def get_rate(self):
         for rec in self:
             val_tc = 0.0
@@ -31,7 +29,6 @@ class AccountInvoice(models.Model):
                 date=rec.date_invoice).rate
         return 1/val_tc
 
-    @api.multi
     def get_tax(self):
         for rec in self:
             dict_taxes = {}
@@ -47,7 +44,6 @@ class AccountInvoice(models.Model):
                 dict_taxes[k] = sum(v)
         return dict_taxes
 
-    @api.multi
     def _amount_to_text(self):
         self.ensure_one()
         currency_name = self.currency_id.name.upper()

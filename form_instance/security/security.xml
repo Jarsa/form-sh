@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="group_mrp_workcenter_form" model="res.groups">
+    <!-- <record id="group_mrp_workcenter_form" model="res.groups">
         <field name="name">User Workcenter</field>
         <field name="category_id" ref="base.module_category_mrp"/>
         <field name="comment">The user will have access to the centers where is follower.</field>
@@ -87,5 +87,5 @@
         <field name="name">Can see projects where is follower</field>
         <field name="comment">The user will have access to projects where is a follower.</field>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
-    </record>
+    </record> -->
 </odoo>

@@ -12,12 +12,10 @@ class MrpProductProduce(models.TransientModel):
         self._check_qty_to_produce()
         return super()._onchange_product_qty()
 
-    @api.multi
     def do_produce(self):
         self._check_qty_to_produce()
         return super().do_produce()
 
-    @api.multi
     def _check_qty_to_produce(self):
         self.ensure_one()
         order_id = self._context.get('active_id')

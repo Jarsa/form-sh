@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_account_invoice_inherit_form">
+    <!-- <record model="ir.ui.view" id="view_account_invoice_inherit_form">
         <field name="name">view.account.invoice.inherit.form</field>
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_form"/>
@@ -101,5 +101,5 @@
                 <field name="currency_id"/>
             </xpath>
         </field>
-    </record>
+    </record> -->
 </odoo>

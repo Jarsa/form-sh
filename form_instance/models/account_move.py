@@ -1,13 +1,12 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
-# pylint: skip-file
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+class AccountMove(models.Model):
+    _inherit = 'account.move'
 
     authorized = fields.Boolean(default=False)
 

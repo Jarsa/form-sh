@@ -13,7 +13,6 @@ class MrpProduction(models.Model):
         res._process_picking_origin()
         return res
 
-    @api.multi
     def _process_picking_origin(self):
         for rec in self:
             origin_order = self._get_recursively_origin_mo(rec)
@@ -40,7 +39,6 @@ class MrpProduction(models.Model):
                     'production_id': rec.id,
                 })
 
-    @api.multi
     def _get_recursively_origin_mo(self, order):
         prefix = order.picking_type_id.sequence_id.prefix
         origin = order.origin if order.origin else ''

@@ -12,7 +12,6 @@ class StockPicking(models.Model):
         'mrp.production', readonly=True,
     )
 
-    @api.multi
     def action_view_production_id(self):
         self.ensure_one()
         return {

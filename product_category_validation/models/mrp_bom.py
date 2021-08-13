@@ -15,7 +15,6 @@ class MrpBom(models.Model):
         else:
             self.type = 'normal'
 
-    @api.multi
     @api.constrains('type')
     def _check_product_category_kit(self):
         for rec in self:

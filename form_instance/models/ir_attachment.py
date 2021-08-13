@@ -1,14 +1,13 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import _, api, models
+from odoo import _, models
 from odoo.exceptions import UserError
 
 
 class IrAttachment(models.Model):
     _inherit = 'ir.attachment'
 
-    @api.multi
     def unlink(self):
         for rec in self:
             models_to_val = ['product.product', 'product.template']

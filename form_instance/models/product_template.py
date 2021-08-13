@@ -16,7 +16,6 @@ class ProductTemplate(models.Model):
         compute="_compute_id_form",
         store=True)
 
-    @api.multi
     def write(self, vals):
         if self.user_has_groups(
                 'form_instance.group_edit_product_mrp_user'):
@@ -33,7 +32,6 @@ class ProductTemplate(models.Model):
             price = self.item_ids[0]
             self.write({'lst_price': price.fixed_price})
 
-    @api.multi
     @api.depends('partner_ids')
     def _compute_id_form(self):
         for rec in self:

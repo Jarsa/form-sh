@@ -11,7 +11,7 @@
     'website': 'https://www.jarsa.com.mx',
     'author': 'Jarsa Sistemas',
     'license': 'LGPL-3',
-    'installable': True,
+    'installable': False,
     'depends': [
         'mrp',
     ],

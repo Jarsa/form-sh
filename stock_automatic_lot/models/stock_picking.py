@@ -7,7 +7,6 @@ from odoo import api, models
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
-    @api.multi
     def _get_lot_name(self, active_model):
         if active_model in ['stock.picking', 'purchase.order']:
             lot_sequence = self.env.ref(
@@ -17,7 +16,6 @@ class StockPicking(models.Model):
                 'stock_automatic_lot.stock_production_lot_manufacture_data')
         return lot_sequence.next_by_id()
 
-    @api.multi
     def button_validate(self):
         lot_obj = self.env['stock.production.lot']
         for ml in self.move_line_ids.filtered(lambda ml: not ml.lot_id):
