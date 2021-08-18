@@ -9,7 +9,7 @@
         ],
     },
     'summary': 'Custom invoice report',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Report',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
@@ -17,7 +17,7 @@
     'installable': True,
     'depends': [
         'account',
-        'l10n_mx_edi',
+        'l10n_mx_edi_extended',
         'sale_management',
         'stock',
     ],

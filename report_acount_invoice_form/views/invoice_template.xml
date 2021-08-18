@@ -3,14 +3,8 @@
     <template id="report_invoice_document_mx_inherit" inherit_id="account.report_invoice_document">
         <xpath expr="//t[1]/t[2]" position="replace"></xpath>
         <xpath expr="//div[hasclass('page')]" position="replace">
-            <!-- name and adress -->
-            <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                <!--New global variables-->
-                <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
-                <t t-set="tfd" t-value="o.l10n_mx_edi_get_tfd_etree(xml)"/>
-                <t t-set="tfd_original_string" t-value="o._get_l10n_mx_edi_cadena()"/>
-                <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/>
-            </t>
+            <!--New global variables-->
+            <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/>
             <div class="page">
                 <div class="pull-right">
                     <h4>
@@ -64,25 +58,25 @@
                 <br/>
                 <table style="border: none; font-size: 10px;">
                     <tr>
-                        <td t-if="o.date_invoice" style="border: none;"><strong style="margin-right:14px;">Invoice Date: </strong><strong t-esc="' '"/></td>
-                        <td t-if="o.date_due and o.move_type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" style="border: none; text-align: center;"><strong style="margin-right:14px;">Due Date: </strong></td>
-                        <td t-if="o.name" style="border: none;"><strong style="margin-right:14px;">Partner order: </strong></td>
+                        <td t-if="o.invoice_date" style="border: none;"><strong style="margin-right:14px;">Invoice Date: </strong><strong t-esc="' '"/></td>
+                        <td t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" style="border: none; text-align: center;"><strong style="margin-right:14px;">Due Date: </strong></td>
+                        <td t-if="o.ref" style="border: none;"><strong style="margin-right:14px;">Partner order: </strong></td>
                         <td t-if="o.currency_id.name == 'USD'" style="border: none;"><strong style="margin-right:14px;">Rate: </strong> <strong t-esc="' '"/>&amp;nbsp;</td>
                         <td t-if="cfdi_vals.get('usage')" style="border: none; text-align: center;"><strong style="margin-right:14px;">CFDI Usage: </strong>&amp;nbsp;&amp;nbsp;</td>
                         <td t-if="o.l10n_mx_edi_payment_method_id" style="border: none; text-align: center;"><strong style="margin-right:14px;">Payment Way: </strong>&amp;nbsp;</td>
                         <td t-if="cfdi_vals.get('payment_method')" style="border: none;  background-color: white;"><strong style="margin-right:14px;">Payment Method:</strong></td>
-                        <td t-if="o.payment_term_id.name" style="border: none; background-color: white;"><strong style="margin-right:16px;">Payment conditions:</strong></td>
+                        <td t-if="o.invoice_payment_term_id.name" style="border: none; background-color: white;"><strong style="margin-right:16px;">Payment conditions:</strong></td>
                         <td style="border: none; background-color: white;"><strong>Fiscal Regime:</strong></td>
                     </tr>
                     <tr>
-                        <td style="border: none;" t-if="o.date_order" >
-                            <span t-field="o.date_order"/>
+                        <td style="border: none;" t-if="o.invoice_date" >
+                            <span t-field="o.invoice_date"/>
                         </td>
-                        <td style="border: none; text-align: center;" t-if="o.due_date and o.move_type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">
-                            <span t-field="o.due_date"/>
+                        <td style="border: none; text-align: center;" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">
+                            <span t-field="o.invoice_date_due"/>
                         </td>
-                        <td style="border: none;" t-if="o.name">
-                            <span t-field="o.name"/>
+                        <td style="border: none;" t-if="o.ref">
+                            <span t-field="o.ref"/>
                         </td>
                         <td style="border: none;" t-if="o.currency_id.name == 'USD'">
                             <p t-esc="'%.4f' % (float(o.get_rate()))"/>
@@ -101,14 +95,14 @@
                           <td t-if="cfdi_vals.get('payment_method') == 'PPD'" style="border: none;  background-color: white;">
                             <span t-esc="cfdi_vals.get('payment_method') + ' - ' + ' Pago en parcialidades o diferido'"/>
                         </td>
-                        <td t-if="o.payment_term_id.name" style="border: none;  background-color: white;">
-                            <span t-esc="o.payment_term_id.name"/>
+                        <td t-if="o.invoice_payment_term_id.name" style="border: none;  background-color: white;">
+                            <span t-esc="o.invoice_payment_term_id.name"/>
                         </td>                        
                         <td style="border: none;  background-color: white;"><span t-field="o.company_id.partner_id.property_account_position_id"/></td>
                     </tr>
                 </table>
                 <div id="informations">
-                    <div  name="reference"/>
+                    <div name="reference"/>
                 </div>
                 <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
                 <table class="table table-sm o_main_table" name="invoice_line_table">
@@ -118,11 +112,11 @@
                             <th class="text-right"><span>Quantity</span></th>
                             <th class="text-left"><span>CODE</span></th>
                             <th class="text-left"><span>Description</span></th>
-                            <th t-if="o.l10n_mx_edi_cfdi_uuid and xml.get('Version')">
+                            <th t-if="any(o.invoice_line_ids.mapped('product_id.unspsc_code_id'))">
                                 <span>Product code</span>
                                 <t t-set="colspan" t-value="colspan+1"/>
                             </th>
-                            <th class="text-right" t-if="o.l10n_mx_edi_cfdi_uuid and xml.get('Version')">
+                            <th class="text-right" t-if="any(o.invoice_line_ids.mapped('product_uom_id.unspsc_code_id'))">
                                 <span>Unit code</span>
                                 <t t-set="colspan" t-value="colspan+1"/>
                             </th>
@@ -148,12 +142,12 @@
                                 <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                     <td class="text-right">
                                         <span t-esc="int(line.quantity)"/>
-                                        <span t-field="line.uom_id"  groups="uom.group_uom"/>
+                                        <span t-field="line.product_uom_id"  groups="uom.group_uom"/>
                                     </td>
                                     <td><span t-field="line.product_id.default_code"/></td>
                                     <td name="account_invoice_line_name"><span t-field="line.name"/></td>
-                                    <td t-if="o.l10n_mx_edi_cfdi_uuid and xml.get('Version')"><span t-field="line.product_id.l10n_mx_edi_code_sat_id.code"/></td>
-                                    <td class="text-right" t-if="o.l10n_mx_edi_cfdi_uuid and xml.get('Version')"><span t-field="line.uom_id.l10n_mx_edi_code_sat_id.code"/></td>
+                                    <td t-if="line.product_id.unspsc_code_id"><span t-field="line.product_id.unspsc_code_id.code"/></td>
+                                    <td class="text-right" t-if="line.product_uom_id.unspsc_code_id"><span t-field="line.product_uom_id.unspsc_code_id.code"/></td>
                                     <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                         <span t-field="line.price_unit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
@@ -200,42 +194,51 @@
                                     <tr class="border-black o_subtotal">
                                         <td><strong>Subtotal</strong></td>
                                         <td class="text-right">
-                                            <span t-esc="float(xml.get('SubTotal', 0))" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                            <span t-esc="o.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                         </td>
                                     </tr>
-                                    <t t-foreach="o.get_tax()" t-as="taxes">
-                                        <tr class="border-black">
-                                            <td>
-                                                <strong class="text-right" t-esc="taxes"/>
-                                            </td>
-                                            <td class="text-right o_price_total">
-                                                <span esc="float(xml.Impuestos.get('TotalImpuestosTrasladados', 0))" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
-                                            </td>
+                                    <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                                        <tr style="">
+                                            <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
+                                                <td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
+                                                <td class="text-right o_price_total">
+                                                    <span class="text-nowrap" t-esc="amount_by_group[3]" />
+                                                </td>
+                                            </t>
+                                            <t t-else="">
+                                                <td>
+                                                    <span t-esc="amount_by_group[0]"/>
+                                                    <span class="text-nowrap"> on
+                                                        <t t-esc="amount_by_group[4]"/>
+                                                    </span>
+                                                </td>
+                                                <td class="text-right o_price_total">
+                                                    <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                                </td>
+                                            </t>
                                         </tr>
                                     </t>
                                     <tr style="background-color: #F36B21; color: white;">
                                         <td style="background-color: #F36B21; color: white;"><strong>Total</strong></td>
                                         <td style="background-color: #F36B21; color: white;" class="text-right">
-                                            <span t-esc="float(xml.get('Total', 0))" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                            <span t-esc="o.amount_total" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                 </div>
-                <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                    <p>
-                        <span t-esc="o.company_id.currency_id.amount_to_text(o.amount_total)"/>
-                    </p>
-                </t>
+                <p>
+                    <span t-esc="o.company_id.currency_id.amount_to_text(o.amount_total)"/>
+                </p>
                 <p t-if="o.narration" name="narration">
                     <span t-field="o.narration"/>
                 </p>
-                <p t-if="o.name and o.type == 'out_invoice'">
-                    <span>Remission:</span><span t-field="o.origin"/>
+                <p t-if="o.name and o.move_type == 'out_invoice'">
+                    <span>Remission:</span><span t-field="o.invoice_origin"/>
                 </p>
-                <p t-if="o.name and o.type == 'out_refund'">
-                    <span>Invoice:</span><span t-field="o.origin"/>
+                <p t-if="o.name and o.move_type == 'out_refund'">
+                    <span>Invoice:</span><span t-field="o.invoice_origin"/>
                 </p>
                 <t t-if="o.l10n_mx_edi_cfdi_uuid">
                     <div class="row" id='complement'>
@@ -276,11 +279,11 @@
                                 <span>Extra Info</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span>Emitter certificate:</span> <span t-esc="cfdi_vals.get('noCertificado', xml.get('NoCertificado'))"/>
-                                <span> | SAT Certificate:</span> <span t-esc="cfdi_vals.get('NoCertificadoSAT')"/>
-                                <span> | Expedition place:</span> <span t-esc="cfdi_vals.get('LugarExpedicion')"/>
-                                <span> | Emission Date:</span> <span t-esc="cfdi_vals.get('fecha', xml.get('Fecha', '')).replace('T', ' ')"/>
-                                <span> | Certification Date:</span> <span t-esc="cfdi_vals.get('FechaTimbrado', '').replace('T', ' ')"/>
+                                <span>Emitter certificate:</span> <span t-esc="cfdi_vals.get('certificate_number')"/>
+                                <span> | SAT Certificate:</span> <span t-esc="cfdi_vals.get('certificate_sat_number')"/>
+                                <span> | Expedition place:</span> <span t-esc="cfdi_vals.get('expedition')"/>
+                                <span> | Emission Date:</span> <span t-esc="cfdi_vals.get('emission_date_str')"/>
+                                <span> | Certification Date:</span> <span t-esc="cfdi_vals.get('stamp_date')"/>
                             </div>
                             <div class="digital-stamp-content text-center">
                                 <strong>This document is a printed representation of a CFDI</strong>
