@@ -15,7 +15,7 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     description_supp = fields.Char(
-        string='Description supplier',
+        string='Description Supplier',
     )
 
     def _total_to_text(
