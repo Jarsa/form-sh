@@ -101,5 +101,6 @@
         'views/quality_alert_views.xml',
         'views/quality_point_view.xml',
         'views/mrp_production_update_reason_view.xml',
+        'views/sale_request_view.xml',
     ],
 }
