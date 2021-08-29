@@ -1,14 +1,17 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    authorized = fields.Boolean(default=False)
+    authorized = fields.Boolean(
+        default=False,
+        tracking=True,
+    )
 
     def authorize_cancelation(self):
         self.authorized = True
@@ -16,21 +19,16 @@ class AccountMove(models.Model):
     def cancel_cancelation(self):
         self.authorized = False
 
-    @api.onchange('purchase_id')
-    def purchase_order_change(self):
-        res = super().purchase_order_change()
-        lines = self.invoice_line_ids.filtered(lambda l: l.quantity == 0.0)
-        self.invoice_line_ids -= lines
-        return res
-
     def copy(self, default=None):
-        # pylint: disable=method-required-super
-        raise UserError(
-            _('The user can not duplicate the invoices'))
+        for rec in self:
+            if rec.move_type != 'entry':
+                raise UserError(
+                    _('You cannot duplicate invoices'))
+        return super().copy(default)
 
 
-class AccountInvoiceLine(models.Model):
-    _inherit = "account.invoice.line"
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
 
     category_id = fields.Many2one(
         'product.category',
@@ -38,7 +36,7 @@ class AccountInvoiceLine(models.Model):
         related='product_id.categ_id')
 
     def write(self, values):
-        fields_blocked = ['quantity', 'price_unit', 'invoice_line_tax_ids']
+        fields_blocked = ['quantity', 'price_unit', 'tax_ids']
         allow_write = not self._context.get('allow_write', False)
         if self.user_has_groups(
                 'form_instance.group_allow_edit_invoices') and allow_write:
