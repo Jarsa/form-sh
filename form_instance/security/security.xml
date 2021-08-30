@@ -2,12 +2,10 @@
 <odoo>
     <record id="group_mrp_workcenter_form" model="res.groups">
         <field name="name">User Workcenter</field>
-        <field name="category_id" ref="base.module_category_mrp"/>
         <field name="comment">The user will have access to the centers where is follower.</field>
     </record>
     <record id="group_activate_cancel_form" model="res.groups">
         <field name="name">Authorize Cancelation</field>
-        <field name="category_id" ref="base.module_category_accounting_and_finance"/>
         <field name="comment">The user will have access to activate button cancel.</field>
         <field name="users" eval="[
             (4, ref('base.user_admin')),
@@ -16,14 +14,12 @@
     </record>
     <record id="group_payable_form" model="res.groups">
         <field name="name">Payable</field>
-        <field name="category_id" ref="base.module_category_accounting_and_finance"/>
         <field name="comment">The user will have access to payable accounts.</field>
         <field name="menu_access" eval="[(4, ref('account.menu_finance_payables')), (4, ref('account.menu_finance')), (4, ref('account_accountant.menu_accounting'))]"/>
         <field name="implied_ids" eval="[(4, ref('documents.group_documents_user'))]"/>
     </record>
     <record id="group_receivable_form" model="res.groups">
         <field name="name">Receivable</field>
-        <field name="category_id" ref="base.module_category_accounting_and_finance"/>
         <field name="comment">The user will have access to receivable accounts.</field>
         <field name="menu_access" eval="[(4, ref('account.menu_finance_receivables')), (4, ref('account.menu_finance')), (4, ref('account_accountant.menu_accounting'))]"/>
         <field name="implied_ids" eval="[(4, ref('documents.group_documents_user'))]"/>
@@ -58,7 +54,6 @@
     </record>
      <record id="group_sale_request_manager_form" model="res.groups">
         <field name="name">Sale Request Manager Form</field>
-        <!-- <field name="category_id" ref="sale_request.module_category_sale_request"/> -->
         <field name="comment">The user will have only read access to Sale Request.</field>
     </record>
     <record model="ir.ui.menu" id="mrp.menu_mrp_unbuild">
