@@ -7,3 +7,8 @@
 [submodule "form"]
 	path = form
 	url = git@git.vauxoo.com:jarsa-dev/form.git
+
+[submodule "manufacture"]
+	path = manufacture
+	url = git@github.com:jarsa/manufacture.git
+	branch = 14.0
