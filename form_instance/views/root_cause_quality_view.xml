@@ -3,7 +3,6 @@
     <!-- <record model="ir.actions.act_window" id="action_log">
         <field name="name">Root Cause</field>
         <field name="res_model">quality.reason</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 

@@ -40,7 +40,6 @@
     <record id="action_sale_stock_sample_procurement_wizard" model="ir.actions.act_window">
         <field name="name">Create Procurements For Sample Products</field>
         <field name="res_model">sale.stock.sample.procurement.wizard</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="type">ir.actions.act_window</field>
         <field name="target">new</field>

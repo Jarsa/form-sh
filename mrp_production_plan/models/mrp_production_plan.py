@@ -40,13 +40,19 @@ class MrpProductionPlan(models.Model):
         domain=[('use_in_plan', '=', True)],
         required=True,)
     state = fields.Selection(
-        selection=[('draft', 'Draft'),
-                   ('approved', 'Approved'),
-                   ('planned', 'Planned'),
-                   ('done', 'Done'),
-                   ('cancel', 'Cancelled')],
-        index=True, track_visibility='onchange',
-        required=True, copy=False, default='draft')
+        selection=[
+            ('draft', 'Draft'),
+            ('approved', 'Approved'),
+            ('planned', 'Planned'),
+            ('done', 'Done'),
+            ('cancel', 'Cancelled'),
+        ],
+        index=True,
+        tracking=True,
+        required=True,
+        copy=False,
+        default='draft',
+    )
     finished_orders = fields.Boolean(
         compute='_compute_finished_orders', default=True)
     has_phantom = fields.Boolean(

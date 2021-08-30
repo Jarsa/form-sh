@@ -9,13 +9,13 @@ from . import account_move
 # from . import mrp_production
 # from . import mrp_production_plan
 # from . import mrp_production_request
-# from . import mrp_production_update_reason
+from . import mrp_production_update_reason
 # from . import mrp_routing_workcenter
 # from . import mrp_workcenter
 # from . import mrp_workorder
 # from . import product_template
 # from . import purchase_order
-# from . import quality_alert
+from . import quality_alert
 # from . import quality_point
 # from . import reconciliation_widget
 # from . import res_partner
