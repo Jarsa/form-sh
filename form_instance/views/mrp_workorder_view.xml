@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
+    <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
         <field name="name">view.mrp.workorder.inherit.custom.kanban</field>
         <field name="model">mrp.workorder</field>
         <field name="inherit_id" ref="mrp.workcenter_line_kanban"/>
+        <field name="priority">1000</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_uom_id']" position="after">
                 <field name="date_planned_start"/>
-                <field name="production_id" invisible="1"/>
             </xpath>
-            <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
-                <div>
-                    <strong><span>Date Planned Start - </span></strong><span><t t-esc="record.date_planned_start.value"/></span>
-                </div>
+            <xpath expr="//h5[hasclass('oe_kanban_bottom_left')]" position="replace">
+                <h5 class="oe_kanban_bottom_left">
+                    <p><span><t t-esc="record.product_id.value"/></span>
+                    <br/><br/><span><t t-esc="record.qty_production.value"/> <t t-esc="record.product_uom_id.value"/></span><br/><br/>
+                    <strong><span>Date Planned Start - </span></strong><span><t t-esc="record.date_planned_start.value"/></span></p>
+                </h5>
             </xpath>
         </field>
     </record>
+    <!-- 
     <record id="mrp_workorder.mrp_workorder_action_tablet" model="ir.actions.act_window">
         <field name="domain">[('state', 'not in', ['done', 'cancel']), ('workcenter_id','=',active_id), '|', ('production_availability', '=', 'assigned'), ('allow_start_production', '=', True)]</field>
     </record>
