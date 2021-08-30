@@ -67,6 +67,8 @@
         # 'mrp_production_surplus',
         # 'product_category_validation',
         'quality_control',
+        'quality_mrp_workorder',
+        'quality_mrp',
         # 'account_aged_partner_balance_by_currency',
         # 'cost_margin_utility_report',
     ],

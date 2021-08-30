@@ -6,7 +6,7 @@ from . import account_move
 from . import account_payment
 from . import crm_lead
 from . import ir_attachment
-# from . import mrp_production
+from . import mrp_production
 # from . import mrp_production_plan
 # from . import mrp_production_request
 from . import mrp_production_update_reason

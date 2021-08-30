@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- <record model="ir.ui.view" id="mrp_production_custom_form">
+    <record model="ir.ui.view" id="mrp_production_custom_form">
         <field name="name">mrp_production_custom_form.form</field>
         <field name="model">mrp.production</field>
         <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
@@ -12,12 +12,9 @@
             <xpath expr="//header/button[@name='button_scrap']" position="attributes">
                     <attribute name="groups">form_instance.group_send_production_to_scrap</attribute>
             </xpath>
-            <xpath expr="//field[@name='origin']" position="after">
+            <xpath expr="//field[@name='user_id']" position="after">
                 <field name="create_date"/>
             </xpath>
-            <xpath expr="//header/button[@name='post_inventory']" position="attributes">
-                <attribute name="groups"/>
-             </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="mrp_production_custom_tree">
@@ -30,6 +27,5 @@
             </xpath>
         </field>
     </record>
-    <menuitem action="stock.action_procurement_compute" id="menu_procurement_compute" parent="mrp.menu_mrp_manufacturing" sequence="135"/>
-    <menuitem id="menu_valuation_mrp" name="Inventory Report" parent="mrp.menu_mrp_reporting" sequence="100" action="stock.action_stock_quantity_history" groups="mrp.group_mrp_user"/> -->
+    <menuitem id="menu_valuation_mrp" name="Inventory Report" parent="mrp.menu_mrp_reporting" sequence="100" action="stock.dashboard_open_quants" groups="mrp.group_mrp_user"/>
 </odoo>
