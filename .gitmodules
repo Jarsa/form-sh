@@ -6,4 +6,4 @@
 	url = git@git.vauxoo.com:jarsa/odoo-utilities.git
 [submodule "form"]
 	path = form
-	url = git@git.vauxoo.com:jarsa/form.git
+	url = git@git.vauxoo.com:jarsa-dev/form.git
