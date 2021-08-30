@@ -82,7 +82,7 @@
         'views/mrp_workorder_view.xml',
         'views/stock_backorder_confirmation_view.xml',
         'views/sale_order_view.xml',
-        'views/account_invoice_view.xml',
+        'views/account_move_view.xml',
         'views/stock_picking_view.xml',
         'views/mrp_production_request_view.xml',
         'views/mrp_production_plan_view.xml',
