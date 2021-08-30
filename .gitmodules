@@ -12,3 +12,8 @@
 	path = manufacture
 	url = git@github.com:jarsa/manufacture.git
 	branch = 14.0
+
+[submodule "stock-logistics-warehouse"]
+	path = stock-logistics-warehouse
+	url = git@github.com:Jarsa/stock-logistics-warehouse.git
+	branch = 14.0
