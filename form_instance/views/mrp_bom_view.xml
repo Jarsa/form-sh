@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <odoo>
     <!--This is a menu that allow see bill of materials withouth access manufacture module-->
-   <!-- <menuitem id="stock_bill_of_materials" name="Bills of Materials" parent="stock.menu_stock_inventory_control" action="mrp.mrp_bom_form_action"/> -->
+   <menuitem id="stock_bill_of_materials" name="Bills of Materials" parent="stock.menu_stock_inventory_control" action="mrp.mrp_bom_form_action"/>
  </odoo>
