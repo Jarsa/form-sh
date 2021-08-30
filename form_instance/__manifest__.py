@@ -46,6 +46,7 @@
         # 'l10n_mx_edi_reports',
         'l10n_mx_edi',
         'l10n_mx_edi_account_followup',
+        'l10n_mx_edi_uuid',
         'sale_request',
         # 'mrp_production_bom_alternative',
         # 'mrp_auto_assign',
