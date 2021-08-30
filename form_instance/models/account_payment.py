@@ -7,8 +7,8 @@ from odoo import api, fields, models
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
 
-    ref = fields.Char(
-        string='Reference',
+    partner_ref = fields.Char(
+        string='Partner Reference',
         related='partner_id.ref',
     )
 
