@@ -1,5 +1,6 @@
 # Copyright 2019 JARSA Sistemas S.A. de C.V.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
+# pylint: disable=attribute-string-redundant,except-pass
 
 from odoo import _, api, fields, models
 from odoo.tools import float_compare

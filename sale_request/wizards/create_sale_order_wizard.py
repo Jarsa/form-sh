@@ -1,5 +1,6 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
+# pylint: disable=too-complex
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -21,7 +22,7 @@ class CreateSaleOrderWizard(models.TransientModel):
             'sale_request_time_start')) * 60
         time_end = int(self.env['ir.config_parameter'].sudo().get_param(
             'sale_request_time_end')) * 60
-        if time_start <= current_time and time_end >= current_time:
+        if time_start <= current_time <= time_end:
             return True
         return False
 
@@ -73,9 +74,7 @@ class CreateSaleOrderWizard(models.TransientModel):
     def _onchange_qty_to_sale(self):
         if self.line_ids:
             remaining_product_qty = self.request_line_id.remaining_product_qty
-            qty_to_sale = 0.0
-            for line in self.line_ids:
-                qty_to_sale += line.qty_to_sale
+            qty_to_sale = sum(self.line_ids.mapped('qty_to_sale'))
             new_remaining_qty = remaining_product_qty - qty_to_sale
             if new_remaining_qty < 0:
                 self.remaining_product_qty = remaining_product_qty
@@ -217,7 +216,7 @@ class CreateSaleOrderWizard(models.TransientModel):
         if not self.on_time:
             self.line_ids = False
         qty_to_sale = 0.0
-        for line in self.line_ids:
+        for line in self.line_ids:  # pylint: disable=E1133
             if line.qty_to_sale > line.sale_line_id.remaining_product_qty:
                 raise UserError(_(
                     'You cannot request more than the remaining qty of this'
@@ -233,7 +232,7 @@ class CreateSaleOrderWizard(models.TransientModel):
         so_obj = self.env['sale.order']
         sol_obj = self.env['sale.order.line']
         request_line = self.request_line_id.sudo()
-        lines = self.line_ids.filtered('qty_to_sale')
+        lines = self.line_ids.filtered('qty_to_sale')  # pylint: disable=E1101
         if not self.confirm_without_master and self.line_ids and not lines:
             raise UserError(
                 _('You have not defined the quantity to sale to any master '
@@ -271,7 +270,7 @@ class CreateSaleOrderWizard(models.TransientModel):
                 line_remaining_qty = line.product_uom_id._compute_quantity(
                     sale_line.remaining_product_qty,
                     request_line.product_uom_id)
-                if (line_remaining_qty >= rqst_remaining_product_qty):
+                if line_remaining_qty >= rqst_remaining_product_qty:
                     rqst_remaining_product_qty -= (
                         line.product_uom_id._compute_quantity(
                             line.qty_to_sale, request_line.product_uom_id))

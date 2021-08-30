@@ -30,7 +30,7 @@ class SaleOrder(models.Model):
             else:
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     'master.sale.order') or _('New')
-        return super(SaleOrder, self).create(vals)
+        return super().create(vals)
 
     def action_cancel(self):
         for rec in self:
