@@ -4,8 +4,8 @@
 from odoo import fields, models
 
 
-class MrpProductionRequest(models.Model):
-    _inherit = 'mrp.production.request'
+class MrpRequest(models.Model):
+    _inherit = 'mrp.request'
 
     plan_line_id = fields.Many2one(
         'mrp.production.plan.line', string="Production Plan Line")

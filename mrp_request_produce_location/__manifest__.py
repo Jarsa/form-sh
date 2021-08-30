@@ -11,7 +11,7 @@
     'license': 'LGPL-3',
     'installable': False,
     'depends': [
-        'mrp_production_request',
+        'mrp_request',
     ],
     'data': [
         'views/product_category_view.xml',

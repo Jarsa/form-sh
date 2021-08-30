@@ -4,8 +4,8 @@
 from odoo import api, models
 
 
-class MrpProductionRequest(models.Model):
-    _inherit = 'mrp.production.request'
+class MrpRequest(models.Model):
+    _inherit = 'mrp.request'
 
     @api.onchange('product_id')
     def _onchange_product_id(self):

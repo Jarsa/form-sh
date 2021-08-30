@@ -4,14 +4,14 @@
 {
     'name': 'MRP Production Plan',
     'summary': 'Schedule the production of the day',
-    'version': '12.0.1.0.1',
+    'version': '14.0.1.0.0',
     'category': 'Manufacture',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
-        'mrp_production_request',
+        'mrp_request',
         'mrp_workorder',
         'stock_split_picking',
     ],
@@ -22,9 +22,7 @@
         'views/product_category_view.xml',
         'data/ir_sequence.xml',
         'data/stock_picking_type.xml',
-        'views/mrp_routing_view.xml',
-        'views/mrp_production_request_view.xml',
-        'wizards/mrp_production_change_routing_view.xml',
+        'views/mrp_request_view.xml',
         'views/mrp_production_view.xml',
     ],
 }

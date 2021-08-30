@@ -4,8 +4,8 @@
 from odoo import fields, models
 
 
-class MrpProductionRequest(models.Model):
-    _inherit = 'mrp.production.request'
+class MrpRequest(models.Model):
+    _inherit = 'mrp.request'
 
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')

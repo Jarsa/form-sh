@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- <record model="ir.ui.view" id="mrp_production_request_custom_form">
-        <field name="name">mrp_production_request_product_name.form</field>
-        <field name="model">mrp.production.request</field>
-        <field name="inherit_id" ref="mrp_production_request.view_mrp_production_request_form"/>
+    <record model="ir.ui.view" id="mrp_request_custom_form">
+        <field name="name">mrp_request_product_name.form</field>
+        <field name="model">mrp.request</field>
+        <field name="inherit_id" ref="mrp_request.view_mrp_request_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='bom_id']" position="after">
                 <field name="product_supplier_name"/>
@@ -14,14 +14,14 @@
             </xpath>
         </field>
     </record>
-    <record model="ir.ui.view" id="mrp_production_request_custom_tree">
-        <field name="name">mrp_production_request_product_name.tree</field>
-        <field name="model">mrp.production.request</field>
-        <field name="inherit_id" ref="mrp_production_request.view_mrp_production_request_tree"/>
+    <record model="ir.ui.view" id="mrp_request_custom_tree">
+        <field name="name">mrp_request_product_name.tree</field>
+        <field name="model">mrp.request</field>
+        <field name="inherit_id" ref="mrp_request.view_mrp_request_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="product_supplier_name"/>
             </xpath>
         </field>
-    </record> -->
+    </record>
 </odoo>

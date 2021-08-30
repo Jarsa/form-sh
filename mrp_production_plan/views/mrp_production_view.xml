@@ -4,14 +4,10 @@
         <field name="name">mrp.production.form - mrp_production_plan</field>
         <field name="model">mrp.production</field>
         <field name="inherit_id"
-               ref="mrp_production_request.mrp_production_form_view"/>
+               ref="mrp_request.mrp_production_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='mrp_production_request_id']" position="after">
+            <xpath expr="//field[@name='mrp_request_id']" position="after">
                 <field name="plan_id"/>
-            </xpath>
-            <xpath expr="//button[@name='button_scrap']" position="after">
-                <field name="has_multiple_routing" invisible="1"/>
-                <button name="%(mrp_production_plan.action_mrp_production_change_routing_wizard)d" type="action" string="Change Routing" attrs="{'invisible': ['|', '|', '|',('routing_id', '=', False), ('state', 'in', ['progess', 'done', 'cancel']), ('is_locked', '=', False), ('has_multiple_routing', '=', False)]}"/>
             </xpath>
         </field>
     </record>

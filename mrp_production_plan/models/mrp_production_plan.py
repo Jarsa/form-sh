@@ -1,14 +1,14 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
-from odoo import _, api, fields, models, tools
-from odoo.addons import decimal_precision as dp
-from odoo.exceptions import UserError
-from odoo.tools.float_utils import float_is_zero
+import math
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import math
+
+from odoo import _, api, fields, models, tools
+from odoo.exceptions import UserError
+from odoo.tools.float_utils import float_is_zero
 
 
 class MrpProductionPlan(models.Model):
@@ -23,7 +23,7 @@ class MrpProductionPlan(models.Model):
         'res.users', string='Responsible',
         default=lambda self: self.env.user, copy=False)
     request_ids = fields.One2many(
-        'mrp.production.request', 'plan_id',
+        'mrp.request', 'plan_id',
         string='Requests', copy=False, readonly=True,)
     production_ids = fields.One2many(
         'mrp.production', 'plan_id',
@@ -73,7 +73,6 @@ class MrpProductionPlan(models.Model):
         help='Technical field used to show or hide button '
         'done if there are at least one Line (Manufacturing Request) '
         'without a linked Manufacturing Order.')
-    routing_id = fields.Many2one('mrp.routing', 'Routing')
     log_ids = fields.One2many(
         'mrp.production.plan.log',
         'plan_id',
@@ -141,25 +140,21 @@ class MrpProductionPlan(models.Model):
                     'mrp.production.plan') or _('New')
         return super().create(vals)
 
-    def get_mrp_production_requests(self):
+    def get_mrp_requests(self):
         self.ensure_one()
         main_categ = self.category_id
         product_categories = self.env['product.category'].search([
             ('id', 'child_of', main_categ.id)])
         mrp_plan_line_obj = self.env['mrp.production.plan.line']
-        requests = self.env['mrp.production.request'].search([
+        requests = self.env['mrp.request'].search([
             ('plan_line_id', '=', False), ('state', '=', 'approved'),
             ('product_id.categ_id', 'in', product_categories.ids)])
         for request in requests:
             if request in self.line_ids.mapped('request_id'):
                 continue
-            routing = self.env['mrp.routing'].search([
-                ('product_id', '=', request.product_id.id)],
-                limit=1, order='sequence asc')
             request.plan_line_id = mrp_plan_line_obj.create({
                 'plan_id': self.id,
                 'request_id': request.id,
-                'routing_id': routing.id if routing else False,
             })
         return True
 
@@ -308,18 +303,17 @@ class MrpProductionPlan(models.Model):
 
     def run_plan(self):
         self.ensure_one()
-        wizard_obj = self.env['mrp.production.request.create.mo']
+        wizard_obj = self.env['mrp.request.create.mo']
         production_ids = []
         pending_lines = self.line_ids.filtered(
             lambda l: l.request_id.state != 'done').sorted(
             'sequence') if not self._context.get(
                 'lines', False) else self._context.get('lines')
         for line in pending_lines:
-            line.request_id.bom_id.write({'routing_id': line.routing_id.id})
             wizard = wizard_obj.with_context(
                 active_ids=line.request_id.ids,
-                active_model='mrp.production.request').create({
-                    'mrp_production_request_id': line.request_id.id,
+                active_model='mrp.request').create({
+                    'mrp_request_id': line.request_id.id,
                     'date_planned_start': line.request_id.date_planned_start,
                 })
             wizard.compute_product_line_ids()
@@ -469,7 +463,7 @@ class MrpProductionPlan(models.Model):
                 order.action_cancel()
 
     def _cancel_unplanned_requests(self):
-        unplanned_requests = self.env['mrp.production.request'].search([
+        unplanned_requests = self.env['mrp.request'].search([
             ('plan_line_id', '=', False), ('state', '!=', 'cancel'), '|',
             ('origin', '=', False), ('origin', 'ilike', 'OP/')])
         if unplanned_requests:
@@ -572,7 +566,7 @@ class MrpProductionPlanLine(models.Model):
     plan_id = fields.Many2one(
         'mrp.production.plan', string='Plan', required=True, readonly=True)
     request_id = fields.Many2one(
-        'mrp.production.request', string='Request',
+        'mrp.request', string='Request',
         required=True, readonly=True)
     product_id = fields.Many2one(
         'product.product', string='Product', related='request_id.product_id',
@@ -580,17 +574,17 @@ class MrpProductionPlanLine(models.Model):
     required_qty = fields.Float(
         readonly=True,
         related='request_id.product_qty',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
     )
     requested_qty = fields.Float(
         string='Requested Quantity',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         compute='_compute_requested_qty',
     )
     done_qty = fields.Float(
         string='Done Quantity',
         compute='_compute_done_qty',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
     )
     product_uom_id = fields.Many2one(
         comodel_name='uom.uom', string='Unit of Measure',
@@ -624,15 +618,10 @@ class MrpProductionPlanLine(models.Model):
     qty_per_kit = fields.Float(readonly=True, default=1.0)
     requested_kit_qty = fields.Float(
         string='Requested Kits',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         required=True,
         default=0.0,
     )
-    routing_id = fields.Many2one('mrp.routing', 'Routing')
-    require_routing = fields.Boolean(
-        readonly=True, compute='_compute_require_routing',
-        help='Technical field used to make required the routing in the plan'
-        'line.')
 
     @api.depends('requested_kit_qty')
     def _compute_requested_qty(self):
@@ -655,14 +644,6 @@ class MrpProductionPlanLine(models.Model):
             end_day = rec.date_planned_finished_wo.day
             rec.planned = start_day == end_day
 
-    @api.depends('product_id')
-    def _compute_require_routing(self):
-        for rec in self:
-            require_routing = False
-            if rec.product_id.routing_ids:
-                require_routing = True
-            rec.require_routing = require_routing
-
     def unlink(self):
         for rec in self:
             if rec.request_id.state == 'done':
@@ -673,7 +654,7 @@ class MrpProductionPlanLine(models.Model):
 
     @api.model
     def create(self, values):
-        request = self.env['mrp.production.request'].browse(
+        request = self.env['mrp.request'].browse(
             values.get('request_id'))
         qty_per_kit = 1.0
         bom_line = request.product_id.bom_line_ids
@@ -712,11 +693,12 @@ class MrpProductionPlanWorkcenter(models.Model):
 
 class MrpProductionPlanLog(models.Model):
     _name = 'mrp.production.plan.log'
+    _description = 'Production Plan Log'
 
     name = fields.Char()
     production_id = fields.Many2one(
         'mrp.production')
     request_id = fields.Many2one(
-        'mrp.production.request')
+        'mrp.request')
     plan_id = fields.Many2one(
         'mrp.production.plan')

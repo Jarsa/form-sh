@@ -2,4 +2,4 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from . import product_category
-from . import mrp_production_request
+from . import mrp_request
