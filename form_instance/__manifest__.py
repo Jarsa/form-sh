@@ -58,7 +58,7 @@
         'mrp_production_plan',
         # 'mrp_production_limit',
         # 'mrp_plm_control_version_bom',
-        # 'sale_order_product_reference_partner',
+        'sale_order_product_reference_partner',
         # 'stock_mts_mto_rule',
         # 'sale_order_invoice_merge_qty',
         # 'stock_picking_name_reference_change',
