@@ -14,7 +14,7 @@ from . import mrp_routing_workcenter
 from . import mrp_workcenter
 from . import mrp_workorder
 from . import product_template
-# from . import purchase_order
+from . import purchase_order
 from . import quality_alert
 # from . import quality_point
 # from . import reconciliation_widget
