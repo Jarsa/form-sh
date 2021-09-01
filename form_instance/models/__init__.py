@@ -16,7 +16,6 @@ from . import mrp_workorder
 from . import product_template
 from . import purchase_order
 from . import quality_alert
-# from . import quality_point
 # from . import reconciliation_widget
 # from . import res_partner
 # from . import sale_order
