@@ -17,7 +17,7 @@ from . import product_template
 from . import purchase_order
 from . import quality_alert
 from . import res_partner
-# from . import sale_order
+from . import sale_order
 # from . import stock_inventory
 # from . import stock_move
 # from . import stock_picking_type

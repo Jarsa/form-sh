@@ -144,10 +144,10 @@ class SaleOrderLine(models.Model):
                             'unit, quantity and taxes') % name_user)
         return super().write(values)
 
-    @api.onchange('product_uom_qty', 'product_uom', 'route_id')
-    def _onchange_product_id_check_availability(self):
+    @api.depends('product_type', 'product_uom_qty', 'qty_delivered', 'state', 'move_ids', 'product_uom')
+    def _compute_qty_to_deliver(self):
         if not self.order_id.master_sale_order:
-            return super()._onchange_product_id_check_availability()
+            return super()._compute_qty_to_deliver()
 
     @api.depends('child_ids.product_uom_qty', 'child_ids.order_id.state')
     def _compute_product_uom_qty_total(self):
