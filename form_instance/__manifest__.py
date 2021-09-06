@@ -96,7 +96,6 @@
         'views/stock_picking_type_view.xml',
         'views/stock_quant_view.xml',
         'views/stock_inventory_view.xml',
-        'views/root_cause_quality_view.xml',
         'views/product_template_view.xml',
         'views/stock_move_line_view.xml',
         'views/crm_lead_view.xml',
