@@ -69,7 +69,7 @@
         'quality_control',
         'quality_mrp_workorder',
         'quality_mrp',
-        # 'account_aged_partner_balance_by_currency',
+        'account_aged_by_currency_report',
         # 'cost_margin_utility_report',
     ],
     'data': [
