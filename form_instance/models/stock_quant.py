@@ -11,14 +11,12 @@ class StockQuant(models.Model):
         digits='Product Unit of Measure',
         help='Quantity of products in this quant, in the default unit of measure of the product',
         readonly=True,
-        required=True,
     )
     reserved_quantity = fields.Float(
         digits='Product Unit of Measure',
         default=0.0,
         help='Quantity of reserved products in this quant, in the default unit of measure of the product',
         readonly=True,
-        required=True,
     )
 
     product_supplier_name = fields.Text(
