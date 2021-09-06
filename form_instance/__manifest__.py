@@ -105,7 +105,6 @@
         'wizards/change_production_qty_views.xml',
         'wizards/change_account_expense_view.xml',
         'views/quality_alert_views.xml',
-        'views/quality_point_view.xml',
         'views/mrp_production_update_reason_view.xml',
         'views/sale_request_view.xml',
         'security/ir.model.access.csv',
