@@ -36,7 +36,7 @@ class SaleRequest(models.Model):
         comodel_name='res.partner',
         string='Customer',
         required=True,
-        domain=[('customer', '=', True), ('parent_id', '=', False)],
+        domain=[('customer_rank', '>=', 1), ('parent_id', '=', False)],
     )
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -341,7 +341,7 @@ class SaleRequestLine(models.Model):
             is_available = self._check_routing()
             if not is_available:
                 message = (
-                    _('You plan to sell %s %s of %s but you only have'
+                    _('You plan to sell %s %s of %s but you only have '
                         '%s %s available in %s warehouse.')
                     % (
                         self.product_qty,

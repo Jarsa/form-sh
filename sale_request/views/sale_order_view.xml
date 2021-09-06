@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="before">
-                <field name="master_sale_order" invisible="1" readonly="1"/>
+                <field name="master_sale_order" invisible="1"/>
             </xpath>
             <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
                 <field name="master_sale_order" invisible="1"/>
