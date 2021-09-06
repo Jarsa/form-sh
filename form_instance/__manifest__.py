@@ -99,7 +99,7 @@
         'views/product_template_view.xml',
         'views/stock_move_line_view.xml',
         'views/crm_lead_view.xml',
-        'views/stock_warehouse_view.xml',
+        'views/stock_warehouse_orderpoint_view.xml',
         'views/mrp_document_view.xml',
         'wizards/change_production_qty_views.xml',
         'wizards/change_account_expense_view.xml',
