@@ -11,10 +11,10 @@
                 <field name="has_lines" invisible="1"/>
                 <field name="on_time" invisible="1"/>
                 <sheet>
-                    <group attrs="{'invisible': ['|',('has_lines', '=', False),('on_time','=',False)]}">
+                   <group attrs="{'invisible': ['|',('has_lines', '=', False),('on_time','=',False)]}">
                         <h2><strong>Please Select the Sale Order Lines From Master Sale Orders</strong></h2>
                     </group>
-                    <group attrs="{'invisible': ['|',('has_lines', '=', False),('on_time','=',False)]}">
+                   <group attrs="{'invisible': ['|',('has_lines', '=', False),('on_time','=',False)]}">
                         <field name="request_line_id" invisible="1"/>
                         <field name="product_id"/>
                         <label for="remaining_product_qty"/>
@@ -25,7 +25,7 @@
                             <field name="product_uom_id" class="oe_inline" groups="uom.group_uom"/>
                         </div>
                     </group>
-                    <group attrs="{'invisible': ['|', '|',('has_lines', '=', False),('on_time','=',False)]}">
+                   <group attrs="{'invisible': ['|', ('has_lines', '=', False),('on_time','=',False)]}">
                         <field name="confirm_without_master"/>
                     </group>
                     <group string="Lines" attrs="{'invisible': ['|', '|',('has_lines', '=', False),('on_time','=',False), ('confirm_without_master', '=', True)]}">

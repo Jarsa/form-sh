@@ -106,12 +106,13 @@ class CreateSaleOrderWizard(models.TransientModel):
         res = super().default_get(res_fields)
         rqst_line = self.env['sale.request.line'].browse(
             self._context.get('active_ids'))
-        order_lines = self.env['sale.order.line'].search(
-            [('state', '=', 'sale'),
-             ('product_id', '=', rqst_line.product_id.id),
-             ('order_id.master_sale_order', '=', True),
-             ('remaining_product_qty', '>', 0.0),
-             ('order_id.partner_id', '=', rqst_line.request_id.partner_id.id)])
+        order_lines = self.env['sale.order.line'].search([
+            ('state', '=', 'sale'),
+            ('product_id', '=', rqst_line.product_id.id),
+            ('order_id.master_sale_order', '=', True),
+            ('remaining_product_qty', '>', 0.0),
+            ('order_id.partner_id', '=', rqst_line.request_id.partner_id.id),
+        ])
         wiz_lines = []
         for line in order_lines:
             wiz_lines.append((0, 0, self._prepare_item(line)))
