@@ -22,3 +22,7 @@
 	path = stock-logistics-workflow
 	url = git@github.com:Jarsa/stock-logistics-workflow.git
 	branch = 14.0
+[submodule "account-fix-tools"]
+	path = account-fix-tools
+	url = git@github.com:jarsa/account-fix-tools.git
+	branch = 14.0
