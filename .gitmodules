@@ -30,3 +30,19 @@
 	path = social
 	url = git@github.com:jarsa/social.git
 	branch = 14.0
+[submodule "server-backend"]
+	path = server-backend
+	url = git@github.com:jarsa/server-backend.git
+	branch = 14.0
+[submodule "web"]
+	path = web
+	url = git@github.com:jarsa/web.git
+	branch = 14.0
+[submodule "product-attribute"]
+	path = product-attribute
+	url = git@github.com:jarsa/product-attribute.git
+	branch = 14.0
+[submodule "server-tools"]
+	path = server-tools
+	url = git@github.com:jarsa/server-tools.git
+	branch = 14.0
