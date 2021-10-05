@@ -26,3 +26,7 @@
 	path = account-fix-tools
 	url = git@github.com:jarsa/account-fix-tools.git
 	branch = 14.0
+[submodule "social"]
+	path = social
+	url = git@github.com:jarsa/social.git
+	branch = 14.0
