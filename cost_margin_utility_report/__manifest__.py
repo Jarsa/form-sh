@@ -14,5 +14,6 @@
     "data": [
         "views/cost_margin_utility_report_views.xml",
         "wizard/cost_margin_utility_report_wizard_view.xml",
+        "security/ir.model.access.csv",
     ],
 }

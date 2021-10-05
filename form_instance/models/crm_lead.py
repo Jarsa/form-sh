@@ -26,3 +26,10 @@ class CrmTeam(models.Model):
             partner_ids = user.partner_id.ids
             self.message_subscribe(partner_ids)
         return super().write(vals)
+
+    def action_new_quotation(self):
+        action = super().action_new_quotation()
+        action['context'].update({
+            'default_master_sale_order': True,
+        })
+        return action

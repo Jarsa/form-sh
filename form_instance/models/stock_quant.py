@@ -2,21 +2,23 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import api, fields, models
-from odoo.addons import decimal_precision as dp
 
 
 class StockQuant(models.Model):
     _inherit = 'stock.quant'
 
     quantity = fields.Float(
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         help='Quantity of products in this quant, in the default unit of measure of the product',
-        readonly=True, required=True, oldname='qty')
+        readonly=True,
+    )
     reserved_quantity = fields.Float(
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         default=0.0,
         help='Quantity of reserved products in this quant, in the default unit of measure of the product',
-        readonly=True, required=True)
+        readonly=True,
+    )
+
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')
     categ_id = fields.Many2one(

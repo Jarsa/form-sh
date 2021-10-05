@@ -14,7 +14,13 @@ class ProductTemplate(models.Model):
         help='Internal field used to identify the product internally '
         'respecting sales default code',
         compute="_compute_id_form",
-        store=True)
+        store=True,
+    )
+    item_ids = fields.One2many(
+        comodel_name="product.pricelist.item",
+        inverse_name="product_tmpl_id",
+        string="Pricelist Items",
+    )
 
     def write(self, vals):
         if self.user_has_groups(
@@ -38,7 +44,7 @@ class ProductTemplate(models.Model):
             if rec.partner_ids:
                 full_reference = ''
                 for partner in rec.partner_ids:
-                    reference = partner.ref and partner.ref.zfill(3) or '00'
+                    reference = partner.ref.zfill(3) if partner.ref else '00'
                     full_reference = full_reference + reference + '-'
                 partner_code = rec.partner_ids[0].partner_code or '00'
                 name = (partner_code + '-' + full_reference + str(rec.id))
@@ -61,14 +67,16 @@ class ProductProduct(models.Model):
             limit=100, name_get_uid=None):
         if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
             args = args or []
-            domain = (['|', '|', '|', ('default_code', 'ilike', name),
-                       ('description', 'ilike', name),
-                       ('name', 'ilike', name),
-                       ('id_form', 'ilike', name)])
-            product_ids = self._search(
+            domain = ([
+                '|', '|', '|',
+                ('default_code', 'ilike', name),
+                ('description', 'ilike', name),
+                ('name', 'ilike', name),
+                ('id_form', 'ilike', name),
+            ])
+            return self._search(
                 expression.AND([domain, args]),
                 limit=limit, access_rights_uid=name_get_uid)
-            return self.browse(product_ids).name_get()
         return super()._name_search(
             name=name, args=args, operator=operator,
             limit=limit, name_get_uid=name_get_uid)

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-    <template id="report_invoice_document_mx_inherit" inherit_id="account.report_invoice_document">
+    <template id="report_invoice_document_mx_inherit" priority="1000" inherit_id="account.report_invoice_document">
         <xpath expr="//t[1]/t[2]" position="replace"></xpath>
         <xpath expr="//div[hasclass('page')]" position="replace">
             <!--New global variables-->

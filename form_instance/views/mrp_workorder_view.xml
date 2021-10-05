@@ -1,54 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
+    <record model="ir.ui.view" id="view_mrp_workorder_inherit_custom_kanban">
         <field name="name">view.mrp.workorder.inherit.custom.kanban</field>
         <field name="model">mrp.workorder</field>
         <field name="inherit_id" ref="mrp.workcenter_line_kanban"/>
+        <field name="priority">1000</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_uom_id']" position="after">
                 <field name="date_planned_start"/>
-                <field name="production_id" invisible="1"/>
             </xpath>
-            <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
-                <div>
-                    <strong><span>Date Planned Start - </span></strong><span><t t-esc="record.date_planned_start.value"/></span>
-                </div>
+            <xpath expr="//h5[hasclass('oe_kanban_bottom_left')]" position="replace">
+                <h5 class="oe_kanban_bottom_left">
+                    <p><span><t t-esc="record.product_id.value"/></span>
+                    <br/><br/><span><t t-esc="record.qty_production.value"/> <t t-esc="record.product_uom_id.value"/></span><br/><br/>
+                    <strong><span>Date Planned Start - </span></strong><span><t t-esc="record.date_planned_start.value"/></span></p>
+                </h5>
             </xpath>
         </field>
     </record>
     <record id="mrp_workorder.mrp_workorder_action_tablet" model="ir.actions.act_window">
         <field name="domain">[('state', 'not in', ['done', 'cancel']), ('workcenter_id','=',active_id), '|', ('production_availability', '=', 'assigned'), ('allow_start_production', '=', True)]</field>
     </record>
-    <record model="ir.ui.view" id="mrp_workorder_custom_form">
-        <field name="name">mrp_workorder_custom.form</field>
+    <record id="mrp_production_workorder_tree_editable_view_inherit_workorder" model="ir.ui.view">
+        <field name="name">mrp.production.work.order.tree.editable.inherit.mrp.workorder</field>
         <field name="model">mrp.workorder</field>
-        <field name="priority">110</field>
-        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_inherit_workorder"/>
+        <field name="inherit_id" ref="mrp_workorder.mrp_production_workorder_tree_editable_view_inherit_workorder"/>
+        <field name="priority">1000</field>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='open_tablet_view']" position="replace">
-                <field name="production_availability" invisible="1"/>
+                <field name="production_availability"/>
                 <field name="allow_start_production" invisible="1"/>
-                <button name="open_tablet_view" type="object" string="Process" attrs="{'invisible': ['|', '|', ('state', 'not in', ('ready', 'progress')), ('production_availability', '!=', 'assigned'), ('allow_start_production', '=', True)]}"/>
-                <button name="open_tablet_view" type="object" string="Process" attrs="{'invisible': [('allow_start_production', '=', False)]}"/>
+                <button name="open_tablet_view" type="object" icon="fa-tablet" context="{'from_production_order': True}" attrs="{'invisible': ['|', '|', '|', ('production_state', 'in', ('draft', 'cancel', 'done')), ('production_availability', '!=', 'assigned'), ('allow_start_production', '=', True), ('state', '=', 'done')]}"/>
+                <button name="open_tablet_view" type="object" icon="fa-tablet" context="{'from_production_order': True}" attrs="{'invisible': ['|', '|', ('production_state', 'in', ('draft', 'cancel', 'done')), ('allow_start_production', '=', False), ('state', '=', 'done')]}"/>
             </xpath>
         </field>
     </record>
-    <record model="ir.ui.view" id="mrp_workcenter_custom_chatter_form">
-        <field name="name">mrp.workcenter.custom.chatter.form</field>
-        <field name="model">mrp.workcenter</field>
-        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+    <record model="ir.ui.view" id="mrp_production_workorder_tree_editable_view_form">
+        <field name="name">mrp_production_workorder_tree_editable_view.form</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_tree_editable_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//form[1]" position="inside">
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
-                </div>
+            <xpath expr="//button[@name='button_start']" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [
+                        '|', '|', '|', '|', '|',
+                        ('production_state','in', ('draft', 'done')),
+                        ('working_state', '=', 'blocked'),
+                        ('state', '=', 'done'),
+                        ('is_user_working', '!=', False),
+                        ('production_availability', '!=', 'assigned'),
+                        ('allow_start_production', '=', True),
+                    ]}</attribute>
             </xpath>
-             <xpath expr="//field[@name='costs_hour']" position="after">
-                <field name="allow_start_production"/>
+            <xpath expr="//button[@name='button_start']" position="after">
+                <button
+                    name="button_start"
+                    type="object"
+                    string="Start"
+                    class="btn-success"
+                    attrs="{
+                        'invisible': [
+                            '|', '|', '|', '|',
+                            ('production_state','in', ('draft', 'done')),
+                            ('working_state', '=', 'blocked'),
+                            ('state', '=', 'done'),
+                            ('is_user_working', '!=', False),
+                            ('allow_start_production', '=', False),
+                        ]
+                    }"/>
             </xpath>
         </field>
-    </record>
+    </record>mrp_production_workorder_tree_editable_view
     <record model="ir.ui.view" id="mrp_workorder_view_form_tablet_form">
         <field name="name">mrp.workorder.custom2.form</field>
         <field name="model">mrp.workorder</field>
@@ -76,5 +98,5 @@
             </xpath>
         </field>
     </record>
-    <menuitem id="menu_workcenter_root" name="Workcenter" action="mrp.mrp_workcenter_kanban_action" groups="form_instance.group_mrp_workcenter_form" sequence="30" web_icon="base,static/description/board.png"/> -->
+    <menuitem id="menu_workcenter_root" name="Workcenter" action="mrp.mrp_workcenter_kanban_action" groups="form_instance.group_mrp_workcenter_form" sequence="30" web_icon="base,static/description/board.png"/>
 </odoo>

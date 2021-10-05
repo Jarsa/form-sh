@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Production Plan">
                 <header>
-                    <button name="get_mrp_production_requests" string="Get Manufacturing Requests" type="object" attrs="{'invisible': [('state', '=', 'done')]}"/>
+                    <button name="get_mrp_requests" string="Get Manufacturing Requests" type="object" attrs="{'invisible': [('state', '=', 'done')]}"/>
                     <button name="button_draft"
                         states="approved,cancel,done"
                         string="Reset"
@@ -62,8 +62,6 @@
                                     <field name="planned" invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="product_id"/>
-                                    <field name="require_routing" invisible="1"/>
-                                    <field name="routing_id" domain="[('product_id', '=', product_id)]" attrs="{'required': [('require_routing', '=', True)], 'readonly': [('production_id', '!=', False)]}"/>
                                     <field name="bom_id" domain="[('bom_line_ids', 'in', bom_line_ids)]" options="{'no_create_edit': True, 'no_open': True}" attrs="{'column_invisible': [('parent.has_phantom', '=', False)], 'readonly': ['|', ('bom_line_ids', '=', []), ('production_id', '!=', False)]}"/>
                                     <field name="bom_line_ids" invisible="1"/>
                                     <field name="qty_per_kit" attrs="{'column_invisible': [('parent.has_phantom', '=', False)]}"/>
@@ -158,6 +156,7 @@
         <field name="model">mrp.production.plan</field>
         <field name="arch" type="xml">
             <search>
+                <field name="name"/>
                 <filter name="done" string="Done" domain="[('state', '=', 'done')]"/>
                 <filter name="cancel" string="Cancel" domain="[('state', '=', 'cancel')]"/>
                 <filter name="in_progress" string="In Progress" domain="[('state', 'in', ['draft', 'approved', 'planned'])]"/>
@@ -167,7 +166,6 @@
     <record id="action_mrp_production_plan" model="ir.actions.act_window">
         <field name="name">Production Plan</field>
         <field name="res_model">mrp.production.plan</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_in_progress': 1}</field>
     </record>

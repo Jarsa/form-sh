@@ -73,8 +73,8 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             'picking_type_id': self.production_id.picking_type_id.id,
             'location_src_id': self.production_id.location_src_id.id,
             'location_dest_id': self.production_id.location_dest_id.id,
-            'mrp_production_request_id':
-                self.production_id.mrp_production_request_id.id,
+            'mrp_request_id':
+                self.production_id.mrp_request_id.id,
             'plan_id': self.production_id.plan_id.id,
             'plan_line_id': self.production_id.plan_line_id.id,
             'use_alternative_bom': True,

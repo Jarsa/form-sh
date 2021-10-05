@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- <record id="mrp_plm.view_document_file_kanban_mrp_plm" model="ir.ui.view">
+    <record id="mrp_plm.view_document_file_kanban_mrp_plm" model="ir.ui.view">
         <field name="name">mrp.document kanban.mrp.plm</field>
         <field name="inherit_id" ref="mrp.view_document_file_kanban_mrp"/>
         <field name="model">mrp.document</field>
@@ -19,5 +19,5 @@
                 <attribute name="t-att-style">(!record.active.raw_value) &amp;&amp; "background: linear-gradient(45deg, white 25%, lightgrey 25%, lightgrey 50%, white 50%, white 75%, lightgrey 75%); background-size: 20px 20px;"</attribute>
             </xpath>
         </field>
-    </record> -->
+    </record>
 </odoo>

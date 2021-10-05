@@ -21,7 +21,6 @@
     <record id="action_cost_margin_utility_report" model="ir.actions.act_window">
         <field name="name">Cost Margin Utility Report</field>
         <field name="res_model">cost.margin.utility.report.wiz</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="view_cost_margin_utility_report"/>
         <field name="target">new</field>

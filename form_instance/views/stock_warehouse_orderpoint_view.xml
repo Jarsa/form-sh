@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--This is a menu that allow see Reordeninr Rules withouth access inventory module-->
+    <menuitem id="mrp_stock_warehouse" name="Reordening Rules" parent="mrp.menu_mrp_bom" action="stock.action_orderpoint"/>
+</odoo>
+ 

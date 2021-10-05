@@ -3,6 +3,7 @@
     <record id="return_raw_material_form" model="stock.picking.type">
         <field name="name">Return Raw Material</field>
         <field name="sequence_id" ref="seq_return_raw_material_plan"/>
-        <field name="code">mrp_operation</field>
+        <field name="sequence_code">mrp_operation</field>
+        <field name="code">internal</field>
     </record>
 </odoo>

@@ -6,13 +6,13 @@
     'summary': """
     This module change number by default for 0
     """,
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Manufacture',
     'website': 'https://www.jarsa.com.mx',
     'author': 'Jarsa Sistemas',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
-        'mrp',
+        'mrp_plm',
     ],
 }

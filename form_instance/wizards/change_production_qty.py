@@ -21,5 +21,5 @@ class ChangeProductionQty(models.TransientModel):
                 'product_tmpl_id': wizard.mo_id.product_id.product_tmpl_id.id,
                 'update_reason': wizard.update_reason.id,
                 'production_id': wizard.mo_id.id,
-                })
+            })
         return res

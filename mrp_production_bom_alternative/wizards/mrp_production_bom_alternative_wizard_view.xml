@@ -31,7 +31,6 @@
     <record id="action_mrp_production_bom_alternative_wizard" model="ir.actions.act_window">
         <field name="name">Change Alternative BoM</field>
         <field name="res_model">mrp.production.bom.alternative.wizard</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="type">ir.actions.act_window</field>
         <field name="target">new</field>
