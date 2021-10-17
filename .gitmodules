@@ -46,3 +46,7 @@
 	path = server-tools
 	url = git@github.com:jarsa/server-tools.git
 	branch = 14.0
+[submodule "purchase-workflow"]
+	path = purchase-workflow
+	url = git@github.com:jarsa/purchase-workflow.git
+	branch = 14.0
