@@ -7,12 +7,12 @@
     This module change name origin form picking by a
     mrp order
     """,
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Sales',
     'website': 'https://www.jarsa.com.mx',
     'author': 'Jarsa Sistemas',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'sale_management',
         'stock',

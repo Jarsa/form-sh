@@ -155,8 +155,7 @@ class SaleRequest(models.Model):
         return True
 
     def _check_cancel_allowed(self):
-        if any([sale.state == 'sale' for sale in self.line_ids.mapped(
-                'sale_line_ids')]):
+        if self.line_ids.mapped('sale_line_ids').filtered(lambda s: s.state == 'sale'):
             raise UserError(
                 _('You cannot reject a sale request related to '
                   'confirmed sale orders.'))

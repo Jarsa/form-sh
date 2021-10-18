@@ -28,7 +28,7 @@ class ProductCategoryValidation(models.Model):
 
     @api.onchange('field_id')
     def _set_default_value(self):
-        if self.field_id.ttype == 'many2many' or self.field_id.ttype == 'char':
+        if self.field_id.ttype in ['many2many', 'char']:
             self.hide_field = True
 
     @api.onchange('value')

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-    <template id="report_sale_order_external_for_form" inherit_id="sale.report_saleorder_document">
+    <template id="report_sale_order_external_for_form" inherit_id="sale.report_saleorder_document" priority="1000">
         <xpath expr="//t[1]/t[2]" position="replace">
             <t>
                 <div class="row">

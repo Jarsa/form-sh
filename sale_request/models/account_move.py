@@ -5,12 +5,12 @@ from odoo import _, models
 from odoo.exceptions import UserError
 
 
-class AccountInvoiceLine(models.Model):
-    _inherit = 'account.invoice.line'
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
 
     def write(self, values):
         name_user = self.env.user.name
-        fields_blocked = ['quantity', 'price_unit', 'invoice_line_tax_ids']
+        fields_blocked = ['quantity', 'price_unit', 'tax_ids']
         if not self.user_has_groups(
                 'sale_request.group_edit_account_invoice_line_price'):
             for rec in fields_blocked:

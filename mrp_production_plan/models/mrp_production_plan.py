@@ -555,7 +555,7 @@ class MrpProductionPlan(models.Model):
     @api.depends('line_ids')
     def _compute_requests_wo_order(self):
         for rec in self:
-            if any([not line.production_id for line in rec.line_ids]):
+            if rec.line_ids.filtered(lambda p: not p.production_id):
                 rec.requests_wo_order = True
 
 

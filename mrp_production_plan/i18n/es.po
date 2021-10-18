@@ -300,7 +300,7 @@ msgid "Manufacturing Orders"
 msgstr "Ordenes de Producción"
 
 #. module: mrp_production_plan
-#: model:ir.model,name:mrp_production_plan.model_mrp_production_request
+#: model:ir.model,name:mrp_production_plan.model_mrp_request
 msgid "Manufacturing Request"
 msgstr "Solicitud de Fabricación"
 
@@ -427,7 +427,7 @@ msgstr "Orden de Producción"
 #: model:ir.actions.act_window,name:mrp_production_plan.action_mrp_production_plan
 #: model:ir.model,name:mrp_production_plan.model_mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production__plan_id
-#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_request__plan_id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_request__plan_id
 #: model:ir.module.category,name:mrp_production_plan.module_category_mrp_production_plan
 #: model:ir.ui.menu,name:mrp_production_plan.mrp_production_plan_menu
 #: model_terms:ir.ui.view,arch_db:mrp_production_plan.mrp_production_plan_form
@@ -436,7 +436,7 @@ msgstr "Plan de Producción"
 
 #. module: mrp_production_plan
 #: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production__plan_line_id
-#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_production_request__plan_line_id
+#: model:ir.model.fields,field_description:mrp_production_plan.field_mrp_request__plan_line_id
 msgid "Production Plan Line"
 msgstr "Línea de Plan de Producción"
 
@@ -682,7 +682,7 @@ msgid "Wizard to change routing of the current production"
 msgstr "Asistente para cambiar la ruta de la producción actual"
 
 #. module: mrp_production_plan
-#: model:ir.model,name:mrp_production_plan.model_mrp_production_request_create_mo
+#: model:ir.model,name:mrp_production_plan.model_mrp_request_create_mo
 msgid "Wizard to create Manufacturing Orders"
 msgstr "Asistente para crear órdenes de fabricación"
 

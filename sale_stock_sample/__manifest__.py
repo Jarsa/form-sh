@@ -4,12 +4,12 @@
 {
     'name': 'Sale Stock Sample',
     'summary': 'Create Sample Products for Customers',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Sale',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'sale_request',
     ],
@@ -21,5 +21,6 @@
         'views/stock_location_route_view.xml',
         'wizards/sale_stock_sample_procurement_wizard_view.xml',
         'views/sale_order_view.xml',
+        'security/ir.model.access.csv',
     ],
 }

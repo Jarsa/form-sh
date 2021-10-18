@@ -20,7 +20,7 @@ class StockPicking(models.Model):
 
     def _total_to_text(
             self, amount, currency, partner_lang='es_MX'):
-        total = str(float(amount)).split('.')[0]
+        total = str(float(amount)).split('.', maxsplit=1)[0]
         decimals = str(float(amount)).split('.')[1]
         currency_type = 'M.N.'
         if partner_lang != 'es_MX':

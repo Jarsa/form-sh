@@ -7,12 +7,12 @@
     This module allows to decrease the original quantity of a Manufacturing
     Order if there are Workorders processed with less quantity than the
     original quantity.""",
-    'version': '12.0.1.0.1',
+    'version': '14.0.1.0.1',
     'category': 'Manufacture',
     'website': 'https://www.jarsa.com.mx',
     'author': 'Jarsa Sistemas',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'mrp',
     ],
