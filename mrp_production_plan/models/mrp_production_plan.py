@@ -97,25 +97,35 @@ class MrpProductionPlan(models.Model):
 
     @api.depends('production_ids')
     def _compute_finished_orders(self):
-        finished_orders = True
-        if 'done' not in self.production_ids.mapped('state'):
-            finished_orders = False
-        self.finished_orders = finished_orders
+        for rec in self:
+            finished_orders = True
+            if 'done' not in rec.production_ids.mapped('state'):
+                finished_orders = False
+            rec.finished_orders = finished_orders
 
     @api.depends('line_ids')
     def _compute_has_phantom(self):
-        if any(self.line_ids.mapped('bom_id')):
-            self.has_phantom = True
+        for rec in self:
+            has_phantom = False
+            if any(self.line_ids.mapped('bom_id')):
+                has_phantom = True
+            rec.has_phantom = has_phantom
 
     @api.depends('line_ids')
     def _compute_is_planned(self):
-        if any(self.line_ids.mapped('production_id')):
-            self.is_planned = True
+        for rec in self:
+            is_planned = False
+            if any(rec.line_ids.mapped('production_id')):
+                is_planned = True
+            rec.is_planned = is_planned
 
     @api.depends('line_ids')
     def _compute_has_routing(self):
-        if any(self.line_ids.mapped('date_planned_start_wo')):
-            self.has_routing = True
+        for rec in self:
+            has_routing = False
+            if any(rec.line_ids.mapped('date_planned_start_wo')):
+                has_routing = True
+            rec.has_routing = has_routing
 
     @api.model
     def _avoid_duplicate_planned_plans(self, vals):
@@ -558,8 +568,10 @@ class MrpProductionPlan(models.Model):
     @api.depends('line_ids')
     def _compute_requests_wo_order(self):
         for rec in self:
+            requests_wo_order = False
             if rec.line_ids.filtered(lambda p: not p.production_id):
-                rec.requests_wo_order = True
+                requests_wo_order = True
+            rec.requests_wo_order = requests_wo_order
 
 
 class MrpProductionPlanLine(models.Model):
