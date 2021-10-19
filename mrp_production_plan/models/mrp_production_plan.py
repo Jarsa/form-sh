@@ -54,7 +54,8 @@ class MrpProductionPlan(models.Model):
         default='draft',
     )
     finished_orders = fields.Boolean(
-        compute='_compute_finished_orders', default=True)
+        compute='_compute_finished_orders'
+    )
     has_phantom = fields.Boolean(
         readonly=True, compute='_compute_has_phantom',
         help='Technical field used to show or hide columns bom_id and '
@@ -96,8 +97,10 @@ class MrpProductionPlan(models.Model):
 
     @api.depends('production_ids')
     def _compute_finished_orders(self):
+        finished_orders = True
         if 'done' not in self.production_ids.mapped('state'):
-            self.finished_orders = False
+            finished_orders = False
+        self.finished_orders = finished_orders
 
     @api.depends('line_ids')
     def _compute_has_phantom(self):
