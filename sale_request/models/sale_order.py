@@ -34,8 +34,7 @@ class SaleOrder(models.Model):
 
     def action_cancel(self):
         for rec in self:
-            if rec.master_sale_order and any(
-                    [line.child_ids for line in self.order_line]):
+            if rec.master_sale_order and self.order_line.mapped('child_ids'):
                 raise UserError(
                     _('Error!, You can not cancel a sale order when the sale'
                       ' order lines has child lines generated '
@@ -184,6 +183,6 @@ class SaleOrderLine(models.Model):
     def _action_launch_stock_rule(self):
         """Method overrided from odoo to avoid the launching for the
         stock rules when a sale order is a master sale order"""
-        if all([order.master_sale_order for order in self.mapped('order_id')]):
+        if all(self.mapped('order_id.master_sale_order')):
             return True
         return super()._action_launch_stock_rule()

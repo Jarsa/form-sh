@@ -4,12 +4,12 @@
 {
     'name': 'Produce Location to Manufacture Request',
     'summary': 'Define production locations based on product category',
-    'version': '12.0.1.0.1',
+    'version': '14.0.1.0.0',
     'category': 'Manufacture',
     'author': 'Jarsa Sistemas, Vauxoo, Odoo Community Association (OCA)',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'mrp_request',
     ],

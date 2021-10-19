@@ -5,11 +5,11 @@
     'name': 'product_category_validation',
     'summary': """Module that validates fields in relation to the chosen
     category""",
-    'version': '12.0.1.0.1',
+    'version': '14.0.1.0.1',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'AGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'mrp',
     ],

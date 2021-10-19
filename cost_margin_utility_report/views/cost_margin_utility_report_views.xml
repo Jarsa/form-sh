@@ -27,6 +27,7 @@
         <field name="arch" type="xml">
             <search string="Search Cost Margin Utility">
                 <group string="Group By" name="groupby">
+                    <field name="product_id"/>
                     <filter name="ref" string="Reference" context="{'group_by':'reference'}"/>
                     <filter name="categ" string="Category" context="{'group_by':'product_category_id'}"/>
                     <filter name="prod" string="Product" context="{'group_by':'product_id'}"/>

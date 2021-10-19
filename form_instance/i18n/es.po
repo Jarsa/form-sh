@@ -240,7 +240,7 @@ msgid "Manager of CRM (Configuration)"
 msgstr "Administrador del CRM (Configuración)"
 
 #. module: form_instance
-#: model:ir.model,name:form_instance.model_mrp_production_request
+#: model:ir.model,name:form_instance.model_mrp_request
 msgid "Manufacturing Request"
 msgstr "Solicitud de Fabricación"
 
@@ -294,7 +294,7 @@ msgstr "Producto"
 
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_account_invoice_line__category_id
-#: model:ir.model.fields,field_description:form_instance.field_mrp_production_request__product_category_id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request__product_category_id
 #: model:ir.model.fields,field_description:form_instance.field_stock_quant__categ_id
 msgid "Product Category"
 msgstr "Categoría de producto"
@@ -334,7 +334,7 @@ msgstr "Creación de productos"
 #. module: form_instance
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production__product_supplier_name
 #: model:ir.model.fields,field_description:form_instance.field_mrp_production_plan_line__product_supplier_name
-#: model:ir.model.fields,field_description:form_instance.field_mrp_production_request__product_supplier_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request__product_supplier_name
 #: model:ir.model.fields,field_description:form_instance.field_stock_move__product_supplier_name
 #: model:ir.model.fields,field_description:form_instance.field_stock_move_line__product_supplier_name
 #: model:ir.model.fields,field_description:form_instance.field_stock_quant__product_supplier_name
@@ -404,7 +404,7 @@ msgstr "Línea de pedido de venta"
 
 #. module: form_instance
 #: model:ir.model.fields,help:form_instance.field_account_invoice_line__category_id
-#: model:ir.model.fields,help:form_instance.field_mrp_production_request__product_category_id
+#: model:ir.model.fields,help:form_instance.field_mrp_request__product_category_id
 #: model:ir.model.fields,help:form_instance.field_stock_quant__categ_id
 msgid "Select category for the current product"
 msgstr "Seleccione la categoría para el producto actual."

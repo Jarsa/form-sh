@@ -26,11 +26,12 @@ class SaleOrderInvoiceMerge(TransactionCase):
 
     def create_wizard(self, orders):
         wiz_obj = self.env['sale.advance.payment.inv']
-        context = {
+        context = self._context.copy()
+        context.update({
             'active_ids': orders.ids,
             'open_invoices': True,
-        }
-        return wiz_obj.with_context(context).create({
+        })
+        return wiz_obj.with_context(**context).create({
             'advance_payment_method': 'delivered'
         })
 
@@ -39,7 +40,7 @@ class SaleOrderInvoiceMerge(TransactionCase):
         order2 = self.create_sale_order(2.0)
         wiz = self.create_wizard(order1 + order2)
         result = wiz.create_invoices()
-        invoice = self.env['account.invoice'].browse(result['res_id'])
+        invoice = self.env['account.move'].browse(result['res_id'])
         self.assertEqual(len(invoice.invoice_line_ids), 1)
         self.assertEqual(sum(invoice.invoice_line_ids.mapped('quantity')), 3.0)
         self.assertEqual(

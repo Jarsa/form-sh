@@ -2,7 +2,6 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
 from odoo import _, api, fields, models
-from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError
 
 
@@ -13,7 +12,7 @@ class ProductTemplate(models.Model):
         return self.uom_id or self.env.ref('uom.product_uom_unit')
 
     equivalent_factor = fields.Float(
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         default=1.0,
         help='Factor to compute the product quantities in the secondary UoM.'
         ' To compute that quantity the quantity in the original UoM will be'
@@ -36,17 +35,17 @@ class ProductTemplate(models.Model):
                         ' must be greather than zero.'))
 
 
-class ProductProduct(models.Model):
-    _inherit = 'product.product'
+# class ProductProduct(models.Model):
+#     _inherit = 'product.product'
 
-    equivalent_qty_at_date = fields.Float(
-        string='Equivalent Quantity',
-        digits=dp.get_precision('Product Unit of Measure'),
-        compute='_compute_equivalent_qty_at_date',
-    )
+#     equivalent_qty_at_date = fields.Float(
+#         string='Equivalent Quantity',
+#         digits='Product Unit of Measure',
+#         compute='_compute_equivalent_qty_at_date',
+#     )
 
-    @api.depends('qty_at_date')
-    def _compute_equivalent_qty_at_date(self):
-        for rec in self:
-            rec.equivalent_qty_at_date = (
-                rec.qty_at_date / rec.equivalent_factor)
+#     @api.depends('qty_at_date')
+#     def _compute_equivalent_qty_at_date(self):
+#         for rec in self:
+#             rec.equivalent_qty_at_date = (
+#                 rec.qty_at_date / rec.equivalent_factor)

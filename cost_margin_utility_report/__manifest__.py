@@ -4,13 +4,13 @@
 {
     "name": "Cost Margin Utility Report",
     "summary": "Generate Cost Margin Utility Report",
-    "version": "12.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Report",
     "author": "Jarsa Sistemas",
     "website": "https://www.jarsa.com.mx",
     "license": "LGPL-3",
     "depends": ["stock", "mrp", "sale", "purchase", ],
-    "installable": False,
+    "installable": True,
     "data": [
         "views/cost_margin_utility_report_views.xml",
         "wizard/cost_margin_utility_report_wizard_view.xml",

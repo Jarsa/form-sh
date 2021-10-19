@@ -4,12 +4,12 @@
 {
     'name': 'Sale Order Invoice Merge Qty',
     'summary': 'Merge the quantities of same product in different so',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'sales',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'account',
         'sale_management',

@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * mrp_production_request_produce_location
+#   * mrp_request_produce_location
 #
 msgid ""
 msgstr ""
@@ -15,28 +15,28 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: mrp_production_request_produce_location
-#: model:ir.model.fields,field_description:mrp_production_request_produce_location.field_product_category__location_dest_id
+#. module: mrp_request_produce_location
+#: model:ir.model.fields,field_description:mrp_request_produce_location.field_product_category__location_dest_id
 msgid "Finished Products Location"
 msgstr "Ubicación de productos terminados"
 
-#. module: mrp_production_request_produce_location
-#: model:ir.model,name:mrp_production_request_produce_location.model_mrp_production_request
+#. module: mrp_request_produce_location
+#: model:ir.model,name:mrp_request_produce_location.model_mrp_request
 msgid "Manufacturing Request"
 msgstr "Solicitud de Fabricación"
 
-#. module: mrp_production_request_produce_location
-#: model:ir.model,name:mrp_production_request_produce_location.model_product_category
+#. module: mrp_request_produce_location
+#: model:ir.model,name:mrp_request_produce_location.model_product_category
 msgid "Product Category"
 msgstr "Categoría de producto"
 
-#. module: mrp_production_request_produce_location
-#: model_terms:ir.ui.view,arch_db:mrp_production_request_produce_location.product_category_default_location_form
+#. module: mrp_request_produce_location
+#: model_terms:ir.ui.view,arch_db:mrp_request_produce_location.product_category_default_location_form
 msgid "Production Locations"
 msgstr "Ubicaciones de Producción"
 
-#. module: mrp_production_request_produce_location
-#: model:ir.model.fields,field_description:mrp_production_request_produce_location.field_product_category__location_src_id
+#. module: mrp_request_produce_location
+#: model:ir.model.fields,field_description:mrp_request_produce_location.field_product_category__location_src_id
 msgid "Raw Materials Location"
 msgstr "Ubicación de materias primas"
 

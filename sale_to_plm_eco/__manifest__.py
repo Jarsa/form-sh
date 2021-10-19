@@ -4,12 +4,12 @@
 {
     'name': 'Sale to ECO',
     'summary': 'Module to create ECO from sale order',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Sale',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'sale_request',
     ],
@@ -17,5 +17,6 @@
         'wizard/eco_wizard_view.xml',
         'views/sale_order_view.xml',
         'views/mrp_eco_view.xml',
+        'security/ir.model.access.csv',
     ],
 }

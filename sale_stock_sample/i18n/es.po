@@ -95,7 +95,7 @@ msgstr "Cantidad Pedida"
 #. module: sale_stock_sample
 #: model:ir.model.fields,field_description:sale_stock_sample.field_sale_stock_sample_procurement_wizard_line__product_id
 msgid "Product"
-msgstr "Producto"s
+msgstr "Producto"
 
 #. module: sale_stock_sample
 #: model:stock.picking.type,name:sale_stock_sample.stock_sample_op

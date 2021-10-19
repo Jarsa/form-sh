@@ -4,12 +4,12 @@
 {
     'name': 'MRP PLM Survey',
     'summary': 'MRP PLM Survey',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'mrp',
     'author': 'Jarsa Sistemas, Vauxoo, Odoo Community Association (OCA)',
     'website': 'https://www.jarsa.com.mx',
     'license': 'LGPL-3',
-    'installable': False,
+    'installable': True,
     'depends': [
         'survey',
         'mrp_plm',

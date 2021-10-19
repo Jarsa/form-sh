@@ -47,5 +47,6 @@ class ProductCategory(models.Model):
     def write(self, vals):
         res = super().write(vals)
         for rec in self:
-            rec._verify_defaults_set()
+            if not self._context.get('migration'):
+                rec._verify_defaults_set()
         return res

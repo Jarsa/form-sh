@@ -4,7 +4,7 @@
 from odoo import fields, models
 
 
-class AccountInvoiceLine(models.Model):
-    _inherit = 'account.invoice.line'
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
 
-    sibling_invoice_id = fields.Many2one('account.invoice')
+    sibling_invoice_id = fields.Many2one('account.move')

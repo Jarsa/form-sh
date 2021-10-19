@@ -2,7 +2,6 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
 from odoo import api, fields, models
-from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError
 
 
@@ -85,7 +84,7 @@ class SaleStockSampleProcurementLineWizard(models.TransientModel):
     )
     product_uom_qty = fields.Float(
         string='Ordered Quantity',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
     )
     product_uom = fields.Many2one(
         comodel_name='uom.uom',
@@ -103,7 +102,7 @@ class SaleStockSampleProcurementLineWizard(models.TransientModel):
     )
     qty_to_procure = fields.Float(
         help='Set the product quantity to procure.',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         default=1.0,
     )
 
