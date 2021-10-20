@@ -16,9 +16,9 @@ class SaleOrderLine(models.Model):
                     if len(invoice_line.sale_line_ids) > 1:
                         qty_invoiced = line.qty_delivered
                     elif invoice_line.move_id.move_type == 'out_invoice':
-                        qty_invoiced += invoice_line.uom_id._compute_quantity(
+                        qty_invoiced += invoice_line.product_uom_id._compute_quantity(
                             invoice_line.quantity, line.product_uom)
                     elif invoice_line.move_id.move_type == 'out_refund':
-                        qty_invoiced -= invoice_line.uom_id._compute_quantity(
+                        qty_invoiced -= invoice_line.product_uom_id._compute_quantity(
                             invoice_line.quantity, line.product_uom)
             line.qty_invoiced = qty_invoiced
