@@ -9,7 +9,7 @@
         ],
     },
     'summary': 'Custom sale order report ',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'category': 'Report',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',

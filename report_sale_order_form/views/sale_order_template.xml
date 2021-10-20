@@ -84,7 +84,7 @@
                             <tr style="background-color: #FFFFFF; font-style: normal;">
                                 <th><span t-esc="doc.partner_id.ref"/></th>
                                 <th><span t-field="doc.client_order_ref"/></th>
-                                <th><span t-field="doc.confirmation_date"/></th>
+                                <th><span t-field="doc.date_order"/></th>
                                 <th><span t-esc="doc.pricelist_id.currency_id.name"/></th>
                             </tr>
                         </table>
