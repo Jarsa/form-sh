@@ -29,6 +29,6 @@ class AccountPayment(models.Model):
         else:
             sequence_code = 'account.payment.internal.move'
         vals['name'] = self.env['ir.sequence'].with_context(
-            ir_sequence_date=vals['payment_date']).next_by_code(
+            ir_sequence_date=vals['date']).next_by_code(
             sequence_code)
         return super().create(vals)
