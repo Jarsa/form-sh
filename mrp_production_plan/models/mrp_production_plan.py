@@ -349,9 +349,9 @@ class MrpProductionPlan(models.Model):
                 child_order.button_plan()
             production.plan_line_id.write({
                 'date_planned_start_wo': (
-                    production.date_planned_start_wo),
+                    production.date_planned_start),
                 'date_planned_finished_wo': (
-                    production.date_planned_finished_wo),
+                    production.date_planned_finished),
             })
         self.state = 'planned'
         self._link_workorders()
@@ -430,7 +430,7 @@ class MrpProductionPlan(models.Model):
         orders_to_done = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and (
                 x.finished_move_line_ids) and
-            x.availability != 'assigned')
+            x.components_availability_state != 'available')
         if orders_to_done:
             orders = ''
             for ordr in orders_to_done:
@@ -449,13 +449,13 @@ class MrpProductionPlan(models.Model):
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
-            x.availability != 'assigned').mapped(
+            x.components_availability_state != 'available').mapped(
                 'workorder_ids')
         workorders.mapped('time_ids').unlink()
         workorders.unlink()
         undone_orders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
-            x.availability != 'assigned')
+            x.components_availability_state != 'available')
         sfp_pickings = self.production_ids.filtered(
             lambda p: p.state == 'done').mapped('picking_ids').filtered(
                 lambda p: p.picking_type_id.id == 7 and (
