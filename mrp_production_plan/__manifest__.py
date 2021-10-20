@@ -4,7 +4,7 @@
 {
     'name': 'MRP Production Plan',
     'summary': 'Schedule the production of the day',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'category': 'Manufacture',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',

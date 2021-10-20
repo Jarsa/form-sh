@@ -168,6 +168,7 @@ class MrpProductionPlan(models.Model):
             request.plan_line_id = mrp_plan_line_obj.create({
                 'plan_id': self.id,
                 'request_id': request.id,
+                'alternative_bom_id': request.bom_id.id,
             })
         return True
 
@@ -195,7 +196,8 @@ class MrpProductionPlan(models.Model):
             to_date = workcenter.resource_calendar_id.attendance_ids and (
                 workcenter.resource_calendar_id.plan_hours(
                     workorder.duration_expected / 60.0, from_date,
-                    compute_leaves=True, resource=workcenter.resource_id))
+                    compute_leaves=True, domain=[('time_type', 'in', ['leave', 'other'])]
+                ))
             if to_date:
                 if not from_date_set:
                     # planning 0 hours gives the start of the next attendance
@@ -248,10 +250,12 @@ class MrpProductionPlan(models.Model):
                     start_date = from_date + relativedelta(minutes=duration)
 
     def _sort_workorders_by_sequence(self):
-        for wc in self.workcenter_line_ids:
-            workorders = wc.line_ids.filtered(
-                lambda l: l.state in ['pending', 'ready']).sorted('sequence')
-            self._plan_workorders(workorders)
+        # Commented in migration to V14, need to review.
+        # for wc in self.workcenter_line_ids:
+        #     workorders = wc.line_ids.filtered(
+        #         lambda l: l.state in ['pending', 'ready']).sorted('sequence')
+        #     self._plan_workorders(workorders)
+        return True
 
     @api.model
     def _recursive_search_of_child_orders(self, production):
@@ -323,6 +327,7 @@ class MrpProductionPlan(models.Model):
             'sequence') if not self._context.get(
                 'lines', False) else self._context.get('lines')
         for line in pending_lines:
+            line.request_id.bom_id = line.alternative_bom_id
             wizard = wizard_obj.with_context(
                 active_ids=line.request_id.ids,
                 active_model='mrp.request').create({
@@ -586,6 +591,12 @@ class MrpProductionPlanLine(models.Model):
     product_id = fields.Many2one(
         'product.product', string='Product', related='request_id.product_id',
         readonly=True)
+    product_tmpl_id = fields.Many2one(
+        'product.template',
+        string='Product Template',
+        related='product_id.product_tmpl_id',
+        readonly=True,
+    )
     required_qty = fields.Float(
         readonly=True,
         related='request_id.product_qty',
@@ -624,9 +635,13 @@ class MrpProductionPlanLine(models.Model):
         help='Technical field used to identify if the'
         ' manufacture order will be processed',
     )
+    alternative_bom_id = fields.Many2one(
+        comodel_name="mrp.bom",
+        string="BoM",
+    )
     bom_id = fields.Many2one(
         'mrp.bom',
-        string='BoM',
+        string='Kit BoM',
         help='Field used to set the BoM used to compute the quantity per kit.'
     )
     bom_line_ids = fields.Many2many('mrp.bom.line', string='BoM Lines')
