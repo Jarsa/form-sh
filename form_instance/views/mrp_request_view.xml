@@ -41,9 +41,6 @@
         <field name="model">mrp.request</field>
         <field name="inherit_id" ref="mrp_request.view_mrp_request_search"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='requested_by']" position="after">
-                <!--<field name="origin"/>-->
-            </xpath>
             <xpath expr="//field[@name='pending_qty']" position="after">
                 <filter domain="[('origin','!=', False)]" help="Requested by system" name="requested_by_system" string="Requested by system"/>
                 <filter domain="[('origin','=', False)]" help="Requested manually" name="requested_manually" string="Requested manually"/>
