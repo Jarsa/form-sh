@@ -8,7 +8,10 @@ class MrpRequest(models.Model):
     _inherit = 'mrp.request'
 
     plan_line_id = fields.Many2one(
-        'mrp.production.plan.line', string="Production Plan Line")
+        'mrp.production.plan.line',
+        string="Production Plan Line",
+        copy=False,
+    )
     plan_id = fields.Many2one(
         'mrp.production.plan', string="Production Plan",
         related="plan_line_id.plan_id",

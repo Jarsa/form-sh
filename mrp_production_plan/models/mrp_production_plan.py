@@ -346,6 +346,7 @@ class MrpProductionPlan(models.Model):
         # Plan the production
         productions = self.env['mrp.production'].browse(production_ids)
         # Write the start and end date
+        productions.action_confirm()
         productions.button_plan()
         for production in productions:
             child_orders = self._recursive_search_of_child_orders(production)
