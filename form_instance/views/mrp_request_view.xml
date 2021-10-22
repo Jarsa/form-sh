@@ -15,7 +15,6 @@
             <xpath expr="//header/button[@name='button_done']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            
         </field>
     </record>
     <record model="ir.ui.view" id="mrp_request_custom_tree">
@@ -34,6 +33,17 @@
                         icon="fa-check"
                         type="object"
                     />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_mrp_request_search">
+        <field name="name">view.mrp.request.search</field>
+        <field name="model">mrp.request</field>
+        <field name="inherit_id" ref="mrp_request.view_mrp_request_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pending_qty']" position="after">
+                <filter domain="[('origin','!=', False)]" help="Requested by system" name="requested_by_system" string="Requested by system"/>
+                <filter domain="[('origin','=', False)]" help="Requested manually" name="requested_manually" string="Requested manually"/>
             </xpath>
         </field>
     </record>
