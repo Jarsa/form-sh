@@ -47,7 +47,6 @@ class StockMove(models.Model):
     def create(self, vals):
         product = self.env["product.product"].browse(
             vals.get("product_id", False))
-        import ipdb; ipdb.set_trace()
         if product.stock_secondary_uom_id:
             vals.update({
                 "secondary_uom_id": product.stock_secondary_uom_id.id,
