@@ -21,6 +21,12 @@
                 <field name="price_unit" optional="hide" attrs="{'invisible': [('type_operation_line','!=','incoming')]}"/>
                 <field name="subtotal" optional="hide" attrs="{'invisible': [('type_operation_line','!=','incoming')]}"/>
             </xpath>
+            <xpath expr="//field[@name='location_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
