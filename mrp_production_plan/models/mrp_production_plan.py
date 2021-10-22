@@ -374,7 +374,7 @@ class MrpProductionPlan(models.Model):
         stock_loc = self.env.ref(
             '__export__.stock_location_31_2395bc4b')
         self._make_transfer(
-            location_id=quality_loc, location_dest_id=stock_loc)
+            location_id=quality_loc.id, location_dest_id=stock_loc.id)
 
     def _transfer_raw_material(self):
         self.ensure_one()
@@ -383,7 +383,7 @@ class MrpProductionPlan(models.Model):
         stock_loc = self.env.ref(
             '__export__.stock_location_31_2395bc4b')
         self._make_transfer(
-            location_id=pre_prod_loc, location_dest_id=stock_loc)
+            location_id=pre_prod_loc.id, location_dest_id=stock_loc.id)
 
     def _make_transfer(self, location_id, location_dest_id):
         self.ensure_one()
@@ -392,7 +392,7 @@ class MrpProductionPlan(models.Model):
             'mrp_production_plan.return_raw_material_form')
         raw_material_categ_ids = [31, 15, 37, 27]
         quants = quant_obj.search([
-            ('location_id', '=', location_id.id),
+            ('location_id', '=', location_id),
             ('product_id.categ_id', 'in', raw_material_categ_ids)])
         products = quants.mapped('product_id')
         products_list = []
@@ -408,16 +408,16 @@ class MrpProductionPlan(models.Model):
                 'product_id': product.id,
                 'product_uom_qty': product_qty,
                 'product_uom': product.uom_id.id,
-                'location_id': location_id.id,
-                'location_dest_id': location_dest_id.id,
+                'location_id': location_id,
+                'location_dest_id': location_dest_id,
             }))
         if not products_list:
             return True
         picking = self.env['stock.picking'].create({
             'picking_type_id': picking_type.id,
             'move_ids_without_package': products_list,
-            'location_id': location_id.id,
-            'location_dest_id': location_dest_id.id,
+            'location_id': location_id,
+            'location_dest_id': location_dest_id,
         })
         message = (
             _('Make transfer reserved materials: %s')
