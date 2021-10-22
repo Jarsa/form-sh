@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <odoo>
+    <record model="ir.ui.view" id="mrp_bom_form">
+        <field name="name">mrp_bom.form</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <field name="sequence"/>
+            </xpath>
+        </field>
+    </record>
     <!--This is a menu that allow see bill of materials withouth access manufacture module-->
-   <menuitem id="stock_bill_of_materials" name="Bills of Materials" parent="stock.menu_stock_inventory_control" action="mrp.mrp_bom_form_action"/>
+    <menuitem id="stock_bill_of_materials" name="Bills of Materials" parent="stock.menu_stock_inventory_control" action="mrp.mrp_bom_form_action"/>
  </odoo>
