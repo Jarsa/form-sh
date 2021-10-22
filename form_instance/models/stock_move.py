@@ -43,6 +43,17 @@ class StockMove(models.Model):
                         })
         return super()._action_assign()
 
+    @api.model
+    def create(self, vals):
+        product = self.env["product.product"].browse(
+            vals.get("product_id", False))
+        import ipdb; ipdb.set_trace()
+        if product.stock_secondary_uom_id:
+            vals.update({
+                "secondary_uom_id": product.stock_secondary_uom_id.id,
+            })
+        return super().create(vals)
+
 
 class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'
