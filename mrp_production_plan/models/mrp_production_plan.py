@@ -394,14 +394,13 @@ class MrpProductionPlan(models.Model):
         quants = quant_obj.search([
             ('location_id', '=', location_id.id),
             ('product_id.categ_id', 'in', raw_material_categ_ids)])
-        quants._update_quants_and_reserve_all()
         products = quants.mapped('product_id')
         products_list = []
         precision_digits = self.env['decimal.precision'].precision_get(
             'Product Unit of Measure')
         for product in products:
-            product_qty = quant_obj._get_available_quantity(
-                product_id=product, location_id=location_id, strict=True)
+            product_location = product.with_context(location=location_id)
+            product_qty = product_location.virtual_available
             if float_is_zero(product_qty, precision_digits=precision_digits):
                 continue
             products_list.append((0, 0, {
@@ -431,26 +430,6 @@ class MrpProductionPlan(models.Model):
                 'qty_done': line.product_uom_qty,
             })
         picking.button_validate()
-
-    def _check_orders_with_partialities(self):
-        orders_to_done = self.production_ids.filtered(
-            lambda x: x.state not in ('cancel', 'done') and (
-                x.finished_move_line_ids) and
-            x.components_availability_state != 'available')
-        if orders_to_done:
-            orders = ''
-            for ordr in orders_to_done:
-                orders = orders + '\n-' + ordr.name
-                production_id = ordr.id
-                message = (
-                    _('Manufacturing Orden: %s canceled '
-                        'because has partialities') % ordr.name)
-                self._log(
-                    message, self.id, production_id)
-            raise UserError(
-                _('The following orders have partialities '
-                  'and have not been marked as done yet: %s \n')
-                % (orders))
 
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
@@ -516,7 +495,7 @@ class MrpProductionPlan(models.Model):
             self._log(message, self.id)
             new_mr.button_to_approve()
 
-    def _cancel_unreserved_moves_to_cedis(self):
+    def _cancel_pickings(self):
         """ This method is created to cancel moves created by orderpoints that
         are not reserved. If we don't cancel this moves the orderpoint rules
         created the next day it will consider it as vitual stock.
@@ -525,30 +504,25 @@ class MrpProductionPlan(models.Model):
         It also consider child location of stock.
 
         """
-        sab_stock_loc = self.env.ref('stock.stock_location_stock').id
-        sab_output_loc = self.env.ref('stock.stock_location_output').id
-        unreserved_moves = self.env['stock.move'].search([
-            ('state', 'in', ['waiting', 'confirmed', 'partially_available']),
-            ('location_dest_id', '=', sab_output_loc),
-            ('origin', 'ilike', 'OP/'),
-            '|',
-            ('location_id', '=', sab_stock_loc),
-            ('location_id', 'child_of', sab_stock_loc),
+        # 6 Asignación OP
+        # 23 Calidad: Asigación OP
+        pickings = self.env['stock.picking'].search([
+            ('picking_type_id', 'in', [6, 23]),
+            ('state', 'not in', ['done', 'cancel'])
         ])
-        if unreserved_moves:
-            for rec in unreserved_moves:
+        if pickings:
+            for picking in pickings:
                 message = (
-                    _('Stock Move: %s cancelled '
-                        'because is not done') % rec.name)
+                    _('Pickings: %s cancelled '
+                        'because is not done') % picking.name)
                 self._log(
                     message, self.id)
-            unreserved_moves._action_cancel()
+            pickings.action_cancel()
 
     def button_done(self):
-        self._check_orders_with_partialities()
         self._cancel_undone_orders()
         self._cancel_unplanned_requests()
-        self._cancel_unreserved_moves_to_cedis()
+        self._cancel_pickings()
         self._transfer_raw_material()
         self._transfer_raw_material_from_quality()
         self._create_new_requests()
