@@ -168,7 +168,6 @@ class MrpProductionPlan(models.Model):
             request.plan_line_id = mrp_plan_line_obj.create({
                 'plan_id': self.id,
                 'request_id': request.id,
-                'alternative_bom_id': request.bom_id.id,
             })
         return True
 
@@ -327,7 +326,6 @@ class MrpProductionPlan(models.Model):
             'sequence') if not self._context.get(
                 'lines', False) else self._context.get('lines')
         for line in pending_lines:
-            line.request_id.bom_id = line.alternative_bom_id
             wizard = wizard_obj.with_context(
                 active_ids=line.request_id.ids,
                 active_model='mrp.request').create({
@@ -609,10 +607,6 @@ class MrpProductionPlanLine(models.Model):
         compute='_compute_planned',
         help='Technical field used to identify if the'
         ' manufacture order will be processed',
-    )
-    alternative_bom_id = fields.Many2one(
-        comodel_name="mrp.bom",
-        string="BoM",
     )
     bom_id = fields.Many2one(
         'mrp.bom',
