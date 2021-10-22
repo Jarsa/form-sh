@@ -66,7 +66,6 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
             'product_qty': self.production_id.product_qty,
             'product_uom_id': self.production_id.product_uom_id.id,
             'bom_id': self.bom_id.id,
-            'routing_id': self.production_id.routing_id.id,
             'date_planned_start': self.production_id.date_planned_start,
             'user_id': self.production_id.user_id.id,
             'origin': self.production_id.origin,
@@ -97,16 +96,20 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.env['change.production.qty'].search(
             [('mo_id', '=', self.production_id.id)]).sudo().unlink()
         self.production_id.sudo().unlink()
-        self.bom_id.write({'routing_id': self.current_bom_id.routing_id.id})
         production = self.env['mrp.production'].with_context(
             alternative_bom=True).create(data)
-        production.routing_id = data['routing_id']
+        move = production._get_moves_raw_values()
+        component_ids = []
+        for rec in move:
+            component_ids.append((0, 0, rec))
+        production.write({"move_raw_ids": component_ids})
+        production.action_confirm()
         plan_line.write({
             'production_id': production.id,
             'bom_id': production.bom_id.id,
         })
         production.message_post(body=message)
-        if production.routing_id:
+        if production.workorder_ids:
             production.button_plan()
             if production.plan_id:
                 production.plan_id._link_workorders()

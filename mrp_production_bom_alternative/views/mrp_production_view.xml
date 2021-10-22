@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="after">
-                <div class="alert alert-warning" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('availability', '!=', 'waiting'), ('state', 'in', ['progress', 'done', 'cancel']), ('has_multiple_boms', '=', False)]}">
+                <div class="alert alert-warning" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('reservation_state', '!=', 'waiting'), ('state', 'in', ['progress', 'done', 'cancel', 'to_close']), ('has_multiple_boms', '=', False)]}">
                     <field name="has_multiple_boms" invisible="1"/>
                     <strong><i class="fa fa-warning"/>Warning!</strong> There are some products without stock available. Click<strong><button name="%(action_mrp_production_bom_alternative_wizard)d" type="action" string="here" style="background:none! important; color:inherit; border:none;  font: inherit; border-bottom:1px solid #444; cursor: pointer; text-transform: lowercase;"/></strong>to change it to an alternative Bill of Materials.
                 </div>
