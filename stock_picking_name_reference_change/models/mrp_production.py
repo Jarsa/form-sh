@@ -1,16 +1,15 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import api, models
+from odoo import models
 
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    @api.model
-    def create(self, values):
-        res = super().create(values)
-        res._process_picking_origin()
+    def action_confirm(self):
+        res = super().action_confirm()
+        self._process_picking_origin()
         return res
 
     def _process_picking_origin(self):
