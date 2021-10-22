@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models, tools
 from odoo.exceptions import UserError
-from odoo.tools.float_utils import float_is_zero
+from odoo.tools.float_utils import float_compare
 
 
 class MrpProductionPlan(models.Model):
@@ -401,7 +401,7 @@ class MrpProductionPlan(models.Model):
         for product in products:
             product_location = product.with_context(location=location_id)
             product_qty = product_location.virtual_available
-            if float_is_zero(product_qty, precision_digits=precision_digits):
+            if float_compare(product_qty, 0, precision_digits=precision_digits) <= 0:
                 continue
             products_list.append((0, 0, {
                 'name': product.name,
