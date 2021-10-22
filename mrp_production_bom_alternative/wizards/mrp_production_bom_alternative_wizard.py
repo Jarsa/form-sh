@@ -98,11 +98,9 @@ class MrpProductionBomAlternativeWizard(models.TransientModel):
         self.production_id.sudo().unlink()
         production = self.env['mrp.production'].with_context(
             alternative_bom=True).create(data)
-        move = production._get_moves_raw_values()
-        component_ids = []
-        for rec in move:
-            component_ids.append((0, 0, rec))
-        production.write({"move_raw_ids": component_ids})
+        production._onchange_move_raw()
+        production._onchange_move_finished()
+        production._onchange_workorder_ids()
         production.action_confirm()
         plan_line.write({
             'production_id': production.id,
