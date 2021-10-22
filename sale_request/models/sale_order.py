@@ -180,7 +180,7 @@ class SaleOrderLine(models.Model):
                 lambda l: l.order_id.state not in 'cancel').mapped(
                 'qty_invoiced'))
 
-    def _action_launch_stock_rule(self):
+    def _action_launch_stock_rule(self, prev_qty=False):
         """Method overrided from odoo to avoid the launching for the
         stock rules when a sale order is a master sale order"""
         if all(self.mapped('order_id.master_sale_order')):
