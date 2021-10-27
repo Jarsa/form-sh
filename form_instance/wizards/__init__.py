@@ -2,3 +2,4 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from . import change_production_qty
+from . import mrp_request_create_mo
