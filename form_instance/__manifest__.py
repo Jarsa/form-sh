@@ -70,5 +70,6 @@
         'views/mrp_production_update_reason_view.xml',
         'views/sale_request_view.xml',
         'security/ir.model.access.csv',
+        'views/purchase_order_view.xml',
     ],
 }
