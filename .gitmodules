@@ -50,3 +50,7 @@
 	path = purchase-workflow
 	url = git@github.com:jarsa/purchase-workflow.git
 	branch = 14.0
+[submodule "stock-logistics-reporting"]
+	path = stock-logistics-reporting
+	url = git@github.com:jarsa/stock-logistics-reporting.git
+	branch = 14.0
