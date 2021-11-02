@@ -25,6 +25,9 @@
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="product_supplier_name"/>
             </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                <attribute name="widget">0</attribute>
+            </xpath>
         </field>
     </record>
     <menuitem id="menu_valuation_mrp" name="Inventory Report" parent="mrp.menu_mrp_reporting" sequence="100" action="stock.dashboard_open_quants" groups="mrp.group_mrp_user"/>
