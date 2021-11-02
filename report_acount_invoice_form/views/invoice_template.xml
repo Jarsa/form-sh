@@ -234,18 +234,22 @@
                 <p t-if="o.narration" name="narration">
                     <span t-field="o.narration"/>
                 </p>
+                <p t-if="o.name and o.move_type == 'out_invoice'">
+                    <span>Remission:</span><span t-field="o.invoice_origin"/>
+                </p>
                 <p t-if="o.name and o.move_type == 'out_refund'">
                     <span>Invoice:</span><span t-field="o.invoice_origin"/>
                 </p>
+
                 <t t-if="o.l10n_mx_edi_cfdi_uuid">
                     <div class="row" id='complement'>
                         <div t-if="cfdi_vals.get('sello')" class="barcode col-3">
-                        <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
-                            'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
-                                re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,
-                                tt='%.*f' % (o.currency_id.decimal_places, o.l10n_mx_edi_cfdi_amount), id=o.l10n_mx_edi_cfdi_uuid)
-                                + '&amp;fe=%s' % quote_plus(
-                                    cfdi_vals['sello'][-8:], 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                            <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
+                                'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
+                                    re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,
+                                    tt='%.*f' % (o.currency_id.decimal_places, o.l10n_mx_edi_cfdi_amount), id=o.l10n_mx_edi_cfdi_uuid)
+                                    + '&amp;fe=%s' % quote_plus(
+                                        cfdi_vals['sello'][-8:], 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                         </div>
                         <div class="complement-details col-9">
                             <div class="digital-stamp">
