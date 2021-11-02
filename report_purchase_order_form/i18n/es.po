@@ -77,6 +77,11 @@ msgstr "<strong>Cant</strong>"
 
 #. module: report_purchase_order_form
 #: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Sheets</strong>"
+msgstr "<strong>Láminas</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
 msgid "<strong>Subtotal</strong>"
 msgstr ""
 

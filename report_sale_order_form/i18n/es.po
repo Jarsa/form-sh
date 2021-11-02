@@ -83,7 +83,7 @@ msgstr "Descripción"
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
 msgid "Import"
-msgstr "Importar"
+msgstr "Importe"
 
 #. module: report_sale_order_form
 #: model_terms:ir.ui.view,arch_db:report_sale_order_form.report_sale_order_external_for_form
