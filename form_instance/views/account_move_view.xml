@@ -17,6 +17,9 @@
             <xpath expr="//button[@name='action_register_payment']" position="attributes">
                 <attribute name="groups">form_instance.group_receivable_form,account.group_account_invoice</attribute>
             </xpath>
+            <xpath expr="//field[@name='invoice_origin']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
             <xpath expr="//header" position="inside">
                 <field name="authorized" invisible="1"/>
                 <button

@@ -12,6 +12,12 @@ class AccountMove(models.Model):
         default=False,
         tracking=True,
     )
+    invoice_origin = fields.Char(
+        string='Origin',
+        readonly=False,
+        tracking=True,
+        help="The document(s) that generated the invoice.",
+    )
 
     def authorize_cancelation(self):
         self.authorized = True
