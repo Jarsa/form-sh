@@ -59,7 +59,7 @@
                 <table style="border: none; font-size: 10px;">
                     <tr>
                         <td t-if="o.invoice_date" style="border: none;"><strong style="margin-right:14px;">Invoice Date: </strong><strong t-esc="' '"/></td>
-                        <td t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" style="border: none; text-align: center;"><strong style="margin-right:14px;">Due Date: </strong></td>
+                        <td t-if="o.invoice_date_due" style="border: none; text-align: center;"><strong style="margin-right:14px;">Due Date: </strong></td>
                         <td t-if="o.ref" style="border: none;"><strong style="margin-right:14px;">Partner order: </strong></td>
                         <td t-if="o.currency_id.name == 'USD'" style="border: none;"><strong style="margin-right:14px;">Rate: </strong> <strong t-esc="' '"/>&amp;nbsp;</td>
                         <td t-if="cfdi_vals.get('usage')" style="border: none; text-align: center;"><strong style="margin-right:14px;">CFDI Usage: </strong>&amp;nbsp;&amp;nbsp;</td>
@@ -72,7 +72,7 @@
                         <td style="border: none;" t-if="o.invoice_date" >
                             <span t-field="o.invoice_date"/>
                         </td>
-                        <td style="border: none; text-align: center;" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">
+                        <td style="border: none; text-align: center;" t-if="o.invoice_date_due">
                             <span t-field="o.invoice_date_due"/>
                         </td>
                         <td style="border: none;" t-if="o.ref">
