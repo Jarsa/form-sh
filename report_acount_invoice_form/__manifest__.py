@@ -9,7 +9,7 @@
         ],
     },
     'summary': 'Custom invoice report',
-    'version': '14.0.1.0.2',
+    'version': '14.0.1.0.3',
     'category': 'Report',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
