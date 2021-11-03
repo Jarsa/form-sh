@@ -58,7 +58,7 @@ class LinkSaleOrderWizard(models.TransientModel):
         order = self.env['sale.order'].browse(
             self._context.get('active_ids'))
         wiz_lines = []
-        for line in order.order_line:
+        for line in order.order_line.filtered(lambda l: l.remaining_product_qty > 0):
             wiz_lines.append((0, 0, self._prepare_item(line)))
         res.update({
             'partner_id': order.partner_id.id,
@@ -156,13 +156,3 @@ class LinkSaleOrderWizardLine(models.TransientModel):
             'product_uom_qty': line.product_uom_qty,
             'product_uom_id': line.product_uom.id,
         }
-
-    @api.model
-    def create(self, vals):
-        """Method overrided to save the readonly fields values"""
-        sale_line_id = self.env['sale.order.line'].browse(
-            vals.get('sale_line_id'))
-        if sale_line_id:
-            vals.update(self._prepare_line(sale_line_id))
-        res = super().create(vals)
-        return res

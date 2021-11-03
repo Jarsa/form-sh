@@ -3,7 +3,7 @@
 {
     'name': 'Sale Request',
     'summary': 'Create Sale Order From Sale Requests by Product',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'author': 'Jarsa Sistemas S.A. de C.V., '
               'Odoo Community Association (OCA)',
     'category': 'Sales',
