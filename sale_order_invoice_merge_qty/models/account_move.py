@@ -27,7 +27,7 @@ class AccountMove(models.Model):
                 else:
                     line.sale_line_ids.write({
                         'price_unit': -line.sale_line_ids.untaxed_amount_to_invoice,
-                    }) 
+                    })
             except UserError:
                 pass
         return res
