@@ -14,7 +14,7 @@
                         <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
                         <span t-field="o.name"/>
                     </h4>
-                    <span>Fiscal Folio:</span><span t-esc="o.l10n_mx_edi_cfdi_uuid"/><br/>
+                    <span>Fiscal Folio:</span><span t-esc="cfdi_vals.get('uuid')"/><br/>
                     <strong>Picking:</strong>
                     <p t-if="o.get_picking()" t-esc="o.get_picking()"/>
                 </div>
@@ -98,7 +98,7 @@
                         <td t-if="o.invoice_payment_term_id.name" style="border: none;  background-color: white;">
                             <span t-esc="o.invoice_payment_term_id.name"/>
                         </td>                        
-                        <td style="border: none;  background-color: white;"><span t-field="o.company_id.partner_id.property_account_position_id"/></td>
+                        <td style="border: none;  background-color: white;"><span t-esc="cfdi_vals.get('fiscal_regime')"/></td>
                     </tr>
                 </table>
                 <div id="informations">
@@ -262,20 +262,14 @@
                                 <span>Digital stamp SAT</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span t-esc="cfdi_vals.get('selloSAT', cfdi_vals.get('SelloSAT', 'No identificado'))"/>
+                                <span t-esc="cfdi_vals.get('sello_sat')"/>
                             </div>
                             <div class="digital-stamp">
                                 <span>Original chain complement of digital certification SAT</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span class="nowrap" t-esc="tfd_original_string"/>
+                                <span class="nowrap" t-esc="cfdi_vals.get('cadena')"/>
                             </div>
-                            <!-- <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp">
-                                <span>Issued from</span>
-                            </div>
-                            <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp-content">
-                                <span t-esc="' | '.join([ '%s: %s' % (key, value) for key, value in xml.Emisor.ExpedidoEn.items()])"/>
-                            </div> -->
                             <div class="digital-stamp">
                                 <span>Extra Info</span>
                             </div>
