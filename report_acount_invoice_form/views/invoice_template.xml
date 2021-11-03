@@ -234,10 +234,10 @@
                 <p t-if="o.narration" name="narration">
                     <span t-field="o.narration"/>
                 </p>
-                <p t-if="o.name and o.move_type == 'out_invoice'">
+                <p t-if="o.invoice_origin and o.move_type == 'out_invoice'">
                     <span>Remission:</span><span t-field="o.invoice_origin"/>
                 </p>
-                <p t-if="o.name and o.move_type == 'out_refund'">
+                <p t-if="o.invoice_origin and o.move_type == 'out_refund'">
                     <span>Invoice:</span><span t-field="o.invoice_origin"/>
                 </p>
 
