@@ -1,7 +1,7 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class MrpProduction(models.Model):
@@ -17,3 +17,13 @@ class MrpProduction(models.Model):
         string="Production Plan",
         copy=False,
     )
+    raw_material_full_reserved = fields.Boolean(
+        compute="_compute_raw_material_full_reserved",
+        help="Technical field used to know if all the raw materials are reserved in a MO.",
+    )
+
+    @api.depends("move_raw_ids.state")
+    def _compute_raw_material_full_reserved(self):
+        for rec in self:
+            rec.raw_material_full_reserved = all(
+                [state == "assigned" for state in rec.move_raw_ids.mapped("state")])

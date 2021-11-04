@@ -432,13 +432,13 @@ class MrpProductionPlan(models.Model):
     def _cancel_undone_orders(self):
         workorders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
-            x.components_availability_state != 'available').mapped(
+            not x.raw_material_full_reserved).mapped(
                 'workorder_ids')
         workorders.mapped('time_ids').unlink()
         workorders.unlink()
         undone_orders = self.production_ids.filtered(
             lambda x: x.state not in ('cancel', 'done') and
-            x.components_availability_state != 'available')
+            not x.raw_material_full_reserved)
         sfp_pickings = self.production_ids.filtered(
             lambda p: p.state == 'done').mapped('picking_ids').filtered(
                 lambda p: p.picking_type_id.id == 7 and (
