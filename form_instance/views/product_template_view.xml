@@ -11,7 +11,12 @@
             </xpath>
             <xpath expr="//group[@name='sale']" position="before">
                 <group string="Price">
-                    <field name="item_ids" nolabel="1"/>
+                    <field name="item_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="pricelist_id"/>
+                            <field name="price"/>
+                        </tree>
+                    </field>
                 </group>
             </xpath>
         </field>
