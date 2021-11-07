@@ -14,17 +14,22 @@
                         <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
                         <span t-field="o.name"/>
                     </h4>
-                    <span>Fiscal Folio:</span><span t-esc="cfdi_vals.get('uuid')"/><br/>
-                    <strong>Picking:</strong>
-                    <p t-if="o.get_picking()" t-esc="o.get_picking()"/>
-                </div>
+                    <strong>Fiscal Folio: </strong>
+                    <span t-esc="cfdi_vals.get('uuid')"/>
+                    <t t-set="warehouse" t-value="o.get_picking()"/>
+                    <t t-if="warehouse">
+                        <br/>
+                        <strong>Picking: </strong>
+                        <span t-esc="warehouse"/>
+                    </t>
+                </div> 
                 <t t-if="not o.l10n_mx_edi_cfdi_uuid and o.l10n_mx_edi_cfdi_request in ('on_invoice', 'on_refund')">
                     <!-- due to HTML preview for device responsive -->
                     <button t-attf-class="btn-danger #{'btn' if report_type != 'html' else ''}">
                         <h1>A signature of this invoice is required, but it is not signed.</h1>
                     </button>
                 </t>
-                <div class="row">
+                <div class="row" style="font-size: 14px;">
                     <div class="col-6">
                         <address/>
                         <strong>Invoiced to:</strong><br/>

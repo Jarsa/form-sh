@@ -1,23 +1,26 @@
 # Copyright 2019, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lpgl.html).
 
+import logging
+
 from odoo import models
+
+_logger = logging.getLogger(__name__)
 
 try:
     from num2words import num2words
 except ImportError as err:
     _logger.debug(err)
 
+
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
     def get_picking(self):
         warehouse = ''
-        if self.invoice_origin:
-            order = self.env['sale.order'].search([
-                ('name', '=', self.invoice_origin),
-            ])
-            warehouse = order.warehouse_id.name
+        order = self.invoice_line_ids.mapped('sale_line_ids.order_id')
+        if order:
+            warehouse = order[0].warehouse_id.name
         return warehouse
 
     def get_rate(self):
