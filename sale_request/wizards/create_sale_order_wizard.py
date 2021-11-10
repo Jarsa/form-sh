@@ -282,7 +282,7 @@ class CreateSaleOrderWizard(models.TransientModel):
                 }
                 values = self._prepare_sale_order_line(order, params)
                 sol_obj.create(values)
-        for sale_order in so_obj:
+        for sale_order in so_obj.filtered(lambda so: so.state not in ('sale', 'done', 'cancel')):
             sale_order.action_confirm()
         if request_line.remaining_product_qty == 0.0:
             request_line.state = 'done'
