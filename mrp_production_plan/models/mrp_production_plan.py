@@ -517,7 +517,19 @@ class MrpProductionPlan(models.Model):
                     message, self.id)
             pickings.action_cancel()
 
+    def _remove_reserve(self):
+        pickings = self.production_ids.mapped('picking_ids').filtered(
+            lambda p: p.state not in ['done', 'cancel'])
+        moves = pickings.mapped('move_line_ids_without_package')
+        self.env.cr.execute('''
+            UPDATE stock_move_line
+            SET product_uom_qty = 0.0, product_qty = 0.0
+            WHERE id = ANY(%(ids)s);
+        ''', {'ids': moves.ids})
+        self.env.cr.commit()
+
     def button_done(self):
+        self._remove_reserve()
         self._cancel_undone_orders()
         self._cancel_unplanned_requests()
         self._cancel_pickings()
