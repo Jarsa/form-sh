@@ -446,7 +446,10 @@ class MrpProductionPlan(models.Model):
                         p.move_line_ids_without_package))
         for line in sfp_pickings.mapped('move_line_ids_without_package'):
             line.qty_done = line.product_uom_qty
-        sfp_pickings.split_process()
+            if not line.product_uom_qty:
+                line.unlink()
+        if sfp_pickings.mapped('move_line_ids_without_package'):
+            sfp_pickings.split_process()
         empty_pickings = self.env['stock.picking'].search([
             ('backorder_id', 'in', sfp_pickings.ids)])
         empty_pickings.action_cancel()
