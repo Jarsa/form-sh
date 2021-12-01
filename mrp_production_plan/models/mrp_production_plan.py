@@ -512,6 +512,7 @@ class MrpProductionPlan(models.Model):
             ('state', 'not in', ['done', 'cancel'])
         ])
         if pickings:
+            self._remove_reserve(pickings)
             for picking in pickings:
                 message = (
                     _('Pickings: %s cancelled '
@@ -520,9 +521,10 @@ class MrpProductionPlan(models.Model):
                     message, self.id)
             pickings.action_cancel()
 
-    def _remove_reserve(self):
-        pickings = self.production_ids.mapped('picking_ids').filtered(
-            lambda p: p.state not in ['done', 'cancel'])
+    def _remove_reserve(self, pickings=False):
+        if not pickings:
+            pickings = self.production_ids.mapped('picking_ids').filtered(
+                lambda p: p.state not in ['done', 'cancel'])
         moves = pickings.mapped('move_line_ids_without_package')
         self.env.cr.execute('''
             UPDATE stock_move_line
