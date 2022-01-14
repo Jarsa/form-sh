@@ -17,6 +17,7 @@
                 <field name="unit_cost"/>
                 <field name="contribution"/>
                 <field name="margin"/>
+                <field name="move_id" optional="hide"/>
             </tree>
         </field>
     </record>
