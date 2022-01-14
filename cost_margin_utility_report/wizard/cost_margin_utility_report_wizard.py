@@ -40,6 +40,7 @@ class CostMarginUtilityReportWiz(models.TransientModel):
         table_one.categ_id,
         table_one.default_code,
         table_one.id_form,
+        table_one.move_id,
         table_two.debit
         FROM
         (
@@ -49,95 +50,73 @@ class CostMarginUtilityReportWiz(models.TransientModel):
         aml.product_id,
         aml.credit,
         aml.move_id,
-        am.name,
+        aml.name,
         pp.default_code,
         pt.id_form,
         pt.description,
         pt.categ_id
-        FROM
-        account_move_line aml
-        INNER JOIN
-        account_move am
-        ON aml.move_id = am.id
-        INNER JOIN
-        product_product pp
-        ON aml.product_id = pp.id
-        INNER JOIN
-        product_template pt
-        ON pp.product_tmpl_id = pt.id
-        WHERE aml.date
-        BETWEEN
-        %s
-        AND
-        %s
-        AND
-        aml.account_id
-        IN
-        %s
-        AND
-        aml.journal_id
-        IN
-        %s) table_one
-        INNER JOIN
+        FROM account_move_line aml
+        LEFT JOIN account_move am ON aml.move_id = am.id
+        LEFT JOIN product_product pp ON aml.product_id = pp.id
+        LEFT JOIN product_template pt ON pp.product_tmpl_id = pt.id
+        WHERE
+        aml.date BETWEEN %(date_from)s AND %(date_to)s
+        AND aml.account_id IN %(income_accounts)s
+        AND aml.journal_id IN %(journal_ids)s
+        AND am.state = 'posted'
+        ) table_one
+        LEFT JOIN
         (
         SELECT
-        product_id,
-        debit,
-        move_id
-        FROM
-        account_move_line
-        WHERE date
-        BETWEEN
-        %s
-        AND
-        %s
-        AND
-        account_id
-        IN
-        %s
-        AND
-        journal_id
-        IN
-        %s) table_two
+        aml2.product_id,
+        aml2.debit,
+        aml2.move_id
+        FROM account_move_line aml2
+        LEFT JOIN account_move am2 ON aml2.move_id = am2.id
+        WHERE
+        aml2.date BETWEEN %(date_from)s AND %(date_to)s
+        AND aml2.account_id IN %(expense_accounts)s
+        AND aml2.journal_id IN %(journal_ids)s
+        AND am2.state = 'posted'
+        ) table_two
         ON table_one.move_id = table_two.move_id
         AND table_one.product_id = table_two.product_id
         ;
-        """,
-            (
-                self.date_from,
-                self.date_to,
-                tuple(income_accounts.ids),
-                tuple(journal_ids.ids),
-                self.date_from,
-                self.date_to,
-                tuple(expense_accounts.ids),
-                tuple(journal_ids.ids),
-            ),
+        """, {
+                'date_from': self.date_from,
+                'date_to': self.date_to,
+                'income_accounts': tuple(income_accounts.ids),
+                'expense_accounts': tuple(expense_accounts.ids),
+                'journal_ids': tuple(journal_ids.ids),
+            }
         )
         query_result = self._cr.dictfetchall()
         report_list = []
         for result in query_result:
-            if result["credit"] > 0:
-                quantity = abs(result["quantity"])
-                total_cost = result["debit"]
+            if result.get("credit") > 0:
+                quantity = abs(result.get("quantity", 0))
+                total_cost = result.get("debit", 0)
+                if not quantity or not total_cost:
+                    total_cost = 0
                 unit_cost = total_cost / quantity
-                contribution = result["credit"] - total_cost
-                margin = contribution * 100.0 / result["credit"]
+                contribution = result.get("credit") - total_cost
+                margin = contribution * 100.0 / result.get("credit")
                 report_list.append(
                     {
-                        "product_id": result["product_id"],
-                        "product_category_id": result["categ_id"],
-                        "product_description": result["description"],
+                        "product_id": result.get("product_id"),
+                        "product_category_id": result.get("categ_id"),
+                        "product_description": result.get("description"),
                         "sold_qty": quantity,
-                        "total_sale": result["credit"],
+                        "total_sale": result.get("credit"),
                         "total_cost": total_cost,
                         "unit_cost": unit_cost,
                         "contribution": contribution,
                         "margin": margin,
-                        "reference": result["name"],
-                        "default_code": result["default_code"],
-                        "form_id": result["id_form"],
-                        "partner_id": result["partner_id"],
+                        "reference": result.get("name"),
+                        "default_code": result.get("default_code"),
+                        "form_id": result.get("id_form"),
+                        "partner_id": result.get("partner_id"),
+                        "move_id": result.get("move_id"),
                     }
                 )
         self.env["cost.margin.utility.report"].create(report_list)

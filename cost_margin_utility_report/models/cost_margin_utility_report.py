@@ -23,3 +23,4 @@ class CostMarginUtilityReport(models.Model):
     form_id = fields.Char(readonly=True)
     partner_id = fields.Many2one(
         'res.partner', string='Client', readonly=True)
+    move_id = fields.Many2one('account.move', readonly=True)
