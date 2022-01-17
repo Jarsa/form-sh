@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-    <template id="report_picking_form" inherit_id="stock.report_picking">
+    <template id="report_picking_form" priority="100" inherit_id="stock.report_picking">
         <xpath expr="//div[1]/div[1]" position="replace">       
         </xpath>
 

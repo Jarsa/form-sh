@@ -294,7 +294,7 @@
             </div>
         </xpath>
     </template>
-    <template id="external_layout_boxed_inherit_form" inherit_id="web.external_layout_boxed">
+    <template id="external_layout_boxed_inherit_form" priority="100" inherit_id="web.external_layout_boxed">
         <xpath expr="div[1]/div[1]/div[1]/div[2]" position="replace">
              <div class="col-6 text-right mb4">
                     <h4 class="mt0" t-field="company.report_header"/>
