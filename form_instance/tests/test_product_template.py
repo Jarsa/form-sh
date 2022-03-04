@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo.tests.common import TransactionCase, Form
+# pylint: disable=C0103
 
 
 class TestProductTemplate(TransactionCase):

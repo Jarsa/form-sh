@@ -35,6 +35,7 @@
         'account_aged_by_currency_report',
         'purchase_order_secondary_unit',
         'stock_secondary_unit',
+        'report_deliver_form',
     ],
     'data': [
         'data/product_template.xml',

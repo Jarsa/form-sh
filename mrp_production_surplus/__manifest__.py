@@ -11,6 +11,7 @@
     'installable': True,
     'depends': [
         'mrp',
+        'stock'
     ],
     'data': [
         'data/ir_sequence_data.xml',
