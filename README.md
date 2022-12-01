@@ -4,7 +4,7 @@ This reposistory contains the modules required to run Form project on Odoo.sh.
 
 It also contains odoo.conf file that helps to run a local instance using the submodules defined in the repository.
 
-## How to use this repo in a local instance?
+## #How to use this repo in a local instance?
 
 The configuration of the file assumes that the folder structure for the project is the following.
 
