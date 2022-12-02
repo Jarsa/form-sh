@@ -143,7 +143,7 @@ class CreateSaleOrderWizard(models.TransientModel):
             'origin': request.name,
             'warehouse_id': request.warehouse_id.id,
             'request_id': request.id,
-            'fiscal_position_id': fpos_id,
+            'fiscal_position_id': fpos_id.id,
             'pricelist_id': pricelist_id,
             'payment_term_id': request.partner_id.property_payment_term_id.id,
             'partner_shipping_id': request.partner_shipping_id.id
