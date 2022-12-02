@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="send_mail_alert_production" model="mail.template">
+        <field name="name">Alert Over Production</field>
+        <field name="model_id" ref="mrp.model_mrp_production"/>
+        <field name="subject">Alert Over Production in ${object.name}</field>
+        <field name="email_to">edna@form.com.mx,gerardo@form.com.mx</field>
+        <field name="body_html" type="html">
+            <p>Good Morning,</p>
+            <p>There was an attept to produce more than 10% of the production plan of Manufacturing Order ${object.name} of product [${object.product_id.default_code}] ${object.product_id.name}</p></field>
+    </record>
+</odoo>

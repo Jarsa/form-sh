@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="l10n_mx_edi_cartaporte_report_delivery_document_form" inherit_id="stock.report_delivery_document">
+        <xpath expr="//span[@t-field='o.name']" position="before">
+            <h2>
+                Consignment note
+            </h2>
+        </xpath>
+    </template>
+</odoo>

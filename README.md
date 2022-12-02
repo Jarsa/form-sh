@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Odoo.sh reposistory for Form project
 
 This reposistory contains the modules required to run Form project on Odoo.sh.
@@ -54,3 +55,7 @@ You can also pass more parameters used to run odoo for example:
 ```shell-script
 odoo-sh <database-name> <reposistory-name> -i l10n_mx --load-language=es_MX
 ```
+=======
+# Form repository
+
+>>>>>>> 46c6ce471c201ae7dbb5178469f57aec67619278

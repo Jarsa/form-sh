@@ -1,0 +1,41 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * form_instance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-07 15:15+0000\n"
+"PO-Revision-Date: 2019-06-07 15:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order__client_order_ref
+msgid "Customer Reference"
+msgstr "Orden de Compra"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__designer_id
+msgid "Designer"
+msgstr "Diseñador"
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.mrp_stock_warehouse
+msgid "Reordening Rules"
+msgstr "Reglas de Abastecimiento"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_create_lead_in_crm_form
+msgid "Create tag in CRM"
+msgstr "Crear Etiquetas en CRM"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_create_lead_in_crm_form
+msgid "The user will have access to create a tag from CRM."
+msgstr "El usuario tendra acceso a crear Etiquetas en el modulo de CRM"

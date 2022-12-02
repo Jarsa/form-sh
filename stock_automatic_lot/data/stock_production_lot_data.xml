@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.sequence" id="stock_production_lot_in_data">
+        <field name="name">Form Lot IN Sequence</field>
+        <field name="implementation">no_gap</field>
+        <field name="code">Form Lots IN</field>
+        <field name="prefix">I</field>
+        <field name="padding">3</field>
+        <field name="number_increment">1</field>
+    </record>
+    <record model="ir.sequence" id="stock_production_lot_manufacture_data">
+        <field name="name">Form Lot Manufacture Sequence</field>
+        <field name="implementation">no_gap</field>
+        <field name="code">Form Lots Manufacture</field>
+        <field name="prefix">M</field>
+        <field name="padding">3</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- <record id="no_duplicate_vats" model="base.automation">
+        <field name="name">No Duplicar RFC</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="trigger">on_create_or_write</field>
+        <field name="state">code</field>
+        <field name="code">partners = model.search([('vat', '!=', False), ('supplier', '=', True)])
+for rec in records.filtered(lambda p: p.supplier):
+    if rec.vat in partners.filtered(lambda p: p.id != rec.id).mapped('vat'):
+        raise Warning('No puede duplicar RFC')
+        </field>
+    </record> -->
+</odoo>

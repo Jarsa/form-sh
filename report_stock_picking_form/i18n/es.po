@@ -1,0 +1,128 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_stock_picking_form
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-29 14:57+0000\n"
+"PO-Revision-Date: 2021-08-29 09:58-0500\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com.mx>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong class=\"text-right\">Total</strong>"
+msgstr "<strong class=\"text-right\">Total</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong class=\"text-right\">Unit Price</strong>"
+msgstr "<strong class=\"text-right\">Precio unitario</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Code</strong>"
+msgstr "<strong>Código</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Lot/Serial Number</strong>"
+msgstr "<strong>Número de Lote/Serie</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Observations</strong><br/>"
+msgstr "<strong>Observaciones</strong><br/>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Order code</strong>"
+msgstr "<strong>Código de orden</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Product</strong>"
+msgstr "<strong>Producto</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Quantity</strong>"
+msgstr "<strong>Cantidad</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Scheduled Date</strong>"
+msgstr "<strong>Fecha planificada</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Subtotal</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "<strong>Unit</strong>"
+msgstr "<strong>Unidad</strong>"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: report_stock_picking_form
+#: model:ir.model.fields,field_description:report_stock_picking_form.field_stock_picking__description_supp
+msgid "Description Supplier"
+msgstr "Descripción Proveedor"
+
+#. module: report_stock_picking_form
+#: model:ir.model.fields,field_description:report_stock_picking_form.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: report_stock_picking_form
+#: model:ir.model.fields,field_description:report_stock_picking_form.field_stock_picking__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: report_stock_picking_form
+#: model:ir.model.fields,field_description:report_stock_picking_form.field_stock_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: report_stock_picking_form
+#: model:ir.model,name:report_stock_picking_form.model_stock_picking
+msgid "Transfer"
+msgstr "Transferencia"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "User code"
+msgstr "Codigo de usuario"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "User name"
+msgstr "Nombre de usuario"
+
+#. module: report_stock_picking_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_form.report_picking_form
+msgid "payment against receipt"
+msgstr "pago contra recibo"

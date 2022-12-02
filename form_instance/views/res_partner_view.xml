@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_partner_view_form_instance" model="ir.ui.view">
+        <field name="name">res.partner.view.form.instance.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sale.res_partner_view_form_property_inherit"/>
+        <field name="arch" type="xml">
+            <group name="fiscal_information" position="attributes">
+                <attribute name="groups">account.group_account_invoice, sales_team.group_sale_salesman, purchase.group_purchase_manager</attribute>
+            </group>
+            <field name="property_payment_term_id" position="attributes">
+                <attribute name="groups">account.group_account_invoice, sales_team.group_sale_salesman, purchase.group_purchase_manager</attribute>
+            </field>
+            <field name="property_supplier_payment_term_id" position="attributes">
+                <attribute name="groups">account.group_account_invoice, sales_team.group_sale_salesman, purchase.group_purchase_manager</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="view_res_partner_reference_template_form" model="ir.ui.view">
+        <field name="name">res.partner.reference.template.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+              <field name="partner_code"/>
+            </xpath>
+        </field> 
+    </record>
+</odoo>

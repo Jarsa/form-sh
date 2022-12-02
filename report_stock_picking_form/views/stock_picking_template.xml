@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_picking_form" priority="100" inherit_id="stock.report_picking">
+        <xpath expr="//div[1]/div[1]" position="replace">       
+        </xpath>
+
+        <xpath expr="//div[1]" position="before">            
+            <h2 t-if="o.purchase_id">payment against receipt</h2>
+        </xpath>
+        <xpath expr="//table[1]" position="replace">
+            <table class="table table-sm">
+                <thead style="background-color: #F36B21; color: white;">
+                    <tr t-if="o.purchase_id">
+                        <th>User code</th>
+                        <th>User name</th>
+                        <th t-if="o.origin"><strong>Order code</strong></th>
+                        <th name="td_sched_date_h" width="20%"><strong>Scheduled Date</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-if="o.purchase_id">
+                        <td><span t-esc="o.purchase_id.user_id.id"/></td>
+                        <td><span t-esc="o.purchase_id.user_id.name"/></td>
+                        <td t-if="o.origin">
+                            <span t-field="o.origin"/>
+                        </td>
+                        <td name="td_sched_date" width="20%">
+                            <span t-field="o.scheduled_date"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </xpath>
+        <xpath expr="//table[2]" position="replace">
+            <t t-if="o.purchase_id" t-value="o.purchase_id.order_line" t-set="l"/>
+            <table class="table table-sm">
+                <thead style="background-color: #F36B21; color: white;">
+                    <tr>
+                        <th><strong>Quantity</strong></th>
+                        <th><strong>Unit</strong></th>
+                        <th width="15%" class="text-center" t-if="o.purchase_id">
+                           <strong>Lot/Serial Number</strong>
+                        </th>
+                        <th><strong>Code</strong></th>
+                        <th><strong>Product</strong></th>
+                        <th><strong class="text-right">Unit Price</strong></th>
+                        <th t-if="o.purchase_id">
+                            <strong class="text-right">Total</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="l" t-as="line">
+                        <td>
+                            <span t-if="o.purchase_id" t-esc="line.product_qty"/>
+                        </td>
+                        <td>
+                            <span t-field="line.product_uom"/>
+                        </td>
+                        <td t-if="o.purchase_id">
+                            <span t-if="line.product_id.barcode">
+                                <img t-if="len(line.product_id.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', line.product_id.barcode, 600, 100)" style="width:100%;height:35px" alt="Barcode"/>
+                                <img t-elif="len(line.product_id.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', line.product_id.barcode, 600, 100)" style="width:100%;height:35px" alt="Barcode"/>
+                                <img t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:100%;height:35px" alt="Barcode"/>
+                            </span>
+                        </td>
+                        <td>
+                            <span t-esc="line.product_id.default_code"/>
+                        </td>
+                        <td>
+                            <span t-field="line.product_id"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-esc="line.price_unit"/>
+                        </td>
+                        <td  t-if="o.purchase_id" class="text-right" >
+                            <span t-esc="(line.price_unit * line.product_qty) + line.taxes_id.amount"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="total" class="row justify-content-end">
+                <div class="col-4">
+                    <table class="table table-sm">
+                        <tr class="border-black">
+                            <td><strong>Subtotal</strong></td>
+                            <td class="text-right">
+                                <span t-if="o.purchase_id" t-field="o.purchase_id.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.purchase_id.currency_id}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Taxes</td>
+                            <td class="text-right">
+                                <span t-if="o.purchase_id" t-field="o.purchase_id.amount_tax"
+                                    t-options='{"widget": "monetary", "display_currency": o.purchase_id.currency_id}'/>
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <td style="background-color: #F36B21; color: white;"><strong>Total</strong></td>
+                            <td style="background-color: #F36B21; color: white;" class="text-right">
+                                <span t-if="o.purchase_id" t-field="o.purchase_id.amount_total" t-options='{"widget": "monetary", "display_currency": o.purchase_id.currency_id}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div t-if="o.purchase_id" id="text_amount">
+                <span t-esc="o._total_to_text(o.purchase_id.amount_total, o.purchase_id.currency_id.name, o.purchase_id.partner_id.lang)"/>
+            </div> 
+        </xpath>
+        <xpath expr="//h1[1]" position="replace"/>
+        <xpath expr="//p[@t-field='o.note']" position="before">
+            <strong>Observations</strong><br/>
+        </xpath>
+    </template>
+</odoo>

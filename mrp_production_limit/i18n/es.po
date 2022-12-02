@@ -1,0 +1,46 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * mrp_production_limit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-20 19:18+0000\n"
+"PO-Revision-Date: 2019-04-20 19:18+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_production_limit
+#: model:mail.template,body_html:mrp_production_limit.send_mail_alert_production
+msgid "<p>Good Morning,</p>\n"
+"            <p>There was an attept to produce more than 10% of the production plan of Manufacturing Order ${object.name} of product [${object.product_id.default_code}] ${object.product_id.name}</p>"
+msgstr "<p>Buen día,</p>\n"
+"            <p>Hubo un intento de producir más del 10% de la producción planeada en la Orden de Producción ${object.name} del producto [${object.product_id.default_code}] ${object.product_id.name}</p>"
+
+#. module: mrp_production_limit
+#: model:mail.template,subject:mrp_production_limit.send_mail_alert_production
+msgid "Alert Over Production in ${object.name}"
+msgstr "Alerta de sobreproducción en orden de producción ${object.name}"
+
+#. module: mrp_production_limit
+#: model:ir.model,name:mrp_production_limit.model_mrp_product_produce
+msgid "Record Production"
+msgstr "Registro de Producción"
+
+#. module: mrp_production_limit
+#: model:ir.model,name:mrp_production_limit.model_mrp_workorder
+msgid "Work Order"
+msgstr "Orden de trabajo"
+
+#. module: mrp_production_limit
+#: code:addons/mrp_production_limit/models/mrp_workorder.py:35
+#: code:addons/mrp_production_limit/models/mrp_workorder.py:56
+#, python-format
+msgid "You can not produce more than %s %s"
+msgstr "No puedes producir más de  %s %s"
+

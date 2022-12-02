@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mrp_plm_survey
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-28 01:26+0000\n"
+"PO-Revision-Date: 2019-01-28 01:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_plm_survey
+#: model_terms:ir.ui.view,arch_db:mrp_plm_survey.view_eco_inherit_form_form
+msgid "Answer Survey"
+msgstr "Contestar Encuesta"
+
+#. module: mrp_plm_survey
+#: model:ir.model,name:mrp_plm_survey.model_mrp_eco
+msgid "Engineering Change Order (ECO)"
+msgstr "Orden de cambio de ingeniería (ECO)"
+
+#. module: mrp_plm_survey
+#: model:ir.model.fields,field_description:mrp_plm_survey.field_mrp_eco__has_survey
+msgid "Has Survey"
+msgstr "Tiene encuesta"
+
+#. module: mrp_plm_survey
+#: code:addons/mrp_plm_survey/models/mrp_eco.py:29
+#: code:addons/mrp_plm_survey/models/mrp_eco.py:39
+#, python-format
+msgid "Results of the Survey"
+msgstr "Resultados de la encuesta"
+
+#. module: mrp_plm_survey
+#: model:ir.model.fields,field_description:mrp_plm_survey.field_mrp_eco__survey_id
+msgid "Survey"
+msgstr "Encuesta"
+
+#. module: mrp_plm_survey
+#: model_terms:ir.ui.view,arch_db:mrp_plm_survey.view_eco_inherit_form_form
+msgid "View Results"
+msgstr "Ver resultados"
+

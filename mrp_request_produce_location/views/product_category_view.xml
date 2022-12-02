@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="product_category_default_location_form">
+        <field name="name">product_category_default_location.form</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="stock.product_category_form_view_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <group string="Production Locations">
+                    <field name="location_src_id"/>
+                    <field name="location_dest_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

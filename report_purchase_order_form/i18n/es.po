@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * report_purchase_order_form
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-28 13:52+0000\n"
+"PO-Revision-Date: 2019-07-28 13:52+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<br/><strong>Deliver to</strong><br/>"
+msgstr "<br/><strong>Entregar a:</strong><br/>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Amount</strong>"
+msgstr "<strong>Monto</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Code</strong>"
+msgstr "<strong>Clave</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Conditions</strong>"
+msgstr "<strong>Condiciones</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Currency</strong>"
+msgstr "<strong>Moneda</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Date Planned</strong>"
+msgstr "<strong>Fecha de entrega</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Obervations: </strong>"
+msgstr "<strong>Observaciones: </strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Order Date</strong>"
+msgstr "<strong>Fecha orden</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Order to:</strong><br/>"
+msgstr "<strong>Ordenar a:</strong><br/>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Purchaser</strong>"
+msgstr "<strong>Comprador</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Cant</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Sheets</strong>"
+msgstr "<strong>Láminas</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Subtotal</strong>"
+msgstr ""
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Taxes</strong>"
+msgstr "<strong>Impuestos</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>Precio Unidad</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "<strong>Unit</strong>"
+msgstr "<strong>Unidad</strong>"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "Please confirm delivery date in a term not major to 24 hours, email way.\n"
+"                Deliver with purchase order and invoice."
+msgstr "FAVOR DE CONFIRMAR FECHA DE ENTREGA EN UN PLAZO NO MAYOR A 24 HORAS VÍA CORREO ELECTRÓNICO. ENTREGAR CON ORDEN DE COMPRA Y FACTURA."
+
+#. module: report_purchase_order_form
+#: model:ir.model,name:report_purchase_order_form.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "Reception schedule Mon-Fri 8:30 to 13:30 and 14:30 to 16:30, Saturday 8:30 A.M. to 12:30 P.M."
+msgstr "HORARIO DE RECEPCIÓN LUN-VIER 8:30 A.M. A 1:30 P.M. Y DE 2:30 P.M. A 4:30 P.M., SÁBADOS 8:30 A.M. A 12:30 P.M."
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "VAT&amp;nbsp;"
+msgstr "RFC&amp;nbsp;"
+
+#. module: report_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:report_purchase_order_form.report_purchase_order_external_for_form
+msgid "ZIP&amp;nbsp;"
+msgstr "C.P.&amp;nbsp;"

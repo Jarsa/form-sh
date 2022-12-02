@@ -1,0 +1,16 @@
+enterprise git@github.com:Jarsa/enterprise.git 14.0
+web git@github.com:Jarsa/web.git 14.0
+odoo-utilities git@git.vauxoo.com:jarsa/odoo-utilities 14.0
+social git@github.com:jarsa/social 14.0
+manufacture git@github.com:jarsa/manufacture 14.0
+account-fix-tools git@github.com:jarsa/account-fix-tools 14.0
+sale-workflow git@github.com:jarsa/sale-workflow 14.0
+mexico git@git.vauxoo.com:jarsa/mexico 14.0
+product-attribute git@github.com:Jarsa/product-attribute 14.0
+server-backend git@github.com:Jarsa/server-backend 14.0
+stock-logistics-workflow git@github.com:Jarsa/stock-logistics-workflow.git 14.0
+stock-logistics-reporting git@github.com:Jarsa/stock-logistics-reporting.git 14.0
+stock-logistics-warehouse git@github.com:Jarsa/stock-logistics-warehouse.git 14.0
+account-closing git@github.com:Jarsa/account-closing.git 14.0
+server-ux git@github.com:Jarsa/server-ux.git 14.0
+purchase-workflow git@github.com:Jarsa/purchase-workflow.git 14.0
