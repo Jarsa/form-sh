@@ -66,3 +66,8 @@
 	path = account-invoicing
 	url = git@github.com:jarsa/account-invoicing.git
 	branch = 14.0
+
+[submodule "odoo-cloc"]
+	path = odoo-cloc
+	url = git@github.com:Jarsa/odoo-cloc.git
+	branch = 14.0
