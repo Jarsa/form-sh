@@ -78,3 +78,8 @@
 	path = sale_global_discount
 	url = git@github.com:OCA/sale-workflow.git
 	branch = 14.0
+
+[submodule "account_global_discount"]
+	path = account_global_discount
+	url = git@github.com:OCA/account-invoicing.git
+	branch = 14.0
