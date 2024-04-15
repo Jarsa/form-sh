@@ -83,3 +83,8 @@
 	path = account_global_discount
 	url = git@github.com:OCA/account-invoicing.git
 	branch = 14.0
+
+[submodule "base_global_discount"]
+	path = base_global_discount
+	url = git@github.com:OCA/server-backend.git
+	branch = 14.0
