@@ -6,7 +6,7 @@ It also contains odoo.conf file that helps to run a local instance using the sub
 
 ## How to use this repo in a local instance?
 
-The configuration of the file assumes that the folder structure for the project is the following.
+The configuration of the file assumes that the folder structure for the project is the following..
 
 ```shell-script
 ~/Projects/odoo-sh/<reposistory-name>
