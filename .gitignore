@@ -1,9 +1,0 @@
-# Translations
-*.mo
-
-# Django stuff:
-*.log
-
-# Sphinx documentation
-docs/_build/
-
