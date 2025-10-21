@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_edi_autosent_edi_document
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-05 15:56+0000\n"
+"PO-Revision-Date: 2021-11-05 15:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:mail.template,subject:l10n_mx_edi_autosent_edi_document.email_template_edi_invoice_signed
+msgid "${object.company_id.name} Invoice (Ref ${object.name or \"n/a\"})"
+msgstr "${object.company_id.name} Factura (Referencia ${object.name or \"n/a\"})"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:mail.template,body_html:l10n_mx_edi_autosent_edi_document.email_template_edi_invoice_signed
+msgid ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        Dear\n"
+"        % if object.partner_id.parent_id:\n"
+"            ${object.partner_id.name} (${object.partner_id.parent_id.name}),\n"
+"        % else:\n"
+"            ${object.partner_id.name},\n"
+"        % endif\n"
+"    </p>\n"
+"    <p style=\"margin-top: 10px; padding: 0px;\">\n"
+"        Here is your signed\n"
+"        % if object.name:\n"
+"            invoice <strong>${object.name}</strong>\n"
+"        % else:\n"
+"            invoice\n"
+"        %endif\n"
+"        % if object.invoice_origin:\n"
+"            (with reference: ${object.invoice_origin})\n"
+"        % endif\n"
+"        amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"        from ${object.company_id.name}.\n"
+"    </p>\n"
+"    <p style=\"margin-top: 10px; padding: 0px;\">\n"
+"        Do not hesitate to contact us if you have any questions.\n"
+"        % if object.invoice_user_id.signature:\n"
+"            <br/>\n"
+"            ${object.invoice_user_id.signature | safe}\n"
+"        % endif\n"
+"    </p>\n"
+"</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        Estimado\n"
+"        % if object.partner_id.parent_id:\n"
+"            ${object.partner_id.name} (${object.partner_id.parent_id.name}),\n"
+"        % else:\n"
+"            ${object.partner_id.name},\n"
+"        % endif\n"
+"    </p>\n"
+"    <p style=\"margin-top: 10px; padding: 0px;\">\n"
+"        Aquí está su\n"
+"        % if object.name:\n"
+"            factura firmada <strong>${object.name}</strong>\n"
+"        % else:\n"
+"            factura firmada\n"
+"        %endif\n"
+"        % if object.invoice_origin:\n"
+"            (con referencia: ${object.invoice_origin})\n"
+"        % endif\n"
+"        con un importe total de <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"        de ${object.company_id.name}.\n"
+"    </p>\n"
+"    <p style=\"margin-top: 10px; padding: 0px;\">\n"
+"        No dude en contactarnos si tiene alguna pregunta.\n"
+"        % if object.invoice_user_id.signature:\n"
+"            <br/>\n"
+"            ${object.invoice_user_id.signature | safe}\n"
+"        % endif\n"
+"    </p>\n"
+"</div>\n"
+"        "
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.actions.server,name:l10n_mx_edi_autosent_edi_document.change_to_send_signed_invoice
+msgid "Change to \"To Send\" Signed Invoice"
+msgstr "Cambiar a \"A Enviar\" Facturas Firmadas"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model,name:l10n_mx_edi_autosent_edi_document.model_account_edi_format
+msgid "EDI format"
+msgstr "Formato EDI"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model.fields,help:l10n_mx_edi_autosent_edi_document.field_account_bank_statement_line__l10n_mx_edi_signed_to_send
+#: model:ir.model.fields,help:l10n_mx_edi_autosent_edi_document.field_account_move__l10n_mx_edi_signed_to_send
+#: model:ir.model.fields,help:l10n_mx_edi_autosent_edi_document.field_account_payment__l10n_mx_edi_signed_to_send
+msgid ""
+"If set, indicates that the invoice:\n"
+"- 'Not Send': It isn't an invoice, or it is still Draft or not signed.\n"
+"- 'To Send': It will be sent by email automatically.\n"
+"- 'Sent': It has been sent by email automatically.\n"
+"- 'With Error': It failed while it was trying to be sent automatically by email."
+msgstr ""
+"Si está establecido, indica que la factura:\n"
+"- 'No Enviar': No es una factura, sigue siendo borrador o no está firmada.\n"
+"- 'A Enviar': Tiene que ser enviada por correo electrónico.\n"
+"- 'Enviada': Ya fue enviada por correo electrónico.\n"
+"- 'Con Error': Se intentó enviar por correo electrónico, pero hubo un error que hay que solucionar."
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model.fields,field_description:l10n_mx_edi_autosent_edi_document.field_account_bank_statement_line__l10n_mx_edi_signed_to_send
+#: model:ir.model.fields,field_description:l10n_mx_edi_autosent_edi_document.field_account_move__l10n_mx_edi_signed_to_send
+#: model:ir.model.fields,field_description:l10n_mx_edi_autosent_edi_document.field_account_payment__l10n_mx_edi_signed_to_send
+msgid "Invoice Signed to Send"
+msgstr "Factura Firmada a Enviar"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:mail.template,name:l10n_mx_edi_autosent_edi_document.email_template_edi_invoice_signed
+msgid "Invoice Signed: Send by email"
+msgstr "Factura Firmada: Enviar por correo electrónico"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:mail.template,report_name:l10n_mx_edi_autosent_edi_document.email_template_edi_invoice_signed
+msgid ""
+"Invoice_${(object.name or '').replace('/','_')}${object.state == 'draft' and"
+" '_draft' or ''}"
+msgstr ""
+"Factura_${(object.name or '').replace('/','_')}${object.state == 'draft' and"
+" '_draft' or ''}"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model,name:l10n_mx_edi_autosent_edi_document.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model.fields.selection,name:l10n_mx_edi_autosent_edi_document.selection__account_move__l10n_mx_edi_signed_to_send__not_send
+msgid "Not Send"
+msgstr "No Enviar"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model.fields.selection,name:l10n_mx_edi_autosent_edi_document.selection__account_move__l10n_mx_edi_signed_to_send__sent
+msgid "Sent"
+msgstr "Enviada"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.actions.server,name:l10n_mx_edi_autosent_edi_document.ir_cron_mail_signed_invoice_scheduler_action_ir_actions_server
+#: model:ir.cron,cron_name:l10n_mx_edi_autosent_edi_document.ir_cron_mail_signed_invoice_scheduler_action
+#: model:ir.cron,name:l10n_mx_edi_autosent_edi_document.ir_cron_mail_signed_invoice_scheduler_action
+msgid "Signed Invoice Email Queue Manager"
+msgstr "Administrador de facturas firmadas por correo electrónico"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: code:addons/l10n_mx_edi_autosent_edi_document/models/account_move.py:0
+#, python-format
+msgid "The signed invoice was not sent because:"
+msgstr "La factura firmada no se envió porque:"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: code:addons/l10n_mx_edi_autosent_edi_document/models/account_move.py:0
+#, python-format
+msgid ""
+"This action can only be performed on signed invoices that have failed to be "
+"sent by e-mail."
+msgstr ""
+"Esta acción sólo se puede ejecutar con facturas firmadas que hayan fallado al enviarse por correo electrónico."
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model.fields.selection,name:l10n_mx_edi_autosent_edi_document.selection__account_move__l10n_mx_edi_signed_to_send__to_send
+msgid "To Send"
+msgstr "A Enviar"
+
+#. module: l10n_mx_edi_autosent_edi_document
+#: model:ir.model.fields.selection,name:l10n_mx_edi_autosent_edi_document.selection__account_move__l10n_mx_edi_signed_to_send__with_error
+msgid "With Error"
+msgstr "Con Error"

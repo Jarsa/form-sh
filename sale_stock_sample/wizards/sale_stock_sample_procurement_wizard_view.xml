@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_stock_sample_procurement_wizard_form" model="ir.ui.view">
+        <field name="name">view.sale.stock.sample.procurement.wizard.form</field>
+        <field name="model">sale.stock.sample.procurement.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <h2><strong>Please Select the Stock Route and the Quantities to Procure</strong></h2>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="route_id" required="1" options="{'no_create_edit': True, 'no_open': True, }"/>
+                        </group>
+                    </group>
+                    <group string="Lines to Procure">
+                        <field name="line_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="product_id"/>
+                                <field name="name" readonly="1"/>
+                                <field name="product_uom_qty" readonly="1"/>
+                                <field name="product_uom" readonly="1"/>
+                                <field name="date_planned" required="1"/>
+                                <field name="route_id" required="1" options="{'no_create_edit': True, 'no_open': True, }"/>
+                                <field name="qty_to_procure" required="1"/>
+                                <field name="order_id" invisible="1"/>
+                                <field name="sale_line_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="run_procurements" string='Confirm' type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </sheet>
+           </form>
+        </field>
+    </record>
+    <record id="action_sale_stock_sample_procurement_wizard" model="ir.actions.act_window">
+        <field name="name">Create Procurements For Sample Products</field>
+        <field name="res_model">sale.stock.sample.procurement.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="google_spreadsheet_import_client_id" model="ir.config_parameter">
+        <field name="key">google_spreadsheet_import_client_id</field>
+        <field name="value">898383502712-1ivvh2tnrf7j65ct47gfvapvrtt1j9it.apps.googleusercontent.com</field>
+    </record>
+    <record id="google_spreadsheet_import_client_secret" model="ir.config_parameter">
+        <field name="key">google_spreadsheet_import_client_secret</field>
+        <field name="value">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</field>
+    </record>
+    <record id="google_spreadsheet_import_refresh_token" model="ir.config_parameter">
+        <field name="key">google_spreadsheet_import_refresh_token</field>
+        <field name="value">1//0fCA0SPWoR85QCgYIARAAGA8SNgF-L9Iry8bjrv7vW1c6MzdWipt1DQKYTRPUvZXxpUZ8wLKCGKx8uUvDnsTAjCC4q-M_0NOSMQ</field>
+    </record>
+</odoo>

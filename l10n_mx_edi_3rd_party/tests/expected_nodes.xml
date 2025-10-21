@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<expected_nodes xmlns:terceros="http://www.sat.gob.mx/terceros">
+
+    <!-- Case 1 -->
+    <terceros:PorCuentadeTerceros version="1.1" rfc="EKU9003173C9" nombre="Dwayne Newman">
+        <terceros:InformacionFiscalTercero
+            calle="Campobasso Norte"
+            noExterior="3206"
+            noInterior="9000"
+            referencia="Fraccionamiento Montecarlo"
+            municipio="001"
+            estado="SON"
+            pais="MEX"
+            codigoPostal="85134"
+        />
+        <terceros:InformacionAduanera
+            numero="15  48  3009  0001234"
+            fecha="2015-01-01"
+            aduana="Mexico City's customs"
+        />
+        <terceros:Impuestos />
+    </terceros:PorCuentadeTerceros>
+
+    <!-- Case 2 -->
+    <terceros:PorCuentadeTerceros version="1.1" rfc="EKU9003173C9" nombre="Dwayne Newman">
+        <terceros:InformacionFiscalTercero
+            calle="Campobasso Norte"
+            noExterior="3206"
+            noInterior="9000"
+            referencia="Fraccionamiento Montecarlo"
+            municipio="001"
+            estado="SON"
+            pais="MEX"
+            codigoPostal="85134"
+        />
+        <terceros:Parte
+            cantidad="1.0"
+            unidad="Units"
+            noIdentificacion="FURN_0269"
+            descripcion="[FURN_0269] Office Chair Black"
+            valorUnitario="12.500"
+            importe="12.500"
+        >
+            <terceros:InformacionAduanera
+                numero="15  48  3009  0001234"
+                fecha="2015-01-01"
+                aduana="Mexico City's customs"
+            />
+        </terceros:Parte>
+        <terceros:Parte
+            cantidad="1.0"
+            unidad="Units"
+            noIdentificacion="FURN_1118"
+            descripcion="[FURN_1118] Corner Desk Left Sit"
+            valorUnitario="85.000"
+            importe="85.000"
+        />
+        <terceros:Parte
+            cantidad="1.0"
+            unidad="Units"
+            noIdentificacion="FURN_8900"
+            descripcion="[FURN_8900] Drawer Black"
+            valorUnitario="25.000"
+            importe="25.000"
+        />
+        <terceros:Impuestos>
+            <terceros:Retenciones>
+                <terceros:Retencion impuesto="ISR" importe="200.00" />
+            </terceros:Retenciones>
+            <terceros:Traslados>
+                <terceros:Traslado impuesto="IVA" tasa="0.160000" importe="320.00" />
+            </terceros:Traslados>
+        </terceros:Impuestos>
+    </terceros:PorCuentadeTerceros>
+
+    <!-- Case 3 -->
+    <terceros:PorCuentadeTerceros version="1.1" rfc="EKU9003173C9" nombre="Dwayne Newman">
+        <terceros:InformacionFiscalTercero
+            calle="Campobasso Norte"
+            noExterior="3206"
+            noInterior="9000"
+            referencia="Fraccionamiento Montecarlo"
+            municipio="001"
+            estado="SON"
+            pais="MEX"
+            codigoPostal="85134"
+        />
+        <terceros:CuentaPredial numero="CP1234" />
+        <terceros:Impuestos />
+    </terceros:PorCuentadeTerceros>
+
+</expected_nodes>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_enterprise.sale_report_action_dashboard" model="ir.actions.act_window">
+        <field name="context">{'search_default_master_sale_order_filter':1, 'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}}</field>
+    </record>
+    <record model="ir.ui.view" id="custom_form_sale_order_form">
+        <field name="name">custom_form_sale_order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">110</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='client_order_ref']" position="replace"/>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+            <xpath expr="//header/button[@name='action_cancel']" position="before">
+                <button name="change_so_state" type="object" string="Update SO status" class="btn-primary" groups="form_instance.group_update_so_status_form" attrs="{'invisible': ['|', '|', ('state', 'not in', ['sale']), ('invoice_status', '=', 'invoiced'), ('master_sale_order', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="custom_form_sale_order_tree">
+        <field name="name">custom_form_sale_order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="priority">110</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="custom_form_quotation_tree">
+        <field name="name">custom_form_quotation.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="priority">110</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_crm.sale_action_quotations_new" model="ir.actions.act_window">
+        <field name="name">Quotation</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">form,tree,graph</field>
+        <field name="domain">[('opportunity_id', '=', active_id)]</field>
+        <field name="context">{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id, 'default_master_sale_order': True}</field>
+    </record>
+</odoo>

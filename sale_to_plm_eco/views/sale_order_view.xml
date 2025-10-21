@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_inherit_form_sale_plm_eco" model="ir.ui.view">
+        <field name="name">sale.order.inherit.form.sale.plm.eco</field>
+        <field name="model">sale.order</field>
+        <field name="priority">100</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='print_quotation']" position="after">
+                <button name="%(action_so_eco_wizard)d" string="Create ECO" type="action" attrs="{'invisible': [('master_sale_order', '=', False)]}"/>
+                <field name="eco_ids" invisible="1"/>
+            </xpath>  
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" icon="fa-gears" name="show_mrp_eco" string="MRP ECO" type="object" attrs="{'invisible':[('eco_ids', '=', [])]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

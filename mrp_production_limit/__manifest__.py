@@ -1,0 +1,21 @@
+# Copyright 2019, Jarsa Sistemas S.A de C.V
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+
+{
+    'name': 'Form MRP Production Limit',
+    'summary': """
+    This module allows limiting the quantity to be produced in
+    no more than 10% of the planned quantity.""",
+    'version': '14.0.1.0.1',
+    'category': 'Manufacture',
+    'website': 'https://www.jarsa.com.mx',
+    'author': 'Jarsa Sistemas',
+    'license': 'LGPL-3',
+    'installable': True,
+    'depends': [
+        'mrp',
+    ],
+    'data': [
+        'data/mail_template.xml',
+    ],
+}
