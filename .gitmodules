@@ -1,75 +1,75 @@
-[submodule "manufacture"]
-	path = manufacture
-	url = git@github.com:jarsa/manufacture.git
-	branch = 14.0
+# [submodule "manufacture"]
+# 	path = manufacture
+# 	url = git@github.com:jarsa/manufacture.git
+# 	branch = 14.0
 
-[submodule "stock-logistics-warehouse"]
-	path = stock-logistics-warehouse
-	url = git@github.com:Jarsa/stock-logistics-warehouse.git
-	branch = 14.0
+# [submodule "stock-logistics-warehouse"]
+# 	path = stock-logistics-warehouse
+# 	url = git@github.com:Jarsa/stock-logistics-warehouse.git
+# 	branch = 14.0
 
-[submodule "stock-logistics-workflow"]
-	path = stock-logistics-workflow
-	url = git@github.com:Jarsa/stock-logistics-workflow.git
-	branch = 14.0
-[submodule "account-fix-tools"]
-	path = account-fix-tools
-	url = git@github.com:jarsa/account-fix-tools.git
-	branch = 14.0
-[submodule "social"]
-	path = social
-	url = git@github.com:jarsa/social.git
-	branch = 14.0
-[submodule "server-backend"]
-	path = server-backend
-	url = git@github.com:jarsa/server-backend.git
-	branch = 14.0
-[submodule "web"]
-	path = web
-	url = git@github.com:jarsa/web.git
-	branch = 14.0
-[submodule "product-attribute"]
-	path = product-attribute
-	url = git@github.com:jarsa/product-attribute.git
-	branch = 14.0
-[submodule "server-tools"]
-	path = server-tools
-	url = git@github.com:jarsa/server-tools.git
-	branch = 14.0
-[submodule "purchase-workflow"]
-	path = purchase-workflow
-	url = git@github.com:jarsa/purchase-workflow.git
-	branch = 14.0
-[submodule "stock-logistics-reporting"]
-	path = stock-logistics-reporting
-	url = git@github.com:jarsa/stock-logistics-reporting.git
-	branch = 14.0
-[submodule "server-ux"]
-	path = server-ux
-	url = git@github.com:jarsa/server-ux.git
-	branch = 14.0
-[submodule "reporting-engine"]
-	path = reporting-engine
-	url = git@github.com:jarsa/reporting-engine.git
-	branch = 14.0
-[submodule "account-invoicing"]
-	path = account-invoicing
-	url = git@github.com:jarsa/account-invoicing.git
-	branch = 14.0
+# [submodule "stock-logistics-workflow"]
+# 	path = stock-logistics-workflow
+# 	url = git@github.com:Jarsa/stock-logistics-workflow.git
+# 	branch = 14.0
+# [submodule "account-fix-tools"]
+# 	path = account-fix-tools
+# 	url = git@github.com:jarsa/account-fix-tools.git
+# 	branch = 14.0
+# [submodule "social"]
+# 	path = social
+# 	url = git@github.com:jarsa/social.git
+# 	branch = 14.0
+# [submodule "server-backend"]
+# 	path = server-backend
+# 	url = git@github.com:jarsa/server-backend.git
+# 	branch = 14.0
+# [submodule "web"]
+# 	path = web
+# 	url = git@github.com:jarsa/web.git
+# 	branch = 14.0
+# [submodule "product-attribute"]
+# 	path = product-attribute
+# 	url = git@github.com:jarsa/product-attribute.git
+# 	branch = 14.0
+# [submodule "server-tools"]
+# 	path = server-tools
+# 	url = git@github.com:jarsa/server-tools.git
+# 	branch = 14.0
+# [submodule "purchase-workflow"]
+# 	path = purchase-workflow
+# 	url = git@github.com:jarsa/purchase-workflow.git
+# 	branch = 14.0
+# [submodule "stock-logistics-reporting"]
+# 	path = stock-logistics-reporting
+# 	url = git@github.com:jarsa/stock-logistics-reporting.git
+# 	branch = 14.0
+# [submodule "server-ux"]
+# 	path = server-ux
+# 	url = git@github.com:jarsa/server-ux.git
+# 	branch = 14.0
+# [submodule "reporting-engine"]
+# 	path = reporting-engine
+# 	url = git@github.com:jarsa/reporting-engine.git
+# 	branch = 14.0
+# [submodule "account-invoicing"]
+# 	path = account-invoicing
+# 	url = git@github.com:jarsa/account-invoicing.git
+# 	branch = 14.0
 
-[submodule "odoo-cloc"]
-	path = odoo-cloc
-	url = git@github.com:Jarsa/odoo-cloc.git
-	branch = 14.0
-[submodule "form"]
-	path = form
-	url = git@git.jarsa.com:Jarsa/form.git
-	branch = 14.0
-[submodule "mexico"]
-	path = mexico
-	url = git@git.vauxoo.com:jarsa/mexico.git
-	branch = 14.0
-[submodule "odoo-utilities"]
-	path = odoo-utilities
-	url = git@git.jarsa.com:Jarsa/odoo-utilities.git
-	branch = 14.0
+# [submodule "odoo-cloc"]
+# 	path = odoo-cloc
+# 	url = git@github.com:Jarsa/odoo-cloc.git
+# 	branch = 14.0
+# [submodule "form"]
+# 	path = form
+# 	url = git@git.jarsa.com:Jarsa/form.git
+# 	branch = 14.0
+# [submodule "mexico"]
+# 	path = mexico
+# 	url = git@git.vauxoo.com:jarsa/mexico.git
+# 	branch = 14.0
+# [submodule "odoo-utilities"]
+# 	path = odoo-utilities
+# 	url = git@git.jarsa.com:Jarsa/odoo-utilities.git
+# 	branch = 14.0
