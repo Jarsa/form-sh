@@ -14,7 +14,7 @@
         'mrp',
         'stock_available_unreserved',
         'stock_picking_name_reference_change',
-        'mrp_production_surplus',
+        # 'mrp_production_surplus',  # Disabled for Odoo 17 migration
     ],
     'data': [
         # 'wizards/mrp_production_bom_alternative_wizard_view.xml',
