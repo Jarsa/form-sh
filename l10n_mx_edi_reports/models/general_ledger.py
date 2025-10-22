@@ -19,7 +19,7 @@ CFDIPLZ_XSLT = "l10n_mx_edi_reports/data/xslt/%s/PolizasPeriodo_1_2.xslt"
 
 class MxReportJournalEntries(models.AbstractModel):
     _name = "l10n_mx.general.ledger.report"
-    _inherit = "account.general.ledger"
+    _inherit = "account.general.ledger.report.handler"
     _description = "Mexican General Ledger Report"
 
     filter_request_type = "AF"

@@ -72,7 +72,7 @@ class MxReportAccountAnalyticTrial(models.AbstractModel):
             new_options["analytic_tags"] = [analytic_id] if analytic_id else []
 
             options_list = self._get_options_periods_list(new_options)
-            accounts_results = self.env["account.general.ledger"]._do_query(options_list, fetch_lines=False)[0]
+            accounts_results = self.env["account.general.ledger.report.handler"]._do_query(options_list, fetch_lines=False)[0]
 
             for account, periods_results in accounts_results:
                 grouped_accounts.setdefault(account, {}.fromkeys(analytic_tag_ids, 0.0))
