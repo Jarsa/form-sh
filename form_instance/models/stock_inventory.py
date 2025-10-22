@@ -5,7 +5,7 @@ from odoo import fields, models
 
 
 class StockInventory(models.Model):
-    _inherit = 'stock.inventory'
+    _inherit = 'stock.inventory.adjustment'
 
     def _get_inventory_lines_values(self):
         vals = super()._get_inventory_lines_values()
@@ -30,6 +30,6 @@ class StockInventory(models.Model):
 
 
 class StockInventoryLine(models.Model):
-    _inherit = 'stock.inventory.line'
+    _inherit = 'stock.inventory.adjustment.line'
 
     cost = fields.Float()
