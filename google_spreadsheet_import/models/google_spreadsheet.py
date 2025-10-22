@@ -13,7 +13,7 @@ import datetime
 
 import requests
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError, Warning
+from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import safe_eval, test_python_expr, wrap_module
 from odoo import tools
 
