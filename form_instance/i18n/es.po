@@ -1,0 +1,881 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* form_instance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-21 17:38+0000\n"
+"PO-Revision-Date: 2021-10-21 17:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: form_instance
+#: code:addons/form_instance/models/mrp_routing_workcenter.py:0
+#, python-format
+msgid "%(name)s - %(workcenter)s"
+msgstr ""
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_workorder_inherit_custom_kanban
+msgid ""
+"<br/><br/>\n"
+"                    <strong><span>Date Planned Start - </span></strong>"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_reconciliation_widget
+msgid "Account Reconciliation widget"
+msgstr "Widget de reconciliación de cuenta"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_needaction
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.backorder_confirmation_form_custom
+msgid "Are you sure you don't want to create a backorder?"
+msgstr "¿Está seguro de que no desea crear un pedido en espera?"
+
+#. module: form_instance
+#: code:addons/form_instance/models/sale_order.py:0
+#, python-format
+msgid ""
+"At least one \"Quantity Delivered\" from the Sale Order was not equal to 0, "
+"cannot cancel Sale Order"
+msgstr ""
+"Al menos una “Cantidad Entregada” de una Requisición no es igual a 0, no se "
+"puede cancelar Requisición"
+
+#. module: form_instance
+#: code:addons/form_instance/models/sale_order.py:0
+#, python-format
+msgid ""
+"At least one picking is not in status Done or Cancelled, cannot cancel Sale "
+"Order."
+msgstr ""
+"Hay al menos un tipo de opreacion que no esta en estado “Hecho” o "
+"“Cancelado”, no se puede cancelar la Orden de Venta."
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_ir_attachment
+msgid "Attachment"
+msgstr "Archivo adjunto"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_attachment_count
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_activate_cancel_form
+msgid "Authorize Cancelation"
+msgstr "Autorizar Cancelación"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_account_move_inherit_form
+msgid "Authorize cancelation"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_bank_statement_line__authorized
+#: model:ir.model.fields,field_description:form_instance.field_account_move__authorized
+#: model:ir.model.fields,field_description:form_instance.field_account_payment__authorized
+msgid "Authorized"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.stock_bill_of_materials
+msgid "Bills of Materials"
+msgstr "Lista de materiales"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_allow_edit_invoices
+msgid "Block invoice editing"
+msgstr "No permitir Edicion de factura"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.res_groups_project_follower
+msgid "Can see projects where is follower"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_send_production_to_scrap
+msgid "Can send production to scrap"
+msgstr "Puede desechar producción"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_account_move_inherit_form
+msgid "Cancel cancelation"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_change_production_qty
+msgid "Change Production Qty"
+msgstr "Cambiar la cantidad de producción"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory_line__cost
+msgid "Cost"
+msgstr "Coste"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_allow_delete_prod_attachment
+msgid "Delete product attachment"
+msgstr "Borrar adjuntos de producto"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__product_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__designer_id
+msgid "Designer"
+msgstr "Diseñador"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_account_move__display_name
+#: model:ir.model.fields,field_description:form_instance.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_account_payment__display_name
+#: model:ir.model.fields,field_description:form_instance.field_change_production_qty__display_name
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:form_instance.field_ir_attachment__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_plan_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_routing_workcenter__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__display_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__display_name
+#: model:ir.model.fields,field_description:form_instance.field_product_product__display_name
+#: model:ir.model.fields,field_description:form_instance.field_product_template__display_name
+#: model:ir.model.fields,field_description:form_instance.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_quality_alert__display_name
+#: model:ir.model.fields,field_description:form_instance.field_res_partner__display_name
+#: model:ir.model.fields,field_description:form_instance.field_sale_order__display_name
+#: model:ir.model.fields,field_description:form_instance.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory__display_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_move__display_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__display_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant__display_name
+#: model:ir.model.fields,field_description:form_instance.field_uom_uom__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.mrp_workorder_view_form_tablet_form
+msgid "Done and Close MO"
+msgstr "Hecho y Finalizar OP"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__failed_message_ids
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__failed_message_ids
+msgid "Failed Messages"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__first_delivery_date
+msgid "First Delivery Date"
+msgstr "Fecha de Primer Entrega"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_follower_ids
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_channel_ids
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_partner_ids
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:form_instance.field_account_move__id
+#: model:ir.model.fields,field_description:form_instance.field_account_move_line__id
+#: model:ir.model.fields,field_description:form_instance.field_account_payment__id
+#: model:ir.model.fields,field_description:form_instance.field_change_production_qty__id
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__id
+#: model:ir.model.fields,field_description:form_instance.field_ir_attachment__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_plan_line__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_routing_workcenter__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__id
+#: model:ir.model.fields,field_description:form_instance.field_product_product__id
+#: model:ir.model.fields,field_description:form_instance.field_product_template__id
+#: model:ir.model.fields,field_description:form_instance.field_purchase_order_line__id
+#: model:ir.model.fields,field_description:form_instance.field_quality_alert__id
+#: model:ir.model.fields,field_description:form_instance.field_res_partner__id
+#: model:ir.model.fields,field_description:form_instance.field_sale_order__id
+#: model:ir.model.fields,field_description:form_instance.field_sale_order_line__id
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory__id
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory_line__id
+#: model:ir.model.fields,field_description:form_instance.field_stock_move__id
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line__id
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__id
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant__id
+#: model:ir.model.fields,field_description:form_instance.field_uom_uom__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_product_product__id_form
+#: model:ir.model.fields,field_description:form_instance.field_product_template__id_form
+msgid "ID FORM"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_needaction
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_unread
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_needaction
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_has_error
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_has_sms_error
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_has_error
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_product_product__id_form
+#: model:ir.model.fields,help:form_instance.field_product_template__id_form
+msgid ""
+"Internal field used to identify the product internally respecting sales "
+"default code"
+msgstr ""
+"Campo interno utilizado para identificar el producto de forma interna "
+"respetando el código de ventas"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_stock_inventory
+msgid "Inventory"
+msgstr "Inventario"
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.menu_action_inventory_form
+msgid "Inventory Adjustments"
+msgstr "Ajustes de Inventario"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr "Línea inventario"
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.menu_valuation_mrp
+msgid "Inventory Report"
+msgstr "Reporte de inventario"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_is_follower
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_account_move____last_update
+#: model:ir.model.fields,field_description:form_instance.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_account_payment____last_update
+#: model:ir.model.fields,field_description:form_instance.field_change_production_qty____last_update
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:form_instance.field_ir_attachment____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_plan_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_routing_workcenter____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter____last_update
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder____last_update
+#: model:ir.model.fields,field_description:form_instance.field_product_product____last_update
+#: model:ir.model.fields,field_description:form_instance.field_product_template____last_update
+#: model:ir.model.fields,field_description:form_instance.field_purchase_order_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_quality_alert____last_update
+#: model:ir.model.fields,field_description:form_instance.field_res_partner____last_update
+#: model:ir.model.fields,field_description:form_instance.field_sale_order____last_update
+#: model:ir.model.fields,field_description:form_instance.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory____last_update
+#: model:ir.model.fields,field_description:form_instance.field_stock_inventory_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_stock_move____last_update
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type____last_update
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant____last_update
+#: model:ir.model.fields,field_description:form_instance.field_uom_uom____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizacion por"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_crm_lead
+#: model:ir.model.fields,field_description:form_instance.field_account_analytic_line__lead_id
+msgid "Lead/Opportunity"
+msgstr "Lead/Oportunidad"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_edit_product_mrp_user
+msgid "MRP Edit Products"
+msgstr "Editar Productos de MRP"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_main_attachment_id
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_crm_manager_total
+msgid "Manager of CRM (Configuration)"
+msgstr "Administrador del CRM (Configuración)"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_request
+msgid "Manufacturing Request"
+msgstr "Solicitud de Fabricación"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_has_error
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_ids
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_update_reason__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_needaction_counter
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_has_error_counter
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_needaction_counter
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_has_error_counter
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__message_unread_counter
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.crm_lead_custom_form
+msgid "Part of Hours"
+msgstr "Parte de Horas"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_res_partner__partner_code
+#: model:ir.model.fields,field_description:form_instance.field_res_users__partner_code
+msgid "Partner Code"
+msgstr "Código de Contacto"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_payment__partner_ref
+msgid "Partner Reference"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_payable_form
+msgid "Payable"
+msgstr "A pagar"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipo de albarán"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.product_template_form_instance_form
+msgid "Price"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_product_product__item_ids
+#: model:ir.model.fields,field_description:form_instance.field_product_template__item_ids
+msgid "Pricelist Items"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_account_move_line__category_id
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request__product_category_id
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant__categ_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de producto (Stock Move Line)"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_uom_uom
+msgid "Product Unit of Measure"
+msgstr "Unidad de medida del producto"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"
+
+#. module: form_instance
+#: model:ir.actions.act_window,name:form_instance.action_production_update_reason
+#: model:ir.ui.menu,name:form_instance.menu_production_update_reason
+#: model_terms:ir.ui.view,arch_db:form_instance.production_update_reason_tree_view
+msgid "Production Update Reason"
+msgstr "Razón de Actualización de Producción"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_production_plan_line
+msgid "Production plan line"
+msgstr "Linea de plan de producción"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_product_creation_form
+msgid "Products Creation"
+msgstr "Creación de productos"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production__product_supplier_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_production_plan_line__product_supplier_name
+#: model:ir.model.fields,field_description:form_instance.field_mrp_request__product_supplier_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_move__product_supplier_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line__product_supplier_name
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant__product_supplier_name
+msgid "Purchase Description"
+msgstr "Descripción de compra"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_quality_alert
+msgid "Quality Alert"
+msgstr "Alerta de Calidad"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_quality_point
+msgid "Quality Control Point"
+msgstr "Punto de control de calidad"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_stock_quant__quantity
+msgid ""
+"Quantity of products in this quant, in the default unit of measure of the "
+"product"
+msgstr ""
+"Cantidad de productos en este quant, en la unidad de medida predeterminada "
+"del producto"
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_stock_quant__reserved_quantity
+msgid ""
+"Quantity of reserved products in this quant, in the default unit of measure "
+"of the product"
+msgstr ""
+"Cantidad de productos reservados en este quant, en la unidad de medida "
+"predeterminada del producto"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_production_update_reason
+msgid "Reason to update a production"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_receivable_form
+msgid "Receivable"
+msgstr "Por cobrar"
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.mrp_stock_warehouse
+msgid "Reordening Rules"
+msgstr "Reglas de Abastecimiento"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_request_search
+msgid "Requested by system"
+msgstr "Solicitado por el sistema"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.view_mrp_request_search
+msgid "Requested manually"
+msgstr "Solicitado manualmente"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_quant__reserved_quantity
+msgid "Reserved Quantity"
+msgstr "Cantidad reservada"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_has_sms_error
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_sale_request_manager_form
+msgid "Sale Request Manager Form"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_account_move_line__category_id
+#: model:ir.model.fields,help:form_instance.field_mrp_request__product_category_id
+#: model:ir.model.fields,help:form_instance.field_stock_quant__categ_id
+msgid "Select category for the current product"
+msgstr "Seleccione la categoría para el producto actual."
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_show_only_followers_stock_picking_type_form
+msgid "Show picking types to followers"
+msgstr "Mostrar tipos de operaciones a los seguidores"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.mrp_production_workorder_tree_editable_view_form
+msgid "Start"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__allow_start_production
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workorder__allow_start_production
+msgid "Start Production"
+msgstr "Permitir iniciar producción"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_move__subtotal
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line__subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_stock_move_line__price_unit
+msgid ""
+"Technical field used to record the product cost set by the user during a "
+"picking confirmation (when costing method used is 'average price' or "
+"'real'). Value given in company currency and in product uom."
+msgstr ""
+"Campo técnico usado para registrar el coste de un producto establecido por "
+"el usuario durante la confirmación de recolección (cuando el método de coste"
+" usado es 'precio medio' o 'real'). El valor viene dado en la moneda de la "
+"compañía y en la UdM del producto."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_edit_product_mrp_user
+msgid "The user can edit only certain fields of products"
+msgstr "El usuario puede editar solo ciertos campos en productos"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_product_creation_form
+msgid ""
+"The user will have access to Read, create and write product.product and "
+"product.template"
+msgstr ""
+"El usuario tendrá acceso a leer, crear y escribir en product.product y "
+"product.template"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_activate_cancel_form
+msgid "The user will have access to activate button cancel."
+msgstr "El usuario tendrá acceso a activar el botón de cancelar"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_allow_delete_prod_attachment
+msgid "The user will have access to delete product atachments."
+msgstr ""
+"El usuario va a tener acceso a borrar archivos adjuntos de los productos."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_payable_form
+msgid "The user will have access to payable accounts."
+msgstr "El usuario tendrá acceso a cuentas por pagar."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.res_groups_project_follower
+msgid "The user will have access to projects where is a follower."
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_receivable_form
+msgid "The user will have access to receivable accounts."
+msgstr "El usuario tendrá acceso a cuentas por cobrar."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_show_only_followers_stock_picking_type_form
+msgid ""
+"The user will have access to see the picking types in wich he is follower"
+msgstr ""
+"El usuario va a tener acceso a ver los tipos de operación en las que es "
+"seguidor"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_mrp_workcenter_form
+msgid "The user will have access to the centers where is follower."
+msgstr ""
+"El usuario tendrá acceso a los centros de trabajo en los que es seguidor."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_crm_manager_total
+msgid "The user will have access to the configuration of the CRM."
+msgstr "El usuario va a tener acceso a la configuración del CRM."
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_update_so_status_form
+msgid "The user will have access to update sale orders status."
+msgstr ""
+"El usuario tendrá acceso a actualizar el estado a facturar del pedido de "
+"venta"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_sale_request_manager_form
+msgid "The user will have only read access to Sale Request."
+msgstr ""
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_allow_edit_invoices
+msgid "The users in this group aren't allowed to edit invoice fields"
+msgstr "Los usuarios de este grupo no pueden editar campos de factura"
+
+#. module: form_instance
+#: model:res.groups,comment:form_instance.group_send_production_to_scrap
+msgid ""
+"The users with this group are allowed to see the button \"Scrap\" in "
+"production form view and also in work order tablet view."
+msgstr ""
+"Los usuarios con este grupo tienen permitido ver el botón 'Desecho' en la "
+"vista formulario de la orden de producción y también en la vista tableta de "
+"la orden de trabajo"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_crm_lead__timesheet_ids
+msgid "Timesheet"
+msgstr "Partes de Hora"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line__type_operation_line
+msgid "Type of Operation"
+msgstr "Tipo de operación"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_stock_move_line__price_unit
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_unread
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__message_unread_counter
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_change_production_qty__update_reason
+#: model:ir.model.fields,field_description:form_instance.field_quality_alert__update_reason
+msgid "Update Reason"
+msgstr "Razón de Actualización"
+
+#. module: form_instance
+#: model_terms:ir.ui.view,arch_db:form_instance.custom_form_sale_order_form
+msgid "Update SO status"
+msgstr "Actualizar estado a facturar"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_update_so_status_form
+msgid "Update Sale Order Status"
+msgstr "Actualizar estado a facturar del Pedido de Venta"
+
+#. module: form_instance
+#: model:res.groups,name:form_instance.group_mrp_workcenter_form
+msgid "User Workcenter"
+msgstr "Usuario de Centro de Trabajo"
+
+#. module: form_instance
+#: model:ir.model.fields,field_description:form_instance.field_mrp_workcenter__website_message_ids
+#: model:ir.model.fields,field_description:form_instance.field_stock_picking_type__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model.fields,help:form_instance.field_mrp_workcenter__website_message_ids
+#: model:ir.model.fields,help:form_instance.field_stock_picking_type__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_workcenter
+msgid "Work Center"
+msgstr "Centro de trabajo"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_routing_workcenter
+msgid "Work Center Usage"
+msgstr "Utilización del centro de trabajo"
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_mrp_workorder
+msgid "Work Order"
+msgstr "Orden de trabajo"
+
+#. module: form_instance
+#: model:ir.ui.menu,name:form_instance.menu_workcenter_root
+msgid "Workcenter"
+msgstr "Centro de Trabajo"
+
+#. module: form_instance
+#: code:addons/form_instance/models/ir_attachment.py:0
+#, python-format
+msgid "You are not allowed to delete product attachments"
+msgstr "No tienes permitido borrar adjuntos de productos"
+
+#. module: form_instance
+#: code:addons/form_instance/models/account_move.py:0
+#, python-format
+msgid "You are not allowed to edit price, quantity or taxes"
+msgstr ""
+
+#. module: form_instance
+#: code:addons/form_instance/models/product_template.py:0
+#, python-format
+msgid "You are not allowed to modify products."
+msgstr "No tienes permitido modificar productos."
+
+#. module: form_instance
+#: code:addons/form_instance/models/account_move.py:0
+#, python-format
+msgid "You cannot duplicate invoices"
+msgstr ""
+
+#. module: form_instance
+#: model:ir.model,name:form_instance.model_change_account_expense
+msgid "change.account.expense"
+msgstr ""

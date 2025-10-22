@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="payment_complements" name="payment_complements">
+        <t t-call="portal.portal_layout">
+            <div t-if="not payment_partner" class="col-sm-9 mt32">
+                <h5 class="sections">There are currently no payment complements for your account.</h5>
+            </div>
+            <div t-else="" class="mb64">
+                <div class="row table-condensed align-items-center mt-2 bg-white no-gutters border rounded">
+                    <div t-attf-class="table-responsive border rounded border-top-0 #{classes or ''}">
+                        <table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Payment Date</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tr t-foreach="payment_partner" t-as="payment">
+                                <t t-set="attachment" t-value="payment.l10n_mx_edi_my_payment_complements_zip()" />
+                                <t t-if="attachment">
+                                    <td>
+                                        <span t-field="payment.name" />
+                                    </td>
+                                    <td>
+                                        <span t-field="payment.date" t-options="{'format': 'dd MMM Y'}" />
+                                    </td>
+                                    <td>
+                                        <a
+                                            class="ml-3"
+                                            t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}"
+                                        >
+                                            <img
+                                                src="/web/image/l10n_mx_portal.icon-download"
+                                                width="20"
+                                                alt="Download Payment Complement"
+                                            />
+                                        </a>
+                                    </td>
+                                </t>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

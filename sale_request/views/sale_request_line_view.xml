@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_request_line_tree" model="ir.ui.view">
+        <field name="name">view.sale.request.line.tree</field>
+        <field name="model">sale.request.line</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Request Line"
+                  decoration-info="request_state == 'confirm'"
+                  decoration-muted="request_state == 'cancel'"
+                  decoration-bf="request_state == 'cancel'">
+                <field name="request_id"/>
+                <field name="request_state"/>
+                <field name="product_id"/>
+                <field name="description"/>
+                <field name="product_qty"/>
+                <field name="product_uom_id" groups="uom.group_uom"/>
+                <field name="category_uom_id" groups="uom.group_uom"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

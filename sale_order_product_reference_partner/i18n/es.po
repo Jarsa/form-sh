@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * sale_order_product_reference_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-18 13:40+0000\n"
+"PO-Revision-Date: 2019-06-18 13:40+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model.fields,field_description:sale_order_product_reference_partner.field_product_product__partner_ids
+#: model:ir.model.fields,field_description:sale_order_product_reference_partner.field_product_template__partner_ids
+msgid "Customers"
+msgstr "Clientes"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_sale_order
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_sale_request
+msgid "Sale Request"
+msgstr "Requisición de Venta"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_sale_request_line
+msgid "Sale Request Line"
+msgstr "Línea de Requisición de Venta"
+
+#. module: sale_order_product_reference_partner
+#: model:ir.model,name:sale_order_product_reference_partner.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_order.py:42
+#: code:addons/sale_order_product_reference_partner/models/sale_request.py:43
+#, python-format
+msgid "The customer %s is not defined in the product %s"
+msgstr "El cliente %s no está definido en el producto %s"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_order.py:38
+#: code:addons/sale_order_product_reference_partner/models/sale_request.py:39
+#, python-format
+msgid "You have not defined a customer to the product %s"
+msgstr "No tienes definido un cliente para el producto %s"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_order.py:35
+#, python-format
+msgid "You have not defined a customer to the sales order"
+msgstr "No tienes definido un cliente en el pedido de ventas"
+
+#. module: sale_order_product_reference_partner
+#: code:addons/sale_order_product_reference_partner/models/sale_request.py:36
+#, python-format
+msgid "You have not defined a customer to the sales request"
+msgstr "No tienes definido un pedido en la requisición de ventas"
+

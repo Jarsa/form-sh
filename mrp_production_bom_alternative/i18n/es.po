@@ -1,0 +1,184 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mrp_production_bom_alternative
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-13 19:15+0000\n"
+"PO-Revision-Date: 2019-08-13 19:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_product_alternative_form
+msgid "<strong><i class=\"fa fa-warning\"/>Warning!</strong> There are some products without stock available. Click"
+msgstr "<strong><i class=\"fa fa-warning\"/>¡Advertencia!</strong> Hay algunos productos sin stock disponible. Click"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__bom_id
+msgid "Bill of Materials"
+msgstr "Lista de materiales"
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.actions.act_window,name:mrp_production_bom_alternative.action_mrp_production_bom_alternative_wizard
+msgid "Change Alternative BoM"
+msgstr "Cambiar a LdM Alternativa"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model,name:mrp_production_bom_alternative.model_mrp_production_bom_alternative_wizard
+msgid "Change Bill of Materials in Manufacturing Order"
+msgstr "Cambia la Lista de Materiales en una Orden de Producción"
+
+#. module: mrp_production_bom_alternative
+#: code:addons/mrp_production_bom_alternative/wizards/mrp_production_bom_alternative_wizard.py:85
+#, python-format
+msgid "Change to Alternative BoM:<br/>%s → %s"
+msgstr "Cambio a LdM Alterna:<br/>%s → %s"
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_wizard_form
+msgid "Components"
+msgstr "Componentes"
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_wizard_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__create_uid
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__create_date
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__current_bom_id
+msgid "Current Bill of Materials"
+msgstr "Lista de Materiales Actual"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__display_name
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__id
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__id
+msgid "ID"
+msgstr ""
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard____last_update
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line____last_update
+msgid "Last Modified on"
+msgstr "Ultima modificacion realizada"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__write_uid
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizacion por"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__write_date
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización realizada"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__line_ids
+msgid "Lines"
+msgstr "Líneas"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model,name:mrp_production_bom_alternative.model_mrp_production_bom_alternative_wizard_line
+msgid "Lines to Change MO Without Stock For Alternative BoM"
+msgstr "Líneas para Cambiar la OP sin stock por una LdM Alternativa"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__product_tmpl_id
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard__production_id
+msgid "Production"
+msgstr "Producción"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model,name:mrp_production_bom_alternative.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de Producción"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__product_qty
+msgid "Qty"
+msgstr "Cant"
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_wizard_form
+msgid "Select BoM to change in the MO"
+msgstr "Seleccionar LdM para cambiar en la OP"
+
+#. module: mrp_production_bom_alternative
+#: code:addons/mrp_production_bom_alternative/models/mrp_bom.py:25
+#, python-format
+msgid "The sequence cannot be less than 1"
+msgstr "La secuencia no puede ser menor a 1"
+
+#. module: mrp_production_bom_alternative
+#: code:addons/mrp_production_bom_alternative/models/mrp_bom.py:17
+#, python-format
+msgid "The sequence must be unique !"
+msgstr "La secuencia debe ser unica"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production__use_alternative_bom
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_bom_alternative_search
+msgid "Use Alternative BoM"
+msgstr "Uso LdM Alternativa"
+
+#. module: mrp_production_bom_alternative
+#: model:ir.model.fields,field_description:mrp_production_bom_alternative.field_mrp_production_bom_alternative_wizard_line__wiz_id
+msgid "Wizard"
+msgstr "Asistente"
+
+#. module: mrp_production_bom_alternative
+#: code:addons/mrp_production_bom_alternative/wizards/mrp_production_bom_alternative_wizard.py:84
+#, python-format
+msgid "You are selecting the current BoM."
+msgstr "Estás seleccionando la LdM actual."
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_product_alternative_form
+msgid "here"
+msgstr "aqui"
+
+#. module: mrp_production_bom_alternative
+#: model_terms:ir.ui.view,arch_db:mrp_production_bom_alternative.view_mrp_production_product_alternative_form
+msgid "to change it to an alternative Bill of Materials."
+msgstr "para cambiar a una Lista de Materiales alternativa."

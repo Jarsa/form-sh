@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="repair_order_form">
+        <field name="name">repair_order.form</field>
+        <field name="model">repair.order</field>
+        <field name="inherit_id" ref="repair.view_repair_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="l10n_mx_edi_payment_method_id" options="{'no_open':True,'no_create': True}" attrs="{'invisible':[('invoice_method','=', 'none')]}"/>
+                <field name="l10n_mx_edi_usage" attrs="{'invisible':[('invoice_method','=', 'none')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
