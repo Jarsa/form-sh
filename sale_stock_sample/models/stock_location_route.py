@@ -5,7 +5,7 @@ from odoo import fields, models
 
 
 class StockLocationRoute(models.Model):
-    _inherit = 'stock.location.route'
+    _inherit = 'stock.route'
 
     sample_selectable = fields.Boolean(
         help='If you select this checkbox this route'
