@@ -122,5 +122,5 @@ class AccountMoveLine(models.Model):
     )
     display_type = fields.Selection(
         selection_add=[("mx_import_taxes", "Import Taxes")],
-        ondelete={"mx_import_taxes": "set default"}
+        ondelete={"mx_import_taxes": "set null"}
     )
