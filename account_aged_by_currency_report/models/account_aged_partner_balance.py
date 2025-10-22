@@ -5,7 +5,7 @@ from odoo import _, api, models
 
 
 class ReportAccountAgedPartner(models.AbstractModel):
-    _inherit = "account.aged.partner"
+    _inherit = "account.aged.partner.balance.report.handler"
 
     filter_currencies = True
 
