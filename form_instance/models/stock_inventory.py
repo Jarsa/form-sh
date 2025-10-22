@@ -1,10 +1,10 @@
 # Copyright 2021, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
-class StockInventory(models.Model):
+class StockInventory(models.TransientModel):
     _inherit = 'stock.inventory.warning'
 
     # def _get_inventory_lines_values(self):
@@ -29,7 +29,7 @@ class StockInventory(models.Model):
     #     return super().action_validate()
 
 
-class StockInventoryLine(models.Model):
+class StockInventoryLine(models.TransientModel):
     _inherit = 'stock.inventory.warning'
 
     cost = fields.Float()
