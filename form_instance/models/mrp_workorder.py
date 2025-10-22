@@ -7,7 +7,7 @@ from odoo import fields, models
 class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
 
-    product_description = fields.Text(related='product_id.description')
+    product_description = fields.Char(related='product_id.name')
     allow_start_production = fields.Boolean(
         related="workcenter_id.allow_start_production",
         string="Start Production")
