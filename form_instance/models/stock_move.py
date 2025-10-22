@@ -11,10 +11,10 @@ class StockMove(models.Model):
         related='product_id.description_purchase')
     subtotal = fields.Float(compute='_compute_subtotal', store=True)
 
-    @api.depends('quantity_done', 'price_unit')
+    @api.depends('product_qty', 'price_unit')
     def _compute_subtotal(self):
         for rec in self:
-            rec.subtotal = rec.quantity_done * rec.price_unit
+            rec.subtotal = rec.product_qty * rec.price_unit
 
     def _prepare_extra_move_vals(self, qty):
         res = super()._prepare_extra_move_vals(qty)
