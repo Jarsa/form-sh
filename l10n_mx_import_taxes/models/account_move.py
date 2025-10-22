@@ -120,4 +120,14 @@ class AccountMoveLine(models.Model):
         help="This is the source invoice upon taxes are included in this line "
         "and that were paid by the broker on behalf of the company",
     )
-    display_type = fields.Selection(selection_add=[("mx_import_taxes", "Import Taxes")])
+    display_type = fields.Selection(
+        selection=[
+            ("line_section", "Section"),
+            ("line_note", "Note"),
+            # Agrega aquí cualquier otra opción estándar de Odoo 17 si aplica
+        ],
+        required=True,
+        default=False,
+        ondelete="set default",
+        selection_add=[("mx_import_taxes", "Import Taxes")]
+    )
