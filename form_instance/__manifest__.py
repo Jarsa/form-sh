@@ -26,7 +26,7 @@
         'l10n_mx_edi_account_followup',
         'l10n_mx_edi_uuid',
         'sale_request',
-        'mrp_production_plan',
+        # 'mrp_production_plan',  # Disabled for Odoo 17 migration
         'mrp_plm_control_version_bom',
         'sale_order_product_reference_partner',
         'quality_control',
