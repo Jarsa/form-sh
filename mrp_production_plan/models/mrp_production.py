@@ -9,7 +9,7 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     plan_line_id = fields.Many2one(
-        'mrp.production.plan.line',
+        'mrp.production.split.line',
         string="Production Plan Line",
         copy=False,
     )

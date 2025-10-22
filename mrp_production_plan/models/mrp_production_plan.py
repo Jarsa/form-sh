@@ -30,7 +30,7 @@ class MrpProductionPlan(models.Model):
         'mrp.production', 'plan_id',
         string='Productions', copy=False, readonly=True,)
     line_ids = fields.One2many(
-        'mrp.production.plan.line', 'plan_id')
+        'mrp.production.split.line', 'plan_id')
     workcenter_line_ids = fields.One2many(
         'mrp.production.plan.workcenter', 'plan_id')
     company_id = fields.Many2one(

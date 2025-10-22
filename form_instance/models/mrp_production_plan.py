@@ -5,7 +5,7 @@ from odoo import fields, models
 
 
 class MrpProductionPlanLine(models.Model):
-    _inherit = 'mrp.production.plan.line'
+    _inherit = 'mrp.production.split.line'
 
     product_supplier_name = fields.Text(
         related='product_id.description_purchase')
