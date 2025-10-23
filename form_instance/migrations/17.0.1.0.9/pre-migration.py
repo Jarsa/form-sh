@@ -92,12 +92,78 @@ def migrate(cr, version):
             mrp_count = cr.fetchone()[0]
             if mrp_count > 0:
                 _logger.info(f"Found {mrp_count} mrp_production records using picking type {picking_type_id}")
+                
+                # Find a suitable replacement picking type (manufacturing first)
                 cr.execute("""
-                    UPDATE mrp_production 
-                    SET picking_type_id = NULL 
-                    WHERE picking_type_id = %s
+                    SELECT id 
+                    FROM stock_picking_type 
+                    WHERE code = 'mrp_operation' 
+                    AND id != %s
+                    LIMIT 1
                 """, (picking_type_id,))
-                _logger.info(f"Set picking_type_id to NULL for {mrp_count} mrp_production records")
+                
+                mrp_replacement = cr.fetchone()
+                
+                if not mrp_replacement:
+                    # If no mrp_operation, try internal
+                    cr.execute("""
+                        SELECT id 
+                        FROM stock_picking_type 
+                        WHERE code = 'internal' 
+                        AND id != %s
+                        LIMIT 1
+                    """, (picking_type_id,))
+                    mrp_replacement = cr.fetchone()
+                
+                if not mrp_replacement:
+                    # Last resort: find ANY picking type
+                    cr.execute("""
+                        SELECT id 
+                        FROM stock_picking_type 
+                        WHERE id != %s
+                        LIMIT 1
+                    """, (picking_type_id,))
+                    mrp_replacement = cr.fetchone()
+                
+                if mrp_replacement:
+                    replacement_id = mrp_replacement[0]
+                    cr.execute("""
+                        UPDATE mrp_production 
+                        SET picking_type_id = %s 
+                        WHERE picking_type_id = %s
+                    """, (replacement_id, picking_type_id))
+                    _logger.info(f"Updated {mrp_count} mrp_production records to use picking type {replacement_id}")
+                else:
+                    # If absolutely no picking type exists, create a basic one
+                    cr.execute("""
+                        SELECT id 
+                        FROM stock_warehouse 
+                        LIMIT 1
+                    """)
+                    warehouse_result = cr.fetchone()
+                    
+                    if warehouse_result:
+                        warehouse_id = warehouse_result[0]
+                        
+                        # Create a new basic picking type
+                        cr.execute("""
+                            INSERT INTO stock_picking_type 
+                            (name, code, sequence_code, warehouse_id, create_date, write_date, create_uid, write_uid)
+                            VALUES ('Manufacturing (Migration)', 'mrp_operation', 'MRP', %s, NOW(), NOW(), 1, 1)
+                            RETURNING id
+                        """, (warehouse_id,))
+                        
+                        new_picking_type_id = cr.fetchone()[0]
+                        
+                        cr.execute("""
+                            UPDATE mrp_production 
+                            SET picking_type_id = %s 
+                            WHERE picking_type_id = %s
+                        """, (new_picking_type_id, picking_type_id))
+                        _logger.info(f"Created new picking type ID {new_picking_type_id} and updated {mrp_count} mrp_production records")
+                    else:
+                        _logger.error(f"Cannot update {mrp_count} mrp_production records - no warehouse found to create picking type")
+                        raise Exception("Cannot migrate mrp_production records - no warehouse available")
         
         # 3. Remove all ir_model_data entries for this module
         cr.execute("""
