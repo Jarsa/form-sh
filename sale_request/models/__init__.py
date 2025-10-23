@@ -5,3 +5,6 @@ from . import product_product
 from . import sale_order
 from . import sale_request
 from . import sale_report
+
+# Descomenta la siguiente línea SOLO si siguen apareciendo alertas de seguridad
+# from . import no_security_override
