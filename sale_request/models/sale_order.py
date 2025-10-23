@@ -151,14 +151,6 @@ class SaleOrderLine(models.Model):
     )
 
     def write(self, values):
-        name_user = self.env.user.name
-        fields_blocked = ['product_uom_qty', 'price_unit', 'tax_id']
-        if not self.user_has_groups('sale_request.group_edit_sale_order_line_price'):
-            for rec in fields_blocked:
-                if rec in values:
-                    raise UserError(_(
-                        'The user %s has no permission to edit the quantity, '
-                        'unit price or taxes.') % name_user)
         return super().write(values)
 
     @api.depends('product_type', 'product_uom_qty', 'qty_delivered', 'state', 'move_ids', 'product_uom')
