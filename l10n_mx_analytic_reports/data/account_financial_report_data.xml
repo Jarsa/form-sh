@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_analytic_trial_balance" model="ir.actions.client">
+        <field name="name">Analytic Trial Balance</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'model': 'l10n_mx.trial.analytic.report'}" />
+    </record>
+    <menuitem
+        sequence="100"
+        name="Analytic Trial Balance"
+        id="menu_analytic_trial_balance"
+        groups="account.group_account_readonly"
+        action="l10n_mx_analytic_reports.action_analytic_trial_balance"
+        parent="l10n_mx_reports.account_reports_legal_mexican_statements_menu"
+    />
+</odoo>

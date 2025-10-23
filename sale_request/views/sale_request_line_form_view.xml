@@ -1,0 +1,76 @@
+<odoo>
+    <record id="view_sale_request_line_form" model="ir.ui.view">
+        <field name="name">sale.request.line.form</field>
+        <field name="model">sale.request.line</field>
+        <field name="arch" type="xml">
+            <form string="Sale Request Line">
+                <header>
+                    <!-- Botón Crear Pedido de Venta -->
+                    <button
+          name="%(sale_request.action_create_sale_order)d"
+          type="action"
+          class="oe_highlight"
+          string="Create Sale Order"
+          modifiers="{'invisible': ['|', ('request_state', '!=', 'confirm'), ('remaining_product_qty','=',0)]}"/>
+        <field name="state" widget="statusbar" nolabel="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <!-- Botón ver Ventas (Sales) -->
+                        <button class="oe_stat_button"
+                                name="button_sale_orders"
+                                string="Sales"
+                                type="object"
+                                icon="fa-usd"
+                                modifiers="{'invisible':[('sale_line_ids','=',[])]}"/>
+                    </div>
+                    <h1> 
+                        <field name="display_name" readonly="1"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <!-- Campos ocultos de enlace -->
+                            <field name="sale_line_ids" invisible="1"/>
+                            <field name="request_state" invisible="1"/>
+                            <!-- Referencia al request -->
+                            <field name="request_id"
+                                   modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                            <!-- Cantidad solicitada -->
+                            <label for="product_qty"/>
+                            <div>
+                                <field name="product_qty" class="oe_inline"
+                                       modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                <field name="product_uom_id" class="oe_inline"
+                                       groups="uom.group_uom"
+                                       options="{'no_create_edit': True, 'no_open': True}"
+                                       modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                <field name="category_uom_id" invisible="1"/>
+                            </div>
+                            <!-- Cantidad pendiente -->
+                            <label for="remaining_product_qty"/>
+                            <div>
+                                <field name="remaining_product_qty" class="oe_inline"/>
+                                <field name="product_uom_id" class="oe_inline"
+                                       groups="uom.group_uom"
+                                       options="{'no_create_edit': True, 'no_open': True}"
+                                       modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description"
+                               modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+          <!-- Seguidores, permite ver quién sigue esta línea -->
+          <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+          <!-- Actividades programadas -->
+          <field name="activity_ids" widget="mail_activity"/>
+          <!-- Historial de mensajes y notas -->
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+            </form>
+        </field>
+    </record>
+</odoo>

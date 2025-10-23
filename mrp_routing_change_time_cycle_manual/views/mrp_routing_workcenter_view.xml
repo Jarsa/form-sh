@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrp_time_cycle_no_minutes_inherit_from_mrp_routing" model="ir.ui.view">
+        <field name="name">mrp.time.cycle.no.minutes.inherit.from.mrp.routing.workcenter</field>
+        <field name="model">mrp.routing.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_routing_workcenter_tree_view"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='time_cycle']" position="replace">
+                <field name="time_cycle"/>
+            </xpath>
+        </field> 
+    </record>
+
+    <record id="view_mrp_time_cycle_float_inherit_from_mrp_routing_workcenter" model="ir.ui.view">
+        <field name="name">mrp.time.cycle.float.inherit.from.mrp.routing.workcenter</field>
+        <field name="model">mrp.routing.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_routing_workcenter_form_view"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='time_cycle_manual']" position="replace">
+                <field name="time_cycle_manual"/>
+            </xpath>
+        </field> 
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="icon-download" model="ir.attachment">
+        <field name="public" eval="True" />
+        <field name="name">icon-download</field>
+        <field name="res_model">ir.ui.view</field>
+        <field name="type">url</field>
+        <field name="url">/l10n_mx_portal/static/img/icon-download.svg</field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="change_to_send_signed_invoice" model="ir.actions.server">
+        <field name="name">Change to "To Send" Signed Invoice</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">
+records._action_to_set_invoices_to_send()
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,138 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_uom_equivalence
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-10 18:18+0000\n"
+"PO-Revision-Date: 2019-01-10 18:18+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_uom_equivalence
+#: model_terms:ir.ui.view,arch_db:stock_uom_equivalence.report_delivery_document_stock_equivalence
+#: model_terms:ir.ui.view,arch_db:stock_uom_equivalence.report_picking_stock_equivalence
+msgid "<strong>Equivalent Quantity</strong>"
+msgstr "<strong>Cantidad Equivalente</strong>"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_quantity_done
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_qty_done
+msgid "Done quantity in the secondary UoM computed dividing quantity / product factor"
+msgstr "Cantidad Hecha en la unidad de medida secundaria calculada dividiendo cantidad / factor del producto"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move__equivalent_quantity_done
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move_line__equivalent_qty_done
+msgid "Equivalent Done"
+msgstr "Hecho Equivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_product_template__equivalent_factor
+msgid "Equivalent Factor"
+msgstr "Factor Equivalencia"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move__equivalent_product_uom_qty
+msgid "Equivalent Initial Demand"
+msgstr "Demanda Inicial Equivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move__equivalent_product_qty
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move_line__equivalent_product_qty
+msgid "Equivalent Product Qty"
+msgstr "Reservado Real Equivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_product_product__equivalent_qty_at_date
+msgid "Equivalent Quantity"
+msgstr "Cantidad Equivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_quant__equivalent_quantity
+msgid "Equivalent Quantity On Hand"
+msgstr "A mano Equivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_quant__equivalent_reserved_quantity
+msgid "Equivalent Quantity Reserved"
+msgstr "Reservado Equivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move__equivalent_reserved_availability
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move_line__equivalent_product_uom_qty
+msgid "Equivalent Reserved"
+msgstr "Reservado Requivalente"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_product_template__equivalent_uom_id
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move__equivalent_uom_id
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_move_line__equivalent_uom_id
+#: model:ir.model.fields,field_description:stock_uom_equivalence.field_stock_quant__equivalent_uom_id
+msgid "Equivalent Unit of Measure"
+msgstr "Unidad de Medida Equivalente"
+
+#. module: stock_uom_equivalence
+#: code:addons/stock_uom_equivalence/models/product.py:35
+#, python-format
+msgid "Error. The factor to compute the secondary quantities must be greather than zero."
+msgstr "Error. El factor para calcular las cantidades secundarias debe ser mayor que cero."
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,help:stock_uom_equivalence.field_product_template__equivalent_factor
+msgid "Factor to compute the product quantities in the secondary UoM. To compute that quantity the quantity in the original UoM will be dividing by the value of this field."
+msgstr "Factor para calcular las cantidades de producto en la UdM secundaria. Para calcular la cantidad, la cantidad de la UdM original será dividiendo por el valor de este campo."
+
+#. module: stock_uom_equivalence
+#: model:ir.model,name:stock_uom_equivalence.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: stock_uom_equivalence
+#: model:ir.model,name:stock_uom_equivalence.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: stock_uom_equivalence
+#: model:ir.model,name:stock_uom_equivalence.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_product_qty
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_product_uom_qty
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_product_qty
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_product_uom_qty
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_quant__equivalent_quantity
+msgid "Quantity in the secondary UoM computed dividing quantity / product factor"
+msgstr "Cantidad en la UdM secundaria calculada dividiendo cantidad / factor del producto"
+
+#. module: stock_uom_equivalence
+#: model:ir.model,name:stock_uom_equivalence.model_stock_quant
+msgid "Quants"
+msgstr "Existencias"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_reserved_availability
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_quant__equivalent_reserved_quantity
+msgid "Reserved quantity in the secondary UoM computed dividing quantity / product factor"
+msgstr "Cantidad reservada en la UdM secundaria calculada dividiendo cantidad / factor del producto"
+
+#. module: stock_uom_equivalence
+#: model:ir.model.fields,help:stock_uom_equivalence.field_product_template__equivalent_uom_id
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move__equivalent_uom_id
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_move_line__equivalent_uom_id
+#: model:ir.model.fields,help:stock_uom_equivalence.field_stock_quant__equivalent_uom_id
+msgid "Secondary Unit of Measure used to show the inventory on stock reports."
+msgstr "Unidad de Medida secundaria utilizada para mostrar el inventario en reportes de almacén"
+
+#. module: stock_uom_equivalence
+#: model:ir.model,name:stock_uom_equivalence.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="stock_inventory_form">
+        <field name="name">stock_inventory.form</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_start']" position="attributes">
+                <attribute name="groups">mrp.group_mrp_manager,stock.group_stock_user</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="stock_inventory_line_tree">
+        <field name="name">stock_inventory_line.tree</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="inherit_id" ref="stock.stock_inventory_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='difference_qty']" position="after">
+                <field name="cost"/>
+            </xpath>
+        </field>
+    </record>
+    <menuitem action="stock.action_inventory_form"
+        id="menu_action_inventory_form"
+        parent="mrp.menu_mrp_manufacturing"
+        sequence="140"/>
+</odoo>

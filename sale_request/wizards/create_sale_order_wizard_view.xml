@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_create_sale_order_wizard_form" model="ir.ui.view">
+    <field name="name">view.create.sale.order.wizard.form</field>
+    <field name="model">create.sale.order.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Crear Órdenes desde Requisiciones de Venta">
+        <sheet>
+          <div class="alert alert-danger o_wizard_alert"
+               role="alert"
+               modifiers="{'invisible': [('has_lines','=',True),('on_time','=',True)]}">
+            <strong>¡Lo siento!</strong> no existe pedido master para este producto. ¿Deseas crear requisición sin pedido?
+          </div>
+          <field name="has_lines" invisible="1"/>
+          <field name="on_time"   invisible="1"/>
+
+          <group string="Seleccione las líneas del pedido master"
+                 modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}"/>
+
+          <group columns="2"
+                 modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}">
+            <field name="product_id"/>
+            <field name="remaining_product_qty" string="Pendiente" class="oe_inline"/>
+            <field name="product_qty"           string="Requerido" class="oe_inline"/>
+            <field name="product_uom_id"/>
+          </group>
+
+          <group modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}">
+            <field name="confirm_without_master"/>
+          </group>
+
+          <group string="Líneas"
+                 modifiers="{'invisible': ['|','|',('has_lines','=',False),('on_time','=',False),('confirm_without_master','=',True)]}">
+            <field name="line_ids" nolabel="1" colspan="4">
+              <tree editable="top" create="0" delete="0">
+                <field name="product_id"/>
+                <field name="order_id"/>
+                <field name="sale_line_id" invisible="1"/>
+                <field name="name"              readonly="1"/>
+                <field name="product_uom_qty"   readonly="1"/>
+                <field name="remaining_product_qty" readonly="1"/>
+                <field name="product_uom_id"    readonly="1"/>
+                <field name="qty_to_sale"       required="1"/>
+              </tree>
+            </field>
+          </group>
+        </sheet>
+        <footer>
+          <button name="create_sale_order"
+                  string="Confirmar"
+                  type="object"
+                  class="oe_highlight"
+                  modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}"/>
+          <button string="Cancelar" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_create_sale_order" model="ir.actions.act_window">
+    <field name="name">Create Sale Orders From Sale Request</field>
+    <field name="res_model">create.sale.order.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="target">new</field>
+  </record>
+</odoo>

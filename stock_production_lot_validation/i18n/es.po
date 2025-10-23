@@ -1,0 +1,68 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * stock_production_lot_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-20 22:02+0000\n"
+"PO-Revision-Date: 2019-04-20 22:02+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_production_lot_validation
+#: code:addons/stock_production_lot_validation/models/stock_production_lot.py:26
+#, python-format
+msgid "1 Letter A for American or N for National.\n"
+"3 Letters for supplier code.\n"
+"6 Digits for the date in format ddmmyy.\n"
+"3 Digits for consecutive number.\n"
+"\n"
+"Example: ABCD311219001"
+msgstr "1 Letra A para Americano o N para Nacional.\n"
+"3 Letras para el código del proveedor.\n"
+"6 Dígitos para la fecha en el formato ddmmaa.\n"
+"3 Dígitos para el número consecutivo.\n"
+"\n"
+"Ejemplo: ABCD311219001"
+
+#. module: stock_production_lot_validation
+#: code:addons/stock_production_lot_validation/models/stock_production_lot.py:33
+#, python-format
+msgid "3 Letters for customer code.\n"
+"1 Digit for customer plant number.\n"
+"6 Digits for the date in format ddmmyy.\n"
+"1 Letter C for carton R for retornable.\n"
+"2 Letters CA for Caja CH for Charola CE for Celdas ES for Esquinero RE for Rejilla TA for Tapas.\n"
+"3 Digits for consecutive number.\n"
+"\n"
+"Example: STB1021119CCA001"
+msgstr "3 Letras para el código de cliente.\n"
+"1 Dígito para el número de planta del cliente.\n"
+"6 Dígito para la fecha en el formato ddmmaa.\n"
+"1 Letra C para cartón R para retornable.\n"
+"2 Letras CA para Caja CH para Charola CE para Celdas ES para Esquinero RE para Rejilla TA para Tapas.\n"
+"3 Dígitos para el número consecutivo.\n"
+"\n"
+"Ejemplo: STB1021119CCA001"
+
+#. module: stock_production_lot_validation
+#: model:ir.model,name:stock_production_lot_validation.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lote/Número de serie"
+
+#. module: stock_production_lot_validation
+#: code:addons/stock_production_lot_validation/models/stock_production_lot.py:42
+#, python-format
+msgid "The name of the lot does not meet the defined standard\n"
+"\n"
+"%s"
+msgstr "El nombre del lote no cumple con el estándar definido\n"
+"\n"
+"%s"
+

@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_cost_margin_utility_report" model="ir.ui.view">
+        <field name="name">Cost Margin Utility Report</field>
+        <field name="model">cost.margin.utility.report.wiz</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="open_table" string="Retrieve the Cost Margin Utility Report" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cost_margin_utility_report" model="ir.actions.act_window">
+        <field name="name">Cost Margin Utility Report</field>
+        <field name="res_model">cost.margin.utility.report.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_cost_margin_utility_report"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_cost_margin_utility_report" name="Cost Margin Utility Report" parent="account.menu_finance_reports" action="action_cost_margin_utility_report"/>
+</odoo>

@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * product_category_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-16 17:04+0000\n"
+"PO-Revision-Date: 2019-11-16 17:04+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_category_validation
+#: model:ir.model,name:product_category_validation.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Lista de materiales"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__categ_id
+msgid "Categ"
+msgstr "Categoría"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__error_msg
+msgid "Error Message"
+msgstr "Mensaje de error"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__field_id
+msgid "Field"
+msgstr "Campo"
+
+#. module: product_category_validation
+#: code:addons/product_category_validation/models/product_category_validation.py:40
+#, python-format
+msgid "Field_id is many2one must provide id in value!"
+msgstr "El campo Many2one debe dar un ID en el valor."
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__hide_field
+msgid "Hide Field"
+msgstr "Ocultar campo"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__id
+msgid "ID"
+msgstr ""
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category__is_kit
+msgid "Is Kit"
+msgstr "Es Kit"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__make_required
+msgid "Make Required"
+msgstr "Hacer Requerido"
+
+#. module: product_category_validation
+#: sql_constraint:product.category.validation:0
+msgid "Make sure field ids are not duplicated!"
+msgstr "Revisa que el campo no esté duplicado"
+
+#. module: product_category_validation
+#: model:ir.model,name:product_category_validation.model_product_category_validation
+msgid "Module that validates fields\n"
+"    in relation to the chosen category"
+msgstr "Módulo que valida campos\n"
+"    en relación con la categoría seleccionada."
+
+#. module: product_category_validation
+#: model:ir.model,name:product_category_validation.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: product_category_validation
+#: model:ir.model,name:product_category_validation.model_product_template
+msgid "Product Template"
+msgstr "Plantilla del producto"
+
+#. module: product_category_validation
+#: code:addons/product_category_validation/models/mrp_bom.py:24
+#, python-format
+msgid "The main product of this BoM is a Kit."
+msgstr "El producto de esta LdM es un Kit."
+
+#. module: product_category_validation
+#: code:addons/product_category_validation/models/mrp_bom.py:28
+#, python-format
+msgid "The main product of this Bom is not a Kit"
+msgstr "El produto de esta LdM no es un Kit,"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category__validation_ids
+msgid "Validation"
+msgstr "Validación"
+
+#. module: product_category_validation
+#: model:ir.model.fields,field_description:product_category_validation.field_product_category_validation__value
+msgid "Value"
+msgstr "Valor"
+
