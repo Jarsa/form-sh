@@ -1,12 +1,16 @@
 from odoo import api, models, fields
-from odoo.exceptions import ValidationError
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    l10n_mx_edi_usage = fields.Char(string="Fiscal Usage", related="partner_id.commercial_partner_id.l10n_mx_edi_usage", store=True)
-    l10n_mx_edi_payment_method_id = fields.Many2one("l10n_mx_edi.payment.method", string="Payment Method", related="partner_id.commercial_partner_id.l10n_mx_edi_payment_method_id", store=True)
+    # Asumimos que l10n_mx_edi_usage es un campo Char en res.partner
+    l10n_mx_edi_usage = fields.Char(
+        string="Fiscal Usage", related="partner_id.commercial_partner_id.l10n_mx_edi_usage", store=True
+    )
+    l10n_mx_edi_payment_method_id = fields.Many2one(
+        "l10n_mx_edi.payment.method", string="Payment Method", related="partner_id.commercial_partner_id.l10n_mx_edi_payment_method_id", store=True
+    )
 
     @api.onchange("partner_id", "company_id")
     def _onchange_partner_id(self):
@@ -30,18 +34,3 @@ class AccountMove(models.Model):
         self.l10n_mx_edi_usage = commercial_partner.l10n_mx_edi_usage
 
         return res
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        onchanges = {
-            "_onchange_partner_id": ["l10n_mx_edi_payment_method_id", "l10n_mx_edi_usage", "partner_bank_id"],
-        }
-        for onchange_method, changed_fields in onchanges.items():
-            for vals in vals_list:
-                if any(f not in vals for f in changed_fields):
-                    invoice = self.new(vals)
-                    getattr(invoice, onchange_method)()
-                    for field in changed_fields:
-                        if field not in vals and invoice[field]:
-                            vals[field] = invoice._fields[field].convert_to_write(invoice[field], invoice)
-        return super().create(vals_list)
