@@ -1,0 +1,50 @@
+<odoo>
+  <!-- Opciones para 'confirmed' -->
+  <record id="sale_reason_opt_precio_confirm" model="sale.reason.option">
+    <field name="code">precio</field>
+    <field name="name">Precio</field>
+    <field name="state">confirmed</field>
+  </record>
+  <record id="sale_reason_opt_solucion_confirm" model="sale.reason.option">
+    <field name="code">solucion_ingenieria</field>
+    <field name="name">Solución de ingeniería</field>
+    <field name="state">confirmed</field>
+  </record>
+  <record id="sale_reason_opt_tiempo_confirm" model="sale.reason.option">
+    <field name="code">tiempo_entrega</field>
+    <field name="name">Tiempo de entrega</field>
+    <field name="state">confirmed</field>
+  </record>
+  <record id="sale_reason_opt_otra_confirm" model="sale.reason.option">
+    <field name="code">otra</field>
+    <field name="name">Otra</field>
+    <field name="state">confirmed</field>
+  </record>
+
+  <!-- Opciones para 'cancel' -->
+  <record id="sale_reason_opt_volumen_cancel" model="sale.reason.option">
+    <field name="code">cambio_volumen</field>
+    <field name="name">Cambio de volumen</field>
+    <field name="state">cancel</field>
+  </record>
+  <record id="sale_reason_opt_diseno_cancel" model="sale.reason.option">
+    <field name="code">cambio_diseno</field>
+    <field name="name">Cambio de diseño</field>
+    <field name="state">cancel</field>
+  </record>
+  <record id="sale_reason_opt_precio_cancel" model="sale.reason.option">
+    <field name="code">precio</field>
+    <field name="name">Precio</field>
+    <field name="state">cancel</field>
+  </record>
+  <record id="sale_reason_opt_tiempo_cancel" model="sale.reason.option">
+    <field name="code">tiempo_entrega</field>
+    <field name="name">Tiempo de entrega</field>
+    <field name="state">cancel</field>
+  </record>
+  <record id="sale_reason_opt_solucion_cancel" model="sale.reason.option">
+    <field name="code">solucion_ingenieria</field>
+    <field name="name">Solución de ingeniería</field>
+    <field name="state">cancel</field>
+  </record>
+</odoo>

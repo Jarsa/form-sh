@@ -1,0 +1,16 @@
+<odoo>
+  <data>
+    <record id="view_sale_order_form_state_custom" model="ir.ui.view">
+      <field name="name">sale.order.form.state.custom</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <field name="state" position="attributes">
+          <attribute name="statusbar_visible">
+            draft,sent,confirmed,sale,cancel
+          </attribute>
+        </field>
+      </field>
+    </record>
+  </data>
+</odoo>
