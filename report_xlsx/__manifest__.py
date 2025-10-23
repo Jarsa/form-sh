@@ -13,9 +13,9 @@
     "depends": ["base", "web"],
     "demo": ["demo/report.xml"],
     "installable": True,
-    "assets": {
-        "web.assets_backend": [
-            "report_xlsx/static/src/js/report/action_manager_report.esm.js",
-        ],
-    },
+    # "assets": {
+    #     "web.assets_backend": [
+    #         "report_xlsx/static/src/js/report/action_manager_report.esm.js",
+    #     ],
+    # },
 }
