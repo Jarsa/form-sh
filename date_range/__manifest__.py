@@ -18,9 +18,9 @@
         "wizard/date_range_generator.xml",
     ],
     "assets": {
-        "web.assets_backend": [
-            "date_range/static/src/js/*",
-        ],
+        # "web.assets_backend": [
+        #     "date_range/static/src/js/*",
+        # ],
     },
     "development_status": "Mature",
     "maintainers": ["lmignon"],
