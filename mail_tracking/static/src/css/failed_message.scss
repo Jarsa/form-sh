@@ -60,7 +60,7 @@
         background-color: rgba($white, 0.75);
         padding: 5px;
         text-align: center;
-        color: gray("600");
+        color: $gray-600;
 
         &.o_thread_order_asc {
             @include o-position-sticky($bottom: 0px);
@@ -79,11 +79,13 @@
     .o_thread_date_separator {
         margin-top: 15px;
         margin-bottom: 30px;
+
         @include media-breakpoint-down(sm) {
             margin-top: 0px;
             margin-bottom: 15px;
         }
-        border-bottom: 1px solid gray("400");
+
+        border-bottom: 1px solid $gray-400;
         text-align: center;
 
         .o_thread_date {
@@ -100,6 +102,7 @@
         margin-bottom: 15px;
         border-bottom: solid lighten($o-brand-odoo, 15%) 1px;
         text-align: right;
+
         .o_thread_separator_label {
             position: relative;
             top: 8px;
@@ -116,8 +119,8 @@
         margin-bottom: 0px;
 
         &.o_mail_not_discussion {
-            background-color: rgba(gray("300"), 0.5);
-            border-bottom: 1px solid gray("400");
+            background-color: rgba($gray-300, 0.5);
+            border-bottom: 1px solid $gray-400;
         }
 
         .o_thread_message_sidebar {
@@ -135,9 +138,11 @@
             .o_thread_message_avatar {
                 max-width: $o-mail-thread-avatar-size;
             }
+
             .o_thread_message_side_date {
                 margin-left: -5px;
             }
+
             .o_thread_message_star {
                 margin-right: -5px;
             }
@@ -146,9 +151,11 @@
                 opacity: 0;
             }
         }
+
         .o_thread_icon {
             cursor: pointer;
             opacity: 0;
+
             &.fa-star {
                 opacity: $o-mail-thread-icon-opacity;
                 color: gold;
@@ -160,8 +167,10 @@
             .o_thread_message_side_date {
                 opacity: $o-mail-thread-side-date-opacity;
             }
+
             .o_thread_icon {
                 opacity: $o-mail-thread-icon-opacity;
+
                 &:hover {
                     opacity: 1;
                 }
@@ -177,7 +186,8 @@
             min-width: 0;
             max-width: 100%;
             word-wrap: break-word;
-            > pre {
+
+            >pre {
                 white-space: pre-wrap;
                 word-break: break-word;
                 text-align: justify;
@@ -199,15 +209,18 @@
 
             p {
                 margin: 0 0 9px; // Required by the old design to override a general rule on p's
+
                 &:last-child {
                     margin-bottom: 0;
                 }
             }
+
             a {
                 display: inline-block;
                 word-break: break-all;
             }
-            :not(.o_image_box) > img {
+
+            :not(.o_image_box)>img {
                 max-width: 100%;
                 height: auto;
             }
@@ -235,6 +248,7 @@
                 &.o_thread_message_email_ready {
                     color: grey;
                 }
+
                 &.o_thread_message_email_exception,
                 &.o_thread_message_email_bounce {
                     color: red;
@@ -256,6 +270,7 @@
             }
         }
     }
+
     .o_thread_title {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -304,7 +319,7 @@
                 .o_activity_info {
                     vertical-align: baseline;
                     padding: 4px 6px;
-                    background: theme-color("light");
+                    background: $light;
                     border-radius: 2px 2px 0 0;
                     @include o-hover-opacity(1, 1);
 
@@ -322,6 +337,7 @@
                 dt {
                     max-width: 80px;
                 }
+
                 dd {
                     margin-left: 95px;
                 }
@@ -331,6 +347,7 @@
                 margin: 2px 0 5px;
                 padding: 0px;
             }
+
             .o_thread_message_warning {
                 margin: 2px 0 5px;
             }
@@ -339,6 +356,7 @@
                 .o_failed_message_link {
                     padding: 0 $input-btn-padding-x;
                 }
+
                 .o_failed_message_retry {
                     padding-left: 0;
                 }

@@ -1,24 +1,30 @@
 // Navbar icon and dropdown
 .o_tier_navbar_item {
-    > a {
+    >a {
         opacity: 1;
-        > i {
+
+        >i {
             font-size: larger;
         }
     }
-    &.o_no_notification > a {
+
+    &.o_no_notification>a {
         opacity: 0.5;
-        > i {
+
+        >i {
             transform: translateY(0px);
         }
+
         .o_notification_counter {
             display: none;
         }
     }
+
     &.show .o_tier_systray_dropdown {
         display: flex;
         flex-flow: column nowrap;
     }
+
     .o_notification_counter {
         margin-top: -0.8rem;
         margin-right: 0;
@@ -28,6 +34,7 @@
         vertical-align: super;
         font-size: 0.7em;
     }
+
     .o_tier_systray_dropdown {
         direction: ltr;
         width: 350px;
@@ -45,18 +52,22 @@
             display: flex;
             flex: 0 0 auto;
             justify-content: space-between;
-            border-bottom: 1px solid gray("400");
-            box-shadow: 0 0 2px gray("400");
+            border-bottom: 1px solid $gray-400;
+            box-shadow: 0 0 2px $gray-400;
+
             .o_filter_button,
             .o_new_message {
                 padding: 5px;
             }
+
             .o_filter_button {
                 color: $o-main-color-muted;
+
                 &:hover,
                 &.active {
                     color: $o-brand-primary;
                 }
+
                 &.active {
                     cursor: default;
                     font-weight: bold;
@@ -74,12 +85,15 @@
                 .o_tier_preview {
                     min-height: 50px;
                     padding: 5px;
+
                     .o_tier_preview_image {
                         width: 40px;
                         height: 40px;
                     }
+
                     .o_preview_info {
                         margin-left: 10px;
+
                         .o_preview_title {
                             .o_last_message_date {
                                 padding-top: 2px;
@@ -91,9 +105,11 @@
                 }
             }
         }
+
         .o_activity_filter_button {
             padding: 2px;
         }
+
         .o_no_activity {
             cursor: initial;
             align-items: center;
@@ -115,21 +131,26 @@
         .o_notification_counter {
             top: 10%;
         }
+
         .o_tier_systray_dropdown {
             position: relative;
+
             .o_tier_systray_dropdown_top {
                 padding: 5px;
             }
+
             .o_tier_systray_mobile_header {
                 padding: 5px;
                 height: 44px;
                 border-bottom: 1px solid #ebebeb;
-                box-shadow: 0 0 2px gray("400");
+                box-shadow: 0 0 2px $gray-400;
             }
+
             .o_tier_systray_dropdown_items {
                 max-height: none;
                 padding-bottom: 52px; // leave space for tabs
             }
+
             .o_tier_mobile_tabs {
                 position: fixed;
                 bottom: 0px;
