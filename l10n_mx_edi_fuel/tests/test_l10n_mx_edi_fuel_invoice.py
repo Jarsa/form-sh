@@ -67,7 +67,7 @@ class TestL10nMxEdiInvoiceFuel(TestMxEdiCommon):
         invoice.currency_id = currency_id
         invoice.l10n_mx_edi_payment_method_id = self.env.ref("l10n_mx_edi.payment_method_efectivo")
         invoice.partner_bank_id = account_payment
-        invoice.l10n_mx_edi_usage = "P01"
+        invoice.l10n_mx_edi_usage = self.env.ref("l10n_mx_edi.usage_P01").id
         invoice = invoice.save()
         self.create_fuel_invoice_line(invoice, service_station)
         return invoice
@@ -141,7 +141,7 @@ class TestL10nMxEdiInvoiceFuel(TestMxEdiCommon):
         refund.partner_id = self.service_station
         refund.partner_bank_id = self.service_station.bank_ids.id
         refund.l10n_mx_edi_payment_method_id = invoice.l10n_mx_edi_payment_method_id.id
-        refund.l10n_mx_edi_usage = "P01"
+        refund.l10n_mx_edi_usage = self.env.ref("l10n_mx_edi.usage_P01").id
         refund.action_post()
         generated_files = self._process_documents_web_services(refund, {"cfdi_3_3"})
         self.assertTrue(generated_files)
