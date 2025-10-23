@@ -122,7 +122,7 @@ class ProductTemplate(models.Model):
         help='Information to help with template search including ID'
     )
 
-    @api.depends('name', 'default_code', 'id')
+    @api.depends('name', 'default_code')
     def _compute_template_search_info(self):
         for template in self:
             info_parts = []
