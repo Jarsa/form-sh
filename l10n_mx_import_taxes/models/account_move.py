@@ -30,7 +30,7 @@ class AccountMove(models.Model):
         tax_ids = tax_ids.filtered(lambda tax: tax.amount_type == "code")
         caba_account_ids = tax_ids.company_id.account_cash_basis_base_account_id.ids
         res = self.mapped("line_ids").filtered(
-            lambda line: not line.tax_exigible
+            lambda line: not line.tax_ids
             and line.exclude_from_invoice_tab
             and line.partner_id != line.move_id.partner_id
             and line.account_id.id in caba_account_ids
