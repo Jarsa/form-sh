@@ -4,11 +4,22 @@ from odoo import api, models, fields
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    def _get_usage_selection(self):
-        return self.env["account.move"].fields_get().get("l10n_mx_edi_usage").get("selection")
-
     l10n_mx_edi_usage = fields.Selection(
-        selection=_get_usage_selection,
+        selection=[
+            ("G01", "Adquisición de mercancías"),
+            ("G02", "Devoluciones, descuentos o bonificaciones"),
+            ("G03", "Gastos en general"),
+            ("I01", "Construcciones"),
+            ("I02", "Mobilario y equipo de oficina por inversiones"),
+            ("I03", "Equipo de transporte"),
+            ("I04", "Equipo de computo y accesorios"),
+            ("I05", "Dados, troqueles, moldes, matrices y herramental"),
+            ("I06", "Comunicaciones telefónicas"),
+            ("I07", "Comunicaciones satelitales"),
+            ("I08", "Otra maquinaria y equipo"),
+            ("P01", "Por definir"),
+            ("S01", "Sin efectos fiscales"),
+        ],
         string="Fiscal Usage",
         store=True,
         default="S01",  # Valor permitido por la selección
