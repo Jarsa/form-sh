@@ -63,7 +63,7 @@ $chatter_zone_width: 35%;
         // Fix toggler button padding
         .o-menu-toggle {
             cursor: pointer;
-            padding: 0 $o-horizontal-padding;
+            padding: 0 16px;
         }
 
         // Custom fullscreen layout when showing submenus
@@ -727,7 +727,7 @@ html .o_web_client .o_action_manager .o_action {
 
                 // Display send button on small screens
                 .o_thread_composer {
-                    padding-left: $o-mail-thread-avatar-size * 0.5;
+                    padding-left: 20px;
 
                     .o_composer_button_send {
                         display: initial !important; // Forced in core
@@ -813,13 +813,13 @@ html .o_web_client .o_action_manager .o_action {
 
                         .o_attachments_list {
                             overflow: auto;
-                            max-height: $o-mail-attachment-image-size * 3;
+                            max-height: 240px;
                             margin-top: 0.4em;
                         }
 
                         .o_attachments_previews {
                             overflow: auto;
-                            max-height: $o-mail-attachment-image-size * 6;
+                            max-height: 480px;
                         }
                     }
                 }

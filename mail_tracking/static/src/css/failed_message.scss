@@ -115,7 +115,7 @@
 
     .o_thread_message {
         display: flex;
-        padding: 4px $o-horizontal-padding;
+        padding: 4px 16px;
         margin-bottom: 0px;
 
         &.o_mail_not_discussion {
@@ -124,7 +124,7 @@
         }
 
         .o_thread_message_sidebar {
-            flex: 0 0 $o-mail-thread-avatar-size;
+            flex: 0 0 40px;
             margin-right: 10px;
             margin-top: 2px;
             text-align: center;
@@ -136,7 +136,7 @@
             }
 
             .o_thread_message_avatar {
-                max-width: $o-mail-thread-avatar-size;
+                max-width: 40px;
             }
 
             .o_thread_message_side_date {
@@ -157,7 +157,7 @@
             opacity: 0;
 
             &.fa-star {
-                opacity: $o-mail-thread-icon-opacity;
+                opacity: 0.7;
                 color: gold;
             }
         }
@@ -165,11 +165,11 @@
         &:hover,
         &.o_thread_selected_message {
             .o_thread_message_side_date {
-                opacity: $o-mail-thread-side-date-opacity;
+                opacity: 0.5;
             }
 
             .o_thread_icon {
-                opacity: $o-mail-thread-icon-opacity;
+                opacity: 0.7;
 
                 &:hover {
                     opacity: 1;

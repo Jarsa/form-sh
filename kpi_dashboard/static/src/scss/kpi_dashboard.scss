@@ -1,7 +1,7 @@
 .o_dashboard_view {
     height: 100%;
-    @include o-webclient-padding($top: $o-horizontal-padding/2,
-        $bottom: $o-horizontal-padding/2);
+    @include o-webclient-padding($top: 8px,
+        $bottom: 8px);
     display: flex;
 
     >.gridster {
