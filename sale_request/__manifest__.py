@@ -17,6 +17,7 @@
         'data/ir_config_parameter.xml',
         'security/sale_request_security.xml',
         'security/ir.model.access.csv',
+        'views/product_search_view.xml',
         'views/sale_request_line_view.xml',
         'wizards/create_sale_order_wizard_view.xml',
         'wizards/link_sale_order_wizard_view.xml',

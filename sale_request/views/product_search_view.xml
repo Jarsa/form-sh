@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vista mejorada para mostrar información de búsqueda en product.product -->
+    <record id="product_product_search_info_view" model="ir.ui.view">
+        <field name="name">product.product.search.info.view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="search_info" readonly="1" 
+                       string="Search Information"
+                       help="Use Template ID or Variant ID to search for this product"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vista mejorada para mostrar información de búsqueda en product.template -->
+    <record id="product_template_search_info_view" model="ir.ui.view">
+        <field name="name">product.template.search.info.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="template_search_info" readonly="1" 
+                       string="Template Search Information"
+                       help="Use Template ID to search for this product"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vista de lista mejorada para productos con información de ID -->
+    <record id="product_product_tree_search_info" model="ir.ui.view">
+        <field name="name">product.product.tree.search.info</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="product_tmpl_id" string="Template ID" optional="hide"/>
+                <field name="search_info" string="Search Info" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vista de lista mejorada para templates con información de ID -->
+    <record id="product_template_tree_search_info" model="ir.ui.view">
+        <field name="name">product.template.tree.search.info</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="template_search_info" string="Template Search Info" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
