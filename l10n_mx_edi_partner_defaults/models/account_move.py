@@ -36,7 +36,9 @@ class AccountMove(models.Model):
         commercial_partner = self.partner_id.commercial_partner_id
         if commercial_partner:
             self.l10n_mx_edi_payment_method_id = commercial_partner.l10n_mx_edi_payment_method_id
-            usage_values = [code for code, label in self._get_usage_selection()]
+            usage_values = [
+                "G01", "G02", "G03", "I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "P01", "S01"
+            ]
             if commercial_partner.l10n_mx_edi_usage in usage_values:
                 self.l10n_mx_edi_usage = commercial_partner.l10n_mx_edi_usage
             else:
