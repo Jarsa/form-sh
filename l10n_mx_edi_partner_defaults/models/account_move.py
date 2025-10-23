@@ -1,36 +1,33 @@
+
 from odoo import api, models, fields
 
+class AccountMove(models.Model):
+    _inherit = "account.move"
 
-# class AccountMove(models.Model):
-#     _inherit = "account.move"
+    def _get_usage_selection(self):
+        return self.env["account.move"].fields_get().get("l10n_mx_edi_usage").get("selection")
 
-#     # Asumimos que l10n_mx_edi_usage es un campo Char en res.partner
-#     l10n_mx_edi_usage = fields.Char(
-#         string="Fiscal Usage", related="partner_id.commercial_partner_id.l10n_mx_edi_usage", store=True
-#     )
-#     l10n_mx_edi_payment_method_id = fields.Many2one(
-#         "l10n_mx_edi.payment.method", string="Payment Method", related="partner_id.commercial_partner_id.l10n_mx_edi_payment_method_id", store=True
-#     )
+    l10n_mx_edi_usage = fields.Selection(
+        selection=_get_usage_selection,
+        string="Fiscal Usage",
+        store=True,
+        default="S01",  # Valor permitido por la selección
+        help="This usage will be used instead of the default one for invoices.",
+    )
 
-#     @api.onchange("partner_id", "company_id")
-#     def _onchange_partner_id(self):
-#         """Set payment method and usage"""
-#         res = super()._onchange_partner_id()
-#         if self.move_type in ("in_invoice", "in_refund") or not self.partner_id.commercial_partner_id:
-#             return res
-        
-#         # Obtener el partner comercial
-#         commercial_partner = self.partner_id.commercial_partner_id
+    l10n_mx_edi_payment_method_id = fields.Many2one(
+        "l10n_mx_edi.payment.method", string="Payment Method", related="partner_id.commercial_partner_id.l10n_mx_edi_payment_method_id", store=True
+    )
 
-#         # Validación para asegurarse de que l10n_mx_edi_usage sea un valor válido
-#         valid_usage_values = ["P01", "P02", "P03", "P04"]  # Lista de valores válidos, ajusta según corresponda.
-#         if commercial_partner.l10n_mx_edi_usage not in valid_usage_values:
-#             raise ValidationError(
-#                 f"El valor '{commercial_partner.l10n_mx_edi_usage}' no es válido para el campo 'l10n_mx_edi_usage'. Los valores válidos son: {', '.join(valid_usage_values)}."
-#             )
-
-#         # Asignar los valores correctamente
-#         self.l10n_mx_edi_payment_method_id = commercial_partner.l10n_mx_edi_payment_method_id
-#         self.l10n_mx_edi_usage = commercial_partner.l10n_mx_edi_usage
-
-#         return res
+    @api.onchange("partner_id", "company_id")
+    def _onchange_partner_id(self):
+        res = super()._onchange_partner_id()
+        commercial_partner = self.partner_id.commercial_partner_id
+        if commercial_partner:
+            self.l10n_mx_edi_payment_method_id = commercial_partner.l10n_mx_edi_payment_method_id
+            usage_values = [code for code, label in self._get_usage_selection()]
+            if commercial_partner.l10n_mx_edi_usage in usage_values:
+                self.l10n_mx_edi_usage = commercial_partner.l10n_mx_edi_usage
+            else:
+                self.l10n_mx_edi_usage = "S01"
+        return res
