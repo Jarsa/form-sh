@@ -25,9 +25,9 @@ class Partner(models.Model):
     def _get_usage_selection(self):
         return self.env["account.move"].fields_get().get("l10n_mx_edi_usage").get("selection")
 
-    l10n_mx_edi_usage = fields.Selection(
-        _get_usage_selection,
-        "Usage",
-        default=lambda self: self._get_usage_default(),
-        help="This usage will be used instead of the default one for invoices.",
-    )
+        l10n_mx_edi_usage = fields.Many2one(
+            "l10n_mx_edi.usage",
+            string="Usage",
+            help="This usage will be used instead of the default one for invoices.",
+            default=lambda self: self.env.ref("l10n_mx_edi.usage_P01", raise_if_not_found=False),
+        )
