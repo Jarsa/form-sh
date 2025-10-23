@@ -138,11 +138,10 @@ class AccountAsset(models.Model):
             commands.append((4, move_id.id, 0))
             asset.write({"depreciation_move_ids": commands, "method_number": sequence})
             tracked_fields = self.env["account.asset"].fields_get(["method_number", "method_end"])
-            changes, tracking_value_ids = asset._message_track(tracked_fields, {"method_number": asset.method_number})
+            changes = asset._message_track(tracked_fields, {"method_number": asset.method_number})
             if changes:
                 asset.message_post(
                     body=_("Asset sold. Accounting entry awaiting for validation."),
-                    tracking_value_ids=tracking_value_ids,
                 )
             move_ids += move_id.ids
             asset.state = "close"

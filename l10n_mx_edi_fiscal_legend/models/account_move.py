@@ -44,10 +44,11 @@ class AccountMove(models.Model):
         return super().create(vals)
 
     def _message_track(self, tracked_fields, initial):
-
-        changes, tracking_value_ids = super()._message_track(tracked_fields, initial)
+        # In Odoo 17, _message_track only returns changes, not tracking_value_ids
+        changes = super()._message_track(tracked_fields, initial)
         if "l10n_mx_edi_legend_ids" not in initial:
-            return changes, tracking_value_ids
+            return changes
+        
         for col_name, col_info in tracked_fields.items():
             if col_name not in ("l10n_mx_edi_legend_ids",):
                 continue
@@ -65,9 +66,9 @@ class AccountMove(models.Model):
                     initial_value, new_value, col_name, col_info, tracking_sequence, "account.move"
                 )
 
+                # In Odoo 17, tracking values are handled differently
+                # We only need to return the changes set
                 if tracking:
-                    tracking_value_ids.append([0, 0, tracking])
+                    changes.add(col_name)
 
-                changes.add(col_name)
-
-        return changes, tracking_value_ids
+        return changes
