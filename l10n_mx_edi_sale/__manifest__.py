@@ -9,7 +9,7 @@
     'category': 'Accounting',
     'license': 'LGPL-3',
     'depends': [
-        'l10n_mx_edi_partner_defaults',
+        #'l10n_mx_edi_partner_defaults',
         'sale_management',
     ],
     'data': [

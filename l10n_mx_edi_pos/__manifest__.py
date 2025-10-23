@@ -10,7 +10,7 @@
     "depends": [
         "point_of_sale",
         "l10n_mx_edi",
-        "l10n_mx_edi_partner_defaults",
+        #"l10n_mx_edi_partner_defaults",
     ],
     "demo": [],
     "data": [
