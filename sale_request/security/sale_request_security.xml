@@ -25,16 +25,6 @@
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 
-    <!-- TODOS LOS USUARIOS AÑADIDOS A LOS GRUPOS AUTOMÁTICAMENTE -->
-    <function model="res.groups" name="write">
-        <value model="res.groups" search="[('id', '=', ref('group_sale_request_user'))]"/>
-        <value eval="{'users': [(4, user.id) for user in env['res.users'].search([('active', '=', True)])]}"/>
-    </function>
-
-    <function model="res.groups" name="write">
-        <value model="res.groups" search="[('id', '=', ref('group_allow_request_no_stock'))]"/>
-        <value eval="{'users': [(4, user.id) for user in env['res.users'].search([('active', '=', True)])]}"/>
-    </function>
 
     <!-- Dar acceso al menú de ventas a todos los usuarios -->
     <record id="sale.sale_menu_root" model="ir.ui.menu">
