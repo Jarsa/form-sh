@@ -187,11 +187,6 @@ class SaleOrderLine(models.Model):
             rec.qty_invoiced_total = sum(rec.child_ids.filtered(
                 lambda l: l.order_id.state != 'cancel').mapped('qty_invoiced'))
 
-    def _action_launch_stock_rule(self, previous_product_uom_qty=False):
-        """ Override para evitar procurement en master orders """
-        if all(self.mapped('order_id.master_sale_order')):
-            return True
-        return super()._action_launch_stock_rule(previous_product_uom_qty=previous_product_uom_qty)
 
     # -------------------------------------------------------------------------
     #  Este name_get evita el Expected singleton cuando order_id está vacío
