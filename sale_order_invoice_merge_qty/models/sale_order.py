@@ -26,7 +26,7 @@ class SaleOrder(models.Model):
                 move.write({
                     'invoice_line_ids': lines_to_update,
                 })
-                move._onchange_invoice_line_ids()
+                move._recompute_dynamic_lines()
 
     def _create_invoices(self, grouped=False, final=False, date=None):
         moves = super()._create_invoices(grouped, final, date)
