@@ -32,4 +32,5 @@ sentry_sdk
 unidecode
 premailer
 bokeh
+urllib3
 mpld3
