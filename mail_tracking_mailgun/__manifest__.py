@@ -14,9 +14,9 @@
     "application": False,
     "installable": True,
     "depends": ["mail_tracking"],
-    "data": [
-        "views/res_partner.xml",
-        "views/mail_tracking_email.xml",
-        "wizards/res_config_settings_views.xml",
-    ],
+    # "data": [
+    #     "views/res_partner.xml",
+    #     "views/mail_tracking_email.xml",
+    #     "wizards/res_config_settings_views.xml",
+    # ],
 }
