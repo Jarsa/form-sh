@@ -8,6 +8,18 @@ TERM_OPERATORS_POSITIVE = {v: k for k, v in TERM_OPERATORS_NEGATION.items()}
 
 
 class AccountMove(models.Model):
+    def write(self, vals):
+        res = super().write(vals)
+        # Si el UUID no se calculó, intenta tomarlo del documento EDI relacionado
+        for rec in self:
+            if not rec.l10n_mx_edi_cfdi_uuid:
+                # Buscar el primer documento EDI relacionado
+                edi_doc = rec.edi_document_ids and rec.edi_document_ids[0] or False
+                if edi_doc and hasattr(edi_doc, 'attachment_id') and edi_doc.attachment_id:
+                    uuid = edi_doc.attachment_id.l10n_mx_edi_cfdi_uuid
+                    if uuid:
+                        rec.l10n_mx_edi_cfdi_uuid = uuid
+        return res
     _inherit = "account.move"
 
     l10n_mx_edi_cfdi_uuid = fields.Char(
