@@ -99,7 +99,7 @@ class CreateSaleOrderWizard(models.TransientModel):
             'partner_id':         partner.id,
             'user_id':            self.env.user.id,
             'company_id':         request.company_id.id,
-            'date_order':         fields.Date.context_today(self),
+            'date_order':         fields.Datetime.now(),
             'client_order_ref':   sale_line_id and sale_line_id.order_id.client_order_ref or False,
             'origin':             request.name,
             'warehouse_id':       request.warehouse_id.id,
