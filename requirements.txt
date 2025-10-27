@@ -32,5 +32,8 @@ sentry_sdk
 unidecode
 premailer
 bokeh
-urllib3
+cryptography==41.0.7
+pyopenssl==23.2.0
+urllib3<2.3
+requests>=2.31,<2.33
 mpld3
