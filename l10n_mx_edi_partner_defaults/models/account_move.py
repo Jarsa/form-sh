@@ -44,3 +44,28 @@ class AccountMove(models.Model):
             else:
                 self.l10n_mx_edi_usage = "S01"
         return res
+
+
+     # --------------------------
+    # BRIDGES PARA LA ADDENDA
+    # --------------------------
+    def _mx_get_cfdi_values(self):
+        """
+        Devuelve los cfdi_values usando el helper que exista en este build.
+        Evita lógica en QWeb y unifica nombres nuevos/legacy.
+        """
+        self.ensure_one()
+        if hasattr(self, "_get_l10n_mx_edi_cfdi_values"):
+            return self._get_l10n_mx_edi_cfdi_values()
+        if hasattr(self, "_l10n_mx_edi_get_invoice_cfdi_values"):
+            return self._l10n_mx_edi_get_invoice_cfdi_values()
+        return {}
+
+    def _mx_get_serie_and_folio(self):
+        """
+        Devuelve {'serie': ..., 'folio_number': ...} si existe el helper del core.
+        """
+        self.ensure_one()
+        if hasattr(self, "_l10n_mx_edi_get_serie_and_folio"):
+            return self._l10n_mx_edi_get_serie_and_folio()
+        return {}
