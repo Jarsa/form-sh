@@ -71,7 +71,7 @@ class AccountMove(models.Model):
             domain.insert(0, "&" if operator in NEGATIVE_TERM_OPERATORS else "|")
         return domain
 
-    @api.depends("edi_document_ids", "edi_document_ids.attachment_id", "edi_document_ids.attachment_uuid")
+    @api.depends("edi_document_ids", "edi_document_ids.attachment_id")
     def _compute_l10n_mx_edi_cfdi_uuid(self, return_dict=None):
         if not self.ids:
             self.l10n_mx_edi_cfdi_uuid = False
@@ -94,11 +94,8 @@ class AccountMove(models.Model):
             # Si no hay UUID, intenta copiarlo del primer documento EDI relacionado
             if not uuid and inv.edi_document_ids:
                 edi_doc = inv.edi_document_ids[0]
-                # Intenta primero con attachment_uuid directo
-                if hasattr(edi_doc, 'attachment_uuid') and edi_doc.attachment_uuid:
-                    uuid = edi_doc.attachment_uuid
-                # Si no, intenta con el attachment_id
-                elif hasattr(edi_doc, 'attachment_id') and edi_doc.attachment_id and hasattr(edi_doc.attachment_id, 'l10n_mx_edi_cfdi_uuid'):
+                # Intenta con el attachment_id
+                if hasattr(edi_doc, 'attachment_id') and edi_doc.attachment_id and hasattr(edi_doc.attachment_id, 'l10n_mx_edi_cfdi_uuid'):
                     uuid = edi_doc.attachment_id.l10n_mx_edi_cfdi_uuid
             inv.l10n_mx_edi_cfdi_uuid = uuid
 
