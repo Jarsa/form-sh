@@ -150,7 +150,7 @@ class ProductPricelistPrint(models.TransientModel):
         compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         ctx = {
             "default_composition_mode": "comment",
-            "default_res_id": self.id,
+            "default_res_ids": self.id,
             "default_model": "product.pricelist.print",
             "default_use_template": bool(template_id),
             "default_template_id": template_id,
@@ -185,7 +185,7 @@ class ProductPricelistPrint(models.TransientModel):
                 {
                     "default_composition_mode": "mass_mail",
                     "default_notify": True,
-                    "default_res_id": self.id,
+                    "default_res_ids": self.id,
                     "default_model": "product.pricelist.print",
                     "default_template_id": template_id,
                     "active_ids": self.ids,

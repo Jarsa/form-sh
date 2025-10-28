@@ -28,7 +28,7 @@ class TestMailAttachExistingAttachmentAccount(BaseCommon):
             self.env["account.move.send"].with_context(
                 active_ids=self.invoice.ids,
                 default_model=self.invoice._name,
-                default_res_id=self.invoice.id,
+                default_res_ids=self.invoice.id,
                 default_res_model=self.invoice._name,
             )
         )

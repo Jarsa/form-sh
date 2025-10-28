@@ -50,7 +50,7 @@ class TierValidation(models.AbstractModel):
             "view_id": wizard.id,
             "target": "new",
             "context": {
-                "default_res_id": self.id,
+                "default_res_ids": self.id,
                 "default_res_model": self._name,
                 "comment_id": comment.id,
             },

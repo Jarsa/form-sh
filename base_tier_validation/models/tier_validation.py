@@ -612,7 +612,7 @@ class TierValidation(models.AbstractModel):
             "view_id": wizard.id,
             "target": "new",
             "context": {
-                "default_res_id": self.id,
+                "default_res_ids": self.id,
                 "default_res_model": self._name,
                 "default_review_ids": reviews.ids,
                 "default_validate_reject": validate_reject,
