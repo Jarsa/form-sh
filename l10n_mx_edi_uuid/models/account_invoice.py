@@ -71,7 +71,7 @@ class AccountMove(models.Model):
             domain.insert(0, "&" if operator in NEGATIVE_TERM_OPERATORS else "|")
         return domain
 
-    @api.depends("edi_document_ids")
+    @api.depends("edi_document_ids", "edi_document_ids.attachment_id", "edi_document_ids.attachment_uuid")
     def _compute_l10n_mx_edi_cfdi_uuid(self, return_dict=None):
         if not self.ids:
             self.l10n_mx_edi_cfdi_uuid = False
@@ -90,7 +90,17 @@ class AccountMove(models.Model):
         if return_dict:
             return res
         for inv in self:
-            inv.l10n_mx_edi_cfdi_uuid = res.get(inv.id)
+            uuid = res.get(inv.id)
+            # Si no hay UUID, intenta copiarlo del primer documento EDI relacionado
+            if not uuid and inv.edi_document_ids:
+                edi_doc = inv.edi_document_ids[0]
+                # Intenta primero con attachment_uuid directo
+                if hasattr(edi_doc, 'attachment_uuid') and edi_doc.attachment_uuid:
+                    uuid = edi_doc.attachment_uuid
+                # Si no, intenta con el attachment_id
+                elif hasattr(edi_doc, 'attachment_id') and edi_doc.attachment_id and hasattr(edi_doc.attachment_id, 'l10n_mx_edi_cfdi_uuid'):
+                    uuid = edi_doc.attachment_id.l10n_mx_edi_cfdi_uuid
+            inv.l10n_mx_edi_cfdi_uuid = uuid
 
     @api.constrains("state", "edi_document_ids")
     def _check_uuid_duplicated(self):
