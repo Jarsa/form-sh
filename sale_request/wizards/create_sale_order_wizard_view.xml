@@ -36,7 +36,7 @@
                 <field name="product_id"/>
                 <field name="order_id"/>
                 <field name="sale_line_id" invisible="1"/>
-                  <field name="purchase_order_id"/>
+                  <field name="client_order_ref"/>
                   <field name="name"              readonly="1"/>
                   <field name="product_uom_qty"   readonly="1"/>
                   <field name="remaining_product_qty" readonly="1"/>
