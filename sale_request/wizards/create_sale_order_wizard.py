@@ -221,6 +221,7 @@ class CreateSaleOrderWizardLine(models.TransientModel):
     remaining_product_qty  = fields.Float(digits='Product Unit of Measure')
     product_uom_id         = fields.Many2one('uom.uom', related='sale_line_id.product_uom')
     qty_to_sale            = fields.Float(digits='Product Unit of Measure')
+    purchase_order_id      = fields.Many2one('purchase.order', string='Orden de Compra Asociada', readonly=True)
 
     @api.onchange('qty_to_sale')
     def _onchange_qty_to_sale(self):
