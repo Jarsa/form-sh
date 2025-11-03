@@ -29,6 +29,8 @@
             </li>
         </ul>
     </template>
+    <!-- Comentado porque account_reports.search_template no existe en Odoo 17 -->
+    <!-- 
     <template id="search_template" inherit_id="account_reports.search_template">
         <xpath expr="//div[hasclass('o_account_reports_filter_date_cmp')]" position="before">
             <div class="btn-group o_dropdown" t-if="options.get('request_type', None) != None">
@@ -36,4 +38,5 @@
             </div>
         </xpath>
     </template>
+    -->
 </odoo>
