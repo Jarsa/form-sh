@@ -1,4 +1,4 @@
-<odoo>
+<!--odoo-->
     <!-- general ledger report templates -->
     <!--
     <template id="new_line_template_general_ledger_report" inherit_id="account_reports.pdf_export_main_table_body">

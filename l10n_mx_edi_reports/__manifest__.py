@@ -17,16 +17,16 @@
     ],
     "demo": [],
     "data": [
-        "data/account_financial_report_data.xml",
-        "data/templates/cfdimoves.xml",
-        "views/search_template_view.xml",
-        "views/report_financial.xml",
+        # "data/account_financial_report_data.xml",
+        # "data/templates/cfdimoves.xml",
+        # "views/search_template_view.xml",
+        # "views/report_financial.xml",
     ],
-    "assets": {
-        "web.assets_backend": [
-            "l10n_mx_edi_reports/static/src/js/account_reports.js",
-        ],
-    },
+    # "assets": {
+    #     "web.assets_backend": [
+    #         "l10n_mx_edi_reports/static/src/js/account_reports.js",
+    #     ],
+    # },
     "installable": True,
     "auto_install": True,
 }
