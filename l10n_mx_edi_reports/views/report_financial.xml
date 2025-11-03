@@ -1,13 +1,10 @@
 <odoo>
     <!-- general ledger report templates -->
-    <template id="new_line_template_general_ledger_report" inherit_id="account_reports.line_template" primary="True">
-        <xpath expr="//div[hasclass('o_account_reports_domain_dropdown')]/*[last()]" position="before">
-            <li t-if="line['caret_options'] != 'account.tax'" role="presentation"><a
-                    role="menuitem"
-                    tabindex="-1"
-                    t-att-data-id="line['id']"
-                    action="open_document"
-                >View Journal Entry</a></li>
+    <template id="new_line_template_general_ledger_report" inherit_id="account_reports.pdf_export_main_table_body">
+        <!-- Ejemplo de modificación: puedes ajustar el contenido según lo que necesites mostrar en cada línea -->
+        <xpath expr="." position="inside">
+            <!-- Aquí puedes agregar celdas, columnas o lógica específica para cada línea del reporte -->
+            <!-- Ejemplo: <td>Contenido personalizado</td> -->
         </xpath>
     </template>
 </odoo>
