@@ -1,9 +1,7 @@
 <odoo>
-    <template id="l10n_mx_edi_reports_assets" name="L10n MX EDI Reports Assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <script type="text/javascript" src="/l10n_mx_edi_reports/static/src/js/account_reports.js"/>
-        </xpath>
-    </template>
+    <assets>
+        <js src="/l10n_mx_edi_reports/static/src/js/account_reports.js"/>
+    </assets>
     <!-- general ledger report templates -->
     <template id="new_line_template_general_ledger_report" inherit_id="account_reports.line_template" primary="True">
         <xpath expr="//div[hasclass('o_account_reports_domain_dropdown')]/*[last()]" position="before">
