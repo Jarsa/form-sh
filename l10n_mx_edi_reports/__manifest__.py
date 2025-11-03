@@ -22,6 +22,11 @@
         "views/search_template_view.xml",
         "views/report_financial.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "l10n_mx_edi_reports/static/src/js/account_reports.js",
+        ],
+    },
     "installable": True,
     "auto_install": True,
 }
