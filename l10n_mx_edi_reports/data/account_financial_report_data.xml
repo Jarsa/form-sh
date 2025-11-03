@@ -8,7 +8,7 @@
     <menuitem
         id="menu_general_ledger"
         name="General Ledger"
-        parent="l10n_mx_reports.account_reports_legal_mexican_statements_menu"
+        parent="account.menu_finance_reports"
         sequence="100"
         groups="account.group_account_user"
         action="action_general_ledger"
