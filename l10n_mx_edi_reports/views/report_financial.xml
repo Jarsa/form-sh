@@ -5,6 +5,8 @@
             <script type="text/javascript" src="/l10n_mx_edi_reports/static/src/js/account_reports.js"/>
         </xpath>
     </template>
+    <!-- ...existing code... -->
+</odoo>
 <odoo>
     <!-- general ledger report templates -->
     <template id="new_line_template_general_ledger_report" inherit_id="account_reports.line_template" primary="True">
