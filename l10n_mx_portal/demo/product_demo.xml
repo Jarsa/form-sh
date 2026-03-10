@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-
-    <record id="product.product_product_5" model="product.product">
-        <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
-    </record>
-
-</odoo>
