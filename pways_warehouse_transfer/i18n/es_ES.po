@@ -1,0 +1,171 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pways_warehouse_transfer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-04 00:00+0000\n"
+"PO-Revision-Date: 2025-08-04 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pways_warehouse_transfer
+#: model:ir.actions.act_window,name:pways_warehouse_transfer.action_stock_transfer
+#: model:ir.ui.menu,name:pways_warehouse_transfer.stock_transfer_menu
+msgid "Warehouse Transfer"
+msgstr "Transferencia de Almacén"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model,name:pways_warehouse_transfer.model_stock_transfer
+msgid "Warehouse Stock Transfer"
+msgstr "Transferencia de Stock de Almacén"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model,name:pways_warehouse_transfer.model_stock_transfer_line
+msgid "Warehouse Stock Transfer Line"
+msgstr "Línea de Transferencia de Stock de Almacén"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__state
+msgid "State"
+msgstr "Estado"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields.selection,name:pways_warehouse_transfer.selection__stock_transfer__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields.selection,name:pways_warehouse_transfer.selection__stock_transfer__state__process
+msgid "Processing"
+msgstr "Procesando"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields.selection,name:pways_warehouse_transfer.selection__stock_transfer__state__done
+msgid "Done"
+msgstr "Completado"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields.selection,name:pways_warehouse_transfer.selection__stock_transfer__type__send
+msgid "Send"
+msgstr "Enviar"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields.selection,name:pways_warehouse_transfer.selection__stock_transfer__type__receive
+msgid "Receive"
+msgstr "Recibir"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__location_id
+msgid "From"
+msgstr "Desde"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__location_dest_id
+msgid "To"
+msgstr "Hacia"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__schedule_date
+msgid "Schedule Date"
+msgstr "Fecha Programada"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__from_warehouse_id
+msgid "Requested from"
+msgstr "Solicitado desde"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer__to_warehouse_id
+msgid "To"
+msgstr "Hacia"
+
+#. module: pways_warehouse_transfer
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.stock_transfer_view_form
+msgid "Requested From"
+msgstr "Solicitado Desde"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer_line__qty
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.fields,field_description:pways_warehouse_transfer.field_stock_transfer_line__product_uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de Medida"
+
+#. module: pways_warehouse_transfer
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.stock_transfer_tree_view
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.stock_transfer_view_form
+msgid "Stock Transfer"
+msgstr "Transferencia de Stock"
+
+#. module: pways_warehouse_transfer
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.stock_transfer_view_form
+msgid "Process"
+msgstr "Procesar"
+
+#. module: pways_warehouse_transfer
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.stock_transfer_view_form
+msgid "Pickings"
+msgstr "Pickings"
+
+#. module: pways_warehouse_transfer
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.stock_transfer_view_form
+msgid "Operations"
+msgstr "Operaciones"
+
+#. module: pways_warehouse_transfer
+#: model_terms:ir.ui.view,arch_db:pways_warehouse_transfer.action_stock_transfer
+msgid "Create a new New Transfer"
+msgstr "Crear una nueva Transferencia"
+
+#. module: pways_warehouse_transfer
+#: code:addons/pways_warehouse_transfer/models/stock_transfer.py:0
+#, python-format
+msgid "Please add items to transfer."
+msgstr "Por favor añada artículos para transferir."
+
+#. module: pways_warehouse_transfer
+#: code:addons/pways_warehouse_transfer/models/stock_transfer.py:0
+#, python-format
+msgid "Stock Picking"
+msgstr "Albarán de Stock"
+
+#. module: pways_warehouse_transfer
+#: model:ir.sequence,name:pways_warehouse_transfer.sequence_warehouse_transfer
+msgid "warehouse.transfer"
+msgstr "transferencia.almacén"
+
+#. module: pways_warehouse_transfer
+#: model:stock.location,name:pways_warehouse_transfer.warehouse_stock_location
+msgid "Warehouse Transfer"
+msgstr "Transferencia de Almacén"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.access,name:pways_warehouse_transfer.access_stock_transfer
+msgid "access_stock_transfer"
+msgstr "acceso_transferencia_stock"
+
+#. module: pways_warehouse_transfer
+#: model:ir.model.access,name:pways_warehouse_transfer.access_stock_transfer_line
+msgid "access_stock_transfer_line"
+msgstr "acceso_línea_transferencia_stock"
