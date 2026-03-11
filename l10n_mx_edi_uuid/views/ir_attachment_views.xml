@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_attachment_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='mimetype']" position="after">
-                <field name="l10n_mx_edi_cfdi_uuid" />
+                 <!-- Removed l10n_mx_edi_cfdi_uuid field, as it does not exist in ir.attachment -->
             </xpath>
         </field>
     </record>
