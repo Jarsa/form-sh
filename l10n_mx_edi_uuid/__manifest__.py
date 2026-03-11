@@ -16,9 +16,9 @@
     ],
     "demo": [],
     "data": [
-       # "views/account_invoice_views.xml",
-       # "views/ir_attachment_views.xml",
-       # "views/account_payment_views.xml",
+       "views/account_invoice_views.xml",
+       "views/ir_attachment_views.xml",
+       "views/account_payment_views.xml",
     ],
     "installable": True,
     "auto_install": False,
