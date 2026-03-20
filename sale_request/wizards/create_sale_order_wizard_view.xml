@@ -4,55 +4,65 @@
     <field name="name">view.create.sale.order.wizard.form</field>
     <field name="model">create.sale.order.wizard</field>
     <field name="arch" type="xml">
-      <form string="Crear Órdenes desde Requisiciones de Venta">
+      <form string="Create Orders from Sale Request">
         <sheet>
+          <!-- Alerta: sin horario permitido -->
           <div class="alert alert-danger o_wizard_alert"
                role="alert"
-               modifiers="{'invisible': [('has_lines','=',True),('on_time','=',True)]}">
-            <strong>¡Lo siento!</strong> no existe pedido master para este producto. ¿Deseas crear requisición sin pedido?
+               modifiers="{'invisible': [('on_time','=',True)]}">
+            <strong>Outside business hours.</strong> Sale orders can only be created during the allowed schedule.
           </div>
+
+          <!-- Alerta: sin master order, pero en horario -->
+          <div class="alert alert-warning o_wizard_alert"
+               role="alert"
+               modifiers="{'invisible': ['|', ('has_lines','=',True), ('on_time','=',False)]}">
+            <strong>No master order found</strong> for this product and customer.
+            Check <em>Confirm without Master Order</em> below to create the order anyway.
+          </div>
+
           <field name="has_lines" invisible="1"/>
           <field name="on_time"   invisible="1"/>
 
-          <group string="Seleccione las líneas del pedido master"
+          <group string="Select master order lines"
                  modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}"/>
 
           <group columns="2"
-                 modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}">
+                 modifiers="{'invisible': [('on_time','=',False)]}">
             <field name="product_id"/>
-            <field name="remaining_product_qty" string="Pendiente" class="oe_inline"/>
-            <field name="product_qty"           string="Requerido" class="oe_inline"/>
+            <field name="remaining_product_qty" string="Pending" class="oe_inline"/>
+            <field name="product_qty"           string="Required" class="oe_inline"/>
             <field name="product_uom_id"/>
           </group>
 
-          <group modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}">
-            <field name="confirm_without_master"/>
+          <group modifiers="{'invisible': [('on_time','=',False)]}">
+            <field name="confirm_without_master" string="Confirm without Master Order"/>
           </group>
 
-          <group string="Líneas"
+          <group string="Master Order Lines"
                  modifiers="{'invisible': ['|','|',('has_lines','=',False),('on_time','=',False),('confirm_without_master','=',True)]}">
             <field name="line_ids" nolabel="1" colspan="4">
               <tree editable="top" create="0" delete="0">
                 <field name="product_id"/>
-                <field name="order_id"/>
+                <field name="order_id" string="Master Order"/>
                 <field name="sale_line_id" invisible="1"/>
-                  <field name="client_order_ref"/>
-                  <field name="name"              readonly="1"/>
-                  <field name="product_uom_qty"   readonly="1"/>
-                  <field name="remaining_product_qty" readonly="1"/>
-                  <field name="product_uom_id"    readonly="1"/>
-                  <field name="qty_to_sale"       required="1"/>
+                  <field name="client_order_ref" string="Order Ref."/>
+                  <field name="name"              readonly="1" string="Description"/>
+                  <field name="product_uom_qty"   readonly="1" string="Total Qty"/>
+                  <field name="remaining_product_qty" readonly="1" string="Available"/>
+                  <field name="product_uom_id"    readonly="1" string="UoM"/>
+                  <field name="qty_to_sale"       required="1" string="Qty to Sell"/>
               </tree>
             </field>
           </group>
         </sheet>
         <footer>
           <button name="create_sale_order"
-                  string="Confirmar"
+                  string="Confirm"
                   type="object"
                   class="oe_highlight"
-                  modifiers="{'invisible': ['|',('has_lines','=',False),('on_time','=',False)]}"/>
-          <button string="Cancelar" special="cancel"/>
+                  modifiers="{'invisible': ['|', ('on_time','=',False), '&amp;', ('has_lines','=',False), ('confirm_without_master','=',False)]}"/>
+          <button string="Cancel" special="cancel"/>
         </footer>
       </form>
     </field>

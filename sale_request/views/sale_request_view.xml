@@ -5,14 +5,21 @@
         <field name="name">view.sale.request.tree</field>
         <field name="model">sale.request</field>
         <field name="arch" type="xml">
-            <tree string="Sale Request">
+            <tree string="Sale Request"
+                  decoration-success="state == 'done'"
+                  decoration-info="state == 'confirm'"
+                  decoration-muted="state == 'cancel'">
                 <field name="name"/>
                 <field name="date"/>
                 <field name="partner_id"/>
                 <field name="requested_by"/>
                 <field name="warehouse_id"/>
                 <field name="company_id" groups="base.group_multi_company"/>
-                <field name="state"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-info="state == 'confirm'"
+                       decoration-warning="state == 'draft'"
+                       decoration-danger="state == 'cancel'"/>
             </tree>
         </field>
     </record>
@@ -26,9 +33,9 @@
                 <header>
                     <button name="button_draft"
                             modifiers="cancel"
-                            string="Reset"
+                            string="Reset to Draft"
                             type="object"
-                            class="btn-primary"
+                            class="btn-secondary"
                             groups="sale_request.group_sale_request_manager"/>
                     <button name="button_confirm"
                             modifiers="draft"
@@ -52,11 +59,6 @@
                                 type="object"
                                 icon="fa-usd"
                                 modifiers="{'invisible': [('sale_ids', '=', [])]}"/>
-                        <button class="oe_stat_button"
-                                name="button_sale_request_lines"
-                                string="Request Lines"
-                                type="object"
-                                icon="fa-bars"/>
                     </div>
                     <h1><field name="name"/></h1>
                     <group>
@@ -77,22 +79,32 @@
                         </group>
                     </group>
                     <notebook>
-                        <page name="lines" string="Lines">
+                        <page name="lines" string="Request Lines">
                             <field name="line_ids" nolabel="1">
-                                <tree editable="bottom">
+                                <tree editable="bottom"
+                                      decoration-success="state == 'done'"
+                                      decoration-muted="remaining_product_qty == 0 and state == 'pending'">
                                     <field name="product_id" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
                                     <field name="description" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <field name="product_qty" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <field name="remaining_product_qty"/>
+                                    <field name="product_qty" string="Required Qty" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                    <field name="remaining_product_qty" string="Remaining"/>
                                     <field name="product_uom_id" groups="uom.group_uom" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <!-- Faltaba esto: -->
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'done'"
+                                           decoration-warning="state == 'pending'"/>
+                                    <button name="button_open_wizard"
+                                            type="object"
+                                            string="Create Order"
+                                            icon="fa-plus-circle"
+                                            class="btn-primary btn-sm"
+                                            modifiers="{'invisible': ['|', ('request_state', '!=', 'confirm'), ('remaining_product_qty', '&lt;=', 0)]}"/>
                                     <field name="category_uom_id" invisible="1"/>
                                     <field name="request_state" invisible="1"/>
                                     <field name="request_id" invisible="1"/>
                                 </tree>
                             </field>
                         </page>
-                        <page name="description" string="Extra Information">
+                        <page name="description" string="Notes">
                             <group>
                                 <field name="description" nolabel="1" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
                             </group>
@@ -125,6 +137,13 @@
                 <filter string="Late Activities" name="activities_overdue" domain="[('activity_ids.date_deadline', '&lt;', context_today())]"/>
                 <filter string="Today Activities" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today())]"/>
                 <filter string="Future Activities" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today())]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_partner" string="Customer" context="{'group_by': 'partner_id'}"/>
+                    <filter name="groupby_warehouse" string="Warehouse" context="{'group_by': 'warehouse_id'}"/>
+                    <filter name="groupby_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="groupby_date" string="Date" context="{'group_by': 'date:month'}"/>
+                </group>
             </search>
         </field>
     </record>

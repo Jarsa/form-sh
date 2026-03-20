@@ -368,3 +368,16 @@ class SaleRequestLine(models.Model):
             'type': 'ir.actions.act_window',
             'context': {'create': False, 'delete': False, 'is_master_order': False},
         }
+
+    def button_open_wizard(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'create.sale.order.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'active_id': self.id,
+                'active_model': 'sale.request.line',
+            },
+        }
