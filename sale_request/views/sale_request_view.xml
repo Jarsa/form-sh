@@ -5,17 +5,17 @@
         <field name="name">view.sale.request.tree</field>
         <field name="model">sale.request</field>
         <field name="arch" type="xml">
-            <tree string="Sale Request"
+            <tree string="Requisiciones de Venta"
                   decoration-success="state == 'done'"
                   decoration-info="state == 'confirm'"
                   decoration-muted="state == 'cancel'">
-                <field name="name"/>
-                <field name="date"/>
-                <field name="partner_id"/>
-                <field name="requested_by"/>
-                <field name="warehouse_id"/>
+                <field name="name" string="Folio"/>
+                <field name="date" string="Fecha"/>
+                <field name="partner_id" string="Cliente"/>
+                <field name="requested_by" string="Solicitado por"/>
+                <field name="warehouse_id" string="Almacén"/>
                 <field name="company_id" groups="base.group_multi_company"/>
-                <field name="state" widget="badge"
+                <field name="state" widget="badge" string="Estado"
                        decoration-success="state == 'done'"
                        decoration-info="state == 'confirm'"
                        decoration-warning="state == 'draft'"
@@ -29,24 +29,24 @@
         <field name="name">view.sale.request.form</field>
         <field name="model">sale.request</field>
         <field name="arch" type="xml">
-            <form string="Sale Request">
+            <form string="Requisición de Venta">
                 <header>
                     <button name="button_draft"
                             modifiers="cancel"
-                            string="Reset to Draft"
+                            string="Regresar a Borrador"
                             type="object"
                             class="btn-secondary"
                             groups="sale_request.group_sale_request_manager"/>
                     <button name="button_confirm"
                             modifiers="draft"
-                            string="Confirm"
+                            string="Confirmar"
                             type="object"
                             class="oe_highlight"
                             groups="sale_request.group_sale_request_manager"/>
                     <field name="state" widget="statusbar" nolabel="1"/>
                     <button name="button_cancel"
                             modifiers="draft,confirm"
-                            string="Cancel"
+                            string="Cancelar"
                             type="object"
                             class="btn-danger"
                             groups="sale_request.group_sale_request_manager"/>
@@ -55,46 +55,42 @@
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button"
                                 name="button_sale_orders"
-                                string="Sales"
+                                string="Pedidos"
                                 type="object"
                                 icon="fa-usd"
                                 modifiers="{'invisible': [('sale_ids', '=', [])]}"/>
                     </div>
                     <h1><field name="name"/></h1>
                     <group>
-                        <group>
-                            <field name="partner_id" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
-                            <field name="partner_shipping_id" modifiers="{'readonly': [('state', '!=', 'draft')], 'required': True}"/>
+                        <group string="Información del Cliente">
+                            <field name="partner_id" string="Cliente" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="partner_shipping_id" string="Dirección de Envío" modifiers="{'readonly': [('state', '!=', 'draft')], 'required': True}"/>
                         </group>
-                        <group>
-                            <field name="date" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <group string="Información del Pedido">
+                            <field name="date" string="Fecha" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
                             <field name="company_id" company_dependent="True" groups="base.group_multi_company"/>
-                            <field name="warehouse_id" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
-                            <field name="route_id" groups="sale_request.group_allow_request_no_stock" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
-                        </group>
-                    </group>
-                    <group>
-                        <group name="users">
-                            <field name="requested_by" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="warehouse_id" string="Almacén" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="route_id" string="Ruta" groups="sale_request.group_allow_request_no_stock" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="requested_by" string="Solicitado por" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
                         </group>
                     </group>
                     <notebook>
-                        <page name="lines" string="Request Lines">
+                        <page name="lines" string="Líneas">
                             <field name="line_ids" nolabel="1">
                                 <tree editable="bottom"
                                       decoration-success="state == 'done'"
                                       decoration-muted="remaining_product_qty == 0 and state == 'pending'">
-                                    <field name="product_id" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <field name="description" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <field name="product_qty" string="Required Qty" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <field name="remaining_product_qty" string="Remaining"/>
-                                    <field name="product_uom_id" groups="uom.group_uom" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
-                                    <field name="state" widget="badge"
+                                    <field name="product_id" string="Producto" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                    <field name="description" string="Descripción" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                    <field name="product_qty" string="Cant. Requerida" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                    <field name="remaining_product_qty" string="Pendiente"/>
+                                    <field name="product_uom_id" string="UdM" groups="uom.group_uom" modifiers="{'readonly': [('request_state', '!=', 'draft')]}"/>
+                                    <field name="state" widget="badge" string="Estado"
                                            decoration-success="state == 'done'"
                                            decoration-warning="state == 'pending'"/>
                                     <button name="button_open_wizard"
                                             type="object"
-                                            string="Create Order"
+                                            string="Crear Pedido"
                                             icon="fa-plus-circle"
                                             class="btn-primary btn-sm"
                                             modifiers="{'invisible': ['|', ('request_state', '!=', 'confirm'), ('remaining_product_qty', '&lt;=', 0)]}"/>
@@ -104,7 +100,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page name="description" string="Notes">
+                        <page name="description" string="Notas">
                             <group>
                                 <field name="description" nolabel="1" modifiers="{'readonly': [('state', '!=', 'draft')]}"/>
                             </group>
@@ -128,21 +124,21 @@
             <search>
                 <field name="name"/>
                 <field name="product_id"/>
-                <filter name="requested_by" string="My Requests" domain="[('requested_by', '=', uid)]"/>
-                <filter name="state_draft" string="Draft" domain="[('state', '=', 'draft')]"/>
-                <filter name="state_confirm" string="Confirmed" domain="[('state', '=', 'confirm')]"/>
-                <filter name="state_cancel" string="Cancelled" domain="[('state', '=', 'cancel')]"/>
+                <filter name="requested_by" string="Mis Requisiciones" domain="[('requested_by', '=', uid)]"/>
+                <filter name="state_draft" string="Borrador" domain="[('state', '=', 'draft')]"/>
+                <filter name="state_confirm" string="Confirmada" domain="[('state', '=', 'confirm')]"/>
+                <filter name="state_cancel" string="Cancelada" domain="[('state', '=', 'cancel')]"/>
                 <separator/>
-                <filter string="My Activities" name="activities_my" domain="[('activity_ids.user_id', '=', uid)]"/>
-                <filter string="Late Activities" name="activities_overdue" domain="[('activity_ids.date_deadline', '&lt;', context_today())]"/>
-                <filter string="Today Activities" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today())]"/>
-                <filter string="Future Activities" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today())]"/>
+                <filter string="Mis Actividades" name="activities_my" domain="[('activity_ids.user_id', '=', uid)]"/>
+                <filter string="Actividades Vencidas" name="activities_overdue" domain="[('activity_ids.date_deadline', '&lt;', context_today())]"/>
+                <filter string="Actividades de Hoy" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today())]"/>
+                <filter string="Actividades Futuras" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today())]"/>
                 <separator/>
-                <group expand="0" string="Group By">
-                    <filter name="groupby_partner" string="Customer" context="{'group_by': 'partner_id'}"/>
-                    <filter name="groupby_warehouse" string="Warehouse" context="{'group_by': 'warehouse_id'}"/>
-                    <filter name="groupby_state" string="Status" context="{'group_by': 'state'}"/>
-                    <filter name="groupby_date" string="Date" context="{'group_by': 'date:month'}"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="groupby_partner" string="Cliente" context="{'group_by': 'partner_id'}"/>
+                    <filter name="groupby_warehouse" string="Almacén" context="{'group_by': 'warehouse_id'}"/>
+                    <filter name="groupby_state" string="Estado" context="{'group_by': 'state'}"/>
+                    <filter name="groupby_date" string="Fecha" context="{'group_by': 'date:month'}"/>
                 </group>
             </search>
         </field>
@@ -150,20 +146,20 @@
 
     <!-- Actions -->
     <record id="action_sale_request" model="ir.actions.act_window">
-        <field name="name">Sale Request</field>
+        <field name="name">Requisiciones de Venta</field>
         <field name="res_model">sale.request</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <record id="action_sale_request_line" model="ir.actions.act_window">
-        <field name="name">Sale Request Lines</field>
+        <field name="name">Seguimiento de Líneas</field>
         <field name="res_model">sale.request.line</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{'create': False, 'edit': False}</field>
     </record>
 
     <!-- Menus -->
-    <menuitem id="sale_request_main_menu" name="Sale Requests" parent="sale.sale_menu_root" sequence="3"/>
-    <menuitem id="sale_request_menu" name="Sale Requests" parent="sale_request_main_menu" action="action_sale_request" sequence="1"/>
-    <menuitem id="sale_request_line_menu" name="Sale Request Lines" parent="sale_request_main_menu" action="action_sale_request_line" sequence="2"/>
+    <menuitem id="sale_request_main_menu" name="Requisiciones" parent="sale.sale_menu_root" sequence="3"/>
+    <menuitem id="sale_request_menu" name="Requisiciones de Venta" parent="sale_request_main_menu" action="action_sale_request" sequence="1"/>
+    <menuitem id="sale_request_line_menu" name="Seguimiento de Líneas" parent="sale_request_main_menu" action="action_sale_request_line" sequence="2"/>
 </odoo>

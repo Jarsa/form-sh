@@ -4,18 +4,25 @@
         <field name="name">view.sale.request.line.tree</field>
         <field name="model">sale.request.line</field>
         <field name="arch" type="xml">
-            <tree string="Sale Request Line"
-                  decoration-info="request_state == 'confirm'"
-                  decoration-muted="request_state == 'cancel'"
-                  decoration-bf="request_state == 'cancel'">
-                <field name="request_id"/>
-                <field name="request_state"/>
-                <field name="product_id"/>
-                <field name="description"/>
-                <field name="product_qty"/>
-                <field name="product_uom_id" groups="uom.group_uom"/>
-                <field name="category_uom_id" groups="uom.group_uom"/>
-                <field name="state"/>
+            <tree string="Líneas de Requisición"
+                  decoration-success="state == 'done'"
+                  decoration-info="request_state == 'confirm' and state == 'pending'"
+                  decoration-danger="request_state == 'cancel'">
+                <field name="request_id" string="Requisición"/>
+                <field name="request_state" string="Estado de Requisición" widget="badge"
+                       decoration-info="request_state == 'confirm'"
+                       decoration-warning="request_state == 'draft'"
+                       decoration-danger="request_state == 'cancel'"
+                       decoration-success="request_state == 'done'"/>
+                <field name="product_id" string="Producto"/>
+                <field name="description" string="Descripción"/>
+                <field name="product_qty" string="Cant. Requerida"/>
+                <field name="remaining_product_qty" string="Pendiente"/>
+                <field name="product_uom_id" string="UdM" groups="uom.group_uom"/>
+                <field name="state" string="Estado Línea" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-warning="state == 'pending'"/>
+                <field name="category_uom_id" invisible="1"/>
             </tree>
         </field>
     </record>

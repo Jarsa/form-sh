@@ -35,7 +35,7 @@
 
       <!-- 2) Insert a new page AFTER order_lines for master_sale_order_line -->
       <xpath expr="//page[@name='order_lines']" position="after">
-        <page name="master_sale_order_line" string="Master Sales Order Lines"
+        <page name="master_sale_order_line" string="Líneas del Master Order"
               modifiers="{'invisible':[('master_sale_order','=',False)]}">
           <field name="master_sale_order_line">
             <tree string="Master Sales Order Lines" editable="bottom">
@@ -91,7 +91,7 @@
       <!-- 3) Buttons (placed OUTSIDE of other xpath blocks) -->
       <xpath expr="//button[@name='action_confirm']" position="after">
         <button name="button_link_sale_order"
-                string="Link Sale Order"
+                string="Vincular a Master Order"
                 type="object"
                 class="oe_highlight"
                 modifiers="{'invisible':[('master_sale_order','=',False)]}"/>
@@ -100,7 +100,7 @@
       <xpath expr="//button[@name='action_view_invoice']" position="after">
         <button class="oe_stat_button"
                 name="button_child_sale_orders"
-                string="Sale Orders"
+                string="Pedidos Hijos"
                 type="object"
                 icon="fa-bars"
                 modifiers="{'invisible':[('master_sale_order','=',False)]}"/>
@@ -116,7 +116,7 @@
     </record>
 
     <record id="action_sale_order_master" model="ir.actions.act_window">
-        <field name="name">Master Sale Orders</field>
+        <field name="name">Master Orders</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sale.order</field>
         <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
@@ -150,7 +150,7 @@
     <menuitem id="menu_sale_order_master"
               action="action_sale_order_master"
               parent="sale.sale_order_menu"
-              sequence="1"
+              sequence="20"
               groups="sales_team.group_sale_salesman"/>
 
     <!-- Search View for Sale Order Lines -->
@@ -221,7 +221,7 @@
 
     <!-- Action for Master Sale Order Line Balances -->
     <record id="action_sale_order_line_master" model="ir.actions.act_window">
-        <field name="name">Master Sale Orders Balance</field>
+        <field name="name">Saldo de Master Orders</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sale.order.line</field>
         <field name="view_mode">tree</field>
@@ -234,12 +234,12 @@
     <menuitem id="menu_sale_order_line_master"
               action="action_sale_order_line_master"
               parent="sale.menu_sale_report"
-              sequence="10"
+              sequence="11"
               groups="sales_team.group_sale_salesman"/>
 
     <!-- Action for Orphan Sale Order Lines -->
     <record id="action_sale_order_line_no_master" model="ir.actions.act_window">
-        <field name="name">Orphan Sale Orders</field>
+        <field name="name">Pedidos sin Master Order</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sale.order.line</field>
         <field name="view_mode">tree</field>
@@ -252,6 +252,6 @@
     <menuitem id="menu_sale_order_line_no_master"
               action="action_sale_order_line_no_master"
               parent="sale.menu_sale_report"
-              sequence="10"
+              sequence="12"
               groups="sales_team.group_sale_salesman"/>
 </odoo>

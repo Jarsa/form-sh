@@ -43,10 +43,10 @@ class SaleRequest(models.Model):
     )
 
     state = fields.Selection([
-        ('draft', 'Draft'),
-        ('confirm', 'Confirmed'),
-        ('done', 'Done'),
-        ('cancel', 'Cancel')],
+        ('draft', 'Borrador'),
+        ('confirm', 'Confirmado'),
+        ('done', 'Terminado'),
+        ('cancel', 'Cancelado')],
         default='draft',
         required=True,
         readonly=True,
@@ -238,8 +238,8 @@ class SaleRequestLine(models.Model):
         store=True,
     )
     state = fields.Selection([
-        ('pending', 'Pending'),
-        ('done', 'Done')],
+        ('pending', 'Pendiente'),
+        ('done', 'Completado')],
         default='pending',
         readonly=True,
         required=True,
