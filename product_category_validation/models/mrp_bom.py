@@ -18,6 +18,8 @@ class MrpBom(models.Model):
     @api.constrains('type')
     def _check_product_category_kit(self):
         for rec in self:
+            if rec.product_tmpl_id.bypass_validation:
+                continue
             if rec.product_tmpl_id.categ_id.is_kit and rec.type == 'normal':
                 raise ValidationError(
                     _('The main product of this BoM is a Kit.'))

@@ -2,9 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'product_category_validation',
-    'summary': """Module that validates fields in relation to the chosen
-    category""",
+    'name': 'Validación por Categoría de Producto',
+    'summary': 'Valida y aplica restricciones de campos en función de la categoría del producto',
     'version': '17.0.1.0.1',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
@@ -14,7 +13,7 @@
         'mrp',
     ],
     'data': [
-        #'views/product_category_view.xml',
-       # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'views/product_category_view.xml',
     ],
 }

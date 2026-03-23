@@ -2,11 +2,18 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo.exceptions import UserError
-from odoo import api, models
+from odoo import api, fields, models
 
 
 class ProductCategory(models.Model):
     _inherit = 'product.template'
+
+    bypass_validation = fields.Boolean(
+        string='Ignorar validación de categoría',
+        copy=False,
+        help='Al activar esta opción, este producto no será sujeto a las '
+             'restricciones de campo definidas en su categoría.',
+    )
 
     @api.onchange('categ_id')
     def _set_user_defaults(self):
@@ -26,6 +33,8 @@ class ProductCategory(models.Model):
                 })
 
     def _verify_defaults_set(self):
+        if self.bypass_validation:
+            return
         for rec in self.categ_id.validation_ids:
             sel = getattr(self, rec.field_id.name)
             if rec.field_id.ttype == 'many2one':
