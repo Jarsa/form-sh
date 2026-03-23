@@ -2,12 +2,10 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 {
-    'name': 'Form Sale Order Product Reference Partner',
-    'summary': """
-    This module add a field in product views to can link it
-    to supplier in specific""",
+    'name': 'Referencia de Producto por Cliente',
+    'summary': 'Vincula productos a clientes específicos y valida su uso en pedidos y requisiciones de venta',
     'version': '17.0.1.0.0',
-    'category': 'Sales',
+    'category': 'Ventas',
     'website': 'https://www.jarsa.com.mx',
     'author': 'Jarsa Sistemas',
     'license': 'LGPL-3',
@@ -18,7 +16,7 @@
         'sale_request',
     ],
     'data': [
-      #  'views/product_product.xml',
-      #  'data/ir_config_parameter.xml',
+        'data/ir_config_parameter.xml',
+        'views/product_product.xml',
     ],
 }

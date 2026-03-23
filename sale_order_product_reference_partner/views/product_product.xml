@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Campo: clientes permitidos en la ficha del producto -->
     <record id="view_sale_order_product_reference_partner_form" model="ir.ui.view">
         <field name="name">sale.order.product.reference.partner.form</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='barcode']" position="before">
-                <field name="partner_ids" widget="many2many_tags" domain="[('customer_rank','>=', 1)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True}"/>
+                <field name="partner_ids"
+                       widget="many2many_tags"
+                       string="Clientes permitidos"
+                       domain="[('customer_rank','>=', 1)]"
+                       context="{'search_default_customer': 1, 'show_address': 1, 'show_vat': True}"/>
             </xpath>
-        </field> 
+        </field>
+    </record>
+
+    <!-- Campo: ignorar validación de cliente + banner de advertencia -->
+    <record id="view_bypass_partner_validation_form" model="ir.ui.view">
+        <field name="name">product.template.bypass.partner.validation.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="bypass_partner_validation"
+                       widget="boolean_toggle"
+                       string="Ignorar validación de cliente"/>
+                <div class="alert alert-warning"
+                     role="alert"
+                     invisible="not bypass_partner_validation">
+                    <i class="fa fa-exclamation-triangle"/> Este producto puede usarse en pedidos y requisiciones de cualquier cliente.
+                </div>
+            </field>
+        </field>
     </record>
 </odoo>

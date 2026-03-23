@@ -17,7 +17,6 @@ class SaleRequest(models.Model):
     def _onchange_order_line(self):
         self._check_customer_of_product()
 
-    @api.model
     def _check_customer_of_product(self):
         for rec in self.line_ids:
             rec._check_customer_product()
@@ -26,20 +25,23 @@ class SaleRequest(models.Model):
 class SaleRequestLine(models.Model):
     _inherit = 'sale.request.line'
 
-    @api.model
     def _check_customer_product(self):
+        self.ensure_one()
         parameter = self.env['ir.config_parameter'].sudo().get_param(
             'sale_order_product_reference_partner.validate_product_partner')
-        if self.product_id and parameter:
-            if not self.request_id.partner_id:
-                raise ValidationError(
-                    _('You have not defined a customer to the sales request'))
-            if not self.product_id.partner_ids:
-                raise ValidationError(
-                    _('You have not defined a customer to the product %s')
-                    % self.product_id.name)
-            if self.request_id.partner_id not in self.product_id.partner_ids:
-                raise ValidationError(
-                    _('The customer %s is not defined in the product %s')
-                    % (self.request_id.partner_id.name, self.product_id.name))
+        if not (self.product_id and parameter):
+            return True
+        if self.product_id.bypass_partner_validation:
+            return True
+        if not self.request_id.partner_id:
+            raise ValidationError(
+                _('No se ha definido un cliente en la requisición de venta.'))
+        if not self.product_id.partner_ids:
+            raise ValidationError(
+                _('El producto "%s" no tiene clientes permitidos definidos.')
+                % self.product_id.name)
+        if self.request_id.partner_id not in self.product_id.partner_ids:
+            raise ValidationError(
+                _('El cliente "%s" no está permitido para el producto "%s".')
+                % (self.request_id.partner_id.name, self.product_id.name))
         return True
