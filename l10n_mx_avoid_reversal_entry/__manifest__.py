@@ -1,10 +1,14 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    "name": "Avoid Reversal Entries",
+    "name": "Evitar Asientos de Reversa (MX)",
+    "summary": (
+        "Elimina correctamente los asientos contables auxiliares (diferencia "
+        "cambiaria e IVA en efectivo) al desconciliar facturas en empresas mexicanas."
+    ),
     "version": "17.0.1.0.0",
     "author": "Vauxoo",
-    "category": "Accounting",
+    "category": "Contabilidad",
     "license": "LGPL-3",
     "depends": [
         "l10n_mx_edi",
