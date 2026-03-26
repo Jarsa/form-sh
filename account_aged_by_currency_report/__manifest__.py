@@ -12,8 +12,12 @@
     'depends': [
         'account_reports',
     ],
-    'data': [
-        'views/search_template_view.xml',
-    ],
+    'data': [],
+    'assets': {
+        'web.assets_backend': [
+            'account_aged_by_currency_report/static/src/components/aged_by_currency_report/filters/filters.js',
+            'account_aged_by_currency_report/static/src/components/aged_by_currency_report/filters/filters.xml',
+        ],
+    },
     'installable': True,
 }

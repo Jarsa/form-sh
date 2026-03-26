@@ -13,6 +13,17 @@ class ReportAccountAgedPartner(models.AbstractModel):
 
     filter_currencies = True
 
+    def _get_custom_display_config(self):
+        """Registra el componente OWL personalizado que agrega el filtro
+        de moneda al panel de filtros del reporte de antigüedad.
+        Se llama super() para preservar la configuración base
+        (css_custom_class y el componente AgedPartnerBalanceLineName).
+        """
+        config = super()._get_custom_display_config()
+        config.setdefault('components', {})
+        config['components']['AccountReportFilters'] = 'account_reports.AgedByCurrencyReportFilters'
+        return config
+
     @api.model
     def _get_options(self, previous_options=None):
         options = super()._get_options(previous_options=previous_options)

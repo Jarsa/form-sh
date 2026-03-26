@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <!--
+        Extiende el panel de filtros del reporte de antigüedad de saldos
+        añadiendo un selector de moneda extranjera.
+        Posición: antes del filtro de unidad de redondeo (siempre presente).
+    -->
+    <t t-name="account_reports.AgedByCurrencyReportFilters"
+       t-inherit="account_reports.AccountReportFiltersCustomizable">
+        <xpath expr="//div[@id='filter_rounding_unit']" position="before">
+            <t t-if="'currencies' in controller.options">
+                <div id="filter_currency">
+                    <div class="o-dropdown dropdown o-dropdown--no-caret">
+                        <button class="dropdown-toggle btn btn-secondary" data-bs-toggle="dropdown">
+                            <i class="fa fa-money me-1"/>
+                            <t t-esc="selectedCurrencyName"/>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item"
+                                   t-on-click="() => filterCurrency('company_currency')">
+                                    Moneda de la compañía
+                                </a>
+                            </li>
+                            <t t-foreach="controller.options.currencies"
+                               t-as="currency"
+                               t-key="currency.id">
+                                <li>
+                                    <a class="dropdown-item"
+                                       t-on-click="() => filterCurrency(currency.id)">
+                                        <t t-esc="currency.name"/>
+                                    </a>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>
