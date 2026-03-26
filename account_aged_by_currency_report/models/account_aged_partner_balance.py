@@ -3,15 +3,13 @@
 
 import logging
 
-from odoo import _, api, models
+from odoo import _, models
 
 _logger = logging.getLogger(__name__)
 
 
 class ReportAccountAgedPartner(models.AbstractModel):
     _inherit = "account.aged.partner.balance.report.handler"
-
-    filter_currencies = True
 
     def _get_custom_display_config(self):
         """Registra el componente OWL personalizado que agrega el filtro
@@ -24,28 +22,26 @@ class ReportAccountAgedPartner(models.AbstractModel):
         config['components']['AccountReportFilters'] = 'account_reports.AgedByCurrencyReportFilters'
         return config
 
-    @api.model
-    def _get_options(self, previous_options=None):
-        options = super()._get_options(previous_options=previous_options)
-        options['currencies'] = self.env['res.currency'].search([]).read(['name'])
-        # Odoo 17 ya no llama _init_filter_* automáticamente desde el framework;
-        # se invoca aquí explícitamente para garantizar que selected_currency siempre esté definido.
-        self._init_filter_currencies(options, previous_options)
-        return options
+    def _custom_options_initializer(self, report, options, previous_options=None):
+        """En Odoo 17, las opciones del handler se inyectan aquí, no en _get_options."""
+        super()._custom_options_initializer(report, options, previous_options=previous_options)
 
-    @api.model
-    def _init_filter_currencies(self, options, previous_options=None):
-        if not self.filter_currencies:
-            return
-        selected_currency = previous_options and previous_options.get('selected_currency')
-        if selected_currency and isinstance(selected_currency, int):
-            options['selected_currency_name'] = self.env['res.currency'].browse(selected_currency).name
-            options['selected_currency'] = selected_currency
-        else:
-            options['selected_currency'] = 'company_currency'
-            options['selected_currency_name'] = _('Company currency')
+        # Lista de todas las monedas activas para el dropdown del filtro
+        options['currencies'] = self.env['res.currency'].search([('active', '=', True)]).read(['id', 'name'])
 
-    @api.model
+        # Moneda seleccionada: preservar la del usuario o usar la de la empresa por defecto
+        previous_currency = (previous_options or {}).get('selected_currency')
+        if previous_currency and previous_currency != 'company_currency':
+            # Verificar que la moneda guardada sigue siendo válida
+            currency_ids = {c['id'] for c in options['currencies']}
+            if isinstance(previous_currency, int) and previous_currency in currency_ids:
+                options['selected_currency'] = previous_currency
+                options['selected_currency_name'] = self.env['res.currency'].browse(previous_currency).name
+                return
+
+        options['selected_currency'] = 'company_currency'
+        options['selected_currency_name'] = _('Moneda de la compañía')
+
     def _get_sql(self):
         options = self.env.context['report_options']
         selected_currency = options.get('selected_currency')
