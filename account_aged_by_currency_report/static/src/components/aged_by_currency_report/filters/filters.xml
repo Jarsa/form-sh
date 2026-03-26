@@ -18,7 +18,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item"
-                                   t-on-click="() => filterCurrency('company_currency')">
+                                   t-on-click="() => this.filterCurrency('company_currency')">
                                     Moneda de la compañía
                                 </a>
                             </li>
@@ -27,7 +27,7 @@
                                t-key="currency.id">
                                 <li>
                                     <a class="dropdown-item"
-                                       t-on-click="() => filterCurrency(currency.id)">
+                                       t-on-click="() => this.filterCurrency(currency.id)">
                                         <t t-esc="currency.name"/>
                                     </a>
                                 </li>
