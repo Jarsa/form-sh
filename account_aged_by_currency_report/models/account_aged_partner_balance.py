@@ -1,7 +1,11 @@
 # Copyright 2021, Jarsa
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+import logging
+
 from odoo import _, api, models
+
+_logger = logging.getLogger(__name__)
 
 
 class ReportAccountAgedPartner(models.AbstractModel):
@@ -13,6 +17,9 @@ class ReportAccountAgedPartner(models.AbstractModel):
     def _get_options(self, previous_options=None):
         options = super()._get_options(previous_options=previous_options)
         options['currencies'] = self.env['res.currency'].search([]).read(['name'])
+        # Odoo 17 ya no llama _init_filter_* automáticamente desde el framework;
+        # se invoca aquí explícitamente para garantizar que selected_currency siempre esté definido.
+        self._init_filter_currencies(options, previous_options)
         return options
 
     @api.model
@@ -31,8 +38,18 @@ class ReportAccountAgedPartner(models.AbstractModel):
     def _get_sql(self):
         options = self.env.context['report_options']
         selected_currency = options.get('selected_currency')
-        if selected_currency and selected_currency == 'company_currency':
+        if not selected_currency or selected_currency == 'company_currency':
             return super()._get_sql()
+
+        # En Odoo 17, account.account usa 'account_type' (antes 'internal_type').
+        # Los valores posibles son p.ej. 'asset_receivable' y 'liability_payable'.
+        filter_account_type = options.get('filter_account_type', '')
+        sign = 1 if 'receivable' in filter_account_type else -1
+        _logger.debug(
+            "SQL antigüedad por moneda: moneda_id=%s, tipo_cuenta=%s, signo=%s",
+            selected_currency, filter_account_type, sign,
+        )
+
         query = ("""
             WITH last_rates AS (
                 SELECT DISTINCT ON(rate.currency_id, rate.company_id)
@@ -102,7 +119,7 @@ class ReportAccountAgedPartner(models.AbstractModel):
                 period_table.date_stop IS NULL
                 OR COALESCE(account_move_line.date_maturity, account_move_line.date) >= DATE(period_table.date_stop)
             )
-            WHERE account.internal_type = %(account_type)s
+            WHERE account.account_type = %(account_type)s
             AND account_move_line.currency_id = %(currency_id)s
             GROUP BY account_move_line.id, partner.id, trust_property.id, journal.id, move.id, account.id,
                      period_table.period_index, currency_table.rate, currency_table.precision, company_currency.rate, used_currency.rate
@@ -119,8 +136,8 @@ class ReportAccountAgedPartner(models.AbstractModel):
             period_table=self._get_query_period_table(options),
         )
         params = {
-            'account_type': options['filter_account_type'],
-            'sign': 1 if options['filter_account_type'] == 'receivable' else -1,
+            'account_type': filter_account_type,
+            'sign': sign,
             'date': options['date']['date_to'],
             'currency_id': selected_currency,
         }

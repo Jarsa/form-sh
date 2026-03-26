@@ -2,10 +2,10 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 {
-    'name': 'Account Aged Reports by Currency',
-    'summary': 'Allow to see aged balance reports by currency',
+    'name': 'Reportes de Antigüedad de Saldos por Moneda',
+    'summary': 'Permite filtrar los reportes de antigüedad de saldos por moneda extranjera',
     'version': '17.0.1.0.0',
-    'category': 'Accounting',
+    'category': 'Contabilidad',
     'website': 'https://www.jarsa.com.mx/',
     'author': 'Jarsa',
     'license': 'LGPL-3',
@@ -13,6 +13,7 @@
         'account_reports',
     ],
     'data': [
-        #'views/search_template_view.xml',
+        'views/search_template_view.xml',
     ],
+    'installable': True,
 }
