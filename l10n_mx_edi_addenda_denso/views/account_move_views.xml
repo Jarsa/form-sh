@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_denso" model="ir.ui.view">
+        <field name="name">account.move.form.denso.addenda</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Addenda DENSO"
+                      name="denso_addenda"
+                      invisible="move_type not in ('out_invoice','out_refund')"
+                      groups="account.group_account_invoice">
+                    <group>
+                        <group string="Datos de la Addenda">
+                            <field name="denso_addenda"/>
+                            <field name="denso_reference"
+                                   invisible="not denso_addenda"
+                                   placeholder="Orden de compra (si es DO, 8 dígitos)"/>
+                        </group>
+                        <group string="Flete (Freight)"
+                               invisible="not denso_addenda">
+                            <field name="denso_is_freight"/>
+                            <field name="denso_freight_reference"
+                                   invisible="not denso_is_freight"
+                                   placeholder="IMAP-XXXX / EXAP-XXXX ..."/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
