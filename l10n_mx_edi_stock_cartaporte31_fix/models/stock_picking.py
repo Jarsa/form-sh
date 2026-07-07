@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models
 
+# SAT minimum accepted weight for PesoBrutoTotal / PesoEnKg (kg).
+MIN_CFDI_WEIGHT = 0.001
+
 
 class Picking(models.Model):
     _inherit = 'stock.picking'
@@ -9,6 +12,62 @@ class Picking(models.Model):
     def _l10n_mx_edi_prepare_picking_cfdi_template(self):
         # OVERRIDES the whole chain: use the clean CartaPorte 3.1 template.
         return 'l10n_mx_edi_stock_cartaporte31_fix.cfdi_cartaporte_31'
+
+    # -------------------------------------------------------------------------
+    # ROBUST WEIGHT
+    # -------------------------------------------------------------------------
+    def _l10n_mx_edi_cartaporte_move_raw_weight(self, move):
+        """ Best-effort weight (kg) for a single move, WITHOUT the 0.001 floor.
+
+        Priority:
+          1) move.weight if > 0 (native computed value)
+          2) product.weight * quantity converted to the product's base UoM
+        Returns 0.0 if neither is available (the picking-level fallback below
+        will then distribute the header weight across moves).
+        """
+        # 1) native move weight
+        weight = move.weight or 0.0
+        if weight > 0:
+            return weight
+
+        # 2) product weight * qty (in product base UoM)
+        product = move.product_id
+        if product.weight and move.quantity:
+            qty_base = move.product_uom._compute_quantity(
+                move.quantity, product.uom_id, rounding_method='HALF-UP',
+            )
+            weight = qty_base * product.weight
+            if weight > 0:
+                return weight
+
+        return 0.0
+
+    def _l10n_mx_edi_cartaporte_weight_map(self, moves):
+        """ Return {move.id: peso_kg} guaranteeing every value >= MIN_CFDI_WEIGHT.
+
+        If some moves have no derivable weight, the picking header weight
+        (shipping_weight or weight) is distributed proportionally by quantity
+        across the weightless moves, so the total reflects what the user
+        already captured on the picking (e.g. 302.40 kg) instead of 0.
+        """
+        self.ensure_one()
+        raw = {m.id: self._l10n_mx_edi_cartaporte_move_raw_weight(m) for m in moves}
+
+        missing = [m for m in moves if raw[m.id] <= 0]
+        if missing:
+            # Header weight the user already sees on the picking.
+            header_weight = self.shipping_weight or self.weight or 0.0
+            already = sum(v for v in raw.values() if v > 0)
+            remaining = max(header_weight - already, 0.0)
+
+            total_missing_qty = sum(m.quantity for m in missing) or 0.0
+            for m in missing:
+                if remaining > 0 and total_missing_qty > 0:
+                    raw[m.id] = remaining * (m.quantity / total_missing_qty)
+                # else: stays 0 -> floored below
+
+        # Apply SAT minimum floor per move.
+        return {mid: max(w, MIN_CFDI_WEIGHT) for mid, w in raw.items()}
 
     def _l10n_mx_edi_add_picking_cfdi_values(self, cfdi_values):
         # EXTENDS the chain. Everything (origen/destino/domicilio/idccp/peso/
@@ -40,5 +99,11 @@ class Picking(models.Model):
         cfdi_values.setdefault('num_pedimento', None)
         cfdi_values.setdefault('ident_doc_aduanero', None)
         cfdi_values.setdefault('rfc_impo', None)
+
+        # Robust per-move weight map {move.id: kg}, never below SAT's 0.001.
+        moves = cfdi_values.get('moves', self.move_ids.filtered(lambda ml: ml.quantity > 0))
+        weight_map = self._l10n_mx_edi_cartaporte_weight_map(moves)
+        cfdi_values['cartaporte_weight_map'] = weight_map
+        cfdi_values['cartaporte_peso_bruto_total'] = max(sum(weight_map.values()), MIN_CFDI_WEIGHT)
 
         return cfdi_values
