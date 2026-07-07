@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models
+from odoo.tools import float_repr
 
 # SAT minimum accepted weight for PesoBrutoTotal / PesoEnKg (kg).
 MIN_CFDI_WEIGHT = 0.001
@@ -107,3 +108,17 @@ class Picking(models.Model):
         cfdi_values['cartaporte_peso_bruto_total'] = max(sum(weight_map.values()), MIN_CFDI_WEIGHT)
 
         return cfdi_values
+
+    def _l10n_mx_edi_get_cartaporte_pdf_values(self):
+        # EXTENDS 'l10n_mx_edi_stock_30': the PDF computed peso_bruto_total from
+        # sum(move_ids.mapped('weight')), which is 0 when move.weight is empty.
+        # Reuse the same robust weight logic used for the XML so the printed
+        # Carta Porte shows the correct total (e.g. 302.400 KGM).
+        values = super()._l10n_mx_edi_get_cartaporte_pdf_values()
+
+        moves = self.move_ids.filtered(lambda ml: ml.quantity > 0)
+        weight_map = self._l10n_mx_edi_cartaporte_weight_map(moves)
+        total = max(sum(weight_map.values()), MIN_CFDI_WEIGHT)
+        values['peso_bruto_total'] = float_repr(total, 3)
+
+        return values

@@ -5,7 +5,7 @@
 {
     "name": "Mexico - Carta Porte 3.1 Fix (namespace CartaPorte31)",
     'countries': ['mx'],
-    'version': '17.0.1.1.0',
+    'version': '17.0.1.2.0',
     'category': 'Accounting/Localizations/EDI',
     'description': """
 Corrige la emisión de Carta Porte 3.1 en Odoo 17.
