@@ -24,7 +24,7 @@
             xmlns:cartaporte31="http://www.sat.gob.mx/CartaPorte31"
             xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte31 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte31/CartaPorte31.xsd">
+            xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte31 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte31.xsd">
             <cfdi:CfdiRelacionados t-if="tipo_relacion and cfdi_relationado_list" t-att-TipoRelacion="tipo_relacion">
                 <t t-foreach="cfdi_relationado_list" t-as="cfdi_relationado">
                     <cfdi:CfdiRelacionado t-att-UUID="cfdi_relationado"/>
