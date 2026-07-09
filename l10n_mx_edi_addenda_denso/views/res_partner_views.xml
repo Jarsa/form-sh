@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_denso" model="ir.ui.view">
+        <field name="name">res.partner.form.denso.addenda</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Addenda DENSO" name="denso_addenda">
+                    <group>
+                        <group string="Configuración">
+                            <field name="denso_addenda"/>
+                            <field name="denso_is_freight"
+                                   invisible="not denso_addenda"/>
+                        </group>
+                        <group string="Datos del Proveedor (Portal)"
+                               invisible="not denso_addenda">
+                            <field name="denso_supplier_site"/>
+                            <field name="denso_supplier_portal"/>
+                            <field name="denso_supplier_name"/>
+                        </group>
+                    </group>
+                    <p colspan="2" class="text-muted"
+                       invisible="not denso_addenda">
+                        Nota: los datos de Supplier normalmente se completan en el
+                        Portal de Proveedores; se dejan aquí como valores por defecto.
+                    </p>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

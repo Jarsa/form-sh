@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:DNS="https://www.densomex.com:4443/Addenda/DNS"
+           targetNamespace="https://www.densomex.com:4443/Addenda/DNS"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+	<!-- Tipo Invoice Reference -->
+	<xs:simpleType name="InvoiceReferenceType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Tipo SupplierSite -->
+	<xs:simpleType name="SupplierSiteType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Tipo SupplierPortal -->
+	<xs:simpleType name="SupplierPortalType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Tipo Freight Reference -->
+	<xs:simpleType name="FreightReferenceType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="15"/>
+			<xs:pattern value="(IMAP|EXAP|IMSL|EXSL|IMIR|EXIR)-.{2,}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Elemento raíz Invoice -->
+	<xs:element name="Invoice">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- Este nodo se completa en el portal, no es necesario mandarlo-->
+				<xs:element name="Supplier"
+				            minOccurs="0">
+					<xs:complexType>
+						<xs:attribute name="SupplierSite"
+						              type="DNS:SupplierSiteType"
+						              use="required"/>
+						<xs:attribute name="SupplierPortal"
+						              type="DNS:SupplierPortalType"
+						              use="required"/>
+						<xs:attribute name="SupplierName"
+						              type="xs:string"
+						              use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<!-- Freight opcional -->
+				<!-- Este dato se mandará solamente cuando sea un fletero-->
+				<xs:element name="Freight"
+				            minOccurs="0">
+					<xs:complexType>
+						<xs:attribute name="Reference"
+						              type="DNS:FreightReferenceType"
+						              use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<!-- Reference obligatorio -->
+			<!-- Este dato se mandará solamente cuando sea proveedor Nacional-->
+			<xs:attribute name="Reference"
+			              type="DNS:InvoiceReferenceType"
+			              use="optional"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

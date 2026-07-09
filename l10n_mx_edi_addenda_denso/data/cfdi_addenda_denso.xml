@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Addenda DENSO (DNS) como QWeb view.
+        Odoo l10n_mx_edi busca vistas cuyo modelo interno sea 'l10n_mx_edi.addenda'
+        y las asigna al partner en el campo l10n_mx_edi_addenda.
+        El contexto de renderizado expone 'record' = account.move.
+    -->
+    <template id="denso_addenda" name="DENSO (DNS)">
+        <t t-name="l10n_mx_edi_addenda_denso.denso_addenda">
+            <t t-set="partner" t-value="record.partner_id"/>
+            <DNS:Invoice
+                xmlns:DNS="https://www.densomex.com:4443/Addenda/DNS"
+                t-att-Reference="record.denso_reference or None">
+                <t t-if="partner.denso_supplier_site or partner.denso_supplier_portal or partner.denso_supplier_name">
+                    <DNS:Supplier
+                        t-att-SupplierSite="partner.denso_supplier_site or ''"
+                        t-att-SupplierPortal="partner.denso_supplier_portal or ''"
+                        t-att-SupplierName="partner.denso_supplier_name or partner.name or ''"/>
+                </t>
+                <t t-if="record.denso_is_freight and record.denso_freight_reference">
+                    <DNS:Freight t-att-Reference="record.denso_freight_reference"/>
+                </t>
+            </DNS:Invoice>
+        </t>
+    </template>
+
+    <record id="denso_addenda_view" model="ir.ui.view">
+        <field name="name">DENSO (DNS)</field>
+        <field name="type">qweb</field>
+        <field name="model">l10n_mx_edi.addenda</field>
+        <field name="key">l10n_mx_edi_addenda_denso.denso_addenda</field>
+        <field name="arch" type="xml">
+            <t t-call="l10n_mx_edi_addenda_denso.denso_addenda"/>
+        </field>
+    </record>
+</odoo>
